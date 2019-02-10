@@ -10,6 +10,7 @@
         android:title="Favorite" />
 
     <item
+
         android:id="@+id/Navigation_hom"
         android:icon="@drawable/home"
         android:title="Home" />
@@ -18,7 +19,7 @@
 
     <item
         android:id="@+id/Navigation_acc"
-        android:icon="@drawable/accountone"
+        android:icon="@drawable/oooo"
         android:title="Account" />
 
 

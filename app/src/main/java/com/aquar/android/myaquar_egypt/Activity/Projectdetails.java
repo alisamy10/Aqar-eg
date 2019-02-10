@@ -1,6 +1,7 @@
 package com.aquar.android.myaquar_egypt.Activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +18,7 @@ import java.util.HashMap;
 
 public class Projectdetails extends AppCompatActivity {
     private SliderLayout Product_Slider;
-    private Button see_more_btn , like_btn,struct_btn;
+    private Button see_more_btn , like_btn,struct_btn , location_btn , call_btn , share_btn;
     private TextView description;
     int n=0;
 
@@ -27,9 +28,13 @@ public class Projectdetails extends AppCompatActivity {
         setContentView(R.layout.activity_project_details);
 
 
-        //kjh;klj
-
+        see_more_btn =(Button)findViewById(R.id.see_more_btn);
+        description=(TextView)findViewById(R.id.description);
+        like_btn =(Button)findViewById(R.id.like);
+        share_btn = findViewById(R.id.share);
+        location_btn = findViewById(R.id.go_location);
         struct_btn=(Button)findViewById(R.id.structure);
+        call_btn = findViewById(R.id.call);
         struct_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,14 +42,42 @@ public class Projectdetails extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        see_more_btn =(Button)findViewById(R.id.see_more_btn);
-        description=(TextView)findViewById(R.id.description);
-        like_btn =(Button)findViewById(R.id.like);
+
 
         like_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 liked_projects();
+            }
+        });
+
+        share_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent share = new Intent();
+                share.setAction(Intent.ACTION_SEND);
+                share.putExtra(Intent.EXTRA_TEXT,
+                        "https://play.google.com/store/apps/details?id=com.youssef.maggy.aqartest");
+                share.setType("textDes/plain");
+                startActivity(share);
+            }
+        });
+
+        location_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String geoUri = "http://maps.google.com/maps?q=loc:" + 30.145305 + "," + 31.630784 + " ("+"Shourok"+")";
+                Intent map = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+                startActivity(map);
+            }
+        });
+        call_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent contact = new Intent(Intent.ACTION_DIAL);
+                contact.setData(Uri.parse("tel:01095488883"));
+                startActivity(contact);
+
             }
         });
 

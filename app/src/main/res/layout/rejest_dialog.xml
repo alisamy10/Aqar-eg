@@ -77,26 +77,28 @@
             android:layout_height="wrap_content"
             android:id="@+id/edit_text_firstName"
             android:layout_marginBottom="20dp"
-            android:hint="First name"
+            android:hint="User name"
             android:gravity="center"
 
             />
 
 
         <EditText
-            android:hint="Last name"
-            android:gravity="center"
-            android:layout_below="@+id/edit_text_firstName"
             android:id="@+id/edit_text_lastName"
-            android:background="@drawable/back_ground_edit_text"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp" />
+            android:layout_below="@+id/edit_text_firstName"
+            android:layout_alignStart="@+id/des2"
+
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/back_ground_edit_text"
+            android:gravity="center"
+            android:hint="Phone" />
 
         <EditText
             android:layout_below="@+id/edit_text_lastName"
             android:id="@+id/edit_text_e-mail"
-            android:hint="E-mail"
+            android:hint="Job Title"
             android:gravity="center"
             android:background="@drawable/back_ground_edit_text"
             android:layout_width="250dp"
@@ -104,7 +106,7 @@
             android:layout_marginBottom="20dp" />
 
         <EditText
-            android:hint="Password"
+            android:hint="E-mail"
             android:gravity="center"
             android:layout_below="@+id/edit_text_e-mail"
             android:id="@+id/edit_text_password"
@@ -115,7 +117,7 @@
 
         <EditText
             android:layout_below="@+id/edit_text_password"
-            android:hint="location"
+            android:hint="Password"
             android:gravity="center"
             android:id="@+id/edit_text_location"
             android:background="@drawable/back_ground_edit_text"

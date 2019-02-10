@@ -79,6 +79,7 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:layout_marginTop="3dp"
                         android:id="@+id/like"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
@@ -86,23 +87,25 @@
                         android:background="@drawable/like" />
 
                     <Button
+                        android:layout_marginTop="3dp"
                         android:id="@+id/share"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginRight="15dp"
-
                         android:background="@drawable/share" />
 
                     <LinearLayout
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
 
-
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="8dp"
                         android:background="@android:color/holo_red_dark"
                         android:gravity="center">
 
                         <Button
+
                             android:id="@+id/call"
                             android:layout_width="23dp"
                             android:layout_height="23dp"
@@ -156,13 +159,16 @@
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
                         android:layout_gravity="right"
-                        android:layout_marginEnd="17dp"
+                        android:layout_marginEnd="32dp"
                         android:layout_marginBottom="0dp"
                         android:background="@null"
                         android:gravity="bottom|left"
                         android:text="See more"
+                        android:layout_marginLeft="5dp"
                         android:textColor="@android:color/holo_red_dark"
                         android:textSize="13dp" />
+
+
 
 
                 </RelativeLayout>
@@ -258,6 +264,8 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_marginRight="10dp"
+                    android:gravity="right"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -269,7 +277,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
+                        android:gravity="right"
                         android:text="4,400,00"
                         android:textColor="@android:color/holo_red_dark"
                         android:textSize="16dp" />
@@ -279,7 +287,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
+
+                        android:gravity="right"
                         android:text="Apartment"
                         android:textColor="@android:color/holo_red_dark"
                         android:textSize="16dp" />/>
@@ -288,8 +297,8 @@
                         android:id="@+id/bedroom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="end|right"
+                        android:layout_gravity="right"
+                        android:gravity="right"
                         android:text="3"
                         android:textColor="@android:color/holo_red_dark"
                         android:textSize="16dp" />/>
@@ -298,7 +307,7 @@
                         android:id="@+id/bathroom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_gravity="right"
                         android:gravity="right"
                         android:text="2"
                         android:textAlignment="gravity"
@@ -309,8 +318,8 @@
                         android:id="@+id/area"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
+                        android:layout_gravity="right"
+                        android:gravity="right"
                         android:text="180sqm"
                         android:textColor="@android:color/holo_red_dark"
                         android:textSize="16dp" />/>

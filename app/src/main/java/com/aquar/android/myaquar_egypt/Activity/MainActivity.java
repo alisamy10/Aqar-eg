@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -71,10 +72,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             }
         });
 
-//////////////////////////////////
+
         dl = (DrawerLayout) findViewById(R.id.activity_main);
         t = new ActionBarDrawerToggle(this, dl, R.string.open, R.string.close);
-//kjk
+
         dl.addDrawerListener(t);
         t.syncState();
 
@@ -83,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         nv = (NavigationView) findViewById(R.id.nv);
 
+
+        nv.setCheckedItem(R.id.Navigation_hom);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -142,6 +145,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.Navigation_fav:
                 TextView textView2 = (TextView) findViewById(R.id.name_fragment);
                 textView2.setText("Favorite");
+
+
             /*
                 Log.d(TAG, "Linear_Com" + "");
                  fragment = new //////name fragment(favorite)///////;
@@ -155,9 +160,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 TextView textView3 = (TextView) findViewById(R.id.name_fragment);
                 textView3.setText("Account");
 
-
                 Log.d(TAG, "Linear_Med" + "");
-
                 fragment = new Profile_fragment();
 
                 transaction = getSupportFragmentManager().beginTransaction();
