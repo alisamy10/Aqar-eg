@@ -8,42 +8,47 @@
     tools:context=".Fragments.personal_fragment">
 
     <!-- TODO: Update blank fragment layout -->
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:background="#fff"
-       android:layout_marginBottom="2dp"
-       android:orientation="horizontal">
-       <TextView
-           android:layout_width="0dp"
-           android:layout_height="wrap_content"
-           android:layout_weight="1.3"
-           android:text="Username"
-           android:textSize="15sp"
-           android:layout_margin="10dp"
-           />
-
-       <TextView
-           android:id="@+id/username"
-           android:layout_width="0dp"
-           android:layout_height="wrap_content"
-           android:layout_weight="1"
-           android:layout_margin="10dp"
-           android:text="Ravon"
-           android:gravity="right"
-           android:textSize="15sp" />
-
-   </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
         android:background="#fff"
         android:layout_marginBottom="2dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.3"
+            android:layout_weight="1"
+            android:text="Username"
+            android:textSize="15sp"
+            android:layout_margin="10dp"
+            />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:layout_margin="10dp"
+            android:text="Ravon"
+            android:gravity="right"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#fff"
+        android:gravity="center"
+        android:layout_marginBottom="2dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Full name"
             android:textSize="15sp"
             android:layout_margin="10dp"
@@ -53,23 +58,25 @@
             android:id="@+id/fullname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:layout_margin="10dp"
             android:gravity="right"
             android:text="Brain Kelly"
             android:textSize="15sp" />
 
     </LinearLayout>
- <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-     android:background="#fff"
-     android:layout_marginBottom="2dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="#fff"
+        android:layout_marginBottom="2dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.3"
+            android:layout_weight="1"
             android:text="Location"
             android:textSize="15sp"
             android:layout_margin="10dp"
@@ -79,23 +86,25 @@
             android:id="@+id/location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:layout_margin="10dp"
             android:text="Germany"
             android:gravity="right"
             android:textSize="15sp" />
 
     </LinearLayout>
- <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-     android:background="#fff"
-     android:layout_marginBottom="2dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="#fff"
+        android:layout_marginBottom="2dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.3"
+            android:layout_weight="1"
             android:text="Email"
             android:textSize="15sp"
             android:layout_margin="10dp"
@@ -105,23 +114,25 @@
             android:id="@+id/email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:layout_margin="10dp"
             android:gravity="right"
             android:text="hghghv@mail.com"
             android:textSize="15sp" />
 
     </LinearLayout>
- <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-     android:background="#fff"
-     android:layout_marginBottom="2dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="#fff"
+        android:layout_marginBottom="2dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.3"
+            android:layout_weight="1"
             android:text="Mobile"
             android:textSize="15sp"
             android:layout_margin="10dp"
@@ -131,7 +142,7 @@
             android:id="@+id/mobile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:layout_margin="10dp"
             android:gravity="right"
             android:text="01054435676"
@@ -140,8 +151,9 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-       android:background="#fff">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#fff">
     </LinearLayout>
 
 </LinearLayout>
