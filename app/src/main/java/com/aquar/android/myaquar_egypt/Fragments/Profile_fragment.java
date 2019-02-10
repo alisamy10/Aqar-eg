@@ -1,6 +1,7 @@
 package com.aquar.android.myaquar_egypt.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +17,7 @@ import com.aquar.android.myaquar_egypt.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -33,6 +35,10 @@ public class Profile_fragment extends Fragment {
     @BindView(R.id.messages)
     Button messages;
 
+    @BindView(R.id.edit_profile_photo)
+    CircleImageView chooseImage;
+
+
     @BindView(R.id.personal_data)
     Button personal_data;
     //textview
@@ -40,6 +46,8 @@ public class Profile_fragment extends Fragment {
     TextView messagecolor;
     @BindView(R.id.data_button_click)
     TextView datacolor;
+
+
 
     public Profile_fragment() {
         // Required empty public constructor
@@ -74,6 +82,8 @@ public class Profile_fragment extends Fragment {
         datacolor.setBackgroundResource(R.color.Red);
 
 
+
+
     }
 
     @OnClick(R.id.messages)
@@ -86,6 +96,14 @@ public class Profile_fragment extends Fragment {
         messagecolor.setBackgroundResource(R.color.Red);
         datacolor.setBackgroundResource(R.color.White);
 
+    }
+    @OnClick(R.id.edit_profile_photo)
+    public void setChooseImage() {
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent, 2);
     }
 
 

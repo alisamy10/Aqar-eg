@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null"
+    >
+
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignTop="@+id/linear"
+        android:layout_alignEnd="@+id/linear"
+        android:background="@drawable/exit_background"
+        android:text="x"
+        android:textColor="#fff" />
+
+
+    <RelativeLayout
+
+        android:paddingBottom="40dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:id="@+id/linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+      >
+
+
+
+        <TextView
+            android:layout_marginTop="40dp"
+            android:id="@+id/text1"
+            android:text="Registration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textColor="#000"
+            android:layout_centerHorizontal="true"
+          />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/des"
+            android:text="Welcome to our application. "
+            android:textSize="15sp"
+            android:layout_below="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+
+
+            />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/des2"
+            android:text="you need to register to start using the application "
+            android:textSize="12sp"
+            android:layout_below="@+id/des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+
+            />
+
+
+
+        <EditText
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/des2"
+            android:layout_width="wrap_content"
+            android:background="@drawable/back_ground_edit_text"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_text_firstName"
+            android:layout_marginBottom="20dp"
+            android:hint="First name"
+            android:gravity="center"
+
+            />
+
+
+        <EditText
+            android:hint="Last name"
+            android:gravity="center"
+            android:layout_below="@+id/edit_text_firstName"
+            android:id="@+id/edit_text_lastName"
+            android:background="@drawable/back_ground_edit_text"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp" />
+
+        <EditText
+            android:layout_below="@+id/edit_text_lastName"
+            android:id="@+id/edit_text_e-mail"
+            android:hint="E-mail"
+            android:gravity="center"
+            android:background="@drawable/back_ground_edit_text"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp" />
+
+        <EditText
+            android:hint="Password"
+            android:gravity="center"
+            android:layout_below="@+id/edit_text_e-mail"
+            android:id="@+id/edit_text_password"
+            android:background="@drawable/back_ground_edit_text"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp" />
+
+        <EditText
+            android:layout_below="@+id/edit_text_password"
+            android:hint="location"
+            android:gravity="center"
+            android:id="@+id/edit_text_location"
+            android:background="@drawable/back_ground_edit_text"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:background="@drawable/back_ground_regist_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_text_location"
+            android:layout_centerHorizontal="true"
+            android:text="Registration"
+            android:textColor="#fff"
+            android:textAllCaps="false"
+            />
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
