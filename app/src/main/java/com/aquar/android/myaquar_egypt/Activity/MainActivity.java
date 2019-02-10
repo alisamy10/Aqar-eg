@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //////////////////////////////////
         dl = (DrawerLayout) findViewById(R.id.activity_main);
         t = new ActionBarDrawerToggle(this, dl, R.string.open, R.string.close);
-
+//kjk
         dl.addDrawerListener(t);
         t.syncState();
 
