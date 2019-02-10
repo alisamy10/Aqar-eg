@@ -27,7 +27,7 @@ public class example_adapter_for_home_fragment extends RecyclerView.Adapter<exam
         void onItemClick(int position, ImageView imageView, int i,boolean k);
 
         void share(int position, ImageView imageView, int i);
-
+void intent_to_detales(int pos,ImageView imageView,int i);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -69,7 +69,34 @@ public class example_adapter_for_home_fragment extends RecyclerView.Adapter<exam
             //////
             imageView_one_one = itemView.findViewById(R.id.image_one_one);
             imageView_two_four = itemView.findViewById(R.id.image_two_four);
+
             /////
+            imageView_one_one.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.intent_to_detales(position, imageView_one_one, 1);
+                        }
+                    } }
+            });
+            imageView_two_four.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.intent_to_detales(position, imageView_two_four, 4);
+
+                        }
+                    } }
+            });
+
+
+            ////////
             imageView_1_2_share.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -90,11 +117,11 @@ public class example_adapter_for_home_fragment extends RecyclerView.Adapter<exam
                 @Override
                 public void onClick(View v) {
 
-boolean i=false;
+boolean i=true;
                     if (listener != null) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
-                            listener.onItemClick(position, imageView_1_2_love, 1,true);
+                            listener.onItemClick(position, imageView_1_2_love, 1,i);
 
                         }
                     }
@@ -106,11 +133,11 @@ boolean i=false;
                 @Override
                 public void onClick(View v) {
 
-                    boolean i=false;
+                    boolean i=true;
                     if (listener != null) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
-                            listener.onItemClick(position, imageView_2_3_love, 1,true);
+                            listener.onItemClick(position, imageView_2_3_love, 1,i);
 
                         }
                     }

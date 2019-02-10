@@ -1,5 +1,6 @@
 package com.aquar.android.myaquar_egypt.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.aquar.android.myaquar_egypt.Activity.MainActivity;
+import com.aquar.android.myaquar_egypt.Activity.Projectdetails;
 import com.aquar.android.myaquar_egypt.Adapter.example_adapter_for_home_fragment;
 import com.aquar.android.myaquar_egypt.Model.modle_home_fragment;
 import com.aquar.android.myaquar_egypt.R;
@@ -18,7 +21,7 @@ import java.util.ArrayList;
 
 
 public class fragment_home extends Fragment {
-
+int x = 2;
     private ArrayList<modle_home_fragment> mExampleList;
     private RecyclerView mRecyclerView;
     private example_adapter_for_home_fragment mAdapter;
@@ -64,8 +67,7 @@ public class fragment_home extends Fragment {
             @Override
             public void onItemClick(int position, ImageView imageView, int i,boolean l) {
 
-                make_love(position,imageView,i,l);
-
+                make_love(position,imageView,i,x);
 
 
             }
@@ -74,6 +76,13 @@ public class fragment_home extends Fragment {
             public void share(int position, ImageView imageView, int i) {
                 share_(position,imageView,i);
             }
+
+            @Override
+            public void intent_to_detales(int pos, ImageView imageView, int i) {
+                go_detales(pos, imageView, i);
+            }
+
+
         });
 
 
@@ -81,9 +90,23 @@ public class fragment_home extends Fragment {
         return v;
     }
 
-    public void make_love(int pos,ImageView img,int i,boolean l) {
+    public void make_love(int pos,ImageView img,int i,int l) {
+            x++;
+        if(l%2==0) {
+            img.setImageResource(R.drawable.ic_favorite_black_24dp);
+        }
+        else
+            img.setImageResource(R.drawable.ic_favorite_normal_black_24dp);
 
-        img.setImageResource(R.drawable.ic_favorite_black_24dp);
+      if (x>100){
+          x=1 ;
+      }
+    }
+
+    public void go_detales(int pos,ImageView img,int i){
+
+        Intent intent=new Intent(getActivity(), Projectdetails.class);
+        startActivity(intent);
 
     }
     public void share_(int pos,ImageView img,int i) {

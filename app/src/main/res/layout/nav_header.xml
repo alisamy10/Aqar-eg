@@ -12,13 +12,13 @@
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-
+android:layout_weight="0"
     >
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_profel"
-        android:layout_width="110dp"
-        android:layout_height="122dp"
+        android:layout_width="87dp"
+        android:layout_height="99dp"
         android:layout_marginLeft="20dp"
         android:gravity="center_vertical"
         android:src="@drawable/photo"
@@ -33,6 +33,7 @@
 android:layout_marginLeft="20dp"
         android:orientation="vertical"
         android:background="#FFFF"
+        android:layout_weight="3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 

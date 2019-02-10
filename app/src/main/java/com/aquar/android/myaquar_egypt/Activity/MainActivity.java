@@ -89,30 +89,33 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 switch (id) {
                     case R.id.catog_nav:
                         Toast.makeText(MainActivity.this, "categories", Toast.LENGTH_SHORT).show();
-
-
+                        break;
                     case R.id.project_id_nav:
                         Toast.makeText(MainActivity.this, "project", Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.news_event_nav:
                         Toast.makeText(MainActivity.this, "news and enents", Toast.LENGTH_SHORT).show();
-
+                        break;
                     case R.id.about_us_nav:
                         Toast.makeText(MainActivity.this, "about us", Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.contact_us_nav:
                         Toast.makeText(MainActivity.this, "contact us", Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.terma_polic_nav:
                         Toast.makeText(MainActivity.this, "term and polices", Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.setting_nav:
                         Toast.makeText(MainActivity.this, "setting", Toast.LENGTH_SHORT).show();
-
+                        break;
                     case R.id.logout_nav:
                         Toast.makeText(MainActivity.this, "log out", Toast.LENGTH_SHORT).show();
-
+                        break;
                     default:
-                        return true;
+                     break;
                 }
 
-
+                return true;
             }
         });
 
