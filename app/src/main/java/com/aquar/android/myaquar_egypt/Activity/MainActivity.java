@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aquar.android.myaquar_egypt.Adapter.ExpandListAdapter;
+import com.aquar.android.myaquar_egypt.Fragments.Profile_fragment;
 import com.aquar.android.myaquar_egypt.Fragments.fragment_home;
 import com.aquar.android.myaquar_egypt.R;
 
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //////////////////////////////////
         dl = (DrawerLayout) findViewById(R.id.activity_main);
         t = new ActionBarDrawerToggle(this, dl, R.string.open, R.string.close);
-
+//kjk
         dl.addDrawerListener(t);
         t.syncState();
 
@@ -153,14 +154,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
                 TextView textView3 = (TextView) findViewById(R.id.name_fragment);
                 textView3.setText("Account");
-                /*
+
+
                 Log.d(TAG, "Linear_Med" + "");
 
-                fragment = new //////name fragment(account)///////;
+                fragment = new Profile_fragment();
 
                 transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.////name xml fragment////, fragment, "Med_Data_Fragment");
-                transaction.commitNow();*/
+                transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
+                transaction.commitNow();
 
                 return true;
 
