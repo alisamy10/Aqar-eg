@@ -39,8 +39,7 @@ dependencies {
 
     //android fast networking
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
-
-
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
     //Slider
     implementation 'com.squareup.picasso:picasso:2.3.2'
     implementation 'com.nineoldandroids:library:2.4.0'
