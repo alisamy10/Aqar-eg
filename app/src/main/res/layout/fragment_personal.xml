@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#c2c0c0"
+    android:background="#fff"
     tools:context=".Fragments.personal_fragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -32,6 +32,7 @@
             android:layout_weight="1.5"
             android:layout_margin="10dp"
             android:text="Ravon"
+            android:textColor="#000"
             android:gravity="right"
             android:textSize="15sp" />
 
@@ -62,6 +63,7 @@
             android:layout_margin="10dp"
             android:gravity="right"
             android:text="Brain Kelly"
+            android:textColor="#000"
             android:textSize="15sp" />
 
     </LinearLayout>
@@ -90,6 +92,7 @@
             android:layout_margin="10dp"
             android:text="Germany"
             android:gravity="right"
+            android:textColor="#000"
             android:textSize="15sp" />
 
     </LinearLayout>
@@ -118,6 +121,7 @@
             android:layout_margin="10dp"
             android:gravity="right"
             android:text="hghghv@mail.com"
+            android:textColor="#000"
             android:textSize="15sp" />
 
     </LinearLayout>
@@ -146,6 +150,7 @@
             android:layout_margin="10dp"
             android:gravity="right"
             android:text="01054435676"
+            android:textColor="#000"
             android:textSize="15sp" />
 
     </LinearLayout>
