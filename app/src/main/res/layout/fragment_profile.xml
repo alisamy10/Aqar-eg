@@ -102,7 +102,7 @@
                 <TextView
                     android:id="@+id/data_button_click"
                     android:layout_width="match_parent"
-                    android:background="#9c9696"
+                    android:background="#AFACAC"
                     android:layout_height="3dp" />
             </LinearLayout>
         </LinearLayout>
