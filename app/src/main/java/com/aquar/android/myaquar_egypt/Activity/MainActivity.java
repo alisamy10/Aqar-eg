@@ -172,6 +172,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 break;
 
         }
+
         return false;
     }
 

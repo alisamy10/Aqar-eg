@@ -52,7 +52,7 @@
             android:inputType="textEmailAddress"
             android:padding="15dp"
             android:paddingLeft="10dp"
-            android:textColor="#fff"
+            android:textColor="#393939"
             android:textStyle="bold"
             app:errorEnabled="true" />
 
@@ -103,15 +103,15 @@
         <Button
             android:id="@+id/login"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:layout_weight="0.2"
+            android:layout_weight="0.8"
             android:background="@drawable/shape_btn"
             android:gravity="center"
             android:paddingLeft="60dp"
             android:paddingRight="60dp"
             android:text="Log in"
-            android:textColor="#ffff" />
+            android:textColor="#FFFFFF" />
 
 
         <TextView
@@ -125,23 +125,25 @@
 
 
     <LinearLayout
+
+
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:layout_weight="0.9"
-        android:gravity="center"
+          android:gravity="center"
+        android:layout_weight="0.4"
         android:orientation="horizontal">
 
         <LinearLayout
+
             android:id="@+id/loginface"
             android:layout_width="135dp"
             android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="8dp"
+
+            android:layout_marginRight="20dp"
             android:background="@drawable/shape_social">
 
             <ImageView
+                android:layout_marginLeft="5dp"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
@@ -159,13 +161,15 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginLeft="10dp"
+
             android:id="@+id/logingoggleplus"
             android:layout_width="135dp"
             android:layout_height="34dp"
-            android:layout_marginRight="8dp"
             android:background="@drawable/shape_social">
 
             <ImageView
+                android:layout_marginLeft="5dp"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
@@ -184,9 +188,11 @@
     </LinearLayout>
 
     <LinearLayout
+
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.8"
+        android:layout_weight="0.5"
         android:orientation="horizontal">
 
         <TextView
@@ -196,7 +202,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="right"
-            android:layout_weight="0.2" />
+            android:layout_weight="0.5" />
 
         <TextView
             android:layout_width="0dp"
@@ -205,10 +211,11 @@
             android:layout_centerHorizontal="true"
             android:layout_weight="1.5"
             android:text="Forgot Password "
-            android:textSize="15sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
+            android:onClick="regist"
             android:id="@+id/createnewacc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -217,11 +224,12 @@
             android:layout_weight="1.5"
             android:gravity="left"
             android:text="Create a new account "
-
-            android:textSize="15sp"
+             android:layout_marginLeft="-10dp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
+
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -233,12 +241,14 @@
     </LinearLayout>
 
     <LinearLayout
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.7"
         android:orientation="vertical">
 
         <TextView
+            android:onClick="skip"
             android:id="@+id/skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
