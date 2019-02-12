@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/catog_nav"
-
-        android:title="Categories"/>
-    <item android:id="@+id/project_id_nav"
-
-        android:title="Project"/>
-
-    <item android:id="@+id/news_event_nav"
-
-        android:title="News and Events"/>
+    <item
+        android:id="@+id/catog_nav"
+        android:title="Category" />
 
 
     <item
-android:id="@+id/about_us_nav"
-android:title="About us"
-        />
+        android:id="@+id/project_id_nav"
+
+        android:title="Project" />
+
+    <item
+        android:id="@+id/news_event_nav"
+
+        android:title="News and Events" />
+
+
+    <item
+        android:id="@+id/about_us_nav"
+        android:title="About us" />
     <item
         android:id="@+id/contact_us_nav"
-        android:title="Contact us"
-        />
+        android:title="Contact us" />
     <item
         android:id="@+id/terma_polic_nav"
-        android:title="Terms and policies "
-        />
+        android:title="Terms and policies " />
     <item
         android:id="@+id/setting_nav"
-        android:title="Setting"
-        />
+        android:title="Setting" />
     <item
         android:id="@+id/logout_nav"
-        android:title="Log out"
-        />
+        android:title="Log out" />
 
 
 </menu>

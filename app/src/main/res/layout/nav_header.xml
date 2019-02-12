@@ -24,7 +24,7 @@ android:layout_weight="0"
         android:src="@drawable/photo"
 
 
-        />
+        tools:srcCompat="@tools:sample/avatars[0]" />
 
 </LinearLayout>
 

@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.aquar.android.myaquar_egypt.Adapter.ExpandListAdapter;
 import com.aquar.android.myaquar_egypt.Fragments.Profile_fragment;
 import com.aquar.android.myaquar_egypt.Fragments.fragment_home;
+import com.aquar.android.myaquar_egypt.Fragments.home_second_view_Fragment;
 import com.aquar.android.myaquar_egypt.R;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
     private static final String TAG = "Home_Activity_home";
-
+private Button button;
     private Fragment fragment;
     private FragmentTransaction transaction;
     private Button buttonnavegation;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
+    final ArrayList<String> listDataHeader = new ArrayList<String>();
+    final HashMap<String, List<String>> listDataChild = new HashMap<String, List<String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +86,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
         nv = (NavigationView) findViewById(R.id.nv);
-
+button=(Button)findViewById(R.id.change_view_button);
+button.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        fragment = new home_second_view_Fragment();
+        transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_home, fragment, "Res_Data_Fragment");
+        transaction.commitNow();
+    }
+});
 
         nv.setCheckedItem(R.id.Navigation_hom);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -93,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 switch (id) {
                     case R.id.catog_nav:
                         Toast.makeText(MainActivity.this, "categories", Toast.LENGTH_SHORT).show();
+
                         break;
                     case R.id.project_id_nav:
                         Toast.makeText(MainActivity.this, "project", Toast.LENGTH_SHORT).show();
@@ -129,6 +142,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+
+
 
             case R.id.Navigation_hom:
                 TextView textView1 = (TextView) findViewById(R.id.name_fragment);
@@ -195,9 +210,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
         // Adding child data
-        listDataHeader.add("Product1");
-        listDataHeader.add("product2");
-        listDataHeader.add("Product3");
+        listDataHeader.add("catigare");
+
 
         // Adding child data
         List<String> top = new ArrayList<String>();
@@ -208,32 +222,23 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         top.add("x5");
 
 
-        List<String> mid = new ArrayList<String>();
-        mid.add("y1");
-        mid.add("y2");
-        mid.add("y3");
 
-        List<String> bottom = new ArrayList<String>();
-        bottom.add("z1");
-        bottom.add("z2");
-        bottom.add("z3");
+        if (!listDataChild.isEmpty()) {
+            listDataChild.put(listDataHeader.get(0), top); // Header, Child data
 
+        }
 
-        listDataChild.put(listDataHeader.get(0), top); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), mid);
-        listDataChild.put(listDataHeader.get(2), bottom);
     }
 
 
     private void enableExpandableList() {
 
 
-        final ArrayList<String> listDataHeader = new ArrayList<String>();
-        final HashMap<String, List<String>> listDataChild = new HashMap<String, List<String>>();
-        ExpandableListView expListView = (ExpandableListView) findViewById(R.id.left_drawer);
+
+        final ExpandableListView expListView = (ExpandableListView) findViewById(R.id.left_drawer);
 
         prepareListData(listDataHeader, listDataChild);
-        ExpandListAdapter listAdapter = new ExpandListAdapter(this, listDataHeader, listDataChild);
+        final ExpandListAdapter listAdapter = new ExpandListAdapter(this, listDataHeader, listDataChild);
         // setting list adapter
         expListView.setAdapter(listAdapter);
 
@@ -242,9 +247,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v,
                                         int groupPosition, long id) {
-                // Toast.makeText(getApplicationContext(),
-                // "Group Clicked " + listDataHeader.get(groupPosition),
-                // Toast.LENGTH_SHORT).show();
+                 Toast.makeText(getApplicationContext(),
+                 "Group Clicked " + listDataHeader.get(groupPosition),
+                 Toast.LENGTH_SHORT).show();
+//                 expListView.setAdapter(listAdapter);
+
                 return false;
             }
         });

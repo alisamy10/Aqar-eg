@@ -16,6 +16,7 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/ToolBar"
+            android:layout_marginLeft="-10dp"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#FFFFFF"
@@ -59,12 +60,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="#FFFFFF"
+                    android:layout_marginLeft="-10dp"
                     android:layout_gravity="center"
                     android:gravity="center"
                     >
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+
                         android:layout_alignParentTop="true">
 
                         <TextView
@@ -92,7 +95,7 @@
                             android:layout_height="30dp"
                             android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="2dp"
                             android:visibility="visible"
                             android:background="@drawable/ic_menu_black_24dp" />
 
@@ -124,7 +127,7 @@
             android:layout_alignRight="@+id/frame_home"
             android:layout_alignBottom="@+id/frame_home"
             android:layout_margin="20dp"
-            android:background="@drawable/change" />
+            />
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/Home_BottomNavi"
@@ -146,7 +149,7 @@
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:menu="@menu/navigation_menu"
         android:layout_gravity="start"
@@ -161,8 +164,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/nav_header_height"
-
-            android:dividerHeight="0dp" />
+            android:groupIndicator="@null"
+            android:dividerHeight="1dp" />
 
     </android.support.design.widget.NavigationView>
 

@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-
-
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
 
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="135dp"
+        android:elevation="15dp"
+        android:padding="4dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="5dp"
+        app:cardCornerRadius="7dp"
+        android:layout_marginLeft="3dp"
+        android:orientation="vertical"
 
-        android:orientation="vertical">
+        >
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
 android:layout_weight="0"
             >
@@ -29,8 +33,7 @@ android:layout_weight="0"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:scaleType="centerCrop"
-                />
+                android:scaleType="centerCrop" />
 <LinearLayout
     android:layout_width="0dp"
     android:layout_height="match_parent"
@@ -44,7 +47,7 @@ android:layout_weight="0"
         android:id="@+id/type_of_project_one_two"
         android:paddingLeft="10dp"
         android:textColor="#000"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:text="LIFE PARKEL SHROUK"
         android:layout_marginTop="5dp"
 
@@ -75,7 +78,7 @@ android:layout_weight="0"
         android:layout_height="wrap_content"
         android:id="@+id/price_home_one_two"
         android:text="1,200,000"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:textColor="#000"
 
         />
@@ -83,7 +86,7 @@ android:layout_weight="0"
         <TextView
             android:paddingLeft="15dp"
             android:text="EGP"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="#000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -107,206 +110,39 @@ android:layout_weight="0"
         android:text="2 YEARS"
         android:id="@+id/number_Of_year_one_two"
         android:textColor="#000"
-        android:textSize="17dp"
+        android:textSize="17sp"
         />
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
 <TextView
     android:paddingLeft="10dp"
 
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textSize="10dp"
+    android:textSize="10sp"
     android:text="instaliments"
     />
 
-
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:gravity="bottom"
-
-        android:layout_gravity="end"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        >
-
         <ImageView
-            android:src="@drawable/ic_share_black_24dp"
-
-            android:id="@+id/share_id_home_one_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|left|center"
-          android:layout_marginLeft="10dp"
-            />
-
-        <ImageView
-
-            android:id="@+id/love_id_home_one_two"
-            android:layout_width="wrap_content"
-
-            android:layout_height="match_parent"
-            android:layout_gravity="end|left|center"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_marginEnd="15dp"
+            android:id="@+id/love_button"
             android:src="@drawable/ic_favorite_normal_black_24dp" />
-
-    </LinearLayout>
-
-
+    </RelativeLayout>
 </LinearLayout>
 
-
         </LinearLayout>
-
-        <LinearLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:orientation="horizontal"
-            android:layout_weight="0"
-
-            >
-
-////////////////////////////////////////////////////////////
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/cardview_light_background"
-                android:orientation="vertical"
-                >
-                <TextView
-                    android:id="@+id/type_of_project_two_three"
-
-                    android:paddingLeft="10dp"
-                    android:textColor="#000"
-                    android:textSize="18dp"
-                    android:text="LIFE PARKEL SHROUK"
-                    android:layout_marginTop="5dp"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    />
-
-                <RatingBar
-                    android:layout_marginTop="-12dp"
-                    android:id="@+id/ratingbar_two_one"
-                    android:layout_width="wrap_content"
-                    android:layout_height="39dp"
-                    android:theme="@style/Theme.Rating"
-                    android:layout_gravity="start|left"
-                    android:numStars="4"
-                    android:layout_marginLeft="-55dp"
-                    android:scaleX="0.3"
-                    android:scaleY="0.3" />
-                <LinearLayout
-                    android:layout_marginTop="-10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-
-                        android:paddingLeft="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/price_home_two_three"
-                        android:text="1,200,000"
-                        android:textSize="17dp"
-                        android:textColor="#000"
-
-                        />
-
-                    <TextView
-
-                        android:paddingLeft="15dp"
-                        android:text="EGP"
-                        android:textSize="18dp"
-                        android:textColor="#000"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:paddingLeft="10dp"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="price"
-                    android:textSize="10dp"
-                    />
+    </android.support.v7.widget.CardView>
 
 
-                <TextView
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2 YEARS"
-                    android:id="@+id/number_Of_year_two_three"
-                    android:textColor="#000"
-                    android:textSize="17dp"
-                    />
-                <TextView
-                    android:paddingLeft="10dp"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="10dp"
-                    android:text="instaliments"
-                    />
 
 
-                <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:gravity="bottom"
-                    android:layout_gravity="end"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    >
-
-                    <ImageView
-                        android:id="@+id/share_id_home_two_three"
-android:src="@drawable/ic_share_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end|left|center"
-                        android:layout_marginLeft="10dp"
-                        />
-
-                    <ImageView
-
-                        android:id="@+id/love_id_home_two_three"
-android:src="@drawable/ic_favorite_normal_black_24dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end|left|center"
-
-                        />
-
-                </LinearLayout>
-
-
-                ////////////////////////////
-
-
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/image_two_four"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:scaleType="centerCrop"
-                />
-///////////////////////////
-
-    </LinearLayout>
-
-    </LinearLayout>
 </LinearLayout>
