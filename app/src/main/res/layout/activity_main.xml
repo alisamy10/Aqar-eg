@@ -117,6 +117,14 @@
 
             />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/change_view_button"
+            android:layout_alignRight="@+id/frame_home"
+            android:layout_alignBottom="@+id/frame_home"
+            android:layout_margin="20dp"
+            android:background="@drawable/change" />
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/Home_BottomNavi"
@@ -131,6 +139,7 @@
             app:itemTextColor="@color/com_facebook_button_background_color_disabled"
             app:menu="@menu/navigation"
             />
+
 
 
 
