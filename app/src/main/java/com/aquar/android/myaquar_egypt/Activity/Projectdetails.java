@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aquar.android.myaquar_egypt.R;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -18,7 +19,7 @@ import java.util.HashMap;
 
 public class Projectdetails extends AppCompatActivity {
     private SliderLayout Product_Slider;
-    private Button see_more_btn , like_btn,struct_btn , location_btn , call_btn , share_btn;
+    private Button see_more_btn , like_btn,struct_btn , location_btn , call_btn , share_btn , go360;
     private TextView description;
     int n=0;
 
@@ -27,7 +28,6 @@ public class Projectdetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_details);
 
-
         see_more_btn =(Button)findViewById(R.id.see_more_btn);
         description=(TextView)findViewById(R.id.description);
         like_btn =(Button)findViewById(R.id.like);
@@ -35,6 +35,18 @@ public class Projectdetails extends AppCompatActivity {
         location_btn = findViewById(R.id.go_location);
         struct_btn=(Button)findViewById(R.id.structure);
         call_btn = findViewById(R.id.call);
+
+        go360 = (Button)findViewById(R.id.go_360_degree);
+
+        go360.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(Projectdetails.this,PanoramaView.class);
+                startActivity(i);
+
+            }
+        });
         struct_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,8 +96,9 @@ public class Projectdetails extends AppCompatActivity {
         see_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 show_all_description();
-                see_more_btn.setVisibility(View.INVISIBLE);
+              //  see_more_btn.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -123,9 +136,20 @@ public class Projectdetails extends AppCompatActivity {
     }
     private void show_all_description()
     {
-        String s=(String) description.getText();
-        s+= getResources().getString(R.string.more_description);
-        description.setText(s);
+        String x =see_more_btn.getText().toString();
+        if (x.equals("See more")) {
+            String s = (String) description.getText();
+            s += getResources().getString(R.string.more_description);
+            description.setText(s);
+            see_more_btn.setText("See Less");
+        }
+        else
+        {
+            String s = getResources().getString(R.string.some_description);
+            description.setText(s);
+            see_more_btn.setText("See more");
+
+        }
 
     }
     private void liked_projects ()
