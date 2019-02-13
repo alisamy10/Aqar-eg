@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +22,9 @@ import java.util.HashMap;
 
 public class Projectdetails extends AppCompatActivity {
     private SliderLayout Product_Slider;
-    private Button see_more_btn , like_btn,struct_btn , location_btn , call_btn , share_btn , go360;
+    private Button see_more_btn , like_btn,struct_btn , location_btn , call_btn , share_btn , go360 ,book_now_btn;
     private TextView description;
+    private ScrollView sc ;
     int n=0;
 
     @Override
@@ -35,6 +39,9 @@ public class Projectdetails extends AppCompatActivity {
         location_btn = findViewById(R.id.go_location);
         struct_btn=(Button)findViewById(R.id.structure);
         call_btn = findViewById(R.id.call);
+        book_now_btn=findViewById(R.id.book_now);
+        sc=findViewById(R.id.parent);
+
 
         go360 = (Button)findViewById(R.id.go_360_degree);
 
@@ -160,6 +167,7 @@ public class Projectdetails extends AppCompatActivity {
        else
            like_btn.setBackgroundResource(R.drawable.liked);
     }
+
 
 }
 
