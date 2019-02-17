@@ -119,6 +119,7 @@ public class Projectdetails extends AppCompatActivity {
 
     private void DataOfSlider() {
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
+
         file_maps.put("Phase 1", R.drawable.pashe1);
         file_maps.put("Phase 2", R.drawable.pashe2);
 

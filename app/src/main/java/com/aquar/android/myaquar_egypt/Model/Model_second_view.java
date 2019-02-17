@@ -1,6 +1,10 @@
 package com.aquar.android.myaquar_egypt.Model;
 
 public class Model_second_view {
+
+
+
+
     int image, love ,share;
     String name_secound,price_second,number_second;
 
