@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,9 +37,9 @@ import butterknife.BindView;
 /**/
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-
+    int change = 0;
     private static final String TAG = "Home_Activity_home";
-private Button button;
+    private ImageView imageView_chang;
     private Fragment fragment;
     private FragmentTransaction transaction;
     private Button buttonnavegation;
@@ -54,6 +55,13 @@ private Button button;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ///////////
+        buttonnavegation = (Button) findViewById(R.id.navegation_button_menue);
+        imageView_chang = findViewById(R.id.chang_viwe);
+        dl = (DrawerLayout) findViewById(R.id.activity_main);
+        nv = (NavigationView) findViewById(R.id.nv);
+
+
         fragment = new fragment_home();
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
@@ -65,8 +73,10 @@ private Button button;
         Home_BottomNavi = findViewById(R.id.Home_BottomNavi);
         Home_BottomNavi.setOnNavigationItemSelectedListener(this);
 
-        buttonnavegation = (Button) findViewById(R.id.navegation_button_menue);
         /////
+
+
+        ///open navigation
         buttonnavegation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,29 +84,47 @@ private Button button;
                 dl.openDrawer(GravityCompat.START);
             }
         });
+///////////////////
 
 
-        dl = (DrawerLayout) findViewById(R.id.activity_main);
+        //change view
+        imageView_chang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                change++;
+                if (change % 2 == 0) {
+                    imageView_chang.setImageResource(R.drawable.change_view_home);
+
+                    TextView textView1 = (TextView) findViewById(R.id.name_fragment);
+                    textView1.setText("Home");
+
+                    Log.d(TAG, "Linear_Res" + "");
+                    fragment = new fragment_home();
+                    transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_home, fragment, "Res_Data_Fragment");
+                    transaction.commitNow();
+
+                } else if (change % 2 != 0) {
+                    imageView_chang.setImageResource(R.drawable.change_view);
+
+                    TextView textView1 = (TextView) findViewById(R.id.name_fragment);
+                    textView1.setText("Home 2");
+
+                    Log.d(TAG, "Linear_Res" + "");
+                    fragment = new home_second_view_Fragment();
+                    transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_home, fragment, "Res_Data_Fragment");
+                    transaction.commitNow();
+
+                }
+            }
+        });
+
+        /////code make navi
         t = new ActionBarDrawerToggle(this, dl, R.string.open, R.string.close);
-
         dl.addDrawerListener(t);
         t.syncState();
-
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-        nv = (NavigationView) findViewById(R.id.nv);
-button=(Button)findViewById(R.id.change_view_button);
-button.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        fragment = new home_second_view_Fragment();
-        transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_home, fragment, "Res_Data_Fragment");
-        transaction.commitNow();
-    }
-});
-
         nv.setCheckedItem(R.id.Navigation_hom);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -129,25 +157,21 @@ button.setOnClickListener(new View.OnClickListener() {
                         Toast.makeText(MainActivity.this, "log out", Toast.LENGTH_SHORT).show();
                         break;
                     default:
-                     break;
+                        break;
                 }
 
                 return true;
             }
         });
 
-
     }
 
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-
-
-
             case R.id.Navigation_hom:
-                TextView textView1 = (TextView) findViewById(R.id.name_fragment);
 
+                TextView textView1 = (TextView) findViewById(R.id.name_fragment);
                 textView1.setText("Home");
 
                 Log.d(TAG, "Linear_Res" + "");
@@ -222,7 +246,6 @@ button.setOnClickListener(new View.OnClickListener() {
         top.add("x5");
 
 
-
         if (!listDataChild.isEmpty()) {
             listDataChild.put(listDataHeader.get(0), top); // Header, Child data
 
@@ -232,7 +255,6 @@ button.setOnClickListener(new View.OnClickListener() {
 
 
     private void enableExpandableList() {
-
 
 
         final ExpandableListView expListView = (ExpandableListView) findViewById(R.id.left_drawer);
@@ -247,9 +269,9 @@ button.setOnClickListener(new View.OnClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v,
                                         int groupPosition, long id) {
-                 Toast.makeText(getApplicationContext(),
-                 "Group Clicked " + listDataHeader.get(groupPosition),
-                 Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),
+                        "Group Clicked " + listDataHeader.get(groupPosition),
+                        Toast.LENGTH_SHORT).show();
 //                 expListView.setAdapter(listAdapter);
 
                 return false;
@@ -300,6 +322,7 @@ button.setOnClickListener(new View.OnClickListener() {
             }
         });
     }
+
     @Override
     public void onBackPressed() {
         if (dl.isDrawerOpen(GravityCompat.START)) {

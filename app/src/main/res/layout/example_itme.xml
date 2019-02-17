@@ -7,11 +7,13 @@
 
 
 
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="135dp"
+        android:layout_height="140dp"
         android:elevation="15dp"
         android:padding="4dp"
+
         android:layout_marginTop="3dp"
         android:layout_marginBottom="5dp"
         app:cardCornerRadius="7dp"
@@ -47,7 +49,7 @@ android:layout_weight="0"
         android:id="@+id/type_of_project_one_two"
         android:paddingLeft="10dp"
         android:textColor="#000"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:text="LIFE PARKEL SHROUK"
         android:layout_marginTop="5dp"
 
@@ -126,22 +128,26 @@ android:layout_weight="0"
     android:textSize="10sp"
     android:text="instaliments"
     />
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="end"
+    >
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
+
             android:layout_gravity="end"
-            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+          android:layout_marginEnd="15dp"
             android:id="@+id/love_button"
             android:src="@drawable/ic_favorite_normal_black_24dp" />
+</LinearLayout>
     </RelativeLayout>
 </LinearLayout>
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
-
 
 
 

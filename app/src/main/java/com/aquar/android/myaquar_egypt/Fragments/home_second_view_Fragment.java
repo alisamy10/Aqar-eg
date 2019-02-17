@@ -45,12 +45,6 @@ public class home_second_view_Fragment extends Fragment {
 
         ArrayList<Model_second_view> exampleList = new ArrayList<>();
 
-        exampleList.add(new Model_second_view(R.drawable.photo,R.drawable.ic_favorite_normal_black_24dp,R.drawable.share,"Life park elshrouk","120.000.0","2 YEAR")) ;
-        exampleList.add(new Model_second_view(R.drawable.phototwo,R.drawable.ic_favorite_normal_black_24dp,R.drawable.share,"Life park elshrouk","120.000.0","2 YEAR")) ;
-        exampleList.add(new Model_second_view(R.drawable.photo,R.drawable.ic_favorite_normal_black_24dp,R.drawable.share,"Life park elshrouk","120.000.0","2 YEAR")) ;
-        exampleList.add(new Model_second_view(R.drawable.phototwo,R.drawable.ic_favorite_normal_black_24dp,R.drawable.share,"Life park elshrouk","120.000.0","2 YEAR")) ;
-        exampleList.add(new Model_second_view(R.drawable.photo,R.drawable.ic_favorite_normal_black_24dp,R.drawable.share,"Life park elshrouk","120.000.0","2 YEAR")) ;
-
 
         mAdapter = new Exampl_second_viwe(getActivity().getApplicationContext(),exampleList);
         mRecyclerView.setLayoutManager(mLayoutManager);

@@ -11,12 +11,14 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -28,15 +30,20 @@ import com.aquar.android.myaquar_egypt.Adapter.example_adapter_for_home_fragment
 import com.aquar.android.myaquar_egypt.Model.modle_home_fragment;
 import com.aquar.android.myaquar_egypt.R;
 
+import java.text.ParsePosition;
 import java.util.ArrayList;
 
 
 public class fragment_home extends Fragment {
-int x = 2;
+    int x = 0;
+    int y=0;
     private ArrayList<modle_home_fragment> mExampleList;
     private RecyclerView mRecyclerView;
+  private ImageView love_behind;
     private example_adapter_for_home_fragment mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private static final float buttonWidth = 300;
+   /* private ButtonsState buttonShowedState = ButtonsState.GONE;*/
     public fragment_home() {
         // Required empty public constructor
     }
@@ -46,25 +53,23 @@ int x = 2;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =inflater.inflate(R.layout.fragment_fragment_home, container, false);
+        View v = inflater.inflate(R.layout.fragment_fragment_home, container, false);
         mRecyclerView = v.findViewById(R.id.recyclerView_fragment_home);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
 
 
         ArrayList<modle_home_fragment> exampleList = new ArrayList<>();
-        exampleList.add(new  modle_home_fragment("LIFE PARK SHROUK","120,000,00", "2 years",  R.drawable.ic_favorite_normal_black_24dp, R.drawable.phototwo )) ;
-        exampleList.add(new  modle_home_fragment("LIFE PARK SHROUK","120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp ,R.drawable.photo)) ;
-        exampleList.add(new  modle_home_fragment("LIFE PARK SHROUK","120,000,00", "2 years",R.drawable.ic_favorite_normal_black_24dp   ,R.drawable.phototwo )) ;
-        exampleList.add(new  modle_home_fragment("LIFE PARK SHROUK","120,000,00", "2 years",  R.drawable.ic_favorite_normal_black_24dp ,R.drawable.photo)) ;
+        exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.phototwo));
+        exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.photo));
+        exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.photo));
+        exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.photo));
 
-
-        mAdapter = new example_adapter_for_home_fragment(getActivity().getApplicationContext(),exampleList);
+        mAdapter = new example_adapter_for_home_fragment(getActivity().getApplicationContext(), exampleList);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
 /////////
-
 
 
         /////////////////
@@ -80,81 +85,166 @@ int x = 2;
             }
 
             @Override
-            public void make_love(int pos, ImageView imageView) {
-                make_love_(pos,imageView);
+            public void make_love(int pos,ImageView img) {
+                make_love_(pos, img);
             }
         });
         return v;
     }
 
-    public void make_love_(int pos,ImageView img) {
-            x++;
-        if(x%2==0) {
+    public void make_love_2(int pos,ImageView img) {
+        y++;
+        if (y % 2 == 0) {
             img.setImageResource(R.drawable.ic_favorite_black_24dp);
-        }
-        else
+        } else
             img.setImageResource(R.drawable.ic_favorite_normal_black_24dp);
 
-      if (x>100){
-          x=1 ;
-      }
+
+        if (y > 100) {
+            y = 0;
+        }
     }
 
-    public void go_detales(int pos,ImageView img){
-        Intent intent=new Intent(getActivity(), Projectdetails.class);
+    public void make_love_(int pos,ImageView img) {
+        x++;
+        if (x % 2 != 0) {
+            img.setImageResource(R.drawable.ic_favorite_black_24dp);
+        } else
+            img.setImageResource(R.drawable.ic_favorite_normal_black_24dp);
+
+
+        if (x > 100) {
+            x = 0;
+        }
+    }
+
+    public void go_detales(int pos, ImageView img) {
+        Intent intent = new Intent(getActivity(), Projectdetails.class);
         startActivity(intent);
     }
 
-    public void share_(int pos,ImageView img,int i) {
-        Toast.makeText( getActivity(), "share"+i+"  "+pos, Toast.LENGTH_LONG).show();
+    public void share_(int pos, ImageView img, int i) {
+        Toast.makeText(getActivity(), "share" + i + "  " + pos, Toast.LENGTH_LONG).show();
     }
 
-    private void initSwipe(){
+    private void initSwipe() {
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+
                 return false;
             }
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                int position = viewHolder.getAdapterPosition();
+//                int position = viewHolder.getAdapterPosition();
+                int postion=viewHolder.getAdapterPosition();
 
-                if (direction == ItemTouchHelper.LEFT){
-                } else {
+                if (direction == ItemTouchHelper.LEFT) {
+
+                    //make love
+                    ImageView im= viewHolder.itemView.findViewById(R.id.love_button);
+                    make_love_(postion,im);
+                    mAdapter.notifyItemChanged(postion,im);
+
+
 
                 }
+                else {
+                   //make share
+                    Toast.makeText(getActivity(), "make share", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             Paint p;
+
             @Override
             public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-dX=dX/4;
+                    dX=dX/4;
                 Bitmap icon;
-                if(actionState == ItemTouchHelper.ACTION_STATE_SWIPE){
+                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
 
                     View itemView = viewHolder.itemView;
                     float height = (float) itemView.getBottom() - (float) itemView.getTop();
-                    float width = height / 3;
+                    float width = height /3;
 
-                    if(dX > 0){
-                        RectF background = new RectF((float) itemView.getLeft(), (float) itemView.getTop(), dX,(float) itemView.getBottom());
-                        icon = BitmapFactory.decodeResource(getResources(), R.drawable.arrow);
-                        RectF icon_dest = new RectF((float) itemView.getLeft() + width ,(float) itemView.getTop() + width,(float) itemView.getLeft()+ 2*width,(float)itemView.getBottom() - width);
-                        c.drawBitmap(icon,null,icon_dest,p);
-                    } else {
-                        RectF background = new RectF((float) itemView.getRight() + dX, (float) itemView.getTop(),(float) itemView.getRight(), (float) itemView.getBottom());
+                    if (dX > 0) {
+                        RectF background = new RectF((float) itemView.getLeft(), (float) itemView.getTop(), dX, (float) itemView.getBottom());
+                         icon = BitmapFactory.decodeResource(getResources(), R.drawable.share);
+                        RectF icon_dest = new RectF((float) itemView.getLeft() + width, (float) itemView.getTop() + width, (float) itemView.getLeft() + 2 * width, (float) itemView.getBottom() - width);
+                        c.drawBitmap(icon, null, icon_dest, p);
 
-                        icon = BitmapFactory.decodeResource(getResources(), R.drawable.call_icon);
-                        RectF icon_dest = new RectF((float) itemView.getRight() - 2*width ,(float) itemView.getTop() + width,(float) itemView.getRight() - width,(float)itemView.getBottom() - width);
-                        c.drawBitmap(icon,null,icon_dest,p);
+                    }
+                    else {
+                        RectF background = new RectF((float) itemView.getRight() + dX, (float) itemView.getTop(), (float) itemView.getRight(), (float) itemView.getBottom());
+                        icon = BitmapFactory.decodeResource(getResources(), R.drawable.liked);
+                        RectF icon_dest = new RectF((float) itemView.getRight() - 2 * width, (float) itemView.getTop() + width, (float) itemView.getRight() - width, (float) itemView.getBottom() - width);
+                        c.drawBitmap(icon, null, icon_dest, p);
+                        int postion=viewHolder.getAdapterPosition();
+                        ImageView im= viewHolder.itemView.findViewById(R.id.love_button);
+                        make_love_(postion,im);
+                        mAdapter.notifyItemChanged(postion,im);
+                        mAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
+
+                        mAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
+
+
+                        ////
+
+
                     }
                 }
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(mRecyclerView);}
+        itemTouchHelper.attachToRecyclerView(mRecyclerView);
+
+
+
+    }
+    public  int return_posation(int i){
+
+        return i;
+
+    }
+/*
+    private void drawButtons(Canvas c, RecyclerView.ViewHolder viewHolder) {
+        float buttonWidthWithoutPadding = buttonWidth - 20;
+        float corners = 16;
+
+        View itemView = viewHolder.itemView;
+        Paint p = new Paint();
+
+        RectF leftButton = new RectF(itemView.getLeft(), itemView.getTop(), itemView.getLeft() + buttonWidthWithoutPadding, itemView.getBottom());
+        p.setColor(Color.BLUE);
+        c.drawRoundRect(leftButton, corners, corners, p);
+        drawText("EDIT", c, leftButton, p);
+
+        RectF rightButton = new RectF(itemView.getRight() - buttonWidthWithoutPadding, itemView.getTop(), itemView.getRight(), itemView.getBottom());
+        p.setColor(Color.RED);
+        c.drawRoundRect(rightButton, corners, corners, p);
+        drawText("DELETE", c, rightButton, p);
+
+        buttonInstance = null;
+        if (buttonShowedState == ButtonsState.LEFT_VISIBLE) {
+            buttonInstance = leftButton;
+        }
+        else if (buttonShowedState == ButtonsState.RIGHT_VISIBLE) {
+            buttonInstance = rightButton;
+        }
+    }
+
+    private void drawText(String text, Canvas c, RectF button, Paint p) {
+        float textSize = 60;
+        p.setColor(Color.WHITE);
+        p.setAntiAlias(true);
+        p.setTextSize(textSize);
+
+        float textWidth = p.measureText(text);
+        c.drawText(text, button.centerX()-(textWidth/2), button.centerY()+(textSize/2), p);
+    }*/
 
 }

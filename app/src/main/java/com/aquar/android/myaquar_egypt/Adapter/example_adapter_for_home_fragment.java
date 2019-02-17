@@ -22,18 +22,21 @@ public class example_adapter_for_home_fragment extends RecyclerView.Adapter<exam
 
     private OnItemClickListener mListener;
 
+
+
+
     public interface OnItemClickListener {
 
 void intent_to_detales(int pos,ImageView imageView);
-void make_love(int pos ,ImageView imageView);
+void make_love(int pos,ImageView img);
+
 
     }
+
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
-
-
     /////
     public static class ExampleViewHolder extends RecyclerView.ViewHolder {
 
@@ -52,13 +55,18 @@ void make_love(int pos ,ImageView imageView);
             textView_1_2_price = itemView.findViewById(R.id.price_home_one_two);
             textView_1_2_number = itemView.findViewById(R.id.number_Of_year_one_two);
             love=itemView.findViewById(R.id.love_button);
+
+
+
+
+
             love.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (listener != null) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
-                            listener.make_love(position, love);
+                            listener.make_love(position,love);
                         }
                     }
                 }
