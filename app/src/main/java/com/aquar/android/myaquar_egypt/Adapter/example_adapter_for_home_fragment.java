@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.androidnetworking.interfaces.Parser;
 import com.aquar.android.myaquar_egypt.Model.modle_home_fragment;
 import com.aquar.android.myaquar_egypt.R;
 
@@ -40,25 +40,31 @@ void make_love(int pos,ImageView img);
     /////
     public static class ExampleViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textView_1_2_type, textView_1_2_price, textView_1_2_number;
+        private TextView textView_1, textView_2,textView_start,textView_end;
 
         private ImageView
-                imageView_one_one,love;
+                imageView_one_one;
 
 
         public ExampleViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
 
             /////
-            imageView_one_one=itemView.findViewById(R.id.image_one_one);
+            imageView_one_one=itemView.findViewById(R.id.image_pro);
+            textView_1=itemView.findViewById(R.id.text_one_id);
+          textView_2  =itemView.findViewById(R.id.text_two_id);
+           textView_start =itemView.findViewById(R.id.number_start_id);
+            textView_end=itemView.findViewById(R.id.number_end_id);
+
+            /*
             textView_1_2_type = itemView.findViewById(R.id.type_of_project_one_two);
             textView_1_2_price = itemView.findViewById(R.id.price_home_one_two);
             textView_1_2_number = itemView.findViewById(R.id.number_Of_year_one_two);
             love=itemView.findViewById(R.id.love_button);
+*/
 
 
-
-
+/*
 
             love.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -84,7 +90,7 @@ void make_love(int pos,ImageView img);
                         }
                     } }
             });
-
+*/
 
         }
     }
@@ -98,7 +104,7 @@ void make_love(int pos,ImageView img);
     @NonNull
     @Override
     public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.example_itme,viewGroup,false);
+        View v= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_exampl_home_one,viewGroup,false);
 
         return new ExampleViewHolder(v,mListener);
     }
@@ -107,12 +113,16 @@ void make_love(int pos,ImageView img);
     public void onBindViewHolder(@NonNull ExampleViewHolder exampleViewHolder,final int i) {
         modle_home_fragment currentitem = mExampleList.get(i);
 ////
-        exampleViewHolder.imageView_one_one.setImageResource(currentitem.getImageView_one_one());
+        exampleViewHolder.imageView_one_one.setImageResource(currentitem.getImage());
 ////
-        exampleViewHolder.love.setImageResource(currentitem.getLove());
-        exampleViewHolder.textView_1_2_type.setText((CharSequence) currentitem.getTextView_1_2_type());
-        exampleViewHolder.textView_1_2_price.setText((CharSequence) currentitem.getTextView_1_2_price());
-        exampleViewHolder.textView_1_2_number.setText((CharSequence) currentitem.getTextView_1_2_number());
+
+
+
+        exampleViewHolder.textView_1.setText((CharSequence) currentitem.getText_one());
+        exampleViewHolder.textView_2.setText((CharSequence) currentitem.getText_two());
+        exampleViewHolder.textView_start.setText( ((CharSequence)  currentitem.getStart()).toString());
+        exampleViewHolder.textView_end.setText((CharSequence) currentitem.getEnd());
+
         ///
 
 

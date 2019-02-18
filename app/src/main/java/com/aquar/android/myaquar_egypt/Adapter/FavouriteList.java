@@ -22,7 +22,6 @@ public class FavouriteList extends ArrayAdapter {
 
     public FavouriteList(@NonNull Context context, int resource, @NonNull ArrayList objects) {
         super(context, resource, objects);
-
         mlist = objects;
     }
 

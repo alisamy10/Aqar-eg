@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
     private static final String TAG = "Home_Activity_home";
-private Button button;
+private Button button1;
     private Fragment fragment;
     private FragmentTransaction transaction;
     private Button buttonnavegation;
@@ -86,16 +86,7 @@ private Button button;
 
 
         nv = (NavigationView) findViewById(R.id.nv);
-button=(Button)findViewById(R.id.change_view_button);
-button.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        fragment = new home_second_view_Fragment();
-        transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_home, fragment, "Res_Data_Fragment");
-        transaction.commitNow();
-    }
-});
+
 
         nv.setCheckedItem(R.id.Navigation_hom);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

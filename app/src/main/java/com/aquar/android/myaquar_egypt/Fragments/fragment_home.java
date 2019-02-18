@@ -9,6 +9,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -36,14 +37,16 @@ import java.util.ArrayList;
 
 public class fragment_home extends Fragment {
     int x = 0;
-    int y=0;
+    int y = 0;
+    private int currnt = R.drawable.ic_favorite_normal_black_24dp;
     private ArrayList<modle_home_fragment> mExampleList;
     private RecyclerView mRecyclerView;
-  private ImageView love_behind;
+    private ImageView love_behind;
     private example_adapter_for_home_fragment mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private static final float buttonWidth = 300;
-   /* private ButtonsState buttonShowedState = ButtonsState.GONE;*/
+
+    /* private ButtonsState buttonShowedState = ButtonsState.GONE;*/
     public fragment_home() {
         // Required empty public constructor
     }
@@ -57,13 +60,21 @@ public class fragment_home extends Fragment {
         mRecyclerView = v.findViewById(R.id.recyclerView_fragment_home);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
+        ArrayList<modle_home_fragment> exampleList = new ArrayList<>();
 
-
+/*
         ArrayList<modle_home_fragment> exampleList = new ArrayList<>();
         exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.phototwo));
         exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.photo));
         exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.photo));
         exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.photo));
+*/
+        exampleList.add(new modle_home_fragment("3","5",R.drawable.phototwo,"Midtown","Newcairo"));
+        exampleList.add(new modle_home_fragment("5","6",R.drawable.photo,"Midtown","Newcairo"));
+        exampleList.add(new modle_home_fragment("1","3",R.drawable.phototwo,"Midtown","Newcairo"));
+        exampleList.add(new modle_home_fragment("3","5",R.drawable.photo,"Midtown","Newcairo"));
+        exampleList.add(new modle_home_fragment("3","5",R.drawable.phototwo,"Midtown","Newcairo"));
+
 
         mAdapter = new example_adapter_for_home_fragment(getActivity().getApplicationContext(), exampleList);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -74,8 +85,10 @@ public class fragment_home extends Fragment {
 
         /////////////////
 
-        initSwipe();
+
         //////////
+/*
+initSwipe();
 
         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
@@ -90,19 +103,15 @@ public class fragment_home extends Fragment {
             }
         });
         return v;
-    }
+    }*/
 
+
+
+
+/*
     public void make_love_2(int pos,ImageView img) {
-        y++;
-        if (y % 2 == 0) {
-            img.setImageResource(R.drawable.ic_favorite_black_24dp);
-        } else
-            img.setImageResource(R.drawable.ic_favorite_normal_black_24dp);
 
 
-        if (y > 100) {
-            y = 0;
-        }
     }
 
     public void make_love_(int pos,ImageView img) {
@@ -111,8 +120,6 @@ public class fragment_home extends Fragment {
             img.setImageResource(R.drawable.ic_favorite_black_24dp);
         } else
             img.setImageResource(R.drawable.ic_favorite_normal_black_24dp);
-
-
         if (x > 100) {
             x = 0;
         }
@@ -126,6 +133,9 @@ public class fragment_home extends Fragment {
     public void share_(int pos, ImageView img, int i) {
         Toast.makeText(getActivity(), "share" + i + "  " + pos, Toast.LENGTH_LONG).show();
     }
+*/
+
+/*
 
     private void initSwipe() {
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -145,10 +155,21 @@ public class fragment_home extends Fragment {
 
                     //make love
                     ImageView im= viewHolder.itemView.findViewById(R.id.love_button);
-                    make_love_(postion,im);
+
+
+
+                    if(currnt==R.drawable.ic_favorite_normal_black_24dp){
+                        im.setImageResource(R.drawable.ic_favorite_black_24dp);
+                    }else{
+                        im.setImageResource(R.drawable.ic_favorite_black_24dp);
+                    }
+
+
                     mAdapter.notifyItemChanged(postion,im);
 
 
+
+mAdapter.notifyItemChanged(postion);
 
                 }
                 else {
@@ -175,6 +196,8 @@ public class fragment_home extends Fragment {
                          icon = BitmapFactory.decodeResource(getResources(), R.drawable.share);
                         RectF icon_dest = new RectF((float) itemView.getLeft() + width, (float) itemView.getTop() + width, (float) itemView.getLeft() + 2 * width, (float) itemView.getBottom() - width);
                         c.drawBitmap(icon, null, icon_dest, p);
+                        int postion=viewHolder.getAdapterPosition();
+
 
                     }
                     else {
@@ -182,15 +205,6 @@ public class fragment_home extends Fragment {
                         icon = BitmapFactory.decodeResource(getResources(), R.drawable.liked);
                         RectF icon_dest = new RectF((float) itemView.getRight() - 2 * width, (float) itemView.getTop() + width, (float) itemView.getRight() - width, (float) itemView.getBottom() - width);
                         c.drawBitmap(icon, null, icon_dest, p);
-                        int postion=viewHolder.getAdapterPosition();
-                        ImageView im= viewHolder.itemView.findViewById(R.id.love_button);
-                        make_love_(postion,im);
-                        mAdapter.notifyItemChanged(postion,im);
-                        mAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
-
-                        mAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
-
-
                         ////
 
 
@@ -205,46 +219,13 @@ public class fragment_home extends Fragment {
 
 
     }
+    */
+    /*
     public  int return_posation(int i){
 
         return i;
 
     }
-/*
-    private void drawButtons(Canvas c, RecyclerView.ViewHolder viewHolder) {
-        float buttonWidthWithoutPadding = buttonWidth - 20;
-        float corners = 16;
-
-        View itemView = viewHolder.itemView;
-        Paint p = new Paint();
-
-        RectF leftButton = new RectF(itemView.getLeft(), itemView.getTop(), itemView.getLeft() + buttonWidthWithoutPadding, itemView.getBottom());
-        p.setColor(Color.BLUE);
-        c.drawRoundRect(leftButton, corners, corners, p);
-        drawText("EDIT", c, leftButton, p);
-
-        RectF rightButton = new RectF(itemView.getRight() - buttonWidthWithoutPadding, itemView.getTop(), itemView.getRight(), itemView.getBottom());
-        p.setColor(Color.RED);
-        c.drawRoundRect(rightButton, corners, corners, p);
-        drawText("DELETE", c, rightButton, p);
-
-        buttonInstance = null;
-        if (buttonShowedState == ButtonsState.LEFT_VISIBLE) {
-            buttonInstance = leftButton;
-        }
-        else if (buttonShowedState == ButtonsState.RIGHT_VISIBLE) {
-            buttonInstance = rightButton;
-        }
-    }
-
-    private void drawText(String text, Canvas c, RectF button, Paint p) {
-        float textSize = 60;
-        p.setColor(Color.WHITE);
-        p.setAntiAlias(true);
-        p.setTextSize(textSize);
-
-        float textWidth = p.measureText(text);
-        c.drawText(text, button.centerX()-(textWidth/2), button.centerY()+(textSize/2), p);
-    }*/
-
-}
+*/
+        return v;
+}}

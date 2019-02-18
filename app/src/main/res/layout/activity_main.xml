@@ -117,23 +117,6 @@
 
             />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/chang_viwe"
-            android:layout_width="57dp"
-            android:layout_height="53dp"
-            android:layout_alignRight="@+id/frame_home"
-            android:layout_alignBottom="@+id/frame_home"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="18dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/change_view_home"
-            app:civ_border_color="#FFFFFF"
-            app:civ_border_width="0dp" />
-
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/Home_BottomNavi"
