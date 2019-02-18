@@ -27,26 +27,9 @@ public class Profile_fragment extends Fragment {
 
     private Fragment fragment;
 
-    //Layout
-    @BindView(R.id.profile_FrameLayout)
-    FrameLayout profile_FrameLayout;
-
-    //Button
-    @BindView(R.id.messages)
-    Button messages;
 
     @BindView(R.id.edit_profile_photo)
     CircleImageView chooseImage;
-
-
-    @BindView(R.id.personal_data)
-    Button personal_data;
-    //textview
-    @BindView(R.id.message_button_click)
-    TextView messagecolor;
-    @BindView(R.id.data_button_click)
-    TextView datacolor;
-
 
 
     public Profile_fragment() {
@@ -58,10 +41,6 @@ public class Profile_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        Fragment f = new messages_fragment();
-        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.profile_FrameLayout, f, "fra");
-        ft.commit();
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
@@ -71,32 +50,7 @@ public class Profile_fragment extends Fragment {
 
     }
 
-    @OnClick(R.id.personal_data)
-    public void personaldataOnClick() {
-        Fragment f = new personal_fragment();
-        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.profile_FrameLayout, f, "personal fra");
-        ft.commit();
 
-        messagecolor.setBackgroundResource(R.color.White);
-        datacolor.setBackgroundResource(R.color.Red);
-
-
-
-
-    }
-
-    @OnClick(R.id.messages)
-    public void MessageOnClick() {
-        Fragment f = new messages_fragment();
-        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.profile_FrameLayout, f, "messages fra");
-        ft.commit();
-
-        messagecolor.setBackgroundResource(R.color.Red);
-        datacolor.setBackgroundResource(R.color.White);
-
-    }
     @OnClick(R.id.edit_profile_photo)
     public void setChooseImage() {
 
