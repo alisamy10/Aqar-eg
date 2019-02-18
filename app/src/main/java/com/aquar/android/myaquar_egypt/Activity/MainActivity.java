@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aquar.android.myaquar_egypt.Adapter.ExpandListAdapter;
+import com.aquar.android.myaquar_egypt.Fragments.Favourite;
 import com.aquar.android.myaquar_egypt.Fragments.Profile_fragment;
 import com.aquar.android.myaquar_egypt.Fragments.fragment_home;
 import com.aquar.android.myaquar_egypt.Fragments.home_second_view_Fragment;
@@ -78,7 +79,6 @@ private Button button;
 
         dl = (DrawerLayout) findViewById(R.id.activity_main);
         t = new ActionBarDrawerToggle(this, dl, R.string.open, R.string.close);
-
         dl.addDrawerListener(t);
         t.syncState();
 
@@ -86,8 +86,8 @@ private Button button;
 
 
         nv = (NavigationView) findViewById(R.id.nv);
-button=(Button)findViewById(R.id.change_view_button);
-button.setOnClickListener(new View.OnClickListener() {
+        button=(Button)findViewById(R.id.change_view_button);
+        button.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         fragment = new home_second_view_Fragment();
@@ -147,9 +147,7 @@ button.setOnClickListener(new View.OnClickListener() {
 
             case R.id.Navigation_hom:
                 TextView textView1 = (TextView) findViewById(R.id.name_fragment);
-
                 textView1.setText("Home");
-
                 Log.d(TAG, "Linear_Res" + "");
                 fragment = new fragment_home();
                 transaction = getSupportFragmentManager().beginTransaction();
@@ -161,7 +159,10 @@ button.setOnClickListener(new View.OnClickListener() {
                 TextView textView2 = (TextView) findViewById(R.id.name_fragment);
                 textView2.setText("Favorite");
 
-
+                fragment = new Favourite();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_home, fragment, "Favourite");
+                transaction.commitNow();
             /*
                 Log.d(TAG, "Linear_Com" + "");
                  fragment = new //////name fragment(favorite)///////;
@@ -177,7 +178,6 @@ button.setOnClickListener(new View.OnClickListener() {
 
                 Log.d(TAG, "Linear_Med" + "");
                 fragment = new Profile_fragment();
-
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
                 transaction.commitNow();
