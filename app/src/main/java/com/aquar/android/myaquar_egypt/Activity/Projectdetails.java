@@ -39,11 +39,11 @@ public class Projectdetails extends AppCompatActivity {
         location_btn = findViewById(R.id.go_location);
         struct_btn=(Button)findViewById(R.id.structure);
         call_btn = findViewById(R.id.call);
-        book_now_btn=findViewById(R.id.book_now);
+        book_now_btn=findViewById(R.id.send_email);
         sc=findViewById(R.id.parent);
 
 
-        go360 = (Button)findViewById(R.id.go_360_degree);
+        go360 = (Button)findViewById(R.id.go_youtube);
 
         go360.setOnClickListener(new View.OnClickListener() {
             @Override
