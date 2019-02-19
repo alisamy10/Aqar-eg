@@ -12,20 +12,18 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.aquar.android.myaquar_egypt.Adapter.ExpandListAdapter;
+import com.aquar.android.myaquar_egypt.Fragments.Favourite;
 import com.aquar.android.myaquar_egypt.Fragments.Profile_fragment;
 import com.aquar.android.myaquar_egypt.Fragments.fragment_home;
 import com.aquar.android.myaquar_egypt.Fragments.home_second_view_Fragment;
 import com.aquar.android.myaquar_egypt.R;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,20 +32,20 @@ import java.util.Map;
 import butterknife.BindView;
 
 /**/
+
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
 
     private static final String TAG = "Home_Activity_home";
-private Button button1;
+    private Button button;
     private Fragment fragment;
     private FragmentTransaction transaction;
     private Button buttonnavegation;
-
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     final ArrayList<String> listDataHeader = new ArrayList<String>();
-    final HashMap<String, List<String>> listDataChild = new HashMap<String, List<String>>();
+    final HashMap<String,List<String>> listDataChild = new HashMap<String, List<String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +76,6 @@ private Button button1;
 
         dl = (DrawerLayout) findViewById(R.id.activity_main);
         t = new ActionBarDrawerToggle(this, dl, R.string.open, R.string.close);
-
         dl.addDrawerListener(t);
         t.syncState();
 
@@ -88,15 +85,30 @@ private Button button1;
         nv = (NavigationView) findViewById(R.id.nv);
 
 
+
+
+        button=(Button)findViewById(R.id.change_view_button);
+        button.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        fragment = new home_second_view_Fragment();
+        transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_home, fragment, "Res_Data_Fragment");
+        transaction.commitNow();
+             }
+            });
+
+
         nv.setCheckedItem(R.id.Navigation_hom);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
                 int id = item.getItemId();
+
                 switch (id) {
                     case R.id.catog_nav:
                         Toast.makeText(MainActivity.this, "categories", Toast.LENGTH_SHORT).show();
-
                         break;
                     case R.id.project_id_nav:
                         Toast.makeText(MainActivity.this, "project", Toast.LENGTH_SHORT).show();
@@ -119,6 +131,7 @@ private Button button1;
                     case R.id.logout_nav:
                         Toast.makeText(MainActivity.this, "log out", Toast.LENGTH_SHORT).show();
                         break;
+
                     default:
                      break;
                 }
@@ -138,9 +151,7 @@ private Button button1;
 
             case R.id.Navigation_hom:
                 TextView textView1 = (TextView) findViewById(R.id.name_fragment);
-
                 textView1.setText("Home");
-
                 Log.d(TAG, "Linear_Res" + "");
                 fragment = new fragment_home();
                 transaction = getSupportFragmentManager().beginTransaction();
@@ -152,7 +163,10 @@ private Button button1;
                 TextView textView2 = (TextView) findViewById(R.id.name_fragment);
                 textView2.setText("Favorite");
 
-
+                fragment = new Favourite();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_home, fragment, "Favourite");
+                transaction.commitNow();
             /*
                 Log.d(TAG, "Linear_Com" + "");
                  fragment = new //////name fragment(favorite)///////;
@@ -168,7 +182,6 @@ private Button button1;
 
                 Log.d(TAG, "Linear_Med" + "");
                 fragment = new Profile_fragment();
-
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
                 transaction.commitNow();
@@ -220,11 +233,7 @@ private Button button1;
         }
 
     }
-
-
     private void enableExpandableList() {
-
-
 
         final ExpandableListView expListView = (ExpandableListView) findViewById(R.id.left_drawer);
 
@@ -241,7 +250,7 @@ private Button button1;
                  Toast.makeText(getApplicationContext(),
                  "Group Clicked " + listDataHeader.get(groupPosition),
                  Toast.LENGTH_SHORT).show();
-//                 expListView.setAdapter(listAdapter);
+        // expListView.setAdapter(listAdapter);
 
                 return false;
             }
@@ -296,7 +305,9 @@ private Button button1;
         if (dl.isDrawerOpen(GravityCompat.START)) {
             dl.closeDrawer(GravityCompat.START);
         } else {
+
             super.onBackPressed();
+
         }
     }
 }

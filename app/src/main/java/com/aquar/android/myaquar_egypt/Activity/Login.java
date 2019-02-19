@@ -38,6 +38,7 @@ public class Login extends AppCompatActivity {
         alertD.setCancelable(true);
         alertD.setView(view);
         alertD.show();
+
     }
 
     public void skip(View view) {
