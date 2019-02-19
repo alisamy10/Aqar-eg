@@ -86,9 +86,9 @@ public class fragment_home extends Fragment {
         /////////////////
 
 
-        //////////
-/*
-initSwipe();
+        //////////initSwipe();
+
+
 
         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
@@ -99,13 +99,16 @@ initSwipe();
 
             @Override
             public void make_love(int pos,ImageView img) {
-                make_love_(pos, img);
+
             }
         });
         return v;
-    }*/
+    }
 
-
+    public void go_detales(int pos, ImageView img) {
+        Intent intent = new Intent(getActivity(), Projectdetails.class);
+        startActivity(intent);
+    }
 
 
 /*
@@ -125,10 +128,7 @@ initSwipe();
         }
     }
 
-    public void go_detales(int pos, ImageView img) {
-        Intent intent = new Intent(getActivity(), Projectdetails.class);
-        startActivity(intent);
-    }
+
 
     public void share_(int pos, ImageView img, int i) {
         Toast.makeText(getActivity(), "share" + i + "  " + pos, Toast.LENGTH_LONG).show();
@@ -227,5 +227,5 @@ mAdapter.notifyItemChanged(postion);
 
     }
 */
-        return v;
-}}
+
+}

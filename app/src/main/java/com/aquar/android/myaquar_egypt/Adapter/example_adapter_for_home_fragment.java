@@ -56,12 +56,8 @@ void make_love(int pos,ImageView img);
            textView_start =itemView.findViewById(R.id.number_start_id);
             textView_end=itemView.findViewById(R.id.number_end_id);
 
-            /*
-            textView_1_2_type = itemView.findViewById(R.id.type_of_project_one_two);
-            textView_1_2_price = itemView.findViewById(R.id.price_home_one_two);
-            textView_1_2_number = itemView.findViewById(R.id.number_Of_year_one_two);
-            love=itemView.findViewById(R.id.love_button);
-*/
+
+
 
 
 /*
@@ -78,7 +74,7 @@ void make_love(int pos,ImageView img);
                 }
             });
 
-
+*/
             imageView_one_one.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -90,7 +86,7 @@ void make_love(int pos,ImageView img);
                         }
                     } }
             });
-*/
+
 
         }
     }
