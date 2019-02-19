@@ -114,6 +114,8 @@ void make_love(int pos,ImageView img);
 
 
 
+
+
         exampleViewHolder.textView_1.setText((CharSequence) currentitem.getText_one());
         exampleViewHolder.textView_2.setText((CharSequence) currentitem.getText_two());
         exampleViewHolder.textView_start.setText( ((CharSequence)  currentitem.getStart()).toString());
