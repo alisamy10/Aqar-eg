@@ -38,6 +38,7 @@ import java.util.ArrayList;
 public class fragment_home extends Fragment {
     int x = 0;
     int y = 0;
+////
     private int currnt = R.drawable.ic_favorite_normal_black_24dp;
     private ArrayList<modle_home_fragment> mExampleList;
     private RecyclerView mRecyclerView;
@@ -89,7 +90,7 @@ public class fragment_home extends Fragment {
         //////////
 /*
 initSwipe();
-
+*/
         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
             @Override
@@ -99,13 +100,17 @@ initSwipe();
 
             @Override
             public void make_love(int pos,ImageView img) {
-                make_love_(pos, img);
+
             }
         });
         return v;
-    }*/
+    }
 
 
+    public void go_detales(int pos, ImageView img) {
+        Intent intent = new Intent(getActivity(), Projectdetails.class);
+        startActivity(intent);
+    }
 
 
 /*
@@ -125,10 +130,6 @@ initSwipe();
         }
     }
 
-    public void go_detales(int pos, ImageView img) {
-        Intent intent = new Intent(getActivity(), Projectdetails.class);
-        startActivity(intent);
-    }
 
     public void share_(int pos, ImageView img, int i) {
         Toast.makeText(getActivity(), "share" + i + "  " + pos, Toast.LENGTH_LONG).show();
@@ -227,5 +228,5 @@ mAdapter.notifyItemChanged(postion);
 
     }
 */
-        return v;
-}}
+
+}

@@ -1,7 +1,9 @@
 package com.aquar.android.myaquar_egypt.Activity;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.internal.NavigationMenuItemView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,18 +14,22 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.aquar.android.myaquar_egypt.Adapter.ExpandListAdapter;
 import com.aquar.android.myaquar_egypt.Fragments.Favourite;
 import com.aquar.android.myaquar_egypt.Fragments.Profile_fragment;
 import com.aquar.android.myaquar_egypt.Fragments.fragment_home;
 import com.aquar.android.myaquar_egypt.Fragments.home_second_view_Fragment;
 import com.aquar.android.myaquar_egypt.R;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +38,6 @@ import java.util.Map;
 import butterknife.BindView;
 
 /**/
-
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
 
@@ -41,16 +46,23 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private Fragment fragment;
     private FragmentTransaction transaction;
     private Button buttonnavegation;
+    private Menu menu;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     final ArrayList<String> listDataHeader = new ArrayList<String>();
-    final HashMap<String,List<String>> listDataChild = new HashMap<String, List<String>>();
+    final HashMap<String, List<String>> listDataChild = new HashMap<String, List<String>>();
+
+    MenuItem  item1;
+    MenuItem  item2;
+    MenuItem  item3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         fragment = new fragment_home();
         transaction = getSupportFragmentManager().beginTransaction();
@@ -84,31 +96,29 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         nv = (NavigationView) findViewById(R.id.nv);
 
-
-
-
-        button=(Button)findViewById(R.id.change_view_button);
-        button.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        fragment = new home_second_view_Fragment();
-        transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_home, fragment, "Res_Data_Fragment");
-        transaction.commitNow();
-             }
-            });
-
-
         nv.setCheckedItem(R.id.Navigation_hom);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 int id = item.getItemId();
-
                 switch (id) {
                     case R.id.catog_nav:
-                        Toast.makeText(MainActivity.this, "categories", Toast.LENGTH_SHORT).show();
+
+                        Toast.makeText(MainActivity.this, "categories1", Toast.LENGTH_SHORT).show();
+
+                        break;
+
+                    case R.id.catog_nav1:
+                        Toast.makeText(MainActivity.this, "categories1", Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case R.id.catog_nav2:
+                        Toast.makeText(MainActivity.this, "categories2", Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case R.id.catog_nav3:
+                        Toast.makeText(MainActivity.this, "categories3", Toast.LENGTH_SHORT).show();
+
                         break;
                     case R.id.project_id_nav:
                         Toast.makeText(MainActivity.this, "project", Toast.LENGTH_SHORT).show();
@@ -131,7 +141,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     case R.id.logout_nav:
                         Toast.makeText(MainActivity.this, "log out", Toast.LENGTH_SHORT).show();
                         break;
-
                     default:
                      break;
                 }
@@ -233,7 +242,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
 
     }
+
+
     private void enableExpandableList() {
+
+
 
         final ExpandableListView expListView = (ExpandableListView) findViewById(R.id.left_drawer);
 
@@ -250,7 +263,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                  Toast.makeText(getApplicationContext(),
                  "Group Clicked " + listDataHeader.get(groupPosition),
                  Toast.LENGTH_SHORT).show();
-        // expListView.setAdapter(listAdapter);
+//                 expListView.setAdapter(listAdapter);
 
                 return false;
             }
@@ -305,9 +318,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (dl.isDrawerOpen(GravityCompat.START)) {
             dl.closeDrawer(GravityCompat.START);
         } else {
-
             super.onBackPressed();
-
         }
     }
 }
