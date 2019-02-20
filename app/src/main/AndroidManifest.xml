@@ -11,11 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.EventsAndNews">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
 
         </activity>
@@ -24,6 +20,11 @@
         <activity android:name=".Activity.Projectdetails" />
         <activity android:name=".Activity.struct_activity" />
         <activity android:name=".Activity.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
 
         </activity>

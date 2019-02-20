@@ -27,14 +27,7 @@ public class Login extends AppCompatActivity {
 
         final AlertDialog alertD = new AlertDialog.Builder(this).create();
 
-        Button exit = view.findViewById(R.id.exit_button);
 
-        exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertD.cancel();
-            }
-        });
         alertD.setCancelable(true);
         alertD.setView(view);
         alertD.show();
