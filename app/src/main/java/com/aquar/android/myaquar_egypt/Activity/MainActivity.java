@@ -1,7 +1,9 @@
 package com.aquar.android.myaquar_egypt.Activity;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.internal.NavigationMenuItemView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aquar.android.myaquar_egypt.Adapter.ExpandListAdapter;
+import com.aquar.android.myaquar_egypt.Fragments.Favourite;
 import com.aquar.android.myaquar_egypt.Fragments.Profile_fragment;
 import com.aquar.android.myaquar_egypt.Fragments.fragment_home;
 import com.aquar.android.myaquar_egypt.Fragments.home_second_view_Fragment;
@@ -38,21 +42,27 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
     private static final String TAG = "Home_Activity_home";
-private Button button1;
+    private Button button;
     private Fragment fragment;
     private FragmentTransaction transaction;
     private Button buttonnavegation;
-
+    private Menu menu;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     final ArrayList<String> listDataHeader = new ArrayList<String>();
     final HashMap<String, List<String>> listDataChild = new HashMap<String, List<String>>();
 
+    MenuItem  item1;
+    MenuItem  item2;
+    MenuItem  item3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         fragment = new fragment_home();
         transaction = getSupportFragmentManager().beginTransaction();
@@ -78,7 +88,6 @@ private Button button1;
 
         dl = (DrawerLayout) findViewById(R.id.activity_main);
         t = new ActionBarDrawerToggle(this, dl, R.string.open, R.string.close);
-
         dl.addDrawerListener(t);
         t.syncState();
 
@@ -87,7 +96,6 @@ private Button button1;
 
         nv = (NavigationView) findViewById(R.id.nv);
 
-
         nv.setCheckedItem(R.id.Navigation_hom);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -95,7 +103,21 @@ private Button button1;
                 int id = item.getItemId();
                 switch (id) {
                     case R.id.catog_nav:
-                        Toast.makeText(MainActivity.this, "categories", Toast.LENGTH_SHORT).show();
+
+                        Toast.makeText(MainActivity.this, "categories1", Toast.LENGTH_SHORT).show();
+
+                        break;
+
+                    case R.id.catog_nav1:
+                        Toast.makeText(MainActivity.this, "categories1", Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case R.id.catog_nav2:
+                        Toast.makeText(MainActivity.this, "categories2", Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case R.id.catog_nav3:
+                        Toast.makeText(MainActivity.this, "categories3", Toast.LENGTH_SHORT).show();
 
                         break;
                     case R.id.project_id_nav:
@@ -138,9 +160,7 @@ private Button button1;
 
             case R.id.Navigation_hom:
                 TextView textView1 = (TextView) findViewById(R.id.name_fragment);
-
                 textView1.setText("Home");
-
                 Log.d(TAG, "Linear_Res" + "");
                 fragment = new fragment_home();
                 transaction = getSupportFragmentManager().beginTransaction();
@@ -152,7 +172,10 @@ private Button button1;
                 TextView textView2 = (TextView) findViewById(R.id.name_fragment);
                 textView2.setText("Favorite");
 
-
+                fragment = new Favourite();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_home, fragment, "Favourite");
+                transaction.commitNow();
             /*
                 Log.d(TAG, "Linear_Com" + "");
                  fragment = new //////name fragment(favorite)///////;
@@ -168,7 +191,6 @@ private Button button1;
 
                 Log.d(TAG, "Linear_Med" + "");
                 fragment = new Profile_fragment();
-
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
                 transaction.commitNow();
