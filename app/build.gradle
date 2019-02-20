@@ -26,10 +26,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 ///recyclaer
-    implementation"com.daimajia.swipelayout:library:1.2.0@aar"
-
-
-
+    implementation "com.daimajia.swipelayout:library:1.2.0@aar"
 
     //Design Support
     implementation 'com.android.support:support-v4:28.0.0'

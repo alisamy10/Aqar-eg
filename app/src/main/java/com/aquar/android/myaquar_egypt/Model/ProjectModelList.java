@@ -2,7 +2,7 @@ package com.aquar.android.myaquar_egypt.Model;
 
 
 
-public class FavouriteModelList {
+public class ProjectModelList {
 
 
     public int imageProject ;
@@ -10,10 +10,10 @@ public class FavouriteModelList {
     public   String locationProject ;
 
 
-    public FavouriteModelList () {}
+    public ProjectModelList() {}
 
 
-    public FavouriteModelList(int imageProject, String nameProject, String locationProject) {
+    public ProjectModelList(int imageProject, String nameProject, String locationProject) {
         this.imageProject = imageProject;
         this.nameProject = nameProject;
         this.locationProject = locationProject;

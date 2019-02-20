@@ -99,6 +99,7 @@ void make_love(int pos,ImageView img);
     public example_adapter_for_home_fragment(Context applicationContext, ArrayList<modle_home_fragment> exampleList) {
         mExampleList = exampleList;
         context=applicationContext;
+
     }
 
 

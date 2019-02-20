@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_height="match_parent"
+    tools:context="com.aquar.android.myaquar_egypt.Activity.Filter">
+
+    <RadioGroup
+        android:id="@+id/radiogroup1"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/one"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="one"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/two"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="two"
+            android:layout_height="wrap_content" />
+
+
+    </RadioGroup>
+    <RadioGroup
+        android:id="@+id/radiogroup2"
+
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/three"
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="three"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/four"
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="four"
+            android:layout_height="wrap_content" />
+
+
+    </RadioGroup>
+
+</LinearLayout>
