@@ -38,6 +38,7 @@ import java.util.ArrayList;
 public class fragment_home extends Fragment {
     int x = 0;
     int y = 0;
+
     private int currnt = R.drawable.ic_favorite_normal_black_24dp;
     private ArrayList<modle_home_fragment> mExampleList;
     private RecyclerView mRecyclerView;
