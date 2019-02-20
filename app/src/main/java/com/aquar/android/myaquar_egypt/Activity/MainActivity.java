@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -46,22 +47,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private Fragment fragment;
     private FragmentTransaction transaction;
     private Button buttonnavegation;
-    private Menu menu;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     final ArrayList<String> listDataHeader = new ArrayList<String>();
     final HashMap<String, List<String>> listDataChild = new HashMap<String, List<String>>();
 
-    MenuItem  item1;
-    MenuItem  item2;
-    MenuItem  item3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         fragment = new fragment_home();
@@ -85,77 +81,81 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             }
         });
 
-
+/*
         dl = (DrawerLayout) findViewById(R.id.activity_main);
         t = new ActionBarDrawerToggle(this, dl, R.string.open, R.string.close);
         dl.addDrawerListener(t);
         t.syncState();
+*/
+
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        nv = (NavigationView) findViewById(R.id.nv);
 
-        nv.setCheckedItem(R.id.Navigation_hom);
-        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                switch (id) {
-                    case R.id.catog_nav:
-
-                        Toast.makeText(MainActivity.this, "categories1", Toast.LENGTH_SHORT).show();
-
-                        break;
-
-                    case R.id.catog_nav1:
-                        Toast.makeText(MainActivity.this, "categories1", Toast.LENGTH_SHORT).show();
-
-                        break;
-                    case R.id.catog_nav2:
-                        Toast.makeText(MainActivity.this, "categories2", Toast.LENGTH_SHORT).show();
-
-                        break;
-                    case R.id.catog_nav3:
-                        Toast.makeText(MainActivity.this, "categories3", Toast.LENGTH_SHORT).show();
-
-                        break;
-                    case R.id.project_id_nav:
-                        Toast.makeText(MainActivity.this, "project", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.news_event_nav:
-                        Toast.makeText(MainActivity.this, "news and enents", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.about_us_nav:
-                        Toast.makeText(MainActivity.this, "about us", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.contact_us_nav:
-                        Toast.makeText(MainActivity.this, "contact us", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.terma_polic_nav:
-                        Toast.makeText(MainActivity.this, "term and polices", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.setting_nav:
-                        Toast.makeText(MainActivity.this, "setting", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.logout_nav:
-                        Toast.makeText(MainActivity.this, "log out", Toast.LENGTH_SHORT).show();
-                        break;
-                    default:
-                     break;
-                }
-
-                return true;
-            }
-        });
 
 
     }
+/*
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.catog_nav:
+                Toast.makeText(MainActivity.this, "categories1", Toast.LENGTH_SHORT).show();
 
+                break;
+
+            case R.id.catog_nav1:
+                Toast.makeText(MainActivity.this, "categories1", Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.catog_nav2:
+                Toast.makeText(MainActivity.this, "categories2", Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.catog_nav3:
+                Toast.makeText(MainActivity.this, "categories3", Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.project_id_nav:
+                Toast.makeText(MainActivity.this, "project", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.news_event_nav:
+                Toast.makeText(MainActivity.this, "news and enents", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.about_us_nav:
+                Toast.makeText(MainActivity.this, "about us", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.contact_us_nav:
+                Toast.makeText(MainActivity.this, "contact us", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.terma_polic_nav:
+                Toast.makeText(MainActivity.this, "term and polices", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.setting_nav:
+                Toast.makeText(MainActivity.this, "setting", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.logout_nav:
+                Toast.makeText(MainActivity.this, "log out", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
+
+        return true;
+    }*/
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.navigation_menu,menu);
+        return true;
+
+    }
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-
 
 
             case R.id.Navigation_hom:
@@ -235,7 +235,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         top.add("x5");
 
 
-
         if (!listDataChild.isEmpty()) {
             listDataChild.put(listDataHeader.get(0), top); // Header, Child data
 
@@ -245,7 +244,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
     private void enableExpandableList() {
-
 
 
         final ExpandableListView expListView = (ExpandableListView) findViewById(R.id.left_drawer);
@@ -260,9 +258,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v,
                                         int groupPosition, long id) {
-                 Toast.makeText(getApplicationContext(),
-                 "Group Clicked " + listDataHeader.get(groupPosition),
-                 Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),
+                        "Group Clicked " + listDataHeader.get(groupPosition),
+                        Toast.LENGTH_SHORT).show();
 //                 expListView.setAdapter(listAdapter);
 
                 return false;
@@ -313,6 +311,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             }
         });
     }
+
     @Override
     public void onBackPressed() {
         if (dl.isDrawerOpen(GravityCompat.START)) {
@@ -321,4 +320,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             super.onBackPressed();
         }
     }
+
+
 }
