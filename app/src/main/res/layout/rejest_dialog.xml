@@ -45,7 +45,7 @@
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             >
 
         <TextView
@@ -56,31 +56,23 @@
             android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:id="@+id/des2"
+                android:text="you need to register to start using the application    "
+                android:textSize="11sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                />
 
 </LinearLayout>
 
 
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            >
-        <TextView
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:id="@+id/des2"
-            android:text="you need to register to start using the application "
-            android:textSize="12sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
 
-
-            />
-
-    </LinearLayout>
 
 
         <LinearLayout
