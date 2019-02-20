@@ -84,7 +84,7 @@ public class Filter extends AppCompatActivity {
 
                 if (rb2.isChecked())
                     rb2.setChecked(false);
-                rb4.setChecked(true);
+                    rb4.setChecked(true);
 
 
             }
