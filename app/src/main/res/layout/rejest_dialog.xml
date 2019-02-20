@@ -113,7 +113,6 @@
             android:id="@+id/edit_text_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:background="@drawable/back_ground_edit_text"
             android:gravity="center"
             android:hint="Phone" />

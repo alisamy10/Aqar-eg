@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 transaction.replace(R.id.frame_home, fragment, "Res_Data_Fragment");
                 transaction.commitNow();
                 return true;
-
+//Lh;kjh
             case R.id.Navigation_fav:
                 TextView textView2 = (TextView) findViewById(R.id.name_fragment);
                 textView2.setText("Favorite");
