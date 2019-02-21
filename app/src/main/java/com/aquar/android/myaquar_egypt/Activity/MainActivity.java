@@ -84,7 +84,7 @@ private Button button1;
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+//kjihkjh
         nv = (NavigationView) findViewById(R.id.nv);
 
 
