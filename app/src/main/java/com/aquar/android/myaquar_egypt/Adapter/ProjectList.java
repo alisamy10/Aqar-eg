@@ -8,19 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.aquar.android.myaquar_egypt.Model.FavouriteModelList;
+import com.aquar.android.myaquar_egypt.Model.ProjectModelList;
 import java.util.ArrayList;
 import com.aquar.android.myaquar_egypt.R;
 
-public class FavouriteList extends ArrayAdapter {
+public class ProjectList extends ArrayAdapter {
     int  o = 1  ;
-    ArrayList<FavouriteModelList> mlist;
+    ArrayList<ProjectModelList> mlist;
 
-    public FavouriteList(@NonNull Context context, int resource, @NonNull ArrayList objects) {
+    public ProjectList(@NonNull Context context, int resource, @NonNull ArrayList objects) {
         super(context, resource, objects);
         mlist = objects;
     }
@@ -31,7 +30,7 @@ public class FavouriteList extends ArrayAdapter {
 
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        convertView = layoutInflater.inflate(R.layout.item_of_favourite_list, parent, false);
+        convertView = layoutInflater.inflate(R.layout.item_of_projects_list, parent, false);
 
         TextView textNameProject = convertView.findViewById(R.id.name_project_of_favourit_list);
         ImageView imageProject = convertView.findViewById(R.id.image_of_favourite_list);
@@ -53,9 +52,7 @@ public class FavouriteList extends ArrayAdapter {
 
                 if (o%2== 0 ) {
 
-
                     footer.setVisibility(View.VISIBLE);
-
 
                 }
                 else

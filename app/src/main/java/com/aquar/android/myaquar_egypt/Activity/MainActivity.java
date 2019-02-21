@@ -88,7 +88,6 @@ private Button button1;
         nv = (NavigationView) findViewById(R.id.nv);
 
 
-
         nv.setCheckedItem(R.id.Navigation_hom);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

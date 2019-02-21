@@ -7,8 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import com.aquar.android.myaquar_egypt.Adapter.FavouriteList;
-import com.aquar.android.myaquar_egypt.Model.FavouriteModelList;
+
+import com.aquar.android.myaquar_egypt.Adapter.FavouritList;
+import com.aquar.android.myaquar_egypt.Adapter.ProjectList;
+import com.aquar.android.myaquar_egypt.Model.ModelOfFavourits;
+import com.aquar.android.myaquar_egypt.Model.ProjectModelList;
 import com.aquar.android.myaquar_egypt.R ;
 import java.util.ArrayList;
 
@@ -21,9 +24,9 @@ public class Favourite extends Fragment {
 
     ListView listView ;
     String names []  = {"dasdas","dasds" ,"kkkk"};
-    String locations [] = {"dd" , "dsd","lk"};
+
     int image2 []= {R.drawable.pashe1 , R.drawable.pashe2 , R.drawable.pashe2};
-    FavouriteList favouriteList ;
+    FavouritList favouritList;
 
     public Favourite() {
         // Required empty public constructor
@@ -38,15 +41,15 @@ public class Favourite extends Fragment {
 
               listView = v.findViewById(R.id.favouriteList);
 
-        ArrayList<FavouriteModelList> list = new ArrayList <FavouriteModelList> ();
+        ArrayList<ModelOfFavourits> list = new ArrayList <ModelOfFavourits> ();
 
         for (int x = 0 ; x < names.length ; x++ ){
-            list.add(new FavouriteModelList(  image2 [x] , names [x] ,locations[x] ));
+            list.add(new ModelOfFavourits(  image2 [x] , names [x]  ));
         }
 
-        favouriteList = new FavouriteList (getContext(),R.layout.item_of_favourite_list , list);
+        favouritList = new FavouritList(getContext(),R.layout.item_of_favourite_list, list);
 
-        listView.setAdapter(favouriteList);
+        listView.setAdapter(favouritList);
 
         return v ;
 
