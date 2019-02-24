@@ -124,7 +124,7 @@ initSwipe();
             x = 0;
         }
     }
-
+z
     public void go_detales(int pos, ImageView img) {
         Intent intent = new Intent(getActivity(), Projectdetails.class);
         startActivity(intent);

@@ -1,3 +1,8 @@
+
+
+
+
+
 <resources>
 
     <!-- Base application theme. -->
@@ -14,7 +19,7 @@
     </style>
 
     <style name="Theme.Rating" parent="Theme.AppCompat.Light">
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">#E81212</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

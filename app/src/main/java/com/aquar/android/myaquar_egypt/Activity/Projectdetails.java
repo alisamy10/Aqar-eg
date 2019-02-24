@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ import java.util.HashMap;
 
 public class Projectdetails extends AppCompatActivity {
     private SliderLayout Product_Slider;
-    private Button see_more_btn , like_btn,struct_btn , location_btn , call_btn , share_btn , go360 ,book_now_btn;
+    private Button see_more_btn , like_btn,struct_btn , location_btn , call_btn , share_btn , go360 ,send_email_btn;
     private TextView description;
     private ScrollView sc ;
     int n=0;
@@ -39,8 +40,15 @@ public class Projectdetails extends AppCompatActivity {
         location_btn = findViewById(R.id.go_location);
         struct_btn=(Button)findViewById(R.id.structure);
         call_btn = findViewById(R.id.call);
-        book_now_btn=findViewById(R.id.send_email);
-        sc=findViewById(R.id.parent);
+       send_email_btn=findViewById(R.id.send_email);
+
+       send_email_btn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               sendEmail();
+
+           }
+       });
 
 
         go360 = (Button)findViewById(R.id.go_youtube);
@@ -49,8 +57,9 @@ public class Projectdetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(Projectdetails.this,PanoramaView.class);
-                startActivity(i);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://www.youtube.com/watch?v=F2xYkytHNxY&list=RDF2xYkytHNxY&start_radio=1"));
+                startActivity(intent);
 
             }
         });
@@ -170,6 +179,22 @@ public class Projectdetails extends AppCompatActivity {
     }
 
 
+    private void sendEmail() {
+
+        String[] TO = {"someone@gmail.com"};
+        String[] CC = {"xyz@gmail.com"};
+        String recepientEmail = ""; // either set to destination email or leave empty
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:" + recepientEmail));
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+
+        startActivity(emailIntent);
+
+
+    }
 }
 
 

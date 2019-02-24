@@ -15,7 +15,7 @@
 
 
         </activity>
-        <activity android:name=".Activity.Filter">
+        <activity android:name=".Activity.Projectdetails">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,9 +25,9 @@
 
         </activity>
         <activity android:name=".Activity.PanoramaView" ></activity>
-        <activity android:name=".Activity.Projectdetails" />
+        <activity android:name=".Activity.Splash" />
         <activity android:name=".Activity.struct_activity" />
-        <activity android:name=".Activity.Splash">
+        <activity android:name=".Activity.Filter">
 
 
         </activity>
