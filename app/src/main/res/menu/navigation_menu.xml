@@ -39,6 +39,10 @@
         android:id="@+id/news_event_nav"
 
         android:title="News and Events" />
+<item
+        android:id="@+id/find_home"
+
+        android:title="Find home" />
 
 
     <item

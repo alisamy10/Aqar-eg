@@ -102,6 +102,15 @@ private Button button1;
                         Toast.makeText(MainActivity.this, "project", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.news_event_nav:
+                        Intent i=new Intent( MainActivity.this,EventsAndNews.class);
+                        startActivity(i);
+
+                        Toast.makeText(MainActivity.this, "news and enents", Toast.LENGTH_SHORT).show();
+                        break;
+              case R.id.find_home:
+                        Intent iu=new Intent( MainActivity.this,Filter.class);
+                        startActivity(iu);
+
                         Toast.makeText(MainActivity.this, "news and enents", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.about_us_nav:
