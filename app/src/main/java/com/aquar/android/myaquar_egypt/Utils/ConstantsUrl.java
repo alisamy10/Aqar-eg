@@ -18,5 +18,7 @@ public class ConstantsUrl {
     //post Function
     //params key : id =  value :1
     public static final String SingleProject = BasicURL+"single_project";
+    public static final String Registration = BasicURL+"registration";
+
 
 }

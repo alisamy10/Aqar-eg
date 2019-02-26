@@ -11,7 +11,7 @@ import com.aquar.android.myaquar_egypt.R;
 
 public class Filter extends AppCompatActivity {
     public RadioGroup rg1,rg2  , rg3;
-    public RadioButton rb1,rb2,rb3,rb4 , rb5 ;
+    public RadioButton rb1,rb2,rb3,rb4 , rb5,rb6 ;
 
 
     @Override
@@ -26,26 +26,28 @@ public class Filter extends AppCompatActivity {
         rb3=findViewById(R.id.three);
         rb4=findViewById(R.id.four);
         rb5 = findViewById(R.id.five);
+        rb6=findViewById(R.id.six);
 
-
-       rb1.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
+        rb1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
                 rg1.clearCheck();
                 rg2.clearCheck();
-
-               if (rb3.isChecked())
-                   rb3.setChecked(false);
-               rb1.setChecked(true);
+rg3.clearCheck();
+                if (rb3.isChecked()||rb5.isChecked()) {
+                    rb3.setChecked(false);
+rb5.setChecked(false);
+                }
+                    rb1.setChecked(true);
 
 //lkjlkj
 
 
 
 
-           }
-       });
+            }
+        });
 
         rb5.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,34 +58,34 @@ public class Filter extends AppCompatActivity {
                 rg3.clearCheck();
 
 
-                if (rb3.isChecked())
+                if (rb3.isChecked()||rb1.isChecked()) {
                     rb3.setChecked(false);
-                rb1.setChecked(true);
-
+                    rb1.setChecked(false);
+                }
 
                 rb5.setChecked(true);
-
-
 
 
             }
         });
 
-       rb3.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
+        rb3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
 
-               rg1.clearCheck();
-               rg2.clearCheck();
+                rg1.clearCheck();
+                rg2.clearCheck();
+rg3.clearCheck();
+                if (rb1.isChecked()||rb5.isChecked()) {
+                    rb1.setChecked(false);
+rb5.setChecked(false);
+                }
+                    rb3.setChecked(true);
 
-               if (rb1.isChecked())
-                   rb1.setChecked(false);
-               rb3.setChecked(true);
 
-
-           }
-       });
+            }
+        });
 
         rb2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,11 +94,13 @@ public class Filter extends AppCompatActivity {
 
                 rg1.clearCheck();
                 rg2.clearCheck();
+                rg3.clearCheck();
 
-
-                if (rb4.isChecked())
+                if (rb4.isChecked()||rb5.isChecked()) {
                     rb4.setChecked(false);
-                rb2.setChecked(true);
+                    rb5.setChecked(false);
+                }
+                    rb2.setChecked(true);
 
 
             }
@@ -109,15 +113,15 @@ public class Filter extends AppCompatActivity {
 
                 rg1.clearCheck();
                 rg2.clearCheck();
-
-                if (rb2.isChecked())
+                rg3.clearCheck();
+                if (rb2.isChecked()||rb5.isChecked()) {
                     rb2.setChecked(false);
-                    rb4.setChecked(true);
-
+                    rb5.setChecked(false);
+                }
+                rb4.setChecked(true);
 
             }
         });
-
 
     }
 }
