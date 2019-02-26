@@ -6,6 +6,7 @@ package com.aquar.android.myaquar_egypt.Utils;
 
 public class ConstantsUrl {
 
+
     public static final String BasicURL = "http:";
     public static final String verifyRegistration = BasicURL+"http:";
 
