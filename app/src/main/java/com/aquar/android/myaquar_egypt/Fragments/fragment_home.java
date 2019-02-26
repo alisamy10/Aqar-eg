@@ -69,11 +69,11 @@ public class fragment_home extends Fragment {
         exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.photo));
         exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.photo));
 */
-        exampleList.add(new modle_home_fragment("3","5",R.drawable.phototwo,"Midtown","Newcairo"));
-        exampleList.add(new modle_home_fragment("5","6",R.drawable.photo,"Midtown","Newcairo"));
-        exampleList.add(new modle_home_fragment("1","3",R.drawable.phototwo,"Midtown","Newcairo"));
-        exampleList.add(new modle_home_fragment("3","5",R.drawable.photo,"Midtown","Newcairo"));
-        exampleList.add(new modle_home_fragment("3","5",R.drawable.phototwo,"Midtown","Newcairo"));
+        exampleList.add(new modle_home_fragment("3", "5", R.drawable.phototwo, "Midtown", "Newcairo"));
+        exampleList.add(new modle_home_fragment("5", "6", R.drawable.photo, "Midtown", "Newcairo"));
+        exampleList.add(new modle_home_fragment("1", "3", R.drawable.phototwo, "Midtown", "Newcairo"));
+        exampleList.add(new modle_home_fragment("3", "5", R.drawable.photo, "Midtown", "Newcairo"));
+        exampleList.add(new modle_home_fragment("3", "5", R.drawable.phototwo, "Midtown", "Newcairo"));
 
 
         mAdapter = new example_adapter_for_home_fragment(getActivity().getApplicationContext(), exampleList);
@@ -85,11 +85,6 @@ public class fragment_home extends Fragment {
 
         /////////////////
 
-
-        //////////
-/*
-initSwipe();
-
         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
             @Override
@@ -98,11 +93,23 @@ initSwipe();
             }
 
             @Override
-            public void make_love(int pos,ImageView img) {
-                make_love_(pos, img);
+            public void make_love(int pos, ImageView img) {
+
             }
         });
         return v;
+
+    }
+    public void go_detales(int pos, ImageView img) {
+        Intent intent = new Intent(getActivity(), Projectdetails.class);
+        startActivity(intent);
+    }
+
+    //////////
+/*
+initSwipe();
+
+
     }*/
 
 
@@ -125,10 +132,6 @@ initSwipe();
         }
     }
 z
-    public void go_detales(int pos, ImageView img) {
-        Intent intent = new Intent(getActivity(), Projectdetails.class);
-        startActivity(intent);
-    }
 
     public void share_(int pos, ImageView img, int i) {
         Toast.makeText(getActivity(), "share" + i + "  " + pos, Toast.LENGTH_LONG).show();
@@ -227,5 +230,5 @@ mAdapter.notifyItemChanged(postion);
 
     }
 */
-        return v;
-}}
+
+}
