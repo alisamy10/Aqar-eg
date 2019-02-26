@@ -15,4 +15,8 @@ public class ConstantsUrl {
     public static final String verifyLogin = BasicURL+"http:";
     public static final String Home = BasicURL+"allprojects";
 
+    //post Function
+    //params key : id =  value :1
+    public static final String SingleProject = BasicURL+"single_project";
+
 }
