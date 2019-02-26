@@ -245,6 +245,9 @@ public class Login extends AppCompatActivity {
     }
 
     private void facebookToken() {
+
+
+
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {

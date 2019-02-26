@@ -10,14 +10,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.androidnetworking.interfaces.Parser;
+import com.aquar.android.myaquar_egypt.Model.HomeApi.ModelArray;
+import com.aquar.android.myaquar_egypt.Model.HomeApi.ModelObjects;
 import com.aquar.android.myaquar_egypt.Model.modle_home_fragment;
 import com.aquar.android.myaquar_egypt.R;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 public class example_adapter_for_home_fragment extends RecyclerView.Adapter<example_adapter_for_home_fragment.ExampleViewHolder> {
     /////
-    private ArrayList<modle_home_fragment> mExampleList;
+    private ArrayList<ModelObjects> mExampleList;
     private Context context;
 
     private OnItemClickListener mListener;
@@ -33,6 +36,8 @@ void make_love(int pos,ImageView img);
 
     }
 
+    public example_adapter_for_home_fragment() {
+    }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
@@ -95,7 +100,7 @@ void make_love(int pos,ImageView img);
         }
     }
 
-    public example_adapter_for_home_fragment(Context applicationContext, ArrayList<modle_home_fragment> exampleList) {
+    public example_adapter_for_home_fragment(Context applicationContext, ArrayList<ModelObjects> exampleList) {
         mExampleList = exampleList;
         context=applicationContext;
     }
@@ -111,17 +116,18 @@ void make_love(int pos,ImageView img);
 
     @Override
     public void onBindViewHolder(@NonNull ExampleViewHolder exampleViewHolder,final int i) {
-        modle_home_fragment currentitem = mExampleList.get(i);
+        ModelObjects currentitem = mExampleList.get(i);
 ////
-        exampleViewHolder.imageView_one_one.setImageResource(currentitem.getImage());
+//        exampleViewHolder.imageView_one_one.setImageResource(Integer.parseInt(currentitem.getProject_img()));
+        Glide.with(context).load(currentitem.getProject_img()).into(exampleViewHolder.imageView_one_one);
 ////
 
 
 
-        exampleViewHolder.textView_1.setText((CharSequence) currentitem.getText_one());
-        exampleViewHolder.textView_2.setText((CharSequence) currentitem.getText_two());
-        exampleViewHolder.textView_start.setText( ((CharSequence)  currentitem.getStart()).toString());
-        exampleViewHolder.textView_end.setText((CharSequence) currentitem.getEnd());
+        exampleViewHolder.textView_1.setText( currentitem.getProject_name());
+        exampleViewHolder.textView_2.setText(currentitem.getLocation());
+        exampleViewHolder.textView_start.setText(currentitem.getProduct_title());
+        exampleViewHolder.textView_end.setText( currentitem.getProduct_id()+"");
 
         ///
 

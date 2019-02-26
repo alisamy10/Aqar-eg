@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 public class ModelArray {
 
-
-    public ArrayList<ModelObjects> getMlist() {
-        return mlist;
+    public ArrayList<ModelObjects> getProjects() {
+        return projects;
     }
 
-    private   ArrayList<ModelObjects>mlist = new ArrayList<>();
+    ArrayList<ModelObjects>projects = new ArrayList<>();
 }

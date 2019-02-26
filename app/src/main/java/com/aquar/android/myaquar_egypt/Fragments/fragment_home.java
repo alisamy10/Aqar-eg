@@ -25,11 +25,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.android.myaquar_egypt.Activity.MainActivity;
 import com.aquar.android.myaquar_egypt.Activity.Projectdetails;
 import com.aquar.android.myaquar_egypt.Adapter.example_adapter_for_home_fragment;
+import com.aquar.android.myaquar_egypt.Model.HomeApi.ModelArray;
+import com.aquar.android.myaquar_egypt.Model.HomeApi.ModelObjects;
 import com.aquar.android.myaquar_egypt.Model.modle_home_fragment;
 import com.aquar.android.myaquar_egypt.R;
+import com.aquar.android.myaquar_egypt.Utils.ConstantsUrl;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import org.json.JSONObject;
 
 import java.text.ParsePosition;
 import java.util.ArrayList;
@@ -46,6 +57,10 @@ public class fragment_home extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private static final float buttonWidth = 300;
 
+
+
+    ArrayList<ModelObjects>  list  = new ArrayList<>();
+
     /* private ButtonsState buttonShowedState = ButtonsState.GONE;*/
     public fragment_home() {
         // Required empty public constructor
@@ -58,27 +73,8 @@ public class fragment_home extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_fragment_home, container, false);
         mRecyclerView = v.findViewById(R.id.recyclerView_fragment_home);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(getActivity());
-        ArrayList<modle_home_fragment> exampleList = new ArrayList<>();
+        GetHome_Data();
 
-/*
-        ArrayList<modle_home_fragment> exampleList = new ArrayList<>();
-        exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.phototwo));
-        exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.photo));
-        exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.photo));
-        exampleList.add(new modle_home_fragment("LIFE PARK SHROUK", "120,000,00", "2 years", R.drawable.ic_favorite_normal_black_24dp, R.drawable.photo));
-*/
-        exampleList.add(new modle_home_fragment("3", "5", R.drawable.phototwo, "Midtown", "Newcairo"));
-        exampleList.add(new modle_home_fragment("5", "6", R.drawable.photo, "Midtown", "Newcairo"));
-        exampleList.add(new modle_home_fragment("1", "3", R.drawable.phototwo, "Midtown", "Newcairo"));
-        exampleList.add(new modle_home_fragment("3", "5", R.drawable.photo, "Midtown", "Newcairo"));
-        exampleList.add(new modle_home_fragment("3", "5", R.drawable.phototwo, "Midtown", "Newcairo"));
-
-
-        mAdapter = new example_adapter_for_home_fragment(getActivity().getApplicationContext(), exampleList);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
 
 /////////
 
@@ -90,6 +86,7 @@ public class fragment_home extends Fragment {
             @Override
             public void intent_to_detales(int pos, ImageView imageView) {
                 go_detales(pos, imageView);
+                Toast.makeText(getContext(), "fsnhoibfwn", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -104,6 +101,49 @@ public class fragment_home extends Fragment {
         Intent intent = new Intent(getActivity(), Projectdetails.class);
         startActivity(intent);
     }
+
+
+
+
+    private void GetHome_Data() {
+
+
+        AndroidNetworking.get(ConstantsUrl.Home)
+                .setPriority(Priority.LOW)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+
+
+                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+                        ModelArray array = gson.fromJson(response.toString(), ModelArray.class);
+                        list = array.getProjects();
+                        setRecyclerData(list);
+
+//                        Toast.makeText(getActivity(), list.get(0).getProduct_id()+"knk", Toast.LENGTH_SHORT).show();
+                        Log.d("data", "onResponse: "+list.get(0).getProject_img());
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                        Toast.makeText(getContext(), "connection field", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void setRecyclerData(ArrayList<ModelObjects> list) {
+
+
+        mAdapter = new example_adapter_for_home_fragment(getActivity(), list);
+        LinearLayoutManager manager=new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(manager);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
 
     //////////
 /*

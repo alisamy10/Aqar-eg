@@ -10,10 +10,15 @@ public class ConstantsUrl {
     public static final String userDataBundleKey = "userData";
 
     //Urls
+
+
+
     public static final String BasicURL = "http://aquar.me/myaquar_eg/api/";
     public static final String verifyRegistration = BasicURL+"http:";
     public static final String verifyLogin = BasicURL+"http:";
     public static final String Home = BasicURL+"allprojects";
+
+
 
     //post Function
     //params key : id =  value :1
