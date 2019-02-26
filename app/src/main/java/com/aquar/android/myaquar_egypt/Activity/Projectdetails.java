@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 public class Projectdetails extends AppCompatActivity {
     private SliderLayout Product_Slider;
-    private Button see_more_btn , like_btn,struct_btn , location_btn , call_btn , share_btn , go360 ,send_email_btn;
+    private Button see_more_btn , like_btn,struct_btn , location_btn , call_btn , share_btn , go_youtube ,send_email_btn;
     private TextView description;
     private ScrollView sc ;
     int n=0;
@@ -51,9 +51,9 @@ public class Projectdetails extends AppCompatActivity {
        });
 
 
-        go360 = (Button)findViewById(R.id.go_youtube);
+        go_youtube = (Button)findViewById(R.id.go_youtube);
 
-        go360.setOnClickListener(new View.OnClickListener() {
+        go_youtube.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

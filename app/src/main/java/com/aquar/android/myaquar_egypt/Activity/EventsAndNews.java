@@ -29,7 +29,6 @@ public class EventsAndNews extends AppCompatActivity {
         listView = findViewById(R.id.listOfEventsAndNews);
 
 
-
         ArrayList<ModelOfEventsAndNews> list = new ArrayList <ModelOfEventsAndNews> ();
 
         for (int x = 0 ; x < names.length ; x++ ){
