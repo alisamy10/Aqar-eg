@@ -79,7 +79,7 @@ public class fragment_home extends Fragment {
 /////////
 
 
-        /////////////////
+        //////////////////
 
         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
