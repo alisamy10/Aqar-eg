@@ -81,6 +81,10 @@ public class fragment_home extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
 
 /////////
+
+
+        /////////////////
+
         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
             @Override
@@ -90,24 +94,18 @@ public class fragment_home extends Fragment {
 
             @Override
             public void make_love(int pos, ImageView img) {
+
             }
         });
         return v;
 
-
-
     }
-
     public void go_detales(int pos, ImageView img) {
         Intent intent = new Intent(getActivity(), Projectdetails.class);
         startActivity(intent);
     }
 
-
-    /////////////////
-
-
-        //////////
+    //////////
 /*
 initSwipe();
 
@@ -133,8 +131,7 @@ initSwipe();
             x = 0;
         }
     }
-
-
+z
 
     public void share_(int pos, ImageView img, int i) {
         Toast.makeText(getActivity(), "share" + i + "  " + pos, Toast.LENGTH_LONG).show();

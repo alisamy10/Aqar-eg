@@ -78,6 +78,8 @@ void make_love(int pos,ImageView img);
                 }
             });
 
+
+
 */
             imageView_one_one.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -90,8 +92,6 @@ void make_love(int pos,ImageView img);
                         }
                     } }
             });
-
-
         }
     }
 

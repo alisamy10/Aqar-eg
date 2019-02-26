@@ -4,181 +4,169 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@null"
-    >
-
+    android:background="@null">
 
 
     <LinearLayout
-         android:orientation="vertical"
-        android:paddingBottom="40dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-      >
+        android:orientation="vertical"
+        android:paddingBottom="40dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
 
 
         <LinearLayout
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            >
-        <TextView
-            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_weight="1">
 
-            android:id="@+id/text1"
-            android:text="Registration"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="22sp"
-            android:textColor="#000"
+            <TextView
+                android:id="@+id/text1"
 
-          />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Registration"
+                android:textColor="#000"
+                android:textSize="22sp"
+
+                />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_gravity="center"
             android:layout_weight="1.5"
-            >
+            android:orientation="vertical">
 
-        <TextView
-           android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:id="@+id/des"
-            android:text="Welcome to our application. "
-            android:textSize="15sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
             <TextView
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:id="@+id/des2"
-                android:text="you need to register to start using the application    "
-                android:textSize="11sp"
+                android:id="@+id/des"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Welcome to our application. "
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/des2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="you need to register to start using the application    "
+                android:textSize="11sp"
 
                 />
 
-</LinearLayout>
-
-
-
-
-
+        </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            >
+            android:layout_weight="1">
 
-        <EditText
+            <EditText
 
+                android:inputType="textPersonName"
+                android:id="@+id/edit_text_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back_ground_edit_text"
 
-            android:layout_width="match_parent"
-            android:background="@drawable/back_ground_edit_text"
-            android:layout_height="wrap_content"
-            android:id="@+id/edit_text_username"
+                android:gravity="center"
+                android:hint="User name"
 
-            android:hint="User name"
-            android:gravity="center"
+                />
 
-            />
-
-    </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            >
-        <EditText
-            android:id="@+id/edit_text_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/back_ground_edit_text"
-            android:gravity="center"
-            android:hint="Phone" />
-    </LinearLayout>
-
-
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            >
-        <EditText
+            android:layout_weight="1">
 
-            android:id="@+id/edit_text_jopTitle"
-            android:hint="Job Title"
-            android:gravity="center"
-            android:background="@drawable/back_ground_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-           />
-
-    </LinearLayout>
+            <EditText
+                android:id="@+id/edit_text_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back_ground_edit_text"
+                android:gravity="center"
+                android:hint="Phone"
+                android:inputType="phone" />
+        </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            >
+            android:layout_weight="1">
 
-        <EditText
-            android:hint="E-mail"
-            android:gravity="center"
-            android:layout_below="@+id/edit_text_jopTitle"
-            android:id="@+id/edit_text_Email"
-            android:background="@drawable/back_ground_edit_text"
+            <EditText
+                android:inputType="text"
+                android:id="@+id/edit_text_jopTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back_ground_edit_text"
+                android:gravity="center"
+                android:hint="Job Title" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-           />
-    </LinearLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/edit_text_Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_text_jopTitle"
+                android:background="@drawable/back_ground_edit_text"
+                android:gravity="center"
+                android:hint="E-mail"
+                android:inputType="textEmailAddress" />
+        </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            >
-        <EditText
-            android:layout_below="@+id/edit_text_Email"
-            android:hint="Password"
-            android:gravity="center"
-            android:id="@+id/edit_text_password"
-            android:background="@drawable/back_ground_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-           />
-    </LinearLayout>
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/edit_text_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_text_Email"
+                android:background="@drawable/back_ground_edit_text"
+                android:gravity="center"
+                android:hint="Password"
+                android:inputType="textPassword" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            >
-        <Button
-            android:background="@drawable/back_ground_regist_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
-            android:text="Registration"
-            android:textColor="#fff"
-            android:textAllCaps="false"
-            />
+            <Button
+                android:id="@+id/registration_BT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back_ground_regist_button"
+                android:text="Registration"
+                android:textAllCaps="false"
+                android:textColor="#fff" />
 
-    </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
