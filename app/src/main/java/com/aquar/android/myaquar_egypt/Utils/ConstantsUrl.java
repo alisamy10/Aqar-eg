@@ -6,8 +6,12 @@ package com.aquar.android.myaquar_egypt.Utils;
 
 public class ConstantsUrl {
 
+    //ExtraKeys
+    public static final String userDataBundleKey = "userData";
 
+    //Urls
     public static final String BasicURL = "http:";
     public static final String verifyRegistration = BasicURL+"http:";
+    public static final String verifyLogin = BasicURL+"http:";
 
 }
