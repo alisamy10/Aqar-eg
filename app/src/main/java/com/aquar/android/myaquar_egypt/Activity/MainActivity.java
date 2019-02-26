@@ -67,8 +67,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
         transaction.commitNow();
-        TextView textView1 = (TextView) findViewById(R.id.name_fragment);
-        textView1.setText("Home");
+
 
         BottomNavigationView Home_BottomNavi;
         Home_BottomNavi = findViewById(R.id.Home_BottomNavi);
@@ -166,8 +165,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
             case R.id.Navigation_hom:
-                TextView textView1 = (TextView) findViewById(R.id.name_fragment);
-                textView1.setText("Home");
                 Log.d(TAG, "Linear_Res" + "");
                 fragment = new fragment_home();
                 transaction = getSupportFragmentManager().beginTransaction();
@@ -176,8 +173,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 //Lh;kjh
             case R.id.Navigation_fav:
-                TextView textView2 = (TextView) findViewById(R.id.name_fragment);
-                textView2.setText("Favorite");
 
                 fragment = new Favourite();
                 transaction = getSupportFragmentManager().beginTransaction();
@@ -193,8 +188,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
             case R.id.Navigation_acc:
 
-                TextView textView3 = (TextView) findViewById(R.id.name_fragment);
-                textView3.setText("Account");
 
                 Log.d(TAG, "Linear_Med" + "");
                 fragment = new Profile_fragment();
