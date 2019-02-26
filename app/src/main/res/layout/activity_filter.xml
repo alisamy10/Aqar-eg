@@ -78,6 +78,7 @@
 
         <RadioGroup
             android:id="@+id/radiogroup3"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -85,6 +86,13 @@
                 android:text="second home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <RadioButton
+                android:id="@+id/six"
+                android:visibility="invisible"
+                android:text="second home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
         </RadioGroup>
     </LinearLayout>
 
@@ -251,12 +259,12 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="Min.bedrooms"
+                android:text="Min.bathrooms"
                 android:layout_height="wrap_content" />
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="Max.bedrooms"
+                android:text="Max.bathrooms"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
@@ -311,12 +319,12 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="Min.bedrooms"
+                android:text="Min.Price"
                 android:layout_height="wrap_content" />
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="Max.bedrooms"
+                android:text="Max.Price"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
