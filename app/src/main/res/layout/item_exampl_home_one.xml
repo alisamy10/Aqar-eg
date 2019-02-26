@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     app:cardBackgroundColor="#FFFF"
-    android:paddingBottom="1dp"
-    android:paddingTop="1dp"
+    android:layout_marginBottom="7dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -30,9 +29,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
 
-        android:layout_marginTop="16dp"
-        android:alpha="0.7"
-        android:background="@drawable/shap_"
+        android:background="#4000"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/image_pro"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,27 +55,27 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center_horizontal"
                 android:text="MidTown"
+                android:textStyle="bold"
                 android:id="@+id/text_one_id"
-                android:textColor="#000"
-                android:textSize="18dp" />
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New cairo"
                 android:id="@+id/text_two_id"
-                android:textColor="#000"
-                android:textSize="18dp" />
+                android:textColor="#FFFF"
+                android:textSize="16sp" />
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:gravity="center"
+            android:gravity="right"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,46 +93,52 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Start From:"
-                    android:textColor="#000"
-                    android:textSize="18dp"
+                    android:text="Start From: "
+                    android:textColor="#FFFF"
+                    android:textSize="16sp"
 
+                    />
+
+                <TextView
+                    android:id="@+id/number_start_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="    3 "
+
+                    android:textColor="#FFFF"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:textStyle="bold"
+                    android:textColor="#FFFF"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="    3 "
-                    android:id="@+id/number_start_id"
-
-                    android:textColor="#000"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="M"
-                    android:textColor="#000" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text=" - "
-                    android:textColor="#000" />
+                    android:textColor="#FFFF"
+                    />
 
                 <TextView
+                    android:id="@+id/number_end_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" 4 "
-                    android:id="@+id/number_end_id"
 
-                    android:textColor="#000" />
+                    android:textColor="#FFFF"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="M"
-                    android:textColor="#000" />
+                    android:textStyle="bold"
+                    android:textColor="#FFFF"
+                    />
 
 
             </LinearLayout>
@@ -144,12 +147,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-20dp"
-                android:layout_marginTop="-15dp"
-                android:layout_marginBottom="-10dp"
+                android:layout_marginTop="-20dp"
+                android:layout_marginBottom="-15dp"
                 android:numStars="4"
-                android:theme="@style/RatingBar"
-                android:scaleX="0.5"
-                android:scaleY="0.4" />
+                android:scaleX="0.4"
+                android:scaleY="0.4"
+                android:theme="@style/RatingBar" />
         </LinearLayout>
 
 
