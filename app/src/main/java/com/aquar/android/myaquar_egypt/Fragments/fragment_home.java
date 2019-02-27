@@ -29,17 +29,21 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.aquar.android.myaquar_egypt.Activity.Login;
 import com.aquar.android.myaquar_egypt.Activity.MainActivity;
 import com.aquar.android.myaquar_egypt.Activity.Projectdetails;
 import com.aquar.android.myaquar_egypt.Adapter.example_adapter_for_home_fragment;
+import com.aquar.android.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.android.myaquar_egypt.Model.HomeApi.ModelArray;
 import com.aquar.android.myaquar_egypt.Model.HomeApi.ModelObjects;
+import com.aquar.android.myaquar_egypt.Model.Login.userResPOJO;
 import com.aquar.android.myaquar_egypt.Model.modle_home_fragment;
 import com.aquar.android.myaquar_egypt.R;
 import com.aquar.android.myaquar_egypt.Utils.ConstantsUrl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParsePosition;
@@ -49,6 +53,11 @@ import java.util.ArrayList;
 public class fragment_home extends Fragment {
     int x = 0;
     int y = 0;
+
+
+      public int id  ;
+
+
     private int currnt = R.drawable.ic_favorite_normal_black_24dp;
     private ArrayList<modle_home_fragment> mExampleList;
     private RecyclerView mRecyclerView;
@@ -67,6 +76,9 @@ public class fragment_home extends Fragment {
     }
 
 
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -75,31 +87,14 @@ public class fragment_home extends Fragment {
         mRecyclerView = v.findViewById(R.id.recyclerView_fragment_home);
         GetHome_Data();
 
-
 /////////
 
 
         //////////////////
 
-        mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
-            @Override
-            public void intent_to_detales(int pos, ImageView imageView) {
-                go_detales(pos, imageView);
-                Toast.makeText(getContext(), "fsnhoibfwn", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void make_love(int pos, ImageView img) {
-
-            }
-        });
         return v;
 
-    }
-    public void go_detales(int pos, ImageView img) {
-        Intent intent = new Intent(getActivity(), Projectdetails.class);
-        startActivity(intent);
     }
 
 
@@ -115,16 +110,29 @@ public class fragment_home extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
 
-
-
-                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
                         ModelArray array = gson.fromJson(response.toString(), ModelArray.class);
                         list = array.getProjects();
                         setRecyclerData(list);
 
-//                        Toast.makeText(getActivity(), list.get(0).getProduct_id()+"knk", Toast.LENGTH_SHORT).show();
-                        Log.d("data", "onResponse: "+list.get(0).getProject_img());
+
+                        mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
+
+                            @Override
+                            public void intent_to_detales(int pos, ImageView imageView) {
+                                go_detales(pos, imageView);
+
+                                id = list.get(pos).getProduct_id();
+
+                                Toast.makeText(getContext(), id+"", Toast.LENGTH_SHORT).show();
+
+                            }
+                            @Override
+                            public void make_love(int pos, ImageView img) {
+
+                            }
+                        });
                     }
 
                     @Override
@@ -145,130 +153,17 @@ public class fragment_home extends Fragment {
     }
 
 
-    //////////
-/*
-initSwipe();
 
-
-    }*/
-
-
-
-
-/*
-    public void make_love_2(int pos,ImageView img) {
-
-
+    public void go_detales(int pos, ImageView img) {
+        Intent intent = new Intent(getActivity(), Projectdetails.class);
+        startActivity(intent);
     }
 
-    public void make_love_(int pos,ImageView img) {
-        x++;
-        if (x % 2 != 0) {
-            img.setImageResource(R.drawable.ic_favorite_black_24dp);
-        } else
-            img.setImageResource(R.drawable.ic_favorite_normal_black_24dp);
-        if (x > 100) {
-            x = 0;
-        }
-    }
-z
-
-    public void share_(int pos, ImageView img, int i) {
-        Toast.makeText(getActivity(), "share" + i + "  " + pos, Toast.LENGTH_LONG).show();
-    }
-*/
-
-/*
-
-    private void initSwipe() {
-        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-
-            @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-
-                return false;
-            }
-
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-//                int position = viewHolder.getAdapterPosition();
-                int postion=viewHolder.getAdapterPosition();
-
-                if (direction == ItemTouchHelper.LEFT) {
-
-                    //make love
-                    ImageView im= viewHolder.itemView.findViewById(R.id.love_button);
 
 
 
-                    if(currnt==R.drawable.ic_favorite_normal_black_24dp){
-                        im.setImageResource(R.drawable.ic_favorite_black_24dp);
-                    }else{
-                        im.setImageResource(R.drawable.ic_favorite_black_24dp);
-                    }
-
-
-                    mAdapter.notifyItemChanged(postion,im);
 
 
 
-mAdapter.notifyItemChanged(postion);
-
-                }
-                else {
-                   //make share
-                    Toast.makeText(getActivity(), "make share", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-            Paint p;
-
-            @Override
-            public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-                    dX=dX/4;
-                Bitmap icon;
-                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
-
-                    View itemView = viewHolder.itemView;
-                    float height = (float) itemView.getBottom() - (float) itemView.getTop();
-                    float width = height /3;
-
-                    if (dX > 0) {
-                        RectF background = new RectF((float) itemView.getLeft(), (float) itemView.getTop(), dX, (float) itemView.getBottom());
-                         icon = BitmapFactory.decodeResource(getResources(), R.drawable.share);
-                        RectF icon_dest = new RectF((float) itemView.getLeft() + width, (float) itemView.getTop() + width, (float) itemView.getLeft() + 2 * width, (float) itemView.getBottom() - width);
-                        c.drawBitmap(icon, null, icon_dest, p);
-                        int postion=viewHolder.getAdapterPosition();
-
-
-                    }
-                    else {
-                        RectF background = new RectF((float) itemView.getRight() + dX, (float) itemView.getTop(), (float) itemView.getRight(), (float) itemView.getBottom());
-                        icon = BitmapFactory.decodeResource(getResources(), R.drawable.liked);
-                        RectF icon_dest = new RectF((float) itemView.getRight() - 2 * width, (float) itemView.getTop() + width, (float) itemView.getRight() - width, (float) itemView.getBottom() - width);
-                        c.drawBitmap(icon, null, icon_dest, p);
-                        ////
-
-
-                    }
-                }
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-            }
-        };
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(mRecyclerView);
-
-
-
-    }
-    */
-    /*
-    public  int return_posation(int i){
-
-        return i;
-
-    }
-*/
 
 }
