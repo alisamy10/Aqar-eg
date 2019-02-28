@@ -3,44 +3,115 @@ package com.aquar.myaquar_egypt.Adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.aquar.myaquar_egypt.Model.ModelOfEventsAndNews;
+import com.aquar.myaquar_egypt.Model.HomeApi.ModelObjects;
+import com.aquar.myaquar_egypt.Model.ModelOfNewsAndEvent.ModelArrayOfEventAndNews;
+import com.aquar.myaquar_egypt.Model.ModelOfNewsAndEvent.ModelOfEventAndNews;
 import com.aquar.myaquar_egypt.R;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class EventsAndNewsAdapter extends ArrayAdapter {
+public class EventsAndNewsAdapter  extends RecyclerView.Adapter<EventsAndNewsAdapter.ExampleViewHolder> {
+    /////
+    private ArrayList<ModelOfEventAndNews> mExampleList;
+    private Context context;
 
-    private ArrayList<ModelOfEventsAndNews> mlist;
+    private EventsAndNewsAdapter.OnItemClickListener mListener;
 
 
-    public EventsAndNewsAdapter(@NonNull Context context, int resource, @NonNull ArrayList objects) {
-        super(context, resource, objects);
-        mlist = objects;
+
+
+    public interface OnItemClickListener {
+
+        void intent_to_detales(int pos,RelativeLayout relativeLayout);
+
+
     }
+
+    public EventsAndNewsAdapter() {
+    }
+
+    public void setOnItemClickListener(EventsAndNewsAdapter.OnItemClickListener listener) {
+        mListener = listener;
+    }
+    /////
+    public static class ExampleViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView textView_1;
+
+        private ImageView
+                imageView_one_one;
+        private RelativeLayout relativeLayout;
+
+
+        public ExampleViewHolder(@NonNull View itemView, final EventsAndNewsAdapter.OnItemClickListener listener) {
+            super(itemView);
+
+            /////
+            imageView_one_one=itemView.findViewById(R.id.image_of_events);
+            textView_1=itemView.findViewById(R.id.text_of_events);
+           relativeLayout=itemView.findViewById(R.id.header);
+
+
+            relativeLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.intent_to_detales(position, relativeLayout);
+                        }
+                    } }
+            });
+        }
+    }
+
+    public EventsAndNewsAdapter(Context applicationContext, ArrayList<ModelOfEventAndNews> exampleList) {
+        mExampleList = exampleList;
+        context=applicationContext;
+    }
+
 
     @NonNull
     @Override
-    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public EventsAndNewsAdapter.ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View v= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_of_events,viewGroup,false);
 
-        LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        convertView = layoutInflater.inflate(R.layout.item_of_events, parent, false);
-
-        TextView textView = convertView.findViewById(R.id.text_of_events);
-        ImageView imageView = convertView.findViewById(R.id.image_of_events);
-
-
-        textView.setText(mlist.get(position).evntsText);
-        imageView.setImageResource(mlist.get(position).eventsImage);
-
-
-          return convertView ;
+        return new EventsAndNewsAdapter.ExampleViewHolder(v,mListener);
     }
+
+    @Override
+    public void onBindViewHolder(@NonNull EventsAndNewsAdapter.ExampleViewHolder exampleViewHolder, final int i) {
+        ModelOfEventAndNews currentitem = mExampleList.get(i);
+////
+//        exampleViewHolder.imageView_one_one.setImageResource(Integer.parseInt(currentitem.getProject_img()));
+
+        Glide.with(context).load(currentitem.getProject_img()).into(exampleViewHolder.imageView_one_one);
+////
+
+
+
+        exampleViewHolder.textView_1.setText( currentitem.getProject_name());
+
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+
+        return mExampleList.size();
+    }
+
+
 }

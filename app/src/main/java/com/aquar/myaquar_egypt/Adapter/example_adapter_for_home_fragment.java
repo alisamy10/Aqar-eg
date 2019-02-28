@@ -56,7 +56,6 @@ void make_love(int pos,ImageView img);
             imageView_one_one=itemView.findViewById(R.id.image_pro);
             textView_1=itemView.findViewById(R.id.text_one_id);
           textView_2  =itemView.findViewById(R.id.text_two_id);
-           textView_start =itemView.findViewById(R.id.number_start_id);
             textView_end=itemView.findViewById(R.id.number_end_id);
 
             /*
@@ -125,7 +124,6 @@ void make_love(int pos,ImageView img);
 
         exampleViewHolder.textView_1.setText( currentitem.getProject_name());
         exampleViewHolder.textView_2.setText(currentitem.getLocation());
-        exampleViewHolder.textView_start.setText(currentitem.getProduct_title());
         exampleViewHolder.textView_end.setText( currentitem.getProduct_id()+"");
 
         ///

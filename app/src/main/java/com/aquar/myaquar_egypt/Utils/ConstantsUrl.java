@@ -17,6 +17,8 @@ public class ConstantsUrl {
     public static final String Home = BasicURL+"allprojects";
     public static final String Registration = BasicURL+"registration";
     public static final String Login = BasicURL+"login";
+    public static final String Event = BasicURL+"events_news";
+
 
 
     //post Function
