@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".Activity.Login">
+    tools:context="com.aquar.myaquar_egypt.Activity.Login">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:orientation="horizontal"></LinearLayout>
+        android:orientation="horizontal"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,9 +80,9 @@
             android:inputType="textPassword"
             android:padding="15dp"
             android:paddingLeft="10dp"
-            android:textColor="#FFFFFF"
+            android:textColor="#000"
             android:textStyle="bold"
-            app:errorEnabled="true"></android.support.design.widget.TextInputEditText>
+            app:errorEnabled="true"/>
 
     </LinearLayout>
 
@@ -125,28 +125,25 @@
 
 
     <LinearLayout
-
-
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-          android:gravity="center"
+        android:gravity="center"
         android:layout_weight="0.4"
         android:orientation="horizontal">
 
         <LinearLayout
-
-            android:id="@+id/loginface"
+            android:id="@+id/loginFB"
             android:layout_width="135dp"
             android:layout_height="35dp"
-
             android:layout_marginRight="20dp"
             android:background="@drawable/shape_social">
 
             <ImageView
-                android:layout_marginLeft="5dp"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
                 android:paddingLeft="2dp"
                 android:src="@drawable/face" />
 
@@ -248,7 +245,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:onClick="skip"
+
             android:id="@+id/skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -263,3 +260,10 @@
     </LinearLayout>
 
 </LinearLayout>
+<!--<com.facebook.login.widget.LoginButton-->
+<!--android:id="@+id/login_button"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_gravity="center_horizontal"-->
+<!--android:layout_marginTop="30dp"-->
+<!--android:layout_marginBottom="30dp" />-->
