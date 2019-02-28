@@ -119,6 +119,7 @@ void make_love(int pos,ImageView img);
         ModelObjects currentitem = mExampleList.get(i);
 ////
 //        exampleViewHolder.imageView_one_one.setImageResource(Integer.parseInt(currentitem.getProject_img()));
+
         Glide.with(context).load(currentitem.getProject_img()).into(exampleViewHolder.imageView_one_one);
 ////
 

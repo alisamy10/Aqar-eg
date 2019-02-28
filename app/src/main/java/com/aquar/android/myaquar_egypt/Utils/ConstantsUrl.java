@@ -17,6 +17,8 @@ public class ConstantsUrl {
     public static final String verifyRegistration = BasicURL+"http:";
     public static final String verifyLogin = BasicURL+"http:";
     public static final String Home = BasicURL+"allprojects";
+    public static final String Eventandnews = BasicURL+"events_news";
+
 
 
 

@@ -20,11 +20,16 @@
         android:layout_height="wrap_content" />
 
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
 
         android:id="@+id/listOfEventsAndNews"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:padding="2dp"
 
-    </ListView>
+        android:scrollbars="vertical"
+        app:fastScrollEnabled="false" >
+
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>
