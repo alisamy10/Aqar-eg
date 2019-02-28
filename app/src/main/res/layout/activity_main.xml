@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="com.aquar.android.myaquar_egypt.Activity.MainActivity">
+    tools:context="com.aquar.myaquar_egypt.Activity.MainActivity">
 
 
     <RelativeLayout
@@ -81,20 +81,40 @@
             />
 
 
-        <android.support.design.widget.BottomNavigationView
+        <LinearLayout
+
             android:id="@+id/Home_BottomNavi"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:background="#FFFFFF"
-            android:visibility="visible"
-            app:itemTextColor="@color/com_facebook_button_background_color_disabled"
-            app:menu="@menu/navigation"
-            />
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:orientation="horizontal">
 
+            <Button
+                android:onClick="favourite"
+                android:id="@+id/favourite_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+            <Button
+                android:onClick="home"
+                android:id="@+id/home_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+            <Button
+                android:onClick="profile"
+                android:id="@+id/profile_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
 
+        </LinearLayout>
 
 
     </RelativeLayout>
@@ -106,6 +126,7 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         android:id="@+id/nv"
+
         >
 
     </android.support.design.widget.NavigationView>

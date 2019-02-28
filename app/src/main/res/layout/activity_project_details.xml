@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Projectdetails"
+    tools:context="com.aquar.myaquar_egypt.Activity.Projectdetails"
     android:orientation="vertical"
     android:background="@android:color/white">
 
@@ -54,7 +54,7 @@
                             android:textSize="16dp" />
 
                         <TextView
-                            android:id="@+id/project_location"
+                            android:id="@+id/devolepor"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
 
@@ -358,7 +358,7 @@
                                 android:textColor="@android:color/holo_red_dark"
                                 android:textSize="16dp" />
                             <TextView
-                                android:id="@+id/bedroom2"
+                                android:id="@+id/maxBedroom"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -394,7 +394,7 @@
                                 android:textColor="@android:color/holo_red_dark"
                                 android:textSize="16dp" />
                             <TextView
-                                android:id="@+id/bathroom2"
+                                android:id="@+id/maxBathroom"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -431,7 +431,7 @@
                                 android:textColor="@android:color/holo_red_dark"
                                 android:textSize="16dp" />
                             <TextView
-                                android:id="@+id/area2"
+                                android:id="@+id/maxArea"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
