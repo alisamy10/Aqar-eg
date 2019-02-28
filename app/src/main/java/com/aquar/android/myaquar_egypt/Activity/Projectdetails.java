@@ -45,9 +45,10 @@ import java.util.List;
 public class Projectdetails extends AppCompatActivity {
     private SliderLayout Product_Slider;
     private Button see_more_btn , like_btn,struct_btn , location_btn , call_btn , share_btn , go_youtube ,send_email_btn;
-    private TextView description,devolepor,project_name , textprice , texttype , textbedrooms , textbathroom , textarea;
+    private TextView description,devolepor,project_name , textprice , texttype , textMinBedrooms ,textmaxBedrooms ,textMinBathroom ,
+                    textMaxBathrooms ,textMinArea , textMaxArea;
     private ScrollView sc ;
-    int n=0;
+
 
 
     List <String> urlimage = new ArrayList<>() ;
@@ -65,6 +66,7 @@ public class Projectdetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_details);
 
+
         see_more_btn =(Button)findViewById(R.id.see_more_btn);
         description=(TextView)findViewById(R.id.description);
         like_btn =(Button)findViewById(R.id.like);
@@ -74,19 +76,30 @@ public class Projectdetails extends AppCompatActivity {
         call_btn = findViewById(R.id.call);
         textprice = findViewById(R.id.price);
        send_email_btn=findViewById(R.id.send_email);
+
         project_name=findViewById(R.id.project_name);
+
         devolepor=findViewById(R.id.devolepor);
 
         texttype =findViewById(R.id.type);
-        textbedrooms = findViewById(R.id.bedroom);
-        textbathroom = findViewById(R.id.bathroom);
-        textarea = findViewById(R.id.area);
+
+        textMinBedrooms = findViewById(R.id.bedroom);
+        textmaxBedrooms = findViewById(R.id.maxBedroom);
+
+        textMinBathroom = findViewById(R.id.bathroom);
+        textMaxBathrooms = findViewById(R.id.maxBathroom);
 
 
-        Toast.makeText(this, getId.id  +"9999999", Toast.LENGTH_SHORT).show();
+        textMinArea = findViewById(R.id.area);
+        textMaxArea = findViewById(R.id.maxArea);
+
+         // here get id of item from home for get its detalis
+        fragment_home k = new fragment_home();
+        int x =   k.id ;
+         //----------------------------------------
 
 
-        onLogin(1);
+        reciveDate(x);
 
 
        send_email_btn.setOnClickListener(new View.OnClickListener() {
@@ -215,7 +228,7 @@ public class Projectdetails extends AppCompatActivity {
     }
 
 
-    private void onLogin(int idValue) {
+    private void reciveDate(int idValue) {
         JSONObject object = new JSONObject();
         try {
             object.put("id", idValue);
@@ -238,30 +251,28 @@ public class Projectdetails extends AppCompatActivity {
 
                         list = array.getProject();
 
-
-                        Toast.makeText(Projectdetails.this,list.get(0).getPrice()+"", Toast.LENGTH_SHORT).show();
+                       //loop for image of slider
                         for (int i = 0 ;i<list.get(0).getSlider_images().size() ; i++) {
-
                             String x =   list.get(0).getSlider_images().get(i).getImage_url() ;
                              urlimage.add(x) ;
                         }
 
-
                         DataOfSlider(urlimage);
-                        setTexts(list.get(0).getDescription());
 
 
-                        setTdevoleporandproject(list.get(0).getDeveloper(),list.get(0).getProject(), String.valueOf(list.get(0).getPrice()),
-                        list.get(0).getType() , String.valueOf(list.get(0).getRooms()) , String.valueOf(list.get(0).getBathsrooms()),
-                         String.valueOf( list.get(0).getArea())
+
+
+                       // for set all texts of details
+                        setTdevoleporandproject(   list.get(0).getDescription()  ,list.get(0).getDeveloper(),list.get(0).getProject(),
+                                list.get(0).getMin_price()
+                                ,list.get(0).getType() ,list.get(0).getMin_rooms(), list.get(0).getMax_rooms() ,
+                                list.get(0).getMin_bathsrooms()
+                                ,list.get(0).getMax_bathsrooms() , list.get(0).getMin_area(), list.get(0).getMax_area()
+
                         );
 
-
+                         // for like button
                         liked_projects(Boolean.valueOf(list.get(0).getFavorite()));
-
-
-
-
 
                     }
 
@@ -301,26 +312,29 @@ public class Projectdetails extends AppCompatActivity {
         Product_Slider.setDuration(4000);
     }
 
-    private void setTexts (String dec ){
+
+    private void setTdevoleporandproject(String dec ,   String developer,String project , int price ,
+                                         String type , int minrooms , int maxrooms
+             ,int minBathrooms , int maxBathrooms  , int minArea , int maxArea  )
+    {
 
         description.setText(dec);
 
-
-    }
-    private void setTdevoleporandproject(String devolber,String project , String price , String type , String rooms , String bathroom
-             ,String area
-    ){
-
-
+        devolepor.setText(developer);
         project_name.setText(project);
-        devolepor.setText(devolber);
-        textprice.setText(price);
-        textarea.setText(area);
-        textbathroom.setText(bathroom);
-        textbedrooms.setText(rooms);
+
+        textprice.setText(price+"");
+
         texttype.setText(type);
 
+        textMinBedrooms.setText(minrooms+"");
+        textmaxBedrooms.setText(maxrooms+"");
 
+        textMinBathroom.setText(minBathrooms+"");
+        textMaxBathrooms.setText(maxBathrooms+"");
+
+        textMinArea.setText(minArea+"");
+        textMaxArea.setText(maxArea+"");
 
     }
 

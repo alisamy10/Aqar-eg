@@ -12,14 +12,16 @@ public class ModelObjectsOfProjectDetails {
      * developer : HDG
      * project : Azad
      * favorite : false
-     * rooms : 3
-     * bathsrooms : 1
-     * price : 5000
-     * area : 80
-     * garden : Not available
+     * min_rooms : 3
+     * max_rooms : 3
+     * min_bathsrooms : 1
+     * max_bathsrooms : 1
+     * min_price : 5000
+     * max_price : 5000
+     * min_area : 80
+     * max_area : 80
      * accommodation : null
      * location : New Cairo
-     * video : null
      * viewer_360 : http://aquar.me/myaquar_eg/uploads/products/360_2.jpg
      * description : prime location with an attractive payment plan, 10% Downpayment - 10% after 3 Months - 10% on Delivery &  Equal installments over 6 Years
      * slider_images : [{"image_id":2,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_5.jpg"},{"image_id":3,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_7.jpg"},{"image_id":4,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_9.jpg"},{"image_id":5,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_11.jpg"},{"image_id":6,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_31.jpg"},{"image_id":7,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/azad_pqroject.jpg"}]
@@ -31,14 +33,16 @@ public class ModelObjectsOfProjectDetails {
     private String developer;
     private String project;
     private String favorite;
-    private int rooms;
-    private int bathsrooms;
-    private int price;
-    private int area;
-    private String garden;
+    private int min_rooms;
+    private int max_rooms;
+    private int min_bathsrooms;
+    private int max_bathsrooms;
+    private int min_price;
+    private int max_price;
+    private int min_area;
+    private int max_area;
     private Object accommodation;
     private String location;
-    private Object video;
     private String viewer_360;
     private String description;
     private List<SliderImagesBean> slider_images;
@@ -91,44 +95,68 @@ public class ModelObjectsOfProjectDetails {
         this.favorite = favorite;
     }
 
-    public int getRooms() {
-        return rooms;
+    public int getMin_rooms() {
+        return min_rooms;
     }
 
-    public void setRooms(int rooms) {
-        this.rooms = rooms;
+    public void setMin_rooms(int min_rooms) {
+        this.min_rooms = min_rooms;
     }
 
-    public int getBathsrooms() {
-        return bathsrooms;
+    public int getMax_rooms() {
+        return max_rooms;
     }
 
-    public void setBathsrooms(int bathsrooms) {
-        this.bathsrooms = bathsrooms;
+    public void setMax_rooms(int max_rooms) {
+        this.max_rooms = max_rooms;
     }
 
-    public int getPrice() {
-        return price;
+    public int getMin_bathsrooms() {
+        return min_bathsrooms;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setMin_bathsrooms(int min_bathsrooms) {
+        this.min_bathsrooms = min_bathsrooms;
     }
 
-    public int getArea() {
-        return area;
+    public int getMax_bathsrooms() {
+        return max_bathsrooms;
     }
 
-    public void setArea(int area) {
-        this.area = area;
+    public void setMax_bathsrooms(int max_bathsrooms) {
+        this.max_bathsrooms = max_bathsrooms;
     }
 
-    public String getGarden() {
-        return garden;
+    public int getMin_price() {
+        return min_price;
     }
 
-    public void setGarden(String garden) {
-        this.garden = garden;
+    public void setMin_price(int min_price) {
+        this.min_price = min_price;
+    }
+
+    public int getMax_price() {
+        return max_price;
+    }
+
+    public void setMax_price(int max_price) {
+        this.max_price = max_price;
+    }
+
+    public int getMin_area() {
+        return min_area;
+    }
+
+    public void setMin_area(int min_area) {
+        this.min_area = min_area;
+    }
+
+    public int getMax_area() {
+        return max_area;
+    }
+
+    public void setMax_area(int max_area) {
+        this.max_area = max_area;
     }
 
     public Object getAccommodation() {
@@ -145,14 +173,6 @@ public class ModelObjectsOfProjectDetails {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public Object getVideo() {
-        return video;
-    }
-
-    public void setVideo(Object video) {
-        this.video = video;
     }
 
     public String getViewer_360() {

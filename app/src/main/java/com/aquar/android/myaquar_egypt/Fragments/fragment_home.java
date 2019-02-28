@@ -55,7 +55,7 @@ public class fragment_home extends Fragment {
     int y = 0;
 
 
-      public int id  ;
+      public static int id  ;
 
 
     private int currnt = R.drawable.ic_favorite_normal_black_24dp;
@@ -120,7 +120,7 @@ public class fragment_home extends Fragment {
                         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
                             @Override
-                            public void intent_to_detales(int pos, ImageView imageView) {
+                            public void intent_to_detales(int pos, ImageView imageView ) {
                                 go_detales(pos, imageView);
 
                                 id = list.get(pos).getProduct_id();
