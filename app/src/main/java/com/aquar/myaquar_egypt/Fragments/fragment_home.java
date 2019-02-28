@@ -1,25 +1,11 @@
 package com.aquar.myaquar_egypt.Fragments;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -29,24 +15,18 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.aquar.myaquar_egypt.Activity.Login;
-import com.aquar.myaquar_egypt.Activity.MainActivity;
 import com.aquar.myaquar_egypt.Activity.Projectdetails;
 import com.aquar.myaquar_egypt.Adapter.example_adapter_for_home_fragment;
-import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelArray;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelObjects;
-import com.aquar.myaquar_egypt.Model.Login.userResPOJO;
 import com.aquar.myaquar_egypt.Model.modle_home_fragment;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParsePosition;
 import java.util.ArrayList;
 
 
