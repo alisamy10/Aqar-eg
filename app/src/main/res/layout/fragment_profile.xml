@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context="Fragments.Profile_fragment"
+    tools:context="com.aquar.myaquar_egypt.Fragments.Profile_fragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
