@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="com.aquar.myaquar_egypt.Activity.MainActivity">
+    tools:context=".Activity.MainActivity">
 
 
     <RelativeLayout
@@ -24,51 +24,51 @@
             android:gravity="center">
 
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true">
-                        <Button
-                            android:id="@+id/searchBtn"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginEnd="8dp"
-                            android:layout_centerVertical="true"
-                            android:background="@drawable/ic_search_black_24dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+                <Button
+                    android:id="@+id/searchBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_search_black_24dp" />
 
-                        <ImageView
-                            android:id="@+id/logo_image"
-                            android:layout_width="130dp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_centerHorizontal="true"
-                            android:src="@drawable/logoxx" />
+                <ImageView
+                    android:id="@+id/logo_image"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/logoxx" />
 
-                        <EditText
-                            android:id="@+id/search_text"
-                            android:layout_width="200dp"
-                            android:layout_height="40dp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            android:visibility="invisible"
-                            />
-
-
-                        <Button
-                            android:id="@+id/navegation_button_menue"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_alignParentLeft="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="5dp"
-                            android:visibility="visible"
-                            android:background="@drawable/ic_menu_black_24dp" />
+                <EditText
+                    android:id="@+id/search_text"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="invisible"
+                    />
 
 
-                    </RelativeLayout>
+                <Button
+                    android:id="@+id/navegation_button_menue"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:visibility="visible"
+                    android:background="@drawable/ic_menu_black_24dp" />
 
-                </android.support.v7.widget.Toolbar>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
 
         <FrameLayout
             android:layout_below="@+id/ToolBar"
@@ -122,12 +122,40 @@
     <android.support.design.widget.NavigationView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:menu="@menu/navigation_menu"
         android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header"
-        android:id="@+id/nv"
-
         >
+
+
+  <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:background="#fff"
+      android:layout_height="wrap_content">
+
+      <android.support.design.widget.NavigationView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="start"
+          app:headerLayout="@layout/nav_header"
+          />
+
+            <ExpandableListView
+                android:id="@+id/lvExp"
+                tools:listheader="@layout/nav_header"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
+
+      <android.support.design.widget.NavigationView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="#fff"
+          android:id="@+id/nv"
+          app:menu="@menu/navigation_menu"
+          android:layout_gravity="start"
+          />
+
+  </LinearLayout>
+
 
     </android.support.design.widget.NavigationView>
 
