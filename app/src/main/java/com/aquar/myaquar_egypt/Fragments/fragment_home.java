@@ -85,6 +85,7 @@ public class fragment_home extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_fragment_home, container, false);
         mRecyclerView = v.findViewById(R.id.recyclerView_fragment_home);
+
         GetHome_Data();
 
 /////////

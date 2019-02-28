@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-
+android:paddingBottom="5dp"
         android:background="#4000"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/image_pro"
@@ -40,11 +40,13 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="114dp"
-            android:layout_height="56dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -53,12 +55,13 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top|center_horizontal"
+                android:layout_gravity="left"
                 android:text="MidTown"
                 android:textStyle="bold"
                 android:id="@+id/text_one_id"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
+
                 />
 
             <TextView
@@ -66,6 +69,8 @@
                 android:layout_height="wrap_content"
                 android:text="New cairo"
                 android:id="@+id/text_two_id"
+
+
                 android:textColor="#FFFF"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -77,6 +82,7 @@
             android:layout_marginStart="8dp"
             android:gravity="right"
             android:orientation="vertical"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -86,42 +92,20 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:gravity="right"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Start From: "
+                    android:text="Start From : "
                     android:textColor="#FFFF"
+
                     android:textSize="16sp"
 
                     />
 
-                <TextView
-                    android:id="@+id/number_start_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="    3 "
 
-                    android:textColor="#FFFF"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="M"
-                    android:textStyle="bold"
-                    android:textColor="#FFFF"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" - "
-                    android:textColor="#FFFF"
-                    />
 
                 <TextView
                     android:id="@+id/number_end_id"
