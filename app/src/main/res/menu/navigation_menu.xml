@@ -3,47 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:HTMLCode="http://schemas.android.com/tools">
 
-
-    <item
-        android:id="@+id/catog_nav"
-
-        android:enabled="true"
-        android:title="Category"
-        android:visible="true">
-
-
-        <menu>
-
-
-            <item
-                android:id="@+id/catog_nav1"
-                app:showAsAction="ifRoom"
-                android:title="Category" />
-            <item
-                android:id="@+id/catog_nav2"
-                app:showAsAction="ifRoom"
-                android:title="Category" />
-            <item
-                android:id="@+id/catog_nav3"
-                app:showAsAction="ifRoom"
-                android:title="Category" />
-
-        </menu>
-    </item>
-
     <item
         android:id="@+id/project_id_nav"
+        android:visible="false"
         android:title="Project" />
 
     <item
         android:id="@+id/news_event_nav"
 
         android:title="News and Events" />
-<item
+
+    <item
         android:id="@+id/find_home"
-
         android:title="Find home" />
-
 
     <item
         android:id="@+id/about_us_nav"
@@ -61,5 +33,4 @@
         android:id="@+id/logout_nav"
         android:title="Log out" />
 
-
-</menu>
+    </menu>

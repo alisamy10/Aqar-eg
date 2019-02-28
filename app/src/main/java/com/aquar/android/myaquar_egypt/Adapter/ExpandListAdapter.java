@@ -1,5 +1,8 @@
 package com.aquar.android.myaquar_egypt.Adapter;
 
+import java.util.HashMap;
+import java.util.List;
+
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -10,24 +13,26 @@ import android.widget.TextView;
 
 import com.aquar.android.myaquar_egypt.R;
 
-import java.util.HashMap;
-import java.util.List;
+public class ExpandListAdapter extends BaseExpandableListAdapter {
 
-public class ExpandListAdapter  extends BaseExpandableListAdapter {
     private Context _context;
     private List<String> _listDataHeader; // header titles
+
+    public ExpandListAdapter() {
+    }
+
     // child data in format of header title, child title
     private HashMap<String, List<String>> _listDataChild;
 
     public ExpandListAdapter(Context context, List<String> listDataHeader,
-                             HashMap<String, List<String>> listChildData) {
+                                 HashMap<String, List<String>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
     }
 
     @Override
-    public String getChild(int groupPosition, int childPosititon) {
+    public Object getChild(int groupPosition, int childPosititon) {
         return this._listDataChild.get(this._listDataHeader.get(groupPosition))
                 .get(childPosititon);
     }
@@ -103,5 +108,5 @@ public class ExpandListAdapter  extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
-    }}
-
+    }
+}
