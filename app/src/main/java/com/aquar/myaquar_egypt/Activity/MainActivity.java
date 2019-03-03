@@ -18,6 +18,7 @@ import android.view.DragEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListAdapter;
@@ -143,6 +144,40 @@ public class MainActivity extends AppCompatActivity  {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //news and events
+                if(position == 0 ){
+                    Toast.makeText(MainActivity.this, position+"", Toast.LENGTH_SHORT).show();
+
+                }
+                //about us
+                else if(position==1){
+                    Toast.makeText(MainActivity.this, position+"", Toast.LENGTH_SHORT).show();
+
+
+                }
+                //contact us
+                else if(position == 2){
+                    Toast.makeText(MainActivity.this, position+"", Toast.LENGTH_SHORT).show();
+
+
+                }
+                //terms and policies
+                else if(position==3){
+                    Toast.makeText(MainActivity.this, position+"", Toast.LENGTH_SHORT).show();
+
+
+                }
+                //logout
+                else if(position == 4 ){
+                    Toast.makeText(MainActivity.this, position+"", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -168,19 +203,32 @@ public class MainActivity extends AppCompatActivity  {
               @Override
               public boolean onChildClick(ExpandableListView parent, View v,
                                           int groupPosition, int childPosition, long id) {
-                  if (groupPosition==0)
-                  {
-                      Toast.makeText(
-                              getApplicationContext(), listDataHeader.get(groupPosition)
-                                      + " : " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT)
-
-                              .show();}
-                  else
-                  {
-                      Intent i=new Intent(getApplicationContext(),struct_activity.class);
-                      startActivity(i);
+                  //Residential
+                  if (childPosition==0) {
+                      Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
                   }
+                  //second home
+                  else if (childPosition == 1){
+                      Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
 
+                  }
+                  //commercial
+                  else if (childPosition == 2 ){
+                      Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
+
+                  }
+                  //medical
+                  else if (childPosition == 3)
+                  {
+                      Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
+
+                  }
+                  //adminstrative
+                  else if (childPosition == 4)
+                  {
+                      Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
+
+                  }
 
                   return false;
               }
