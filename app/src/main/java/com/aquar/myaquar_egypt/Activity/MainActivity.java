@@ -236,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
                 //Residential
                 if (childPosition == 0) {
                     Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
+
                 }
                 //second home
                 else if (childPosition == 1) {
