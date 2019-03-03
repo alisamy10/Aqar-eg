@@ -24,6 +24,7 @@ import com.aquar.myaquar_egypt.Model.socialLogin.socialLoginPOJO;
 
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
+import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -35,6 +36,7 @@ import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
@@ -72,6 +74,7 @@ public class Login extends AppCompatActivity {
         FacebookSdk.sdkInitialize(this);
         setContentView(R.layout.login);
         facebookToken();
+        googleToken();
         ButterKnife.bind(this);
 
     }
@@ -121,6 +124,7 @@ public class Login extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
+                        myUtils.handleError(Login.this, anError.getErrorBody(), anError.getErrorCode());
 
                     }
                 });
@@ -232,8 +236,8 @@ public class Login extends AppCompatActivity {
     }
     @OnClick(R.id.logingoggleplus)
     public void onGoogleBT() {
-//        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-//        startActivityForResult(signInIntent, RC_SIGN_IN);
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     @OnClick(R.id.skip)
@@ -270,6 +274,7 @@ public class Login extends AppCompatActivity {
 
         } catch (ApiException e) {
             Log.d("googleData", "signInResult:failed code=" + e.getStatusCode());
+//            Log.d("googleData", "signInResult:failed code=" + e.toString());
 
             Toast.makeText(this, "Failed to do Sign In", Toast.LENGTH_SHORT).show();
         }
@@ -337,6 +342,15 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(Login.this, "Failed to do Sign In", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void googleToken() {
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
 
     @Override

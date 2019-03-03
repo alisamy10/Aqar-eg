@@ -53,7 +53,7 @@ public class UserInfo {
         this.phone = phone;
     }
 
-    public long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 

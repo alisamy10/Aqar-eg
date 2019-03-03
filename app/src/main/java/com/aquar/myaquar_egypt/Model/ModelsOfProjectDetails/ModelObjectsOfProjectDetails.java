@@ -33,14 +33,14 @@ public class ModelObjectsOfProjectDetails {
     private String developer;
     private String project;
     private String favorite;
-    private int min_rooms;
-    private int max_rooms;
-    private int min_bathsrooms;
-    private int max_bathsrooms;
+    private String min_rooms;
+    private String max_rooms;
+    private String min_bathsrooms;
+    private String max_bathsrooms;
     private int min_price;
     private int max_price;
-    private int min_area;
-    private int max_area;
+    private String min_area;
+    private String max_area;
     private Object accommodation;
     private String location;
     private String viewer_360;
@@ -95,35 +95,35 @@ public class ModelObjectsOfProjectDetails {
         this.favorite = favorite;
     }
 
-    public int getMin_rooms() {
+    public String getMin_rooms() {
         return min_rooms;
     }
 
-    public void setMin_rooms(int min_rooms) {
+    public void setMin_rooms(String min_rooms) {
         this.min_rooms = min_rooms;
     }
 
-    public int getMax_rooms() {
+    public String getMax_rooms() {
         return max_rooms;
     }
 
-    public void setMax_rooms(int max_rooms) {
+    public void setMax_rooms(String max_rooms) {
         this.max_rooms = max_rooms;
     }
 
-    public int getMin_bathsrooms() {
+    public String getMin_bathsrooms() {
         return min_bathsrooms;
     }
 
-    public void setMin_bathsrooms(int min_bathsrooms) {
+    public void setMin_bathsrooms(String min_bathsrooms) {
         this.min_bathsrooms = min_bathsrooms;
     }
 
-    public int getMax_bathsrooms() {
+    public String getMax_bathsrooms() {
         return max_bathsrooms;
     }
 
-    public void setMax_bathsrooms(int max_bathsrooms) {
+    public void setMax_bathsrooms(String max_bathsrooms) {
         this.max_bathsrooms = max_bathsrooms;
     }
 
@@ -143,19 +143,19 @@ public class ModelObjectsOfProjectDetails {
         this.max_price = max_price;
     }
 
-    public int getMin_area() {
+    public String getMin_area() {
         return min_area;
     }
 
-    public void setMin_area(int min_area) {
+    public void setMin_area(String min_area) {
         this.min_area = min_area;
     }
 
-    public int getMax_area() {
+    public String getMax_area() {
         return max_area;
     }
 
-    public void setMax_area(int max_area) {
+    public void setMax_area(String max_area) {
         this.max_area = max_area;
     }
 
