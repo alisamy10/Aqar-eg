@@ -178,6 +178,16 @@ public class MainActivity extends AppCompatActivity  {
 
             }
         });
+
+        closeExpandableListWhenScroll();
+
+
+    }
+
+
+
+    private void closeExpandableListWhenScroll(){
+
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -193,6 +203,8 @@ public class MainActivity extends AppCompatActivity  {
         });
 
     }
+
+
       private void expandableListViewForNavDrawer(){
 
 
