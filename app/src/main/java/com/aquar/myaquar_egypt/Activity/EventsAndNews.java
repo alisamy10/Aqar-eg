@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -16,12 +15,8 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Adapter.EventsAndNewsAdapter;
-import com.aquar.myaquar_egypt.Adapter.example_adapter_for_home_fragment;
-import com.aquar.myaquar_egypt.Model.HomeApi.ModelArray;
-import com.aquar.myaquar_egypt.Model.HomeApi.ModelObjects;
 import com.aquar.myaquar_egypt.Model.ModelOfNewsAndEvent.ModelArrayOfEventAndNews;
 import com.aquar.myaquar_egypt.Model.ModelOfNewsAndEvent.ModelOfEventAndNews;
-import com.aquar.myaquar_egypt.Model.modle_home_fragment;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.google.gson.Gson;
@@ -105,6 +100,8 @@ public class EventsAndNews extends AppCompatActivity {
 
     public void go_detales(int pos, RelativeLayout relativeLayout) {
         Toast.makeText(this, "go to event and news"+pos, Toast.LENGTH_SHORT).show();
+         startActivity(new Intent(this , EventsAndNewsDetails.class));
+
 
     }
 

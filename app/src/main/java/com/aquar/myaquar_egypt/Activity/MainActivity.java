@@ -1,7 +1,9 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,11 +14,16 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.aquar.myaquar_egypt.Adapter.ExpandListAdapter;
@@ -42,147 +49,49 @@ public class MainActivity extends AppCompatActivity  {
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
+    private ListView listView ;
+   
 
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
-
+    String[] values = new String[] {
+            "News and Events",
+            "About us",
+            "Contact us",
+            "Terms and policies",
+            "Log out "
+    };
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        expListView = (ExpandableListView) findViewById(R.id.lvExp);
+        //id
+        dl = findViewById(R.id.activity_main);
+        buttonnavegation =  findViewById(R.id.navegation_button_menue);
+        expListView =  findViewById(R.id.lvExp);
+        listView = findViewById(R.id.list_item);
 
+        firstFragmentRun();
+        listViewOfNavDrawer();
         prepareListData();
-        listAdapter = new ExpandListAdapter(MainActivity.this, listDataHeader, listDataChild) ;
-        expListView.setAdapter(listAdapter);
+        expandableListViewForNavDrawer();
 
-        fragment = new fragment_home();
-        transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
-        transaction.commitNow();
 
-        buttonnavegation = (Button) findViewById(R.id.navegation_button_menue);
         buttonnavegation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 dl.openDrawer(GravityCompat.START);
             }
         });
 
-        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                if (groupPosition==0)
-                {
-                Toast.makeText(
-                        getApplicationContext(),
-                        listDataHeader.get(groupPosition)
-                                + " : " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT)
-
-                        .show();}
-                        else
-                {
-                    Intent i=new Intent(getApplicationContext(),struct_activity.class);
-                    startActivity(i);
-                }
-
-
-                return false;
-            }
-        });
-
-
-        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                if (groupPosition==0) {
-                    Toast.makeText(getApplicationContext(),
-                            listDataHeader.get(groupPosition) + " Expanded",
-                            Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-
-
-
-                    Intent i=new Intent(getApplicationContext(),struct_activity.class);
-                    startActivity(i);
-                }
-
-            }
-
-        });
-
-        expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-                if (groupPosition==0) {
-                    Toast.makeText(getApplicationContext(),
-                            listDataHeader.get(groupPosition) + " Collapsed",
-                            Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-
-
-                    Intent i=new Intent(getApplicationContext(),struct_activity.class);
-                    startActivity(i);
-                }
-
-
-            }
-        });
-
-        dl = (DrawerLayout) findViewById(R.id.activity_main);
         t = new ActionBarDrawerToggle(this, dl, R.string.open, R.string.close);
-
         dl.addDrawerListener(t);
         t.syncState();
-
-        nv = (NavigationView) findViewById(R.id.nv);
-        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                int id = item.getItemId();
-                switch (id) {
-                    case R.id.project_id_nav:
-                        Toast.makeText(MainActivity.this, "project", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.news_event_nav:
-                        Toast.makeText(MainActivity.this, "news and enents", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.about_us_nav:
-                        Toast.makeText(MainActivity.this, "about us", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.contact_us_nav:
-                        Toast.makeText(MainActivity.this, "contact us", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.terma_polic_nav:
-                        Toast.makeText(MainActivity.this, "term and polices", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.setting_nav:
-                        Toast.makeText(MainActivity.this, "setting", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.logout_nav:
-                        Toast.makeText(MainActivity.this, "log out", Toast.LENGTH_SHORT).show();
-                        break;
-                    default:
-                        break;
-                }
-
-                return true;
-            }
-        });
 
 
     }
@@ -205,17 +114,15 @@ public class MainActivity extends AppCompatActivity  {
     }
 
 
-
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (t.onOptionsItemSelected(item))
-            return true;
-
-        return super.onOptionsItemSelected(item);
-    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        if (t.onOptionsItemSelected(item))
+//            return true;
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @OnClick(R.id.searchBtn)
     public void onSearchClick(){
@@ -230,6 +137,125 @@ public class MainActivity extends AppCompatActivity  {
             super.onBackPressed();
         }
     }
+
+
+    private void listViewOfNavDrawer(){
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //news and events
+                if(position == 0 ){
+                    Toast.makeText(MainActivity.this, position+"", Toast.LENGTH_SHORT).show();
+
+                }
+                //about us
+                else if(position==1){
+                    Toast.makeText(MainActivity.this, position+"", Toast.LENGTH_SHORT).show();
+
+
+                }
+                //contact us
+                else if(position == 2){
+                    Toast.makeText(MainActivity.this, position+"", Toast.LENGTH_SHORT).show();
+
+
+                }
+                //terms and policies
+                else if(position==3){
+                    Toast.makeText(MainActivity.this, position+"", Toast.LENGTH_SHORT).show();
+
+
+                }
+                //logout
+                else if(position == 4 ){
+                    Toast.makeText(MainActivity.this, position+"", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
+
+        closeExpandableListWhenScroll();
+
+
+    }
+
+
+
+    private void closeExpandableListWhenScroll(){
+
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                if(scrollState!=0) {
+                    expListView.collapseGroup(0);
+                }
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+            }
+        });
+
+    }
+
+
+      private void expandableListViewForNavDrawer(){
+
+
+          listAdapter = new ExpandListAdapter(MainActivity.this, listDataHeader, listDataChild) ;
+          expListView.setAdapter(listAdapter);
+          expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+              @Override
+              public boolean onChildClick(ExpandableListView parent, View v,
+                                          int groupPosition, int childPosition, long id) {
+                  //Residential
+                  if (childPosition==0) {
+                      Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
+                  }
+                  //second home
+                  else if (childPosition == 1){
+                      Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
+
+                  }
+                  //commercial
+                  else if (childPosition == 2 ){
+                      Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
+
+                  }
+                  //medical
+                  else if (childPosition == 3)
+                  {
+                      Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
+
+                  }
+                  //adminstrative
+                  else if (childPosition == 4)
+                  {
+                      Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
+
+                  }
+
+                  return false;
+              }
+          });
+
+      }
+
+    private void firstFragmentRun(){
+        fragment = new fragment_home();
+        transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
+        transaction.commitNow();
+    }
+
+
     public void favourite(View view) {
         fragment = new Favourite();
         transaction = getSupportFragmentManager().beginTransaction();

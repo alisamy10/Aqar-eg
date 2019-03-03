@@ -94,6 +94,7 @@ public class Profile_fragment extends Fragment {
         UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
         try {
             if (!Objects.equals(userPOJO.getEmail(), null)) {
+
                 Glide.with(getActivity()).load(userPOJO.getToken()).into(profile_photo);
                 user_name.setText(userPOJO.getUsername());
                 username.setText(userPOJO.getUsername());
@@ -120,7 +121,6 @@ public class Profile_fragment extends Fragment {
 
     @OnClick(R.id.edit_profile_photo)
     public void setChooseImage() {
-
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
