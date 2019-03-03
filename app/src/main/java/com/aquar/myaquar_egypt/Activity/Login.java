@@ -1,7 +1,7 @@
 package com.aquar.myaquar_egypt.Activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -50,6 +50,7 @@ import java.util.Arrays;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dmax.dialog.SpotsDialog;
 
 public class Login extends AppCompatActivity {
     @BindView(R.id.enter_email)
@@ -68,6 +69,10 @@ public class Login extends AppCompatActivity {
     EditText edit_text_firstName, edit_text_phone, edit_text_email, edit_text_password, edit_text_jobTitle;
     userResPOJO resPOJO;
 
+    //dialog
+    AlertDialog dialog1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +81,7 @@ public class Login extends AppCompatActivity {
         facebookToken();
         googleToken();
         ButterKnife.bind(this);
+
 
     }
 
@@ -228,7 +234,7 @@ public class Login extends AppCompatActivity {
                 });
     }
 
-    @OnClick(R.id.loginFB)
+  @OnClick(R.id.loginFB)
     public void onFacebookBT() {
         LoginManager.getInstance().logInWithReadPermissions(Login.this, Arrays.asList(
                 "public_profile", "email"));

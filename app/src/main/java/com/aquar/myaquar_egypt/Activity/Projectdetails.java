@@ -1,5 +1,6 @@
 package com.aquar.myaquar_egypt.Activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -45,6 +46,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import dmax.dialog.SpotsDialog;
+
 public class Projectdetails extends AppCompatActivity {
     private SliderLayout Product_Slider;
     private Button see_more_btn, like_btn, struct_btn, location_btn, call_btn, share_btn, go_youtube, send_email_btn;
@@ -52,6 +55,7 @@ public class Projectdetails extends AppCompatActivity {
             textMaxBathrooms, textMinArea, textMaxArea;
     private ScrollView sc;
 
+    private AlertDialog dialog1;
 
     List<String> urlimage = new ArrayList<>();
 
@@ -65,6 +69,13 @@ public class Projectdetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_details);
+
+
+        dialog1= new SpotsDialog.Builder().setContext(Projectdetails.this).setTheme(R.style.Custom).build();
+        dialog1.setMessage("Please wait.....");
+
+
+        dialog1.show();
 
 
         see_more_btn = (Button) findViewById(R.id.see_more_btn);
@@ -235,6 +246,8 @@ public class Projectdetails extends AppCompatActivity {
 
                         list = array.getProject();
 
+                        dialog1.dismiss();
+
                         //loop for image of slider
                         for (int i = 0; i < list.get(0).getSlider_images().size(); i++) {
                             String x = list.get(0).getSlider_images().get(i).getImage_url();
@@ -266,6 +279,9 @@ public class Projectdetails extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
+
+                        dialog1.dismiss();
+                        Toast.makeText(Projectdetails.this, "connection field", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -352,10 +368,8 @@ public class Projectdetails extends AppCompatActivity {
 
                         @Override
                         public void onError(ANError anError) {
-                            Toast.makeText(Projectdetails.this, anError.toString(), Toast.LENGTH_SHORT).show();
-                            myUtils.handleError(Projectdetails.this, anError.getErrorBody(), anError.getErrorCode());
-                            Log.d("FavouriteERR", anError.getResponse() + "");
-                            Log.d("FavouriteERRCode", anError.getErrorCode() + "");
+                            dialog1.dismiss();
+
                         }
                     });
         } catch (Exception e) {

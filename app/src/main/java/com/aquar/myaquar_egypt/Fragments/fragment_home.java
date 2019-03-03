@@ -1,5 +1,6 @@
 package com.aquar.myaquar_egypt.Fragments;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.aquar.myaquar_egypt.Activity.Login;
 import com.aquar.myaquar_egypt.Activity.Projectdetails;
 import com.aquar.myaquar_egypt.Adapter.example_adapter_for_home_fragment;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelArray;
@@ -27,6 +29,8 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import dmax.dialog.SpotsDialog;
 
 
 public class fragment_home extends Fragment {
@@ -45,6 +49,7 @@ public class fragment_home extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private static final float buttonWidth = 300;
 
+    private AlertDialog dialog1;
 
 
     ArrayList<ModelObjects>  list  = new ArrayList<>();
@@ -65,7 +70,16 @@ public class fragment_home extends Fragment {
         View v = inflater.inflate(R.layout.fragment_fragment_home, container, false);
         mRecyclerView = v.findViewById(R.id.recyclerView_fragment_home);
 
+        dialog1= new SpotsDialog.Builder().setContext(getContext()).setTheme(R.style.Custom).build();
+        dialog1.setMessage("Please wait.....");
+
+
+
+
+
         GetHome_Data();
+
+
 
 /////////
 
@@ -83,6 +97,9 @@ public class fragment_home extends Fragment {
     private void GetHome_Data() {
 
 
+
+        dialog1.show();
+
         AndroidNetworking.get(ConstantsUrl.Home)
                 .setPriority(Priority.LOW)
                 .build()
@@ -95,6 +112,8 @@ public class fragment_home extends Fragment {
                         ModelArray array = gson.fromJson(response.toString(), ModelArray.class);
                         list = array.getProjects();
                         setRecyclerData(list);
+
+                        dialog1.dismiss();
 
 
                         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
@@ -119,6 +138,7 @@ public class fragment_home extends Fragment {
                     public void onError(ANError anError) {
 
                         Toast.makeText(getContext(), "connection field", Toast.LENGTH_SHORT).show();
+                        dialog1.dismiss();
                     }
                 });
     }
