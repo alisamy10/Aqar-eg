@@ -19,7 +19,6 @@ import com.aquar.myaquar_egypt.Activity.Projectdetails;
 import com.aquar.myaquar_egypt.Adapter.example_adapter_for_home_fragment;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelArray;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelObjects;
-import com.aquar.myaquar_egypt.Model.modle_home_fragment;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.google.gson.Gson;
@@ -39,7 +38,7 @@ public class fragment_home extends Fragment {
 
 
     private int currnt = R.drawable.ic_favorite_normal_black_24dp;
-    private ArrayList<modle_home_fragment> mExampleList;
+
     private RecyclerView mRecyclerView;
     private ImageView love_behind;
     private example_adapter_for_home_fragment mAdapter;

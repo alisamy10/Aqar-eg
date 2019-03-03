@@ -19,9 +19,11 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
+
 import com.aquar.myaquar_egypt.Fragments.fragment_home;
 import com.aquar.myaquar_egypt.Model.ModelsOfProjectDetails.ArrayModelOfProjectsDetails;
 import com.aquar.myaquar_egypt.Model.ModelsOfProjectDetails.ModelObjectsOfProjectDetails;
+
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.bumptech.glide.Glide;
@@ -255,9 +257,6 @@ public class Projectdetails extends AppCompatActivity {
                         }
 
                         DataOfSlider(urlimage);
-
-
-
 
                        // for set all texts of details
                         setTdevoleporandproject(   list.get(0).getDescription()  ,list.get(0).getDeveloper(),list.get(0).getProject(),

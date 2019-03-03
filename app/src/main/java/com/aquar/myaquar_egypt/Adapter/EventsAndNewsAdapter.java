@@ -12,8 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.aquar.myaquar_egypt.Model.HomeApi.ModelObjects;
-import com.aquar.myaquar_egypt.Model.ModelOfNewsAndEvent.ModelArrayOfEventAndNews;
+
 import com.aquar.myaquar_egypt.Model.ModelOfNewsAndEvent.ModelOfEventAndNews;
 import com.aquar.myaquar_egypt.R;
 import com.bumptech.glide.Glide;
