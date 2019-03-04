@@ -122,6 +122,7 @@ public class Filter extends AppCompatActivity {
                         adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_badrooms());
                         minbed.setAdapter(adapter);
 
+
                         adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_badrooms());
                         maxbed.setAdapter(adapter);
 
