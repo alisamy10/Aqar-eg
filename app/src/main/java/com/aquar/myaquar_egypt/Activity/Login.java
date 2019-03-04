@@ -47,6 +47,7 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+import butterknife.BindAnim;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -59,6 +60,7 @@ public class Login extends AppCompatActivity {
     EditText enter_pass;
     @BindView(R.id.loginFB)
     LinearLayout loginFB;
+
 
     //socialData
     private CallbackManager callbackManager;
@@ -137,40 +139,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void regist(View v) {
-//        LayoutInflater layoutInflater = LayoutInflater.from(this);
-//        View view = layoutInflater.inflate(R.layout.rejest_dialog, null);
-//
-//        final AlertDialog alertD = new AlertDialog.Builder(this).create();
-//
-////        Button exit = view.findViewById(R.id.exit_button);
-//        Button registration_BT = view.findViewById(R.id.registration_BT);
-//        edit_text_firstName = view.findViewById(R.id.edit_text_username);
-//        edit_text_phone = view.findViewById(R.id.edit_text_phone);
-//        edit_text_jobTitle = view.findViewById(R.id.edit_text_jopTitle);
-//        edit_text_email = view.findViewById(R.id.edit_text_Email);
-//        edit_text_password = view.findViewById(R.id.edit_text_password);
-//
-//        registration_BT.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String name = edit_text_firstName.getText().toString().trim();
-//                String phone = edit_text_phone.getText().toString().trim();
-//                String email = edit_text_email.getText().toString().trim();
-//                String password = edit_text_password.getText().toString().trim();
-//                String jobTitle = edit_text_jobTitle.getText().toString().trim();
-//
-//                ValidationRegisterData(name, phone, email, password, jobTitle);
-//            }
-//        });
-////        exit.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                alertD.cancel();
-////            }
-////        });
-//        alertD.setCancelable(true);
-//        alertD.setView(view);
-//        alertD.show();
+
         startActivity(new Intent(Login.this, RegisterActivity.class));
 
     }
@@ -215,6 +184,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Gson gson = new Gson();
+
                         String userOBJSTR = gson.toJson(resPOJO.getUserInfo());
 
                         Log.d("RegisterResponse", resPOJO.getUserInfo().getToken());
