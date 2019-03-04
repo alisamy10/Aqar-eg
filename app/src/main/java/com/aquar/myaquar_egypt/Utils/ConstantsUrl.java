@@ -19,6 +19,11 @@ public class ConstantsUrl {
     public static final String Event = BasicURL + "events_news";
     public static final String allFavorites = BasicURL + "allfavorites";
     public static final String favorite = BasicURL + "favorite";
+    public static final String contactUs = BasicURL+ "contact_us";
+    public static final String aboutUs = BasicURL + "about_us";
+    public static final String tremsAndPolicies = BasicURL + "terms_policies";
+    public static final String search = BasicURL + "search" ;
+
 
 
     //post Function
