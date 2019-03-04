@@ -1,12 +1,15 @@
 package com.aquar.myaquar_egypt.Activity;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -72,6 +75,8 @@ public class Filter extends AppCompatActivity {
 
 
 
+
+
     }
 
 
@@ -92,36 +97,42 @@ public class Filter extends AppCompatActivity {
 
 
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),android.R.layout.simple_list_item_1, array.getMax_area());
+                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_area());
                         minarea.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),android.R.layout.simple_list_item_1, array.getMin_area());
+                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_area());
                         maxarea.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),android.R.layout.simple_list_item_1, array.getMin_price());
+                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_price());
                         minprice.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),android.R.layout.simple_list_item_1, array.getMax_price());
+                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_price());
                         maxprice.setAdapter(adapter);
 
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),android.R.layout.simple_list_item_1, array.getMin_badrooms());
+                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_badrooms());
                         minbed.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),android.R.layout.simple_list_item_1, array.getMax_badrooms());
+                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_badrooms());
                         maxbed.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),android.R.layout.simple_list_item_1, array.getMin_bathrooms());
+                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_bathrooms());
                         minbath.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),android.R.layout.simple_list_item_1, array.getMax_bathrooms());
+                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_bathrooms());
                         maxbath.setAdapter(adapter);
 
-                        adapterString = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1, array.getLocations());
+                        adapterString = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_simple_text, array.getLocations());
                         location.setAdapter(adapterString);
 
 
-
+//                        location.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                            @Override
+//                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+////                locationSpinner
+//                                ((TextView) view).setTextColor(getResources().getColor(R.color.Red));
+//                            }
+//                        });
 
 
 
