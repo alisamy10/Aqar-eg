@@ -11,7 +11,7 @@ public class ErrorModel {
 
     @SerializedName("code")
     @Expose
-    private Integer code;
+    private long code;
     @SerializedName("msg")
     @Expose
     private String msg;
@@ -28,17 +28,17 @@ public class ErrorModel {
      * @param code
      * @param msg
      */
-    public ErrorModel(Integer code, String msg) {
+    public ErrorModel(long code, String msg) {
         super();
         this.code = code;
         this.msg = msg;
     }
 
-    public Integer getCode() {
+    public long getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(long code) {
         this.code = code;
     }
 

@@ -1,61 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="180dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-   android:gravity="center_vertical"
-    android:weightSum="5"
     android:background="#FFF"
-    >
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-android:layout_weight="0"
-    >
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:weightSum="5">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/image_profel"
-        android:layout_width="87dp"
-        android:layout_height="99dp"
-        android:layout_marginLeft="20dp"
-        android:gravity="center_vertical"
-        android:src="@drawable/photo"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/nav_header_profile_IV"
+            android:layout_width="87dp"
+            android:layout_height="99dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:src="@drawable/photo"
+            tools:srcCompat="@tools:sample/avatars[0]" />
 
-        tools:srcCompat="@tools:sample/avatars[0]" />
-
-</LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
 
-android:layout_marginLeft="20dp"
-        android:orientation="vertical"
-        android:background="#FFFF"
-        android:layout_weight="3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_weight="3"
+        android:background="#FFFF"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/name_profel"
-            android:textSize="15dp"
-            android:textColor="#000"
+            android:id="@+id/nav_header_profile_name_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="ALEX JOHAN"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textColor="#000"
+            android:textSize="15dp" />
+
         <TextView
 
-            android:id="@+id/email_profel"
-            android:textSize="10dp"
-            android:text="abdalla167osman@gamil.com"
+            android:id="@+id/nav_header_profile_email_TV"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="abdalla167osman@gamil.com"
+            android:textSize="10dp" />
 
 
     </LinearLayout>
 
 
-
-
-    </LinearLayout>
+</LinearLayout>

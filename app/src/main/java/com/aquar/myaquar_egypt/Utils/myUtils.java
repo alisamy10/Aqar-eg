@@ -16,26 +16,21 @@ import com.google.gson.GsonBuilder;
 
 public class myUtils {
     //QueryValue
-    public static final int Residential =1;
-    public static final int Commercial =2;
-    public static final int Medical =3;
-    public static final int HolidayHome =4;
-    public static final int LunchSoon =5;
+    public static final int Residential = 1;
+    public static final int Commercial = 2;
+    public static final int Medical = 3;
+    public static final int HolidayHome = 4;
+    public static final int LunchSoon = 5;
 
     public static void handleError(Context context, String errorRes, int errorStatusCode) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         ErrorModel error = gson.fromJson(errorRes, ErrorModel.class);
         Log.d("ErrorRes", errorStatusCode + ":" + error.getMsg() + " : " + error.getCode());
-        Toast.makeText(context, error.getMsg(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, error.getMsg(), Toast.LENGTH_SHORT).show();
 
-//        if (errorStatusCode == 401) {
-//            //unauthenticated
-//            mySharedPreferences.setUserToken("");
-//            mySharedPreferences.setUserOBJ("");
-//            context.startActivity(new Intent(context, LoginActivity.class));
-//        }
 
     }
+
     public static Boolean isConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
