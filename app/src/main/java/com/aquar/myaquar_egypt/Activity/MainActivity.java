@@ -2,9 +2,7 @@ package com.aquar.myaquar_egypt.Activity;
 
 import android.content.Intent;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -14,8 +12,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.DragEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -177,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //about us
                 else if (position == 1) {
-                    startActivity(new Intent(MainActivity.this,about_us.class));
+                    startActivity(new Intent(MainActivity.this, AboutUs.class));
 
 
                 }
@@ -189,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //terms and policies
                 else if (position == 3) {
-                    startActivity(new Intent(MainActivity.this,terms_and_policies.class));
+                    startActivity(new Intent(MainActivity.this, TermsAndPolicies.class));
 
 
                 }

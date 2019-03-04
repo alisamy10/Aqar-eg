@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aquar.myaquar_egypt.Activity.about_us">
+    tools:context="com.aquar.myaquar_egypt.Activity.AboutUs">
 
     <TextView
         android:id="@+id/about"
@@ -28,34 +28,23 @@
         android:layout_marginTop="70dp"
         android:layout_marginLeft="20dp"
         android:text="MyAquar Egypt"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/Red"
         />
 <TextView
+
+       android:lineSpacingExtra="6dp"
         android:id="@+id/about_us_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name_of_app"
+       android:layout_centerInParent="true"
         android:layout_alignParentLeft="true"
         android:layout_margin="20dp"
-        android:text="@string/about_text"
-        android:textSize="18sp"
-    android:textColor="#000"
+        android:textSize="15sp"
+        android:textColor="#000"
         />
 
-    <TextView
-        android:id="@+id/about_us_text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/about_us_text"
 
-
-        android:layout_margin="20dp"
-
-
-        android:text="@string/about_text"
-        android:textColor="#000"
-        android:textSize="18sp" />
 
 </RelativeLayout>

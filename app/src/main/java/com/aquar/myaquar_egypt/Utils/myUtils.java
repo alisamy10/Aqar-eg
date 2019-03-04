@@ -16,11 +16,11 @@ import com.google.gson.GsonBuilder;
 
 public class myUtils {
     //QueryValue
-    public static final int Residential =1;
-    public static final int Commercial =2;
-    public static final int Medical =3;
-    public static final int HolidayHome =4;
-    public static final int LunchSoon =5;
+    public static final String Residential ="1";
+    public static final String Commercial ="2";
+    public static final String Medical ="3";
+    public static final String HolidayHome ="4";
+    public static final String LunchSoon ="5";
 
     public static void handleError(Context context, String errorRes, int errorStatusCode) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();

@@ -84,17 +84,13 @@ public class Categroy extends AppCompatActivity {
                         list = array.getProjects();
                         setRecyclerData(list);
 
-
                         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
                             @Override
                             public void intent_to_detales(int pos, ImageView imageView ) {
                                 go_detales(pos, imageView);
 
-
-                                getid.id  = list.get(pos).getProduct_id();
-
-
+                                getid.id = list.get(pos).getProduct_id();
 
                             }
                             @Override
