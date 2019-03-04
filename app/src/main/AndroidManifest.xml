@@ -12,8 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.about_us"></activity>
-        <activity android:name=".Activity.EventsAndNewsDetails" /> <!-- metaData -->
+        <activity android:name=".Activity.Contact_us"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".Activity.terms_and_policies"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity.about_us"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.EventsAndNewsDetails"
+            android:screenOrientation="portrait"/> <!-- metaData -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebookID" /> <!-- activities -->

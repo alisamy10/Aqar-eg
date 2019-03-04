@@ -172,19 +172,19 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //about us
                 else if (position == 1) {
-                    Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this,about_us.class));
 
 
                 }
                 //contact us
                 else if (position == 2) {
-                    Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this,Contact_us.class));
 
 
                 }
                 //terms and policies
                 else if (position == 3) {
-                    Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this,terms_and_policies.class));
 
 
                 }
