@@ -64,7 +64,7 @@
                 android:id="@+id/four"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="Industrial"
+                android:text="Holiday"
                 android:layout_alignParentRight="true"
                 android:textSize="14sp"
                 android:layout_height="wrap_content" />
@@ -83,15 +83,10 @@
             android:layout_height="wrap_content">
             <RadioButton
                 android:id="@+id/five"
-                android:text="second home"
+                android:text="Lunch Soon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <RadioButton
-                android:id="@+id/six"
-                android:visibility="invisible"
-                android:text="second home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+
 
         </RadioGroup>
     </LinearLayout>
@@ -106,7 +101,9 @@
             android:text="Location"
             android:layout_height="wrap_content" />
         <Spinner
+
             android:id="@+id/locationSpinner"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></Spinner>
         <TextView
@@ -385,6 +382,7 @@
         android:layout_height="0dp">
 
     <Button
+        android:onClick="search"
         android:id="@+id/seachBtn"
        android:layout_width="match_parent"
        android:text="search"
