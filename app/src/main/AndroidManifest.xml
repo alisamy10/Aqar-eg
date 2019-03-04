@@ -16,9 +16,9 @@
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".Activity.terms_and_policies"
+        <activity android:name=".Activity.TermsAndPolicies"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activity.about_us"
+        <activity android:name=".Activity.AboutUs"
             android:screenOrientation="portrait"/>
         <activity android:name=".Activity.EventsAndNewsDetails"
             android:screenOrientation="portrait"/> <!-- metaData -->

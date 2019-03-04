@@ -32,7 +32,6 @@ public class TermsAndPolicies extends AppCompatActivity {
 
         private void Get_Data() {
 
-
             AndroidNetworking.get(ConstantsUrl.tremsAndPolicies)
                     .setPriority(Priority.HIGH)
                     .build()

@@ -17,6 +17,7 @@ import com.aquar.myaquar_egypt.Model.ContactUsModel.ContactUsModelObject;
 import com.aquar.myaquar_egypt.Model.Search.SearchModelObject;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
+import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import android.widget.ArrayAdapter;
@@ -34,7 +35,7 @@ public class Filter extends AppCompatActivity {
     Spinner maxarea,minarea,minbed,maxbed,location,minbath,maxbath,minprice,maxprice;
 
 
-
+     public static  int radioBtn ;
     ArrayAdapter<Integer> adapter;
 
     ArrayAdapter<String> adapterString;
@@ -53,8 +54,9 @@ public class Filter extends AppCompatActivity {
         rb3 = findViewById(R.id.three);
         rb4 = findViewById(R.id.four);
         rb5 = findViewById(R.id.five);
-        rb6 = findViewById(R.id.six);
+
         maxarea =findViewById(R.id.maxAreaSpinner);
+
         minarea=findViewById(R.id.minAreaSpinner);
         minbed=findViewById(R.id.minBedroomsSpinner);
         maxbed=findViewById(R.id.maxBedroomSpinner);
@@ -63,6 +65,13 @@ public class Filter extends AppCompatActivity {
         maxbath=findViewById(R.id.maxBathroomsSpinner);
         minprice=findViewById(R.id.minPriceSpinner);
         maxprice=findViewById(R.id.maxPriceSpinner);
+
+
+
+
+
+
+
 
 
         radioButton();
@@ -146,6 +155,7 @@ public class Filter extends AppCompatActivity {
         rb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                radioBtn =  myUtils.Residential ;
 
                 rg1.clearCheck();
                 rg2.clearCheck();
@@ -163,6 +173,10 @@ public class Filter extends AppCompatActivity {
         rb5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                radioBtn =  myUtils.LunchSoon ;
+
 
                 rg1.clearCheck();
                 rg2.clearCheck();
@@ -184,6 +198,7 @@ public class Filter extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                radioBtn =  myUtils.Medical ;
 
                 rg1.clearCheck();
                 rg2.clearCheck();
@@ -201,6 +216,10 @@ public class Filter extends AppCompatActivity {
         rb2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                radioBtn =  myUtils.Commercial;
+
+
 
 
                 rg1.clearCheck();
@@ -220,7 +239,7 @@ public class Filter extends AppCompatActivity {
         rb4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                radioBtn =  myUtils.HolidayHome ;
 
                 rg1.clearCheck();
                 rg2.clearCheck();
@@ -233,5 +252,9 @@ public class Filter extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void search(View view) {
+        Toast.makeText(this, radioBtn+"", Toast.LENGTH_SHORT).show();
     }
 }
