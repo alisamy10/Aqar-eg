@@ -145,6 +145,7 @@ public class Favourite extends Fragment {
             dialog.dismiss();
             fragment_favouriteEmpty_TV.setVisibility(View.VISIBLE);
             Log.d("getError", "err: " + e.getMessage() + "");
+
         }
     }
 }

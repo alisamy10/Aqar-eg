@@ -204,6 +204,7 @@ public class Login extends AppCompatActivity {
                     public void onError(ANError anError) {
                         Log.d("RegisterError", resPOJO.getUserInfo().getToken());
 
+
                     }
                 });
     }

@@ -119,6 +119,7 @@ public class Profile_fragment extends Fragment {
 //        intent.setAction(Intent.ACTION_GET_CONTENT);
 //        intent.setType("image/*");
 //        startActivityForResult(intent, 2);
+
     }
 
 

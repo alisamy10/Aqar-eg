@@ -148,6 +148,7 @@ public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myVi
                             myUtils.handleError(myContext, anError.getErrorBody(), anError.getErrorCode());
                             dialog.dismiss();
 
+
                             Log.d("Favourite", anError.getResponse() + "");
                             Log.d("Favourite", anError.getErrorBody() + "");
                         }

@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //about us
                 else if (position == 1) {
-                    startActivity(new Intent(MainActivity.this, about_us.class));
+                    startActivity(new Intent(MainActivity.this, AboutUs.class));
 
 
                 }
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //terms and policies
                 else if (position == 3) {
-                    startActivity(new Intent(MainActivity.this, terms_and_policies.class));
+                    startActivity(new Intent(MainActivity.this, TermsAndPolicies.class));
 
 
                 }
@@ -315,6 +315,7 @@ public class MainActivity extends AppCompatActivity {
             nav_header_profile_name_TV.setText("Please Sign In First");
             nav_header_profile_email_TV.setText("");
             nav_header_profile_name_TV.setTextColor(getResources().getColor(R.color.Red));
+
         }
     }
 }
