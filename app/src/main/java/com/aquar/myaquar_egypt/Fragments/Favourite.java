@@ -53,6 +53,7 @@ public class Favourite extends Fragment {
         View v = inflater.inflate(R.layout.fragment_favourite, container, false);
         ButterKnife.bind(getActivity());
         getFavouriteData();
+
         listView = v.findViewById(R.id.favouriteList);
 
         ArrayList<ModelOfFavourits> list = new ArrayList<ModelOfFavourits>();

@@ -65,8 +65,12 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView nv;
     private ListView listView;
 
+    public static String headerOfCategory ;
+    public static String  idForCategoryOfNav ;
+
     //interface
     private static onFavouriteFinished onFavouriteFinished;
+
 
 
     ExpandableListAdapter listAdapter;
@@ -122,10 +126,10 @@ public class MainActivity extends AppCompatActivity {
 
         List<String> top250 = new ArrayList<String>();
         top250.add("Residential");
-        top250.add("Second home");
+        top250.add("Holiday Home");
         top250.add("Commercial");
         top250.add("Medical");
-        top250.add("Adminstrative");
+        top250.add("Lunch Soon");
 
         listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
 
@@ -165,10 +169,11 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 //news and events
                 if (position == 0) {
-                    Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
-
+                   Intent go = new Intent(MainActivity.this,EventsAndNews.class);
+                   startActivity(go);
                 }
                 //about us
                 else if (position == 1) {
@@ -235,27 +240,36 @@ public class MainActivity extends AppCompatActivity {
                                         int groupPosition, int childPosition, long id) {
                 //Residential
                 if (childPosition == 0) {
-                    Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this,Categroy.class));
+                    idForCategoryOfNav = myUtils.Residential;
+                    headerOfCategory = "Residential";
 
                 }
-                //second home
+                //Holiday Home
                 else if (childPosition == 1) {
-                    Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this,Categroy.class));
+                    idForCategoryOfNav = myUtils.HolidayHome;
+                    headerOfCategory = "Holiday Home";
 
                 }
                 //commercial
                 else if (childPosition == 2) {
-                    Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
-
+                    startActivity(new Intent(MainActivity.this,Categroy.class));
+                    idForCategoryOfNav = myUtils.Commercial;
+                    headerOfCategory = "Commercial";
                 }
                 //medical
                 else if (childPosition == 3) {
-                    Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
-
+                    startActivity(new Intent(MainActivity.this,Categroy.class));
+                    idForCategoryOfNav = myUtils.Medical;
+                    headerOfCategory = "Medical";
                 }
-                //adminstrative
+                //LunchSoon
                 else if (childPosition == 4) {
-                    Toast.makeText(MainActivity.this, childPosition + "", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this,Categroy.class));
+                    idForCategoryOfNav = myUtils.LunchSoon;
+                    headerOfCategory = "Lunch Soon" ;
+
 
                 }
 
@@ -295,6 +309,7 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onError(ANError anError) {
+
                             Log.d("getError", anError.getErrorDetail());
                             myUtils.handleError(MainActivity.this, anError.getErrorBody(), anError.getErrorCode());
 

@@ -105,12 +105,15 @@ public class Projectdetails extends AppCompatActivity {
         textMaxArea = findViewById(R.id.maxArea);
 
         // here get id of item from home for get its detalis
-        fragment_home k = new fragment_home();
-        int x = k.id;
-        //----------------------------------------
+        fragment_home getid = new fragment_home();
 
+        int x = getid.id;
 
         reciveDate(x);
+        //------------------------------------------------------------
+
+
+
 
 
         send_email_btn.setOnClickListener(new View.OnClickListener() {

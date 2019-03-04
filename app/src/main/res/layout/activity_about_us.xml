@@ -14,7 +14,8 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
         android:text="About us"
-        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textSize="22sp"
         android:textColor="#000"
         />
 
@@ -39,8 +40,22 @@
         android:layout_alignParentLeft="true"
         android:layout_margin="20dp"
         android:text="@string/about_text"
-        android:textSize="20sp"
+        android:textSize="18sp"
     android:textColor="#000"
         />
+
+    <TextView
+        android:id="@+id/about_us_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/about_us_text"
+
+
+        android:layout_margin="20dp"
+
+
+        android:text="@string/about_text"
+        android:textColor="#000"
+        android:textSize="18sp" />
 
 </RelativeLayout>
