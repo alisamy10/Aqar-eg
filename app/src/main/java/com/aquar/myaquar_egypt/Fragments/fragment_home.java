@@ -117,7 +117,7 @@ public class fragment_home extends Fragment {
                     @Override
                     public void onError(ANError anError) {
                         dialog1.dismiss();
-                        Toast.makeText(getContext(), "connection field", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "connection failed", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

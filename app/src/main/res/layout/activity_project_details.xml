@@ -171,7 +171,7 @@
                             android:layout_marginEnd="15dp"
                             android:layout_marginBottom="0dp"
                             android:background="@null"
-                            android:gravity="bottom|left"
+                            android:gravity="bottom|end"
                             android:text="See more"
                             android:textAllCaps="false"
                             android:textColor="@android:color/holo_red_dark"
@@ -306,7 +306,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:gravity="left"
-                                android:text="    "
+                                android:text="   "
                                 android:textColor="@android:color/holo_red_dark"
                                 android:textSize="16dp" />
                             <TextView
@@ -634,7 +634,7 @@
                             android:background="@drawable/true_icon" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="View of Landmark"
                             android:textSize="16sp" />

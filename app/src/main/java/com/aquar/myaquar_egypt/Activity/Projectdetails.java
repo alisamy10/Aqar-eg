@@ -337,7 +337,7 @@ public class Projectdetails extends AppCompatActivity {
         devolepor.setText(developer);
         project_name.setText(project);
 
-        textprice.setText(price + "");
+        textprice.setText(price +" "+"EGP");
 
         texttype.setText(type);
 
@@ -347,8 +347,8 @@ public class Projectdetails extends AppCompatActivity {
         textMinBathroom.setText(minBathrooms + "");
         textMaxBathrooms.setText(maxBathrooms + "");
 
-        textMinArea.setText(minArea + "");
-        textMaxArea.setText(maxArea + "");
+        textMinArea.setText(minArea +" "+ "mq2");
+        textMaxArea.setText(maxArea +" "+"mq2");
 
     }
 
@@ -382,7 +382,6 @@ public class Projectdetails extends AppCompatActivity {
                                 liked_projects(true);
                             } else if (response.toString().contains("deleted")) {
                                 Toast.makeText(Projectdetails.this, "deleted from favourite", Toast.LENGTH_SHORT).show();
-
                                 liked_projects(false);
 
                             }
