@@ -10,24 +10,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.aquar.myaquar_egypt.Activity.MainActivity;
-import com.aquar.myaquar_egypt.Adapter.FavouritList;
 import com.aquar.myaquar_egypt.Adapter.favouriteAdapter;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Favouirtes.favouriteObjPOJO;
 import com.aquar.myaquar_egypt.Model.Favouirtes.favouriteResPOJO;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
-import com.aquar.myaquar_egypt.Model.ModelOfFavourits;
 import com.aquar.myaquar_egypt.R;
-import com.aquar.myaquar_egypt.Services.onFavouriteFinished;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.google.gson.Gson;
@@ -37,8 +31,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import dmax.dialog.SpotsDialog;
 
 /**
