@@ -5,24 +5,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.ImageView;
 
 import android.widget.TextView;
-import android.widget.Toast;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Adapter.example_adapter_for_home_fragment;
 import com.aquar.myaquar_egypt.Fragments.fragment_home;
-import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelArray;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelObjects;
-import com.aquar.myaquar_egypt.Model.Login.userResPOJO;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
-import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -31,7 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Categroy extends AppCompatActivity {
+public class Category extends AppCompatActivity {
 
     fragment_home  getid = new fragment_home();
     private RecyclerView mRecyclerView;
@@ -84,17 +80,13 @@ public class Categroy extends AppCompatActivity {
                         list = array.getProjects();
                         setRecyclerData(list);
 
-
                         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
                             @Override
                             public void intent_to_detales(int pos, ImageView imageView ) {
                                 go_detales(pos, imageView);
 
-
-                                getid.id  = list.get(pos).getProduct_id();
-
-
+                                getid.id = list.get(pos).getProduct_id();
 
                             }
                             @Override
@@ -114,14 +106,14 @@ public class Categroy extends AppCompatActivity {
     }
     private void setRecyclerData(ArrayList<ModelObjects> list) {
 
-    mAdapter = new example_adapter_for_home_fragment(Categroy.this, list);
+    mAdapter = new example_adapter_for_home_fragment(Category.this, list);
     LinearLayoutManager manager=new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
 
     }
     public void go_detales(int pos, ImageView img) {
-        Intent intent = new Intent(Categroy.this, Projectdetails.class);
+        Intent intent = new Intent(Category.this, Projectdetails.class);
         startActivity(intent);
     }
 }

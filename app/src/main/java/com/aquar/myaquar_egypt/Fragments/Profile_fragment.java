@@ -46,12 +46,6 @@ public class Profile_fragment extends Fragment {
     TextView job_titleBar;
     @BindView(R.id.username)
     TextView username;
-    //not implemented in registration
-//    @BindView(R.id.fullname)
-//    TextView fullname;
-
-    //    @BindView(R.id.location)
-//    TextView location;
     @BindView(R.id.email)
     TextView email;
     @BindView(R.id.mobile)
@@ -121,10 +115,11 @@ public class Profile_fragment extends Fragment {
 
     @OnClick(R.id.edit_profile_photo)
     public void setChooseImage() {
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        startActivityForResult(intent, 2);
+//        Intent intent = new Intent();
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        intent.setType("image/*");
+//        startActivityForResult(intent, 2);
+
     }
 
 

@@ -64,7 +64,7 @@
                 android:id="@+id/four"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="Industrial"
+                android:text="Holiday"
                 android:layout_alignParentRight="true"
                 android:textSize="14sp"
                 android:layout_height="wrap_content" />
@@ -83,15 +83,10 @@
             android:layout_height="wrap_content">
             <RadioButton
                 android:id="@+id/five"
-                android:text="second home"
+                android:text="Lunch Soon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <RadioButton
-                android:id="@+id/six"
-                android:visibility="invisible"
-                android:text="second home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+
 
         </RadioGroup>
     </LinearLayout>
@@ -106,6 +101,9 @@
             android:text="Location"
             android:layout_height="wrap_content" />
         <Spinner
+
+            android:id="@+id/locationSpinner"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></Spinner>
         <TextView
@@ -118,7 +116,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_weight="1"
+        android:layout_weight="1.2"
         android:layout_height="0dp">
 
 
@@ -146,10 +144,12 @@
             android:layout_marginTop="5dp"
             android:layout_height="wrap_content">
             <Spinner
+                android:id="@+id/minAreaSpinner"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
             <Spinner
+                android:id="@+id/maxAreaSpinner"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
@@ -159,8 +159,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_height="wrap_content">
+
+           android:layout_weight="4"
+            android:gravity="top"
+            android:layout_height="0dp">
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1.6"
@@ -185,7 +187,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_weight="1"
+        android:layout_weight="1.2"
         android:layout_height="0dp">
 
         <LinearLayout
@@ -210,10 +212,12 @@
             android:layout_marginTop="5dp"
             android:layout_height="wrap_content">
             <Spinner
+                android:id="@+id/minBedroomsSpinner"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
             <Spinner
+                android:id="@+id/maxBedroomSpinner"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
@@ -221,7 +225,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
+           android:gravity="top"
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="0dp"
@@ -248,7 +252,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_weight="1"
+        android:layout_weight="1.2"
         android:layout_height="0dp">
 
         <LinearLayout
@@ -273,10 +277,12 @@
             android:layout_marginTop="5dp"
             android:layout_height="wrap_content">
             <Spinner
+                android:id="@+id/minbathroomsSpinner"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
             <Spinner
+                android:id="@+id/maxBathroomsSpinner"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
@@ -284,7 +290,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
+            android:gravity="top"
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="0dp"
@@ -309,7 +315,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_weight="1"
+        android:layout_weight="1.2"
         android:layout_height="0dp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -333,10 +339,12 @@
             android:layout_marginTop="5dp"
             android:layout_height="wrap_content">
             <Spinner
+                android:id="@+id/minPriceSpinner"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
             <Spinner
+                android:id="@+id/maxPriceSpinner"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
@@ -344,7 +352,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
+           android:gravity="top"
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="0dp"
@@ -374,6 +382,8 @@
         android:layout_height="0dp">
 
     <Button
+        android:onClick="search"
+        android:id="@+id/seachBtn"
        android:layout_width="match_parent"
        android:text="search"
        android:textSize="18sp"

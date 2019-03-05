@@ -5,12 +5,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,8 +26,6 @@ import com.aquar.myaquar_egypt.Model.ModelsOfProjectDetails.ModelObjectsOfProjec
 
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
-import com.aquar.myaquar_egypt.Utils.myUtils;
-import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -41,10 +36,10 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import dmax.dialog.SpotsDialog;
 
@@ -71,7 +66,7 @@ public class Projectdetails extends AppCompatActivity {
         setContentView(R.layout.activity_project_details);
 
 
-        dialog1= new SpotsDialog.Builder().setContext(Projectdetails.this).setTheme(R.style.Custom).build();
+        dialog1 = new SpotsDialog.Builder().setContext(Projectdetails.this).setTheme(R.style.Custom).build();
         dialog1.setMessage("Please wait.....");
 
 
@@ -227,14 +222,28 @@ public class Projectdetails extends AppCompatActivity {
 
 
     private void reciveDate(int idValue) {
+        Gson gson = new Gson();
+        UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
         JSONObject object = new JSONObject();
-        try {
-            object.put("id", idValue);
+        if (!Objects.equals(userPOJO, null)) {
+            String UserId = String.valueOf(userPOJO.getUserId());
+            Log.d("blog", UserId + "");
+            try {
+                object.put("id", idValue);
+                object.put("user_id", UserId);
 
-        } catch (JSONException e) {
-            e.getStackTrace();
+            } catch (JSONException e) {
+                e.getStackTrace();
+            }
+        } else {
+            try {
+                Log.d("blog", idValue + "");
+                object.put("id", idValue);
+
+            } catch (JSONException e) {
+                e.getStackTrace();
+            }
         }
-
         AndroidNetworking.post(ConstantsUrl.SingleProject)
                 .addJSONObjectBody(object)
                 .setPriority(Priority.LOW)
@@ -242,7 +251,7 @@ public class Projectdetails extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-
+                        Log.d("OnSingleProjectRes", response.toString());
 
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         ArrayModelOfProjectsDetails array = gson.fromJson(response.toString(), ArrayModelOfProjectsDetails.class);
@@ -267,13 +276,16 @@ public class Projectdetails extends AppCompatActivity {
                                 , list.get(0).getMax_bathsrooms(), list.get(0).getMin_area(), list.get(0).getMax_area()
 
                         );
-
+                        liked_projects(Boolean.valueOf(list.get(0).getFavorite()));
                         // for like button
 
                         like_btn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 setFavourite(Boolean.valueOf(list.get(0).getFavorite()), list.get(0).getId());
+                                Boolean Indicator = Boolean.valueOf(list.get(0).getFavorite());
+                                Log.d("Liked",!Indicator+"");
+                                liked_projects(!Indicator);
 
                             }
                         });
@@ -351,11 +363,13 @@ public class Projectdetails extends AppCompatActivity {
         }
     }
 
-    public void setFavourite(final Boolean like, int favouriteID) {
+    public void setFavourite(Boolean like, int favouriteID) {
         Gson gson = new Gson();
         UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
         JSONObject object = new JSONObject();
+
         try {
+            dialog1.show();
             object.put("user_id", String.valueOf(userPOJO.getUserId()));
             object.put("project_id", favouriteID);
             AndroidNetworking.post(ConstantsUrl.favorite)
@@ -366,7 +380,14 @@ public class Projectdetails extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             Toast.makeText(Projectdetails.this, response.toString(), Toast.LENGTH_SHORT).show();
-                            liked_projects(like);
+//
+                            if (response.toString().contains("add")){
+                                liked_projects(true);
+                            }else if(response.toString().contains("deleted")) {
+                                liked_projects(false);
+
+                            }
+                            dialog1.dismiss();
                         }
 
                         @Override
@@ -375,9 +396,12 @@ public class Projectdetails extends AppCompatActivity {
 
                         }
                     });
+
         } catch (Exception e) {
             e.printStackTrace();
+            dialog1.dismiss();
             Toast.makeText(this, "Please Sign in First", Toast.LENGTH_SHORT).show();
+
 
         }
     }

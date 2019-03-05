@@ -2,9 +2,7 @@ package com.aquar.myaquar_egypt.Activity;
 
 import android.content.Intent;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -13,9 +11,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.DragEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -24,31 +19,23 @@ import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Adapter.ExpandListAdapter;
 import com.aquar.myaquar_egypt.Fragments.Favourite;
 import com.aquar.myaquar_egypt.Fragments.Profile_fragment;
 import com.aquar.myaquar_egypt.Fragments.fragment_home;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
-import com.aquar.myaquar_egypt.Model.Favouirtes.favouriteResPOJO;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
 import com.aquar.myaquar_egypt.R;
-import com.aquar.myaquar_egypt.Services.onFavouriteFinished;
-import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -62,16 +49,13 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonnavegation;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
-    private NavigationView nv;
+
     private ListView listView;
 
-    public static String headerOfCategory ;
-    public static String  idForCategoryOfNav ;
+    private TextView nav_header_profile_name_TV, nav_header_profile_email_TV;
 
-    //interface
-    private static onFavouriteFinished onFavouriteFinished;
-
-
+    public static String headerOfCategory;
+    public static String idForCategoryOfNav;
 
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
@@ -92,11 +76,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        getUserData();
         //id
         dl = findViewById(R.id.activity_main);
         buttonnavegation = findViewById(R.id.navegation_button_menue);
         expListView = findViewById(R.id.lvExp);
         listView = findViewById(R.id.list_item);
+
 
         firstFragmentRun();
         listViewOfNavDrawer();
@@ -172,24 +158,24 @@ public class MainActivity extends AppCompatActivity {
 
                 //news and events
                 if (position == 0) {
-                   Intent go = new Intent(MainActivity.this,EventsAndNews.class);
-                   startActivity(go);
+                    Intent go = new Intent(MainActivity.this, EventsAndNews.class);
+                    startActivity(go);
                 }
                 //about us
                 else if (position == 1) {
-                    startActivity(new Intent(MainActivity.this,about_us.class));
+                    startActivity(new Intent(MainActivity.this, AboutUs.class));
 
 
                 }
                 //contact us
                 else if (position == 2) {
-                    startActivity(new Intent(MainActivity.this,Contact_us.class));
+                    startActivity(new Intent(MainActivity.this, Contact_us.class));
 
 
                 }
                 //terms and policies
                 else if (position == 3) {
-                    startActivity(new Intent(MainActivity.this,terms_and_policies.class));
+                    startActivity(new Intent(MainActivity.this, TermsAndPolicies.class));
 
 
                 }
@@ -240,35 +226,35 @@ public class MainActivity extends AppCompatActivity {
                                         int groupPosition, int childPosition, long id) {
                 //Residential
                 if (childPosition == 0) {
-                    startActivity(new Intent(MainActivity.this,Categroy.class));
-                    idForCategoryOfNav = myUtils.Residential;
+                    startActivity(new Intent(MainActivity.this, Category.class));
+                    idForCategoryOfNav = String.valueOf(myUtils.Residential);
                     headerOfCategory = "Residential";
 
                 }
                 //Holiday Home
                 else if (childPosition == 1) {
-                    startActivity(new Intent(MainActivity.this,Categroy.class));
-                    idForCategoryOfNav = myUtils.HolidayHome;
+                    startActivity(new Intent(MainActivity.this, Category.class));
+                    idForCategoryOfNav = String.valueOf(myUtils.HolidayHome);
                     headerOfCategory = "Holiday Home";
 
                 }
                 //commercial
                 else if (childPosition == 2) {
-                    startActivity(new Intent(MainActivity.this,Categroy.class));
-                    idForCategoryOfNav = myUtils.Commercial;
+                    startActivity(new Intent(MainActivity.this, Category.class));
+                    idForCategoryOfNav = String.valueOf(myUtils.Commercial);
                     headerOfCategory = "Commercial";
                 }
                 //medical
                 else if (childPosition == 3) {
-                    startActivity(new Intent(MainActivity.this,Categroy.class));
-                    idForCategoryOfNav = myUtils.Medical;
+                    startActivity(new Intent(MainActivity.this, Category.class));
+                    idForCategoryOfNav = String.valueOf(myUtils.Medical);
                     headerOfCategory = "Medical";
                 }
                 //LunchSoon
                 else if (childPosition == 4) {
-                    startActivity(new Intent(MainActivity.this,Categroy.class));
-                    idForCategoryOfNav = myUtils.LunchSoon;
-                    headerOfCategory = "Lunch Soon" ;
+                    startActivity(new Intent(MainActivity.this, Category.class));
+                    idForCategoryOfNav = String.valueOf(myUtils.LunchSoon);
+                    headerOfCategory = "Lunch Soon";
 
 
                 }
@@ -292,32 +278,6 @@ public class MainActivity extends AppCompatActivity {
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_home, fragment, "Favourite");
         transaction.commitNow();
-        Gson gson = new Gson();
-        try {
-            UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
-            AndroidNetworking.get(ConstantsUrl.allFavorites)
-                    .addQueryParameter("user_id", String.valueOf(userPOJO.getUserId()))
-                    .setPriority(Priority.LOW)
-                    .build()
-                    .getAsJSONObject(new JSONObjectRequestListener() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                            favouriteResPOJO resPOJO = gson.fromJson(response.toString(), favouriteResPOJO.class);
-                            onFavouriteFinished.getAllFavourite(resPOJO);
-                        }
-
-                        @Override
-                        public void onError(ANError anError) {
-
-                            Log.d("getError", anError.getErrorDetail());
-                            myUtils.handleError(MainActivity.this, anError.getErrorBody(), anError.getErrorCode());
-
-                        }
-                    });
-        } catch (Exception e) {
-            Toast.makeText(this, "Please Sign in First", Toast.LENGTH_SHORT).show();
-        }
     }
 
     public void home(View view) {
@@ -334,8 +294,28 @@ public class MainActivity extends AppCompatActivity {
         transaction.commitNow();
     }
 
-    public static void APIBindOnFavouriteFinished(onFavouriteFinished listener) {
-        onFavouriteFinished = listener;
-    }
 
+    public void getUserData() {
+        NavigationView navigationView =  findViewById(R.id.Navigation_drawer);
+        View headerView = navigationView.getHeaderView(0);
+        nav_header_profile_name_TV = headerView.findViewById(R.id.nav_header_profile_name_TV);
+        nav_header_profile_email_TV = headerView.findViewById(R.id.nav_header_profile_email_TV);
+        Gson gson = new Gson();
+        UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
+        try {
+            if (!Objects.equals(userPOJO.getEmail(), null)) {
+//                Glide.with(this).load(userPOJO.getToken()).into(profile_photo);
+                nav_header_profile_name_TV.setText(userPOJO.getUsername());
+                nav_header_profile_email_TV.setText(userPOJO.getEmail());
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            nav_header_profile_name_TV.setText("Please Sign In First");
+            nav_header_profile_email_TV.setText("");
+            nav_header_profile_name_TV.setTextColor(getResources().getColor(R.color.Red));
+
+        }
+    }
 }

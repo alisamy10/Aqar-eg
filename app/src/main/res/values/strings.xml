@@ -17,7 +17,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_home_gym">HomeActivityGYM</string>
+    <string name="fragment_favouriteEmpty_TV">Please Sign In First</string>
 
 
 </resources>

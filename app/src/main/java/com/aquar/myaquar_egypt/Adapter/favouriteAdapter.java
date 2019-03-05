@@ -1,6 +1,9 @@
 package com.aquar.myaquar_egypt.Adapter;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -9,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +22,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Activity.Projectdetails;
+import com.aquar.myaquar_egypt.Fragments.fragment_home;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Favouirtes.favouriteObjPOJO;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
@@ -31,6 +36,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import dmax.dialog.SpotsDialog;
+
 /**
  * Created by aswany on 3/2/19.
  */
@@ -38,6 +45,7 @@ import java.util.ArrayList;
 public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myView> {
     private Context myContext;
     private ArrayList<favouriteObjPOJO> favouriteObjPOJOS = new ArrayList<>();
+    private AlertDialog dialog;
 
     public favouriteAdapter(Context myContext, ArrayList<favouriteObjPOJO> favouriteObjPOJOS) {
         this.myContext = myContext;
@@ -56,7 +64,8 @@ public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myVi
     public void onBindViewHolder(@NonNull final favouriteAdapter.myView myView, int i) {
 
         final favouriteObjPOJO pojo = favouriteObjPOJOS.get(i);
-
+        dialog = new SpotsDialog.Builder().setContext(myContext).setTheme(R.style.Custom).build();
+        dialog.setMessage("Please wait.....");
         Glide.with(myContext).load(pojo.getProjectImg()).into(myView.image_of_favourite_list);
         myView.text_of_favourite.setText(pojo.getProductTitle());
 //        myView.ratingBar.setNumStars(pojo.);
@@ -65,6 +74,16 @@ public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myVi
             @Override
             public void onClick(View v) {
                 myView.setData(pojo);
+
+
+            }
+        });
+        myView.fragment_favourite_LL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myContext.startActivity(new Intent(myContext, Projectdetails.class));
+                fragment_home fragment_home=new fragment_home();
+                fragment_home.id= (int) pojo.getProductId();
 
             }
         });
@@ -78,6 +97,7 @@ public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myVi
         } catch (Exception e) {
             return 0;
         }
+
     }
 
     public class myView extends RecyclerView.ViewHolder {
@@ -85,6 +105,7 @@ public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myVi
         TextView text_of_favourite;
         RatingBar ratingBar;
         Button like_btn_of_favourite_list;
+        LinearLayout fragment_favourite_LL;
 
         public myView(View viewGroup) {
             super(viewGroup);
@@ -92,9 +113,11 @@ public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myVi
             text_of_favourite = itemView.findViewById(R.id.text_of_favourite);
             ratingBar = itemView.findViewById(R.id.ratingBar);
             like_btn_of_favourite_list = itemView.findViewById(R.id.like_btn_of_favourite_list);
+            fragment_favourite_LL = itemView.findViewById(R.id.fragment_favourite_LL);
         }
 
-        public void setData(favouriteObjPOJO pojo) {
+        public void setData(final favouriteObjPOJO pojo) {
+            dialog.show();
             Gson gson = new Gson();
             UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
             final JSONObject object = new JSONObject();
@@ -114,12 +137,17 @@ public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myVi
                         public void onResponse(JSONObject response) {
                             Toast.makeText(myContext, response.toString(), Toast.LENGTH_SHORT).show();
                             myView.this.like_btn_of_favourite_list.setVisibility(View.GONE);
+                            favouriteObjPOJOS.remove(pojo);
+                            notifyDataSetChanged();
+                            dialog.dismiss();
                         }
 
                         @Override
                         public void onError(ANError anError) {
                             Toast.makeText(myContext, anError.toString(), Toast.LENGTH_SHORT).show();
                             myUtils.handleError(myContext, anError.getErrorBody(), anError.getErrorCode());
+                            dialog.dismiss();
+
 
                             Log.d("Favourite", anError.getResponse() + "");
                             Log.d("Favourite", anError.getErrorBody() + "");

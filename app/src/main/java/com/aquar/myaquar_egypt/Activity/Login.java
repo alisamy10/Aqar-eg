@@ -83,6 +83,8 @@ public class Login extends AppCompatActivity {
         facebookToken();
         googleToken();
         ButterKnife.bind(this);
+        dialog1 = new SpotsDialog.Builder().setContext(Login.this).setTheme(R.style.Custom).build();
+        dialog1.setMessage("Please wait.....");
 
 
     }
@@ -106,6 +108,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void onLogin(String email, String password) {
+        dialog1.show();
         JSONObject object = new JSONObject();
         try {
             object.put("email", email);
@@ -127,11 +130,12 @@ public class Login extends AppCompatActivity {
                         Log.d("testest", response.toString());
                         mySharedPreference.setUserOBJ(userOBJSTR);
                         startActivity(new Intent(Login.this, MainActivity.class));
-
+                        dialog1.dismiss();
                     }
 
                     @Override
                     public void onError(ANError anError) {
+                        dialog1.dismiss();
                         myUtils.handleError(Login.this, anError.getErrorBody(), anError.getErrorCode());
 
                     }
@@ -200,16 +204,18 @@ public class Login extends AppCompatActivity {
                     public void onError(ANError anError) {
                         Log.d("RegisterError", resPOJO.getUserInfo().getToken());
 
+
                     }
                 });
     }
 
-  @OnClick(R.id.loginFB)
+    @OnClick(R.id.loginFB)
     public void onFacebookBT() {
         LoginManager.getInstance().logInWithReadPermissions(Login.this, Arrays.asList(
                 "public_profile", "email"));
 
     }
+
     @OnClick(R.id.logingoggleplus)
     public void onGoogleBT() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -219,7 +225,7 @@ public class Login extends AppCompatActivity {
     @OnClick(R.id.skip)
     public void skip() {
         startActivity(new Intent(Login.this, MainActivity.class));
-
+//        mySharedPreference.setUserOBJ("");
     }
 
     @Override
