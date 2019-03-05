@@ -52,6 +52,8 @@ public class Projectdetails extends AppCompatActivity {
 
     private AlertDialog dialog1;
 
+    private String description_string;
+
     List<String> urlimage = new ArrayList<>();
 
     ArrayList<ModelObjectsOfProjectDetails> list = new ArrayList<>();
@@ -68,8 +70,6 @@ public class Projectdetails extends AppCompatActivity {
 
         dialog1 = new SpotsDialog.Builder().setContext(Projectdetails.this).setTheme(R.style.Custom).build();
         dialog1.setMessage("Please wait.....");
-
-
         dialog1.show();
 
 
@@ -190,14 +190,14 @@ public class Projectdetails extends AppCompatActivity {
         String x = see_more_btn.getText().toString();
         if (x.equals("See more")) {
             String s = (String) description.getText();
-            s += getResources().getString(R.string.more_description);
-            description.setText(s);
+            s += description_string.substring(0,90);
+            description.setText(description_string);
             see_more_btn.setText("See Less");
-        } else {
-            String s = getResources().getString(R.string.some_description);
-            description.setText(s);
+        } else
+            {
+          //  String s = getResources().getString(R.string.some_description);
+            description.setText(description_string.substring(0,90));
             see_more_btn.setText("See more");
-
         }
 
     }
@@ -268,6 +268,7 @@ public class Projectdetails extends AppCompatActivity {
 
                         DataOfSlider(urlimage);
 
+                        description_string=list.get(0).getDescription();
                         // for set all texts of details
                         setTdevoleporandproject(list.get(0).getDescription(), list.get(0).getDeveloper(), list.get(0).getProject(),
                                 list.get(0).getMin_price()
@@ -335,7 +336,7 @@ public class Projectdetails extends AppCompatActivity {
                                          String type, String minrooms, String maxrooms
             , String minBathrooms, String maxBathrooms, String minArea, String maxArea) {
 
-        description.setText(dec);
+        description.setText(dec.substring(0,90));
 
         devolepor.setText(developer);
         project_name.setText(project);
