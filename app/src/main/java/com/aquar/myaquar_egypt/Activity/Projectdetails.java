@@ -108,9 +108,6 @@ public class Projectdetails extends AppCompatActivity {
         //------------------------------------------------------------
 
 
-
-
-
         send_email_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,13 +187,12 @@ public class Projectdetails extends AppCompatActivity {
         String x = see_more_btn.getText().toString();
         if (x.equals("See more")) {
             String s = (String) description.getText();
-            s += description_string.substring(0,90);
+            s += description_string.substring(0, 90);
             description.setText(description_string);
             see_more_btn.setText("See Less");
-        } else
-            {
-          //  String s = getResources().getString(R.string.some_description);
-            description.setText(description_string.substring(0,90));
+        } else {
+            //  String s = getResources().getString(R.string.some_description);
+            description.setText(description_string.substring(0, 90));
             see_more_btn.setText("See more");
         }
 
@@ -268,7 +264,7 @@ public class Projectdetails extends AppCompatActivity {
 
                         DataOfSlider(urlimage);
 
-                        description_string=list.get(0).getDescription();
+                        description_string = list.get(0).getDescription();
                         // for set all texts of details
                         setTdevoleporandproject(list.get(0).getDescription(), list.get(0).getDeveloper(), list.get(0).getProject(),
                                 list.get(0).getMin_price()
@@ -285,7 +281,7 @@ public class Projectdetails extends AppCompatActivity {
                             public void onClick(View v) {
                                 setFavourite(Boolean.valueOf(list.get(0).getFavorite()), list.get(0).getId());
                                 Boolean Indicator = Boolean.valueOf(list.get(0).getFavorite());
-                                Log.d("Liked",!Indicator+"");
+                                Log.d("Liked", !Indicator + "");
                                 liked_projects(!Indicator);
 
                             }
@@ -336,7 +332,7 @@ public class Projectdetails extends AppCompatActivity {
                                          String type, String minrooms, String maxrooms
             , String minBathrooms, String maxBathrooms, String minArea, String maxArea) {
 
-        description.setText(dec.substring(0,90));
+        description.setText(dec.substring(0, 90));
 
         devolepor.setText(developer);
         project_name.setText(project);
@@ -380,11 +376,13 @@ public class Projectdetails extends AppCompatActivity {
                     .getAsJSONObject(new JSONObjectRequestListener() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            Toast.makeText(Projectdetails.this, response.toString(), Toast.LENGTH_SHORT).show();
-//
-                            if (response.toString().contains("add")){
+
+                            if (response.toString().contains("add")) {
+                                Toast.makeText(Projectdetails.this, "Add to favourite", Toast.LENGTH_SHORT).show();
                                 liked_projects(true);
-                            }else if(response.toString().contains("deleted")) {
+                            } else if (response.toString().contains("deleted")) {
+                                Toast.makeText(Projectdetails.this, "deleted from favourite", Toast.LENGTH_SHORT).show();
+
                                 liked_projects(false);
 
                             }

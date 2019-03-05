@@ -1,5 +1,6 @@
 package com.aquar.myaquar_egypt.Fragments;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -28,13 +29,16 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import dmax.dialog.SpotsDialog;
+
 
 public class fragment_home extends Fragment {
     int x = 0;
     int y = 0;
 
 
-      public static int id  ;
+    public static int id;
+    private AlertDialog dialog1;
 
 
     private int currnt = R.drawable.ic_favorite_normal_black_24dp;
@@ -46,16 +50,12 @@ public class fragment_home extends Fragment {
     private static final float buttonWidth = 300;
 
 
-
-      private ArrayList<ModelObjects>  list  = new ArrayList<>();
+    private ArrayList<ModelObjects> list = new ArrayList<>();
 
     /* private ButtonsState buttonShowedState = ButtonsState.GONE;*/
     public fragment_home() {
         // Required empty public constructor
     }
-
-
-
 
 
     @Override
@@ -64,10 +64,10 @@ public class fragment_home extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_fragment_home, container, false);
         mRecyclerView = v.findViewById(R.id.recyclerView_fragment_home);
+        dialog1 = new SpotsDialog.Builder().setContext(getContext()).setTheme(R.style.Custom).build();
+        dialog1.setMessage("Please wait.....");
 
         GetHome_Data();
-
-
 
 
         //////////////////
@@ -78,10 +78,8 @@ public class fragment_home extends Fragment {
     }
 
 
-
-
     private void GetHome_Data() {
-
+        dialog1.show();
 
         AndroidNetworking.get(ConstantsUrl.Home)
                 .setPriority(Priority.LOW)
@@ -89,8 +87,8 @@ public class fragment_home extends Fragment {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-
-                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                        dialog1.dismiss();
+                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
                         ModelArray array = gson.fromJson(response.toString(), ModelArray.class);
                         list = array.getProjects();
@@ -100,14 +98,15 @@ public class fragment_home extends Fragment {
                         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
                             @Override
-                            public void intent_to_detales(int pos, ImageView imageView ) {
+                            public void intent_to_detales(int pos, ImageView imageView) {
                                 go_detales(pos, imageView);
 
                                 id = list.get(pos).getProduct_id();
 
-                                Toast.makeText(getContext(), id+"", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), id + "", Toast.LENGTH_SHORT).show();
 
                             }
+
                             @Override
                             public void make_love(int pos, ImageView img) {
 
@@ -117,7 +116,7 @@ public class fragment_home extends Fragment {
 
                     @Override
                     public void onError(ANError anError) {
-
+                        dialog1.dismiss();
                         Toast.makeText(getContext(), "connection field", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -127,23 +126,16 @@ public class fragment_home extends Fragment {
 
 
         mAdapter = new example_adapter_for_home_fragment(getActivity(), list);
-        LinearLayoutManager manager=new LinearLayoutManager(getActivity());
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
     }
-
 
 
     public void go_detales(int pos, ImageView img) {
         Intent intent = new Intent(getActivity(), Projectdetails.class);
         startActivity(intent);
     }
-
-
-
-
-
-
 
 
 }

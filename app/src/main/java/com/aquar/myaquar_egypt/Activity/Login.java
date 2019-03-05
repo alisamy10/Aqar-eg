@@ -67,9 +67,7 @@ public class Login extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private int RC_SIGN_IN = 123;
 
-    //registration widgets
-    EditText edit_text_firstName, edit_text_phone, edit_text_email, edit_text_password, edit_text_jobTitle;
-    userResPOJO resPOJO;
+
 
     //dialog
     AlertDialog dialog1;
@@ -148,66 +146,7 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private void ValidationRegisterData(String name, String phone, String email, String password, String jobTitle) {
-        if (TextUtils.isEmpty(name)) {
-            edit_text_firstName.setError("Required");
-        }
-        if (TextUtils.isEmpty(password)) {
-            edit_text_password.setError("Required");
-        }
-        if (TextUtils.isEmpty(phone)) {
-            edit_text_phone.setError("Required");
-        }
-        if (TextUtils.isEmpty(email)) {
-            edit_text_email.setError("Required");
-        }
-        if (TextUtils.isEmpty(jobTitle)) {
-            edit_text_jobTitle.setError("Required");
-        } else {
-//            onRegisterData(name, password, phone, email, jobTitle);
-        }
-    }
 
-    private void onRegisterData(String name, String password, String phone, String email, String jobTitle) {
-        JSONObject object = new JSONObject();
-//             .addHeaders("Authorization", "Bearer " + mySharedPreference.getUserToken())
-        try {
-            object.put("name", name);
-            object.put("phone", phone);
-            object.put("email", email);
-            object.put("password", password);
-            object.put("job_title", jobTitle);
-        } catch (JSONException e) {
-            e.getStackTrace();
-        }
-        AndroidNetworking.post(ConstantsUrl.Registration)
-                .addJSONObjectBody(object)
-                .setPriority(Priority.LOW)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Gson gson = new Gson();
-
-                        String userOBJSTR = gson.toJson(resPOJO.getUserInfo());
-
-                        Log.d("RegisterResponse", resPOJO.getUserInfo().getToken());
-
-
-                        mySharedPreference.setUserToken(resPOJO.getUserInfo().getToken());
-                        mySharedPreference.setUserOBJ(userOBJSTR);
-                        startActivity(new Intent(Login.this, MainActivity.class));
-
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-                        Log.d("RegisterError", resPOJO.getUserInfo().getToken());
-
-
-                    }
-                });
-    }
 
     @OnClick(R.id.loginFB)
     public void onFacebookBT() {
