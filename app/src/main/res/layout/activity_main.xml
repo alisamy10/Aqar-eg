@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="center"
-            android:background="#FFFFFF"
+            android:background="#FFFEFE"
             android:gravity="center"
             android:paddingLeft="15dp">
 
@@ -76,7 +76,7 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/Home_BottomNavi"
             android:layout_below="@+id/ToolBar"
-            android:background="#FCF9F9"
+            android:background="#FFFFFF"
 
             />
 
@@ -85,34 +85,108 @@
 
             android:id="@+id/Home_BottomNavi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginStart="0dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="#FFFFFF"
+            >
+<LinearLayout
 
-            <Button
-                android:id="@+id/favourite_btn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="favourite" />
+    android:id="@+id/favourite_btn"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:onClick="favourite"
 
-            <Button
+    >
+
+    <ImageButton
+        android:id="@+id/favert_icon_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/favrote"
+
+        />
+
+    <TextView
+        android:id="@+id/favert_text_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favorite"
+        android:textSize="14dp"
+
+        />
+
+
+</LinearLayout>
+
+
+            <LinearLayout
+
                 android:id="@+id/home_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="home" />
+                android:orientation="vertical"
+                android:gravity="center"
+                android:onClick="home"
 
-            <Button
-                android:id="@+id/profile_btn"
+                >
+
+                <ImageButton
+                    android:id="@+id/home_icon_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/home_norm"
+
+                    />
+
+                <TextView
+                    android:id="@+id/home_text_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="home"
+                    android:textSize="14dp"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/account_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="profile" />
+                android:orientation="vertical"
+                android:gravity="center"
+                android:onClick="profile"
 
+                >
+
+                <ImageButton
+                    android:id="@+id/account_icon_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/acc_norm"
+
+                    />
+
+                <TextView
+                    android:id="@+id/account_text_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="account"
+                    android:textSize="14dp"
+
+                    />
+
+            </LinearLayout>
         </LinearLayout>
 
 

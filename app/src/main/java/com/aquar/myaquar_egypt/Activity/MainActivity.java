@@ -1,6 +1,7 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
@@ -18,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -270,6 +272,17 @@ public class MainActivity extends AppCompatActivity {
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
         transaction.commitNow();
+
+
+
+
+        TextView textView1=findViewById(R.id.home_text_id);
+        textView1.setTextColor(Color.parseColor("#FF0000"));
+
+        ImageButton imageButton1=findViewById(R.id.home_icon_id);
+        imageButton1.setImageResource(R.drawable.home_red);
+
+
     }
 
 
@@ -278,6 +291,34 @@ public class MainActivity extends AppCompatActivity {
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_home, fragment, "Favourite");
         transaction.commitNow();
+
+
+
+        TextView textView1=findViewById(R.id.favert_text_id);
+        textView1.setTextColor(Color.parseColor("#FF0000"));
+
+        TextView textView2=findViewById(R.id.home_text_id);
+        textView2.setTextColor(Color.parseColor("#cccccc"));
+
+        TextView textView3=findViewById(R.id.account_text_id);
+        textView3.setTextColor(Color.parseColor("#cccccc"));
+
+
+
+
+        ImageButton imageButton=findViewById(R.id.favert_icon_id);
+        imageButton.setImageResource(R.drawable.fav_red);
+
+        ImageButton imageButton1=findViewById(R.id.home_icon_id);
+        imageButton1.setImageResource(R.drawable.home_norm);
+
+        ImageButton imageButton2=findViewById(R.id.account_icon_id);
+        imageButton2.setImageResource(R.drawable.acc_norm);
+
+
+
+
+
     }
 
     public void home(View view) {
@@ -285,6 +326,33 @@ public class MainActivity extends AppCompatActivity {
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
         transaction.commitNow();
+
+
+        TextView textView1=findViewById(R.id.home_text_id);
+        textView1.setTextColor(Color.parseColor("#FF0000"));
+
+
+
+
+        TextView textView2=findViewById(R.id.favert_text_id);
+        textView2.setTextColor(Color.parseColor("#cccccc"));
+
+        TextView textView3=findViewById(R.id.account_text_id);
+        textView3.setTextColor(Color.parseColor("#cccccc"));
+
+
+
+        ImageButton imageButton=findViewById(R.id.favert_icon_id);
+        imageButton.setImageResource(R.drawable.favrote);
+
+        ImageButton imageButton1=findViewById(R.id.home_icon_id);
+        imageButton1.setImageResource(R.drawable.home_red);
+
+        ImageButton imageButton2=findViewById(R.id.account_icon_id);
+        imageButton2.setImageResource(R.drawable.acc_norm);
+
+
+
     }
 
     public void profile(View view) {
@@ -292,6 +360,34 @@ public class MainActivity extends AppCompatActivity {
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_home, fragment, "profile");
         transaction.commitNow();
+
+
+
+
+
+
+        TextView textView1=findViewById(R.id.favert_text_id);
+        textView1.setTextColor(Color.parseColor("#cccccc"));
+
+        TextView textView2=findViewById(R.id.home_text_id);
+        textView2.setTextColor(Color.parseColor("#cccccc"));
+
+        TextView textView3=findViewById(R.id.account_text_id);
+        textView3.setTextColor(Color.parseColor("#FF0000"));
+
+
+
+
+        ImageButton imageButton=findViewById(R.id.favert_icon_id);
+        imageButton.setImageResource(R.drawable.favrote);
+
+        ImageButton imageButton1=findViewById(R.id.home_icon_id);
+        imageButton1.setImageResource(R.drawable.home_norm);
+
+        ImageButton imageButton2=findViewById(R.id.account_icon_id);
+        imageButton2.setImageResource(R.drawable.acc_red);
+
+
     }
 
 
