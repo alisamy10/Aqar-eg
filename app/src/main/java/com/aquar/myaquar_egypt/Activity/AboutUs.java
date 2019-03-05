@@ -1,8 +1,11 @@
 package com.aquar.myaquar_egypt.Activity;
 
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,13 +24,28 @@ import com.google.gson.GsonBuilder;
 
 import org.json.JSONObject;
 
+import dmax.dialog.SpotsDialog;
+
 public class AboutUs extends AppCompatActivity {
      TextView aboutUs ;
+     ScrollView parentOfAboutUs;
+
+    private AlertDialog dialog1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
          aboutUs = findViewById(R.id.about_us_text);
+
+         parentOfAboutUs= findViewById(R.id.parentOfAboutUs);
+
+
+
+
+        dialog1 = new SpotsDialog.Builder().setContext(AboutUs.this).setTheme(R.style.Custom).build();
+        dialog1.setMessage("Please wait.....");
+        dialog1.show();
+
 
         Get_Data();
     }
@@ -41,17 +59,18 @@ public class AboutUs extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
 
+                        parentOfAboutUs.setVisibility(View.VISIBLE);
+                        dialog1.dismiss();
+
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
                         AboutUsModelObject array = gson.fromJson(response.toString(), AboutUsModelObject.class);
-
                         aboutUs.setText(  array.getText());
 
                     }
 
                     @Override
                     public void onError(ANError anError) {
-
+                        dialog1.dismiss();
                         Toast.makeText(AboutUs.this, "connection field", Toast.LENGTH_SHORT).show();
 
                     }

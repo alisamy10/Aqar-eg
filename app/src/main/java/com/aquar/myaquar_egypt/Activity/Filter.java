@@ -1,5 +1,6 @@
 package com.aquar.myaquar_egypt.Activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +34,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import dmax.dialog.SpotsDialog;
+
 
 public class Filter extends AppCompatActivity {
     public RadioGroup rg1, rg2, rg3;
@@ -42,9 +46,10 @@ public class Filter extends AppCompatActivity {
      public static  int radioBtn ;
      public static String locationOfSpinner ;
 
-
+     private RelativeLayout parentOfFilter ;
     ArrayAdapter<String> adapter;
     ArrayAdapter<String> adapterString;
+    private AlertDialog dialog1;
 
 
 
@@ -52,6 +57,11 @@ public class Filter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
+        parentOfFilter =findViewById(R.id.parentOfFilter);
+
+        dialog1 = new SpotsDialog.Builder().setContext(Filter.this).setTheme(R.style.Custom).build();
+        dialog1.setMessage("Please wait.....");
+        dialog1.show();
 
         rg1 = findViewById(R.id.radiogroup1);
         rg3 = findViewById(R.id.radiogroup3);
@@ -99,6 +109,8 @@ public class Filter extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        dialog1.dismiss();
+                        parentOfFilter.setVisibility(View.VISIBLE);
 
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -154,7 +166,7 @@ public class Filter extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-
+                        dialog1.dismiss();
                         Toast.makeText(Filter.this, "connection field", Toast.LENGTH_SHORT).show();
 
                     }

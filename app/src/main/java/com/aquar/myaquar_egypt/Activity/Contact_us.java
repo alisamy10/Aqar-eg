@@ -1,5 +1,6 @@
 package com.aquar.myaquar_egypt.Activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -23,11 +24,13 @@ import com.google.gson.GsonBuilder;
 
 import org.json.JSONObject;
 
+import dmax.dialog.SpotsDialog;
+
 public class Contact_us extends AppCompatActivity {
     private TextView contct,location,mail,phone;
     private String instaUrl,faceUrl,youtubeUrl,twitterUrl;
     private LinearLayout parent ;
-
+    private AlertDialog dialog1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,9 @@ public class Contact_us extends AppCompatActivity {
         Get_Data();
 
         parent = findViewById(R.id.parentCountactUs);
-
+        dialog1 = new SpotsDialog.Builder().setContext(Contact_us.this).setTheme(R.style.Custom).build();
+        dialog1.setMessage("Please wait.....");
+        dialog1.show();
 
 
     }
@@ -53,6 +58,7 @@ public class Contact_us extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        dialog1.dismiss();
                         parent.setVisibility(View.VISIBLE);
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -71,6 +77,7 @@ public class Contact_us extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
+                        dialog1.dismiss();
 
                         Toast.makeText(Contact_us.this, "connection field", Toast.LENGTH_SHORT).show();
 

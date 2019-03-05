@@ -81,6 +81,7 @@ public class Login extends AppCompatActivity {
         facebookToken();
         googleToken();
         ButterKnife.bind(this);
+
         dialog1 = new SpotsDialog.Builder().setContext(Login.this).setTheme(R.style.Custom).build();
         dialog1.setMessage("Please wait.....");
 

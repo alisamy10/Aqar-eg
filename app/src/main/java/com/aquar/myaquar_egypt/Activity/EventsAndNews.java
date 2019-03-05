@@ -1,12 +1,15 @@
 package com.aquar.myaquar_egypt.Activity;
 
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -26,6 +29,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import dmax.dialog.SpotsDialog;
+
 public class EventsAndNews extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ImageView love_behind;
@@ -34,6 +39,9 @@ public class EventsAndNews extends AppCompatActivity {
     private ArrayList<ModelOfEventAndNews>  list  = new ArrayList<>();
  //   public static int id;
     public static int id_event;
+    private AlertDialog dialog1;
+    private LinearLayout parentOfEventAndNews ;
+
 
 
     @Override
@@ -41,9 +49,12 @@ public class EventsAndNews extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_and_news);
 
-
+       parentOfEventAndNews = findViewById(R.id.parentOfEventAndNews);
        mRecyclerView = findViewById(R.id.listOfEventsAndNews);
 
+        dialog1 = new SpotsDialog.Builder().setContext(EventsAndNews.this).setTheme(R.style.Custom).build();
+        dialog1.setMessage("Please wait.....");
+        dialog1.show();
 
         GetHome_Data();
 
@@ -62,6 +73,8 @@ public class EventsAndNews extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        parentOfEventAndNews.setVisibility(View.VISIBLE);
+                        dialog1.dismiss();
 
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 

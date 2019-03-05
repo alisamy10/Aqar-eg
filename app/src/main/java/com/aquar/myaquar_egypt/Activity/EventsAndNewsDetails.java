@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +54,7 @@ public class EventsAndNewsDetails extends AppCompatActivity {
     private TextView event_description, titile, event_devolper;
 
     private Button share_btn, phone_btn;
+    private LinearLayout parentOfEventAndNewDetails ;
 
     List<String> urlimage = new ArrayList<>();
 
@@ -63,7 +65,7 @@ public class EventsAndNewsDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_and_news_details);
-
+        parentOfEventAndNewDetails = findViewById(R.id.parentOfEventAndNewsDetails);
 
 
         dialog1 = new SpotsDialog.Builder().setContext(EventsAndNewsDetails.this).setTheme(R.style.Custom).build();
@@ -127,6 +129,9 @@ public class EventsAndNewsDetails extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+
+                        dialog1.dismiss();
+                        parentOfEventAndNewDetails.setVisibility(View.VISIBLE);
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         Model_array_of_Eventandnews array = gson.fromJson(response.toString(), Model_array_of_Eventandnews.class);
                         list = array.getProject();
@@ -140,7 +145,7 @@ public class EventsAndNewsDetails extends AppCompatActivity {
 
                         seteventdata(list.get(0).getDescription(),list.get(0).getProject(),list.get(0).getTitle());
 
-                        dialog1.dismiss();
+
 
                     }
 

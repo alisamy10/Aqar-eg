@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +54,7 @@ public class Projectdetails extends AppCompatActivity {
     private AlertDialog dialog1;
 
     private String description_string;
+    private LinearLayout parentOfProjectDetails ;
 
     List<String> urlimage = new ArrayList<>();
 
@@ -66,6 +68,8 @@ public class Projectdetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_details);
+
+        parentOfProjectDetails = findViewById(R.id.parentOfProjectDetails);
 
 
         dialog1 = new SpotsDialog.Builder().setContext(Projectdetails.this).setTheme(R.style.Custom).build();
@@ -247,14 +251,14 @@ public class Projectdetails extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("OnSingleProjectRes", response.toString());
-
+                      parentOfProjectDetails.setVisibility(View.VISIBLE);
+                        dialog1.dismiss();
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         ArrayModelOfProjectsDetails array = gson.fromJson(response.toString(), ArrayModelOfProjectsDetails.class);
 
                         list = array.getProject();
 
-                        dialog1.dismiss();
+
 
                         //loop for image of slider
                         for (int i = 0; i < list.get(0).getSlider_images().size(); i++) {

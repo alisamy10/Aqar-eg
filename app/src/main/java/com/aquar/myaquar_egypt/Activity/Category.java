@@ -1,12 +1,15 @@
 package com.aquar.myaquar_egypt.Activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -27,6 +30,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import dmax.dialog.SpotsDialog;
+
 public class Category extends AppCompatActivity {
 
     fragment_home  getid = new fragment_home();
@@ -36,6 +41,9 @@ public class Category extends AppCompatActivity {
     private example_adapter_for_home_fragment mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<ModelObjects>  list  = new ArrayList<>();
+    private AlertDialog dialog1;
+    private LinearLayout parentOfCategory ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +51,12 @@ public class Category extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recyclerView_categry);
         textOfHeader = findViewById(R.id.textOfCategory);
 
+        parentOfCategory = findViewById(R.id.parentOfCategory);
 
+
+        dialog1 = new SpotsDialog.Builder().setContext(Category.this).setTheme(R.style.Custom).build();
+        dialog1.setMessage("Please wait.....");
+        dialog1.show();
 
 
 
@@ -75,6 +88,8 @@ public class Category extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        parentOfCategory.setVisibility(View.VISIBLE);
+                        dialog1.dismiss();
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         ModelArray array = gson.fromJson(response.toString(), ModelArray.class);
                         list = array.getProjects();
@@ -99,7 +114,7 @@ public class Category extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-
+                            dialog1.dismiss();
 
                     }
                 });
