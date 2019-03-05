@@ -34,7 +34,6 @@ public class AboutUs extends AppCompatActivity {
 
     private void Get_Data() {
 
-
         AndroidNetworking.get(ConstantsUrl.aboutUs)
                 .setPriority(Priority.HIGH)
                 .build()
@@ -46,11 +45,7 @@ public class AboutUs extends AppCompatActivity {
 
                         AboutUsModelObject array = gson.fromJson(response.toString(), AboutUsModelObject.class);
 
-
-
                         aboutUs.setText(  array.getText());
-
-
 
                     }
 

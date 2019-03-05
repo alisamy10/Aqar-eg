@@ -43,10 +43,28 @@ public class SearchResult extends AppCompatActivity {
 
 
         mRecyclerView = findViewById(R.id.recyclerView_search_result);
-        GetCategoryData(Filter.radioBtn , Filter.itemMaxPrice ,Filter.itemMinPrice,Filter.itemMaxArea,
-                Filter.itemMinArea,Filter.itemMaxBedroom,Filter.itemMinBedroom,Filter.itemMaxBathroom,
-                Filter.itemMinBathroom,Filter.locationOfSpinner
-                );
+
+
+
+
+
+       try {
+           if (Filter.locationOfSpinner.equals("all")) {
+               Filter.locationOfSpinner = null;
+
+           }
+       }catch (Exception e){}
+
+//        GetCategoryData(Filter.radioBtn , Filter.itemMaxPrice ,Filter.itemMinPrice,Filter.itemMaxArea,
+//                Filter.itemMinArea,Filter.itemMaxBedroom,Filter.itemMinBedroom,Filter.itemMaxBathroom,
+//                Filter.itemMinBathroom,Filter.locationOfSpinner
+//                );
+
+
+GetCategoryData();
+        Toast.makeText(this,Filter.locationOfSpinner+"", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, Filter.radioBtn+"", Toast.LENGTH_SHORT).show();
+
 
 
     }
@@ -56,22 +74,20 @@ public class SearchResult extends AppCompatActivity {
 
 
 
-    private void GetCategoryData(int categoryId ,String max_price ,String min_price , String max_area ,String min_area
-                 ,String max_badrooms ,String min_badrooms , String max_bathrooms ,String min_bathrooms,
-                                    String locations  )
+    private void GetCategoryData()
     {
         JSONObject object = new JSONObject();
         try {
-            object.put("category_id", categoryId);
-            object.put("max_price", max_price);
-            object.put("min_price", min_price);
-            object.put("max_area", max_area);
-            object.put("min_area", min_area);
-            object.put("max_badrooms", max_badrooms);
-            object.put("min_badrooms", min_badrooms);
-            object.put("max_bathrooms", max_bathrooms);
-            object.put("min_bathrooms", min_bathrooms);
-            object.put("locations", locations);
+            object.put("category_id",1);
+            object.put("max_price",6100000);
+            object.put("min_price",1);
+            object.put("max_area",240);
+            object.put("min_area",40);
+            object.put("max_badrooms",4);
+            object.put("min_badrooms",1);
+            object.put("max_bathrooms",3);
+            object.put("min_bathrooms",1);
+            object.put("locations",null);
 
         } catch (JSONException e) {
             e.getStackTrace();
@@ -84,11 +100,16 @@ public class SearchResult extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+
+
+
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         ModelArray array = gson.fromJson(response.toString(), ModelArray.class);
                         list = array.getProjects();
                         setRecyclerData(list);
-                        Toast.makeText(SearchResult.this, list.get(0).getProduct_id()+"", Toast.LENGTH_SHORT).show();
+
+
+                        Toast.makeText(SearchResult.this, list.get(0).getProduct_id()+"rfefwer", Toast.LENGTH_SHORT).show();
 
                         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
@@ -109,6 +130,7 @@ public class SearchResult extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
+                        Toast.makeText(SearchResult.this, "fnfEJKASF BSF", Toast.LENGTH_SHORT).show();
 
 
                     }

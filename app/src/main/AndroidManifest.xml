@@ -33,8 +33,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Filter"
-
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+        </activity>
         <activity
             android:name=".Activity.PanoramaView"
             android:screenOrientation="portrait" />
@@ -52,6 +52,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".Activity.Login"
@@ -64,6 +65,15 @@
             android:name=".Activity.Category"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Activity.SearchResult"
+
+            android:screenOrientation="portrait"
+            >
+        </activity>
+
+
     </application>
 
 </manifest>
