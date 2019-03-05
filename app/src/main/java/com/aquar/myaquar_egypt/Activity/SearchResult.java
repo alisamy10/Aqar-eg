@@ -56,8 +56,8 @@ public class SearchResult extends AppCompatActivity {
 
 
 
-    private void GetCategoryData(int categoryId ,int max_price ,int min_price , int max_area ,int min_area
-                 ,int max_badrooms ,int min_badrooms , int max_bathrooms ,int min_bathrooms,
+    private void GetCategoryData(int categoryId ,String max_price ,String min_price , String max_area ,String min_area
+                 ,String max_badrooms ,String min_badrooms , String max_bathrooms ,String min_bathrooms,
                                     String locations  )
     {
         JSONObject object = new JSONObject();

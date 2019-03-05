@@ -38,12 +38,12 @@ public class Filter extends AppCompatActivity {
     public RadioButton rb1, rb2, rb3, rb4, rb5, rb6;
     Spinner maxarea,minarea,minbed,maxbed,location,minbath,maxbath,minprice,maxprice;
 
-   public static int itemMinArea  ,  itemMaxArea  , itemMinBedroom  , itemMaxBedroom ,  itemMinBathroom  , itemMaxBathroom , itemMinPrice , itemMaxPrice;
+   public static String itemMinArea  ,  itemMaxArea  , itemMinBedroom  , itemMaxBedroom ,  itemMinBathroom  , itemMaxBathroom , itemMinPrice , itemMaxPrice;
      public static  int radioBtn ;
      public static String locationOfSpinner ;
 
 
-    ArrayAdapter<Integer> adapter;
+    ArrayAdapter<String> adapter;
     ArrayAdapter<String> adapterString;
 
 
@@ -106,30 +106,30 @@ public class Filter extends AppCompatActivity {
 
 
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_area());
+                        adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_area());
                         maxarea.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_area());
+                        adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_area());
                         minarea.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_price());
+                        adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_price());
                         minprice.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_price());
+                        adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_price());
                         maxprice.setAdapter(adapter);
 
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_badrooms());
+                        adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_badrooms());
                         minbed.setAdapter(adapter);
 
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_badrooms());
+                        adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_badrooms());
                         maxbed.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_bathrooms());
+                        adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_bathrooms());
                         minbath.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_bathrooms());
+                        adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_bathrooms());
                         maxbath.setAdapter(adapter);
 
                         adapterString = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_simple_text, array.getLocations());
@@ -168,7 +168,7 @@ public class Filter extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                itemMinBedroom   = (int) parent.getItemAtPosition(position);
+                itemMinBedroom   =  parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -181,7 +181,7 @@ public class Filter extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                itemMaxBedroom   = (int) parent.getItemAtPosition(position);
+                itemMaxBedroom   =  parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -196,7 +196,7 @@ public class Filter extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                itemMinBathroom   = (int) parent.getItemAtPosition(position);
+                itemMinBathroom   =  parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -210,7 +210,7 @@ public class Filter extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                itemMaxBathroom= (int) parent.getItemAtPosition(position);
+                itemMaxBathroom =  parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -227,7 +227,7 @@ public class Filter extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                itemMaxArea   = (int) parent.getItemAtPosition(position);
+                itemMaxArea   =  parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -240,7 +240,7 @@ public class Filter extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                itemMinArea   = (int) parent.getItemAtPosition(position);
+                itemMinArea   =  parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -255,7 +255,7 @@ public class Filter extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                itemMinPrice   = (int) parent.getItemAtPosition(position);
+                itemMinPrice   =  parent.getItemAtPosition(position).toString();;
             }
 
             @Override
@@ -268,7 +268,7 @@ public class Filter extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                itemMaxPrice   = (int) parent.getItemAtPosition(position);
+                itemMaxPrice   =  parent.getItemAtPosition(position).toString();
             }
 
             @Override
