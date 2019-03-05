@@ -37,10 +37,13 @@ public class Filter extends AppCompatActivity {
     public RadioButton rb1, rb2, rb3, rb4, rb5, rb6;
     Spinner maxarea,minarea,minbed,maxbed,location,minbath,maxbath,minprice,maxprice;
 
-
+   public static int itemMinArea  ,  itemMaxArea  , itemMinBedroom  , itemMaxBedroom ,  itemMinBathroom  , itemMaxBathroom , itemMinPrice , itemMaxPrice;
      public static  int radioBtn ;
-    ArrayAdapter<Integer> adapter;
 
+     public static String locationOfSpinner ;
+
+
+    ArrayAdapter<Integer> adapter;
     ArrayAdapter<String> adapterString;
 
 
@@ -49,6 +52,7 @@ public class Filter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
+
         rg1 = findViewById(R.id.radiogroup1);
         rg3 = findViewById(R.id.radiogroup3);
         rg2 = findViewById(R.id.radiogroup2);
@@ -72,13 +76,9 @@ public class Filter extends AppCompatActivity {
 
 
 
-
-
-
-
-
         radioButton();
         Get_Data();
+        onClickOfSpinners();
 
 
 
@@ -159,6 +159,136 @@ public class Filter extends AppCompatActivity {
 
                     }
                 });
+    }
+
+
+    private void onClickOfSpinners (){
+
+        minbed.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                itemMinBedroom   = (int) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        maxbed.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                itemMaxBedroom   = (int) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+        minbath.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                itemMinBathroom   = (int) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        maxbath.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                itemMaxBathroom= (int) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+
+
+        maxarea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                itemMaxArea   = (int) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        minarea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                itemMinArea   = (int) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+        minprice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                itemMinPrice   = (int) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        maxprice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                itemMaxPrice   = (int) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                locationOfSpinner   =  parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
 
@@ -268,5 +398,21 @@ public class Filter extends AppCompatActivity {
 
     public void search(View view) {
         Toast.makeText(this, radioBtn+"", Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(this, itemMaxArea+"", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, itemMinArea+"", Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(this, itemMaxPrice+"", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, itemMinPrice+"", Toast.LENGTH_SHORT).show();
+
+
+        Toast.makeText(this, itemMaxBathroom+"", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, itemMinBathroom+"", Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(this, itemMaxBedroom+"", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, itemMinBedroom+"", Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(this, locationOfSpinner+"", Toast.LENGTH_SHORT).show();
+
     }
 }
