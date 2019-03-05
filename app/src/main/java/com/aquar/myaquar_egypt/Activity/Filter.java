@@ -1,5 +1,6 @@
 package com.aquar.myaquar_egypt.Activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,7 +40,6 @@ public class Filter extends AppCompatActivity {
 
    public static int itemMinArea  ,  itemMaxArea  , itemMinBedroom  , itemMaxBedroom ,  itemMinBathroom  , itemMaxBathroom , itemMinPrice , itemMaxPrice;
      public static  int radioBtn ;
-
      public static String locationOfSpinner ;
 
 
@@ -107,10 +107,10 @@ public class Filter extends AppCompatActivity {
 
 
                         adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMax_area());
-                        minarea.setAdapter(adapter);
+                        maxarea.setAdapter(adapter);
 
                         adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_area());
-                        maxarea.setAdapter(adapter);
+                        minarea.setAdapter(adapter);
 
                         adapter = new ArrayAdapter<Integer>(getApplicationContext(),R.layout.custom_simple_text, array.getMin_price());
                         minprice.setAdapter(adapter);
@@ -397,22 +397,8 @@ public class Filter extends AppCompatActivity {
     }
 
     public void search(View view) {
-        Toast.makeText(this, radioBtn+"", Toast.LENGTH_SHORT).show();
+       startActivity(new Intent(this,SearchResult.class));
 
-        Toast.makeText(this, itemMaxArea+"", Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, itemMinArea+"", Toast.LENGTH_SHORT).show();
-
-        Toast.makeText(this, itemMaxPrice+"", Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, itemMinPrice+"", Toast.LENGTH_SHORT).show();
-
-
-        Toast.makeText(this, itemMaxBathroom+"", Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, itemMinBathroom+"", Toast.LENGTH_SHORT).show();
-
-        Toast.makeText(this, itemMaxBedroom+"", Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, itemMinBedroom+"", Toast.LENGTH_SHORT).show();
-
-        Toast.makeText(this, locationOfSpinner+"", Toast.LENGTH_SHORT).show();
 
     }
 }

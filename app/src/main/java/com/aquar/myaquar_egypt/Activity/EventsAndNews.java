@@ -32,7 +32,9 @@ public class EventsAndNews extends AppCompatActivity {
     private EventsAndNewsAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<ModelOfEventAndNews>  list  = new ArrayList<>();
-    public static int id  ;
+ //   public static int id;
+    public static int id_event;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +76,7 @@ public class EventsAndNews extends AppCompatActivity {
                             @Override
                             public void intent_to_detales(int pos, RelativeLayout relativeLayout) {
                                 go_detales( pos, relativeLayout);
+                              id_event= list.get(pos).getProduct_id();
                             }
                         });
                     }
@@ -99,7 +102,7 @@ public class EventsAndNews extends AppCompatActivity {
 
 
     public void go_detales(int pos, RelativeLayout relativeLayout) {
-        Toast.makeText(this, "go to event and news"+pos, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, "go to event and news"+pos, Toast.LENGTH_SHORT).show();
          startActivity(new Intent(this , EventsAndNewsDetails.class));
 
 

@@ -23,6 +23,8 @@ public class ConstantsUrl {
     public static final String aboutUs = BasicURL + "about_us";
     public static final String tremsAndPolicies = BasicURL + "terms_policies";
     public static final String search = BasicURL + "search" ;
+    public static final String EventandNews=BasicURL+"eventsnewsdetails";
+    public static final String SearchResult = BasicURL + "search_result";
 
 
 
