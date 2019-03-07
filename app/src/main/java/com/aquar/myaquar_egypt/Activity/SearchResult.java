@@ -206,4 +206,12 @@ public class SearchResult extends AppCompatActivity {
         }catch (Exception e){}
 
     }
+    @Override
+    public void onBackPressed() {
+
+        startActivity(new Intent(SearchResult.this, Filter.class));
+        finish();
+
+    }
+
 }

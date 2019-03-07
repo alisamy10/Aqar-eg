@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
+    android:visibility="gone"
     tools:context="com.aquar.myaquar_egypt.Fragments.Profile_fragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -69,21 +70,10 @@
             >
 
             <TextView
-                android:id="@+id/personal_data"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:textColor="#000"
-                android:layout_marginBottom="3dp"
-                android:gravity="center"
-                android:textAllCaps="false"
-                android:textSize="20sp"
-                android:text="Personal data" />
-            <TextView
                 android:id="@+id/data_button_click"
                 android:layout_width="match_parent"
                 android:background="#ffc9000c"
-                android:layout_height="3dp" />
+                android:layout_height="1.5dp" />
         </LinearLayout>
 
 

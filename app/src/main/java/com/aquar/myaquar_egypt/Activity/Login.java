@@ -163,6 +163,7 @@ public class Login extends AppCompatActivity {
     @OnClick(R.id.skip)
     public void skip() {
         startActivity(new Intent(Login.this, MainActivity.class));
+        finish();
 //        mySharedPreference.setUserOBJ("");
     }
 
@@ -207,6 +208,7 @@ public class Login extends AppCompatActivity {
         mBundle.putSerializable(ConstantsUrl.userDataBundleKey, object);
         toregister.putExtras(mBundle);
         startActivity(toregister);
+        finish();
     }
 
     private void facebookToken() {

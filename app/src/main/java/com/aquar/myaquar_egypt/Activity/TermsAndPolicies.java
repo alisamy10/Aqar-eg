@@ -1,6 +1,7 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -66,8 +67,6 @@ public class TermsAndPolicies extends AppCompatActivity {
 
 
 
-
-
                         }
 
                         @Override
@@ -80,4 +79,12 @@ public class TermsAndPolicies extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(TermsAndPolicies.this, MainActivity.class));
+        finish();
+
+    }
+
 }

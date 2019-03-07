@@ -5,9 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@drawable/background"
+
     android:orientation="vertical"
     tools:context="com.aquar.myaquar_egypt.Activity.Login">
+
+    <LinearLayout
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,8 +51,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+
             android:layout_weight="5"
             android:background="@drawable/shape"
             android:ems="10"
@@ -70,8 +78,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+
             android:layout_weight="5"
             android:background="@drawable/shape"
             android:ems="10"
@@ -93,16 +100,12 @@
         android:layout_weight="0.8"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1" />
+
 
 
         <Button
             android:id="@+id/login"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_weight="0.8"
@@ -124,19 +127,21 @@
     </LinearLayout>
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="center"
         android:layout_weight="0.4"
+
         android:orientation="horizontal">
 
         <LinearLayout
+
+
             android:id="@+id/loginFB"
-            android:layout_width="135dp"
-            android:layout_height="35dp"
-            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_gravity="left"
             android:background="@drawable/shape_social">
 
             <ImageView
@@ -158,18 +163,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="10dp"
 
             android:id="@+id/logingoggleplus"
-            android:layout_width="135dp"
-            android:layout_height="34dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
             android:background="@drawable/shape_social">
 
             <ImageView
-                android:layout_marginLeft="5dp"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
                 android:src="@drawable/google" />
 
             <TextView
@@ -182,7 +187,7 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
 
@@ -192,14 +197,6 @@
         android:layout_weight="0.5"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/fpass"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="right"
-            android:layout_weight="0.5" />
 
         <TextView
             android:layout_width="0dp"
@@ -212,6 +209,7 @@
             android:textStyle="bold" />
 
         <TextView
+
             android:onClick="regist"
             android:id="@+id/createnewacc"
             android:layout_width="0dp"
@@ -219,20 +217,12 @@
             android:layout_alignParentRight="true"
             android:layout_gravity="left"
             android:layout_weight="1.5"
-            android:gravity="left"
+            android:gravity="right"
             android:text="Create a new account "
              android:layout_marginLeft="-10dp"
             android:textSize="14sp"
             android:textStyle="bold" />
 
-        <TextView
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="right"
-            android:layout_weight="0.2" />
 
 
     </LinearLayout>
@@ -254,9 +244,10 @@
             android:padding="7dp"
             android:text="Skip >"
             android:textAllCaps="false"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
+    </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

@@ -407,6 +407,14 @@ public class Projectdetails extends AppCompatActivity {
 
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(Projectdetails.this, MainActivity.class));
+        finish();
+
+    }
+
 }
 
 

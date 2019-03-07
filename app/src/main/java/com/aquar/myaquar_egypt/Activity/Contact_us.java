@@ -135,4 +135,11 @@ public class Contact_us extends AppCompatActivity {
         startActivity(intent);
 
     }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(Contact_us.this, MainActivity.class));
+        finish();
+
+    }
+
 }

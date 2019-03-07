@@ -410,7 +410,15 @@ public class Filter extends AppCompatActivity {
 
     public void search(View view) {
        startActivity(new Intent(this,SearchResult.class));
+       finish();
 
 
     }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(Filter.this, MainActivity.class));
+        finish();
+
+    }
+
 }

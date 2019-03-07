@@ -51,9 +51,11 @@ public class Splash extends AppCompatActivity {
         if (mySharedPreference.getUserOBJ().equals("")) {
             //user obj not available
             startActivity(new Intent(Splash.this, Login.class));
+            finish();
         } else {
             //user obj available
             startActivity(new Intent(Splash.this, MainActivity.class));
+            finish();
         }
 
 

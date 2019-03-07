@@ -1,6 +1,8 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,19 +29,19 @@ import org.json.JSONObject;
 import dmax.dialog.SpotsDialog;
 
 public class AboutUs extends AppCompatActivity {
-     TextView aboutUs ;
-     ScrollView parentOfAboutUs;
+    TextView aboutUs;
+    ScrollView parentOfAboutUs;
+    private long backPressedTime;
 
     private AlertDialog dialog1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
-         aboutUs = findViewById(R.id.about_us_text);
+        aboutUs = findViewById(R.id.about_us_text);
 
-         parentOfAboutUs= findViewById(R.id.parentOfAboutUs);
-
-
+        parentOfAboutUs = findViewById(R.id.parentOfAboutUs);
 
 
         dialog1 = new SpotsDialog.Builder().setContext(AboutUs.this).setTheme(R.style.Custom).build();
@@ -64,7 +66,7 @@ public class AboutUs extends AppCompatActivity {
 
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         AboutUsModelObject array = gson.fromJson(response.toString(), AboutUsModelObject.class);
-                        aboutUs.setText(  array.getText());
+                        aboutUs.setText(array.getText());
 
                     }
 
@@ -75,6 +77,17 @@ public class AboutUs extends AppCompatActivity {
 
                     }
                 });
+    }
+
+
+
+
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(AboutUs.this, MainActivity.class));
+        finish();
+
     }
 
 

@@ -44,7 +44,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    private long backPressedTime ;
     private static final String TAG = "Home_Activity_home";
     private Fragment fragment;
     private FragmentTransaction transaction;
@@ -139,14 +139,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, Filter.class));
     }
 
-    @Override
-    public void onBackPressed() {
-        if (dl.isDrawerOpen(GravityCompat.START)) {
-            dl.closeDrawer(GravityCompat.START);
-        } else {
-            finishAffinity();
-        }
-    }
 
 
     private void listViewOfNavDrawer() {
@@ -162,23 +154,24 @@ public class MainActivity extends AppCompatActivity {
                 if (position == 0) {
                     Intent go = new Intent(MainActivity.this, EventsAndNews.class);
                     startActivity(go);
+                    finish();
                 }
                 //about us
                 else if (position == 1) {
                     startActivity(new Intent(MainActivity.this, AboutUs.class));
-
+                    finish();
 
                 }
                 //contact us
                 else if (position == 2) {
                     startActivity(new Intent(MainActivity.this, Contact_us.class));
 
-
+                    finish();
                 }
                 //terms and policies
                 else if (position == 3) {
                     startActivity(new Intent(MainActivity.this, TermsAndPolicies.class));
-
+                    finish();
 
                 }
                 //logout
@@ -186,6 +179,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
                     mySharedPreference.setUserOBJ("");
                     startActivity(new Intent(MainActivity.this, Splash.class));
+                    finish();
+
                 }
 
             }
@@ -229,6 +224,7 @@ public class MainActivity extends AppCompatActivity {
                 //Residential
                 if (childPosition == 0) {
                     startActivity(new Intent(MainActivity.this, Category.class));
+                    finish();
                     idForCategoryOfNav = String.valueOf(myUtils.Residential);
                     headerOfCategory = "Residential";
 
@@ -236,6 +232,7 @@ public class MainActivity extends AppCompatActivity {
                 //Holiday Home
                 else if (childPosition == 1) {
                     startActivity(new Intent(MainActivity.this, Category.class));
+                    finish();
                     idForCategoryOfNav = String.valueOf(myUtils.HolidayHome);
                     headerOfCategory = "Holiday Home";
 
@@ -243,18 +240,21 @@ public class MainActivity extends AppCompatActivity {
                 //commercial
                 else if (childPosition == 2) {
                     startActivity(new Intent(MainActivity.this, Category.class));
+                    finish();
                     idForCategoryOfNav = String.valueOf(myUtils.Commercial);
                     headerOfCategory = "Commercial";
                 }
                 //medical
                 else if (childPosition == 3) {
                     startActivity(new Intent(MainActivity.this, Category.class));
+                    finish();
                     idForCategoryOfNav = String.valueOf(myUtils.Medical);
                     headerOfCategory = "Medical";
                 }
                 //LunchSoon
                 else if (childPosition == 4) {
                     startActivity(new Intent(MainActivity.this, Category.class));
+                    finish();
                     idForCategoryOfNav = String.valueOf(myUtils.LunchSoon);
                     headerOfCategory = "Lunch Soon";
 
@@ -414,4 +414,21 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+    @Override
+    public void onBackPressed() {
+        if (dl.isDrawerOpen(GravityCompat.START)) {
+            dl.closeDrawer(GravityCompat.START);
+        } else {
+            if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                finishAffinity();
+            } else {
+                Toast.makeText(this, "press again to exit ", Toast.LENGTH_SHORT).show();
+            }
+
+            backPressedTime = System.currentTimeMillis();
+        }
+
+
+    }
+
 }
