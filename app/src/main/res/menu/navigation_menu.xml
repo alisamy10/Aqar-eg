@@ -3,14 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:HTMLCode="http://schemas.android.com/tools">
 
-    <item
-        android:id="@+id/project_id_nav"
-        android:visible="false"
-        android:title="Project" />
+
 
     <item
         android:id="@+id/news_event_nav"
-
         android:title="News and Events" />
 
     <item
