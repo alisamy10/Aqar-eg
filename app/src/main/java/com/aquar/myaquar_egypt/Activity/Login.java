@@ -33,10 +33,12 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
@@ -54,6 +56,7 @@ import butterknife.OnClick;
 import dmax.dialog.SpotsDialog;
 
 public class Login extends AppCompatActivity {
+
     @BindView(R.id.enter_email)
     EditText enter_email;
     @BindView(R.id.enter_pass)
@@ -61,13 +64,10 @@ public class Login extends AppCompatActivity {
     @BindView(R.id.loginFB)
     LinearLayout loginFB;
 
-
     //socialData
     private CallbackManager callbackManager;
     private GoogleSignInClient mGoogleSignInClient;
     private int RC_SIGN_IN = 123;
-
-
 
     //dialog
     AlertDialog dialog1;
@@ -147,8 +147,6 @@ public class Login extends AppCompatActivity {
 
     }
 
-
-
     @OnClick(R.id.loginFB)
     public void onFacebookBT() {
         LoginManager.getInstance().logInWithReadPermissions(Login.this, Arrays.asList(
@@ -176,6 +174,8 @@ public class Login extends AppCompatActivity {
             //Google response
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
+//            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+//            int statusCode = result.getStatus().getStatusCode();
 
         } else {
             //facebook response
@@ -192,11 +192,8 @@ public class Login extends AppCompatActivity {
             Log.d("googleData", account.getEmail() + "," + account.getDisplayName());
 
             sendDataToRegister(account.getDisplayName(), account.getEmail());
-
-
         } catch (ApiException e) {
             Log.d("googleData", "signInResult:failed code=" + e.getStatusCode());
-//            Log.d("googleData", "signInResult:failed code=" + e.toString());
 
             Toast.makeText(this, "Failed to do Sign In", Toast.LENGTH_SHORT).show();
         }

@@ -18,6 +18,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.userResPOJO;
 
+import com.aquar.myaquar_egypt.Model.socialLogin.socialLoginPOJO;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.google.gson.Gson;
@@ -30,6 +31,8 @@ import org.json.JSONObject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.aquar.myaquar_egypt.Utils.ConstantsUrl.userDataBundleKey;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -51,6 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
         AndroidNetworking.initialize(this);
+        getSocialData();
 
     }
 
@@ -129,6 +133,15 @@ public class RegisterActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private void getSocialData() {
+        socialLoginPOJO socialOBJ = (socialLoginPOJO) getIntent().getSerializableExtra(userDataBundleKey);
+
+        if (socialOBJ != null) {
+            edit_text_username.setText(socialOBJ.userName);
+            edit_text_Email.setText(socialOBJ.userEmail);
+        }
     }
 
 }
