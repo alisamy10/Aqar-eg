@@ -12,12 +12,12 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import com.aquar.myaquar_egypt.R;
+import com.onegravity.contactpicker.group.GroupViewHolder;
 
 public class ExpandListAdapter extends BaseExpandableListAdapter {
 
     private Context _context;
     private List<String> _listDataHeader; // header titles
-
     public ExpandListAdapter() {
     }
 
@@ -109,4 +109,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
+
+   
+
 }

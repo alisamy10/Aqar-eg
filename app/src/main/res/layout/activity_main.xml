@@ -206,7 +206,8 @@
 
             <android.support.design.widget.NavigationView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#fff"
                 android:layout_gravity="start"
                 android:id="@+id/Navigation_drawer"
                 app:headerLayout="@layout/nav_header" />
@@ -214,10 +215,15 @@
             <ExpandableListView
                 android:id="@+id/lvExp"
                 android:layout_width="match_parent"
+                android:background="#fff"
+                android:textStyle="normal"
+                android:indicatorLeft="@dimen/com_facebook_profilepictureview_preset_size_large"
+                android:groupIndicator="@drawable/group_ind"
                 android:layout_height="wrap_content"
                 tools:listheader="@layout/nav_header" />
 
             <ListView
+                android:background="#fff"
                 android:id="@+id/list_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
