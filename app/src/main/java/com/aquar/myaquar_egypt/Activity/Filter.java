@@ -31,8 +31,7 @@ import android.widget.ArrayAdapter;
 
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import dmax.dialog.SpotsDialog;
 
