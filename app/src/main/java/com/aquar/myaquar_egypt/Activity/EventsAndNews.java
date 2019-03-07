@@ -22,6 +22,7 @@ import com.aquar.myaquar_egypt.Model.ModelOfNewsAndEvent.ModelArrayOfEventAndNew
 import com.aquar.myaquar_egypt.Model.ModelOfNewsAndEvent.ModelOfEventAndNews;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
+import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -48,6 +49,7 @@ public class EventsAndNews extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_and_news);
+        myUtils.setLocale(this);
 
        parentOfEventAndNews = findViewById(R.id.parentOfEventAndNews);
        mRecyclerView = findViewById(R.id.listOfEventsAndNews);

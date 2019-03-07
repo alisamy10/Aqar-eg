@@ -21,6 +21,7 @@ import com.aquar.myaquar_egypt.Model.AboutUs.AboutUsModelObject;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelArray;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
+import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -39,6 +40,7 @@ public class AboutUs extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
+        myUtils.setLocale(this);
         aboutUs = findViewById(R.id.about_us_text);
 
         parentOfAboutUs = findViewById(R.id.parentOfAboutUs);
@@ -80,17 +82,12 @@ public class AboutUs extends AppCompatActivity {
     }
 
 
-
-
-
     @Override
     public void onBackPressed() {
         startActivity(new Intent(AboutUs.this, MainActivity.class));
         finish();
 
     }
-
-
 
 
 }

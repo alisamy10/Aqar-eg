@@ -22,6 +22,7 @@ import com.aquar.myaquar_egypt.Model.HomeApi.ModelArray;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelObjects;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
+import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -64,6 +65,8 @@ public class fragment_home extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_fragment_home, container, false);
         mRecyclerView = v.findViewById(R.id.recyclerView_fragment_home);
+        myUtils.setLocale(getActivity());
+
         dialog1 = new SpotsDialog.Builder().setContext(getContext()).setTheme(R.style.Custom).build();
         dialog1.setMessage("Please wait.....");
 

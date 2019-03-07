@@ -21,6 +21,7 @@ import com.aquar.myaquar_egypt.Model.Login.userResPOJO;
 import com.aquar.myaquar_egypt.Model.socialLogin.socialLoginPOJO;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
+import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -53,6 +54,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
+        myUtils.setLocale(this);
+
         AndroidNetworking.initialize(this);
         getSocialData();
 

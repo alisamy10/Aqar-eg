@@ -27,6 +27,7 @@ import com.aquar.myaquar_egypt.Model.ModelsOfProjectDetails.ModelObjectsOfProjec
 
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
+import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -68,6 +69,7 @@ public class Projectdetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_details);
+        myUtils.setLocale(this);
 
         parentOfProjectDetails = findViewById(R.id.parentOfProjectDetails);
 

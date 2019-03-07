@@ -19,6 +19,7 @@ import com.aquar.myaquar_egypt.Model.AboutUs.AboutUsModelObject;
 import com.aquar.myaquar_egypt.Model.ContactUsModel.ContactUsModelObject;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
+import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -36,6 +37,8 @@ public class Contact_us extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
+        myUtils.setLocale(this);
+
         contct=findViewById(R.id.contactus);
         location=findViewById(R.id.location);
         mail=findViewById(R.id.mail);

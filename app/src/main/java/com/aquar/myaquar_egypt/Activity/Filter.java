@@ -56,6 +56,8 @@ public class Filter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
+        myUtils.setLocale(this);
+
         parentOfFilter =findViewById(R.id.parentOfFilter);
 
         dialog1 = new SpotsDialog.Builder().setContext(Filter.this).setTheme(R.style.Custom).build();

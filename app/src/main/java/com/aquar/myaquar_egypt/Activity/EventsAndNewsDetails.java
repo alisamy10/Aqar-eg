@@ -27,6 +27,7 @@ import com.aquar.myaquar_egypt.Model.ModelsOfProjectDetails.ArrayModelOfProjects
 import com.aquar.myaquar_egypt.Model.ModelsOfProjectDetails.ModelObjectsOfProjectDetails;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
+import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -65,6 +66,8 @@ public class EventsAndNewsDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_and_news_details);
+        myUtils.setLocale(this);
+
         parentOfEventAndNewDetails = findViewById(R.id.parentOfEventAndNewsDetails);
 
 

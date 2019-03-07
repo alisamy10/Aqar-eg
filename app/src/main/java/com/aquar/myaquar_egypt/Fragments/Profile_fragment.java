@@ -15,6 +15,7 @@ import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
 
 import com.aquar.myaquar_egypt.R;
+import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
@@ -61,8 +62,6 @@ public class Profile_fragment extends Fragment {
     LinearLayout mobile_linear;
 
 
-
-
     public Profile_fragment() {
         // Required empty public constructor
     }
@@ -74,6 +73,7 @@ public class Profile_fragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        myUtils.setLocale(getActivity());
 
         ButterKnife.bind(this, view);
         dataCheck();
@@ -101,11 +101,11 @@ public class Profile_fragment extends Fragment {
         } catch (Exception e) {
             user_name.setText("Please Sign In First");
             user_name.setTextColor(getResources().getColor(R.color.Red));
-            onVisibleText(jobTitle_linear, username_linear, email_linear, mobile_linear,job_titleBar);
+            onVisibleText(jobTitle_linear, username_linear, email_linear, mobile_linear, job_titleBar);
         }
     }
 
-    private void onVisibleText( LinearLayout username, LinearLayout job_title, LinearLayout email, LinearLayout mobile, TextView job_titleBar) {
+    private void onVisibleText(LinearLayout username, LinearLayout job_title, LinearLayout email, LinearLayout mobile, TextView job_titleBar) {
         username.setVisibility(View.GONE);
         job_title.setVisibility(View.GONE);
         email.setVisibility(View.GONE);

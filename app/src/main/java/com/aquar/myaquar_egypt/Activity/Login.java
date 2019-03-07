@@ -78,6 +78,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(this);
         setContentView(R.layout.login);
+        myUtils.setLocale(this);
+
         facebookToken();
         googleToken();
         ButterKnife.bind(this);

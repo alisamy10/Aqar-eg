@@ -2,13 +2,21 @@ package com.aquar.myaquar_egypt.Utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.aquar.myaquar_egypt.Model.Error.ErrorModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.Locale;
 
 /**
  * Created by aswany on 3/3/19.
@@ -35,6 +43,17 @@ public class myUtils {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+
+    }
+    public static void setLocale(Context context) {
+
+        Locale locale = new Locale("en");
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        context.getResources().updateConfiguration(config,
+                context.getResources().getDisplayMetrics());
+
 
     }
 }

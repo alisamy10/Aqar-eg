@@ -16,6 +16,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Model.AboutUs.AboutUsModelObject;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
+import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -33,6 +34,7 @@ public class TermsAndPolicies extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terms_and_policies);
         textview = findViewById(R.id.text_of_terms);
+        myUtils.setLocale(this);
 
 
         parentOfTermesAndPolicies = findViewById(R.id.parentOfTermesAndPolicies);

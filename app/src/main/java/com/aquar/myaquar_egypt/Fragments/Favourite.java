@@ -55,6 +55,8 @@ public class Favourite extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_favourite, container, false);
+        myUtils.setLocale(getActivity());
+
         fragment_favouriteEmpty_TV = v.findViewById(R.id.fragment_favouriteEmpty_TV);
         fragment_favouriteRV = v.findViewById(R.id.fragment_favouriteRV);
         dialog = new SpotsDialog.Builder().setContext(getContext()).setTheme(R.style.Custom).build();

@@ -44,7 +44,7 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     //Api AFN
-    implementation 'com.amitshekhar.android:android-networking:1.0.1'
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
     //gif
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.1'
     //Curricle
