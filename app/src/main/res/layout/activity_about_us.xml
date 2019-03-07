@@ -19,7 +19,7 @@
         android:layout_gravity="center"
         android:text="About us"
         android:textStyle="bold"
-        android:textSize="18sp"
+        android:textSize="19sp"
         android:textColor="#000"
         />
 
@@ -31,7 +31,7 @@
         android:layout_marginTop="70dp"
         android:layout_marginLeft="20dp"
         android:text="MyAquar Egypt"
-        android:textSize="16sp"
+        android:textSize="17sp"
 
         android:textColor="@color/Red"
         />
@@ -41,8 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:layout_margin="20dp"
-
-        android:textSize="14sp"
+       android:lineSpacingMultiplier="1.2"
+        android:textSize="15sp"
         android:textColor="#000"
         />
 
