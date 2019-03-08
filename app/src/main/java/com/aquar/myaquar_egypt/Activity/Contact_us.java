@@ -71,8 +71,10 @@ public class Contact_us extends AppCompatActivity {
                         location.setText(  array.getAddress());
                         mail.setText(  array.getMail());
                         phone.setText(  array.getPhone());
+
+
                         instaUrl=array.getInstagram();
-                       // faceUrl=array.g
+                        faceUrl=array.getFacebook();
                         youtubeUrl=array.getYoutube();
                         twitterUrl=array.getTwitter();
 
@@ -90,51 +92,46 @@ public class Contact_us extends AppCompatActivity {
 
     public void openTwitter(View view) {
 
+
         Intent intent = null;
         try {
             // get the Twitter app if possible
             Contact_us.this.getPackageManager().getPackageInfo("com.twitter.android", 0);
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=20536157"));
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(twitterUrl));
             Toast.makeText(this, "afnjldbfkadsf", Toast.LENGTH_SHORT).show();
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         } catch (Exception e) {
             // no Twitter app, revert to browser
             Toast.makeText(this, "823459872345893", Toast.LENGTH_SHORT).show();
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/google"));
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(twitterUrl));
         }
         Contact_us.this.startActivity(intent);
-        Toast.makeText(Contact_us.this,twitterUrl+"", Toast.LENGTH_SHORT).show();
+
 
     }
 
     public void openfacebook(View view) {
+
         try {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/104958162837"));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(faceUrl));
             startActivity(intent);
         } catch(Exception e) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/google")));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(faceUrl)));
         }
     }
 
     public void openinsta(View view) {
-        PackageManager manager = this.getPackageManager();
-        try {
-            Intent intent = manager.getLaunchIntentForPackage("com.instagram.android");
-            if (intent == null) {
-                throw new PackageManager.NameNotFoundException();
-            }
-            intent.addCategory(Intent.CATEGORY_LAUNCHER);
-            this.startActivity(intent);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(instaUrl));
+        startActivity(intent);
     }
 
     public void openyoutube(View view) {
 
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("https://www.youtube.com/watch?v=F2xYkytHNxY&list=RDF2xYkytHNxY&start_radio=1"));
+        intent.setData(Uri.parse(youtubeUrl));
         startActivity(intent);
 
     }

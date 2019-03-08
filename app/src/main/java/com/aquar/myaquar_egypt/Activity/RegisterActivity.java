@@ -1,5 +1,6 @@
 package com.aquar.myaquar_egypt.Activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ import org.json.JSONObject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dmax.dialog.SpotsDialog;
 
 import static com.aquar.myaquar_egypt.Utils.ConstantsUrl.userDataBundleKey;
 
@@ -48,6 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
     @BindView(R.id.edit_text_password)
     EditText edit_text_password;
 //    userResPOJO resPOJO=new userResPOJO();
+private AlertDialog dialog1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,9 @@ public class RegisterActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         myUtils.setLocale(this);
 
+
+        dialog1 = new SpotsDialog.Builder().setContext(RegisterActivity.this).setTheme(R.style.Custom).build();
+        dialog1.setMessage("Please wait.....");
         AndroidNetworking.initialize(this);
         getSocialData();
 
@@ -63,6 +69,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     @OnClick(R.id.registration_BT)
     public void onRegister() {
+
+
+
         String name = edit_text_username.getText().toString().trim();
         String phone = edit_text_phone.getText().toString().trim();
         String email = edit_text_Email.getText().toString().trim();
@@ -89,6 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(jobTitle)) {
             edit_text_jopTitle.setError("Required");
         } else {
+            dialog1.show();
             onRegisterData(name, password, phone, email, jobTitle);
 //            Toast.makeText(getApplicationContext(), "hh", Toast.LENGTH_SHORT).show();
         }
@@ -113,13 +123,14 @@ public class RegisterActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                     dialog1.dismiss();
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         userResPOJO resPOJO = gson.fromJson(response.toString(), userResPOJO.class);
 
                         Log.d("RegisterResponse", response.toString());
                         String userOBJSTR = gson.toJson(resPOJO.getUserInfo());
 //
-                        Log.d("RegisterResponse", resPOJO.getUserInfo().getToken()+"");
+
 
                         mySharedPreference.setUserToken(resPOJO.getUserInfo().getToken());
                         mySharedPreference.setUserOBJ(userOBJSTR);
@@ -133,7 +144,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Log.d("RegisterError", anError.getErrorBody() + "");
                         Log.d("RegisterError", anError.getErrorCode() + "");
 //                        Log.d("RegisterError", anError.getResponse().toString());
-
+                        dialog1.dismiss();
                     }
                 });
     }

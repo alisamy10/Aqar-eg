@@ -63,6 +63,8 @@ public class Favourite extends Fragment {
         dialog.setMessage("Please wait.....");
 //        getFavouriteData();
         getData();
+
+
 //        listView = v.findViewById(R.id.favouriteList);
 //
 //        ArrayList<ModelOfFavourits> list = new ArrayList<ModelOfFavourits>();

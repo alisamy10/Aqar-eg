@@ -288,7 +288,7 @@ public class Projectdetails extends AppCompatActivity {
                                 setFavourite(Boolean.valueOf(list.get(0).getFavorite()), list.get(0).getId());
                                 Boolean Indicator = Boolean.valueOf(list.get(0).getFavorite());
                                 Log.d("Liked", !Indicator + "");
-                                liked_projects(!Indicator);
+                                liked_projects(Indicator);
 
                             }
                         });

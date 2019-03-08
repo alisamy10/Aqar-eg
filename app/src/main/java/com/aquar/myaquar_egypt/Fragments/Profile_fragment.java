@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.aquar.myaquar_egypt.Activity.Login;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
 
@@ -76,6 +77,7 @@ public class Profile_fragment extends Fragment {
         myUtils.setLocale(getActivity());
 
         ButterKnife.bind(this, view);
+
         dataCheck();
 
 
@@ -100,6 +102,7 @@ public class Profile_fragment extends Fragment {
 
         } catch (Exception e) {
             user_name.setText("Please Sign In First");
+            startActivity(new Intent(getContext() , Login.class));
             user_name.setTextColor(getResources().getColor(R.color.Red));
             onVisibleText(jobTitle_linear, username_linear, email_linear, mobile_linear, job_titleBar);
         }

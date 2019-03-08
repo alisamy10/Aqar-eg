@@ -14,7 +14,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.Contact_us"
             android:screenOrientation="portrait">
-
         </activity>
         <activity android:name=".Activity.TermsAndPolicies"
             android:screenOrientation="portrait" />

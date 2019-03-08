@@ -87,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.list_item);
 
 
+
+
+
         firstFragmentRun();
         listViewOfNavDrawer();
         prepareListData();
@@ -177,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //logout
                 else if (position == 4) {
-                    Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
+
                     mySharedPreference.setUserOBJ("");
                     startActivity(new Intent(MainActivity.this, Splash.class));
                     finish();
@@ -200,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
             public void onScrollStateChanged(AbsListView view, int scrollState) {
                 if (scrollState != 0) {
                     expListView.collapseGroup(0);
+
                 }
             }
 

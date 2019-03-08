@@ -36,6 +36,14 @@
     <style name="RatingBar" parent="Theme.AppCompat">
         <item name="colorControlNormal">@color/colorAccent</item>
         <item name="colorControlActivated">@color/Red</item>
+
     </style>
+
+
+    <style name="RatingBar_home" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#c7c7c7</item>
+        <item name="colorControlActivated">#c7c7c7</item>
+    </style>
+
 
 </resources>
