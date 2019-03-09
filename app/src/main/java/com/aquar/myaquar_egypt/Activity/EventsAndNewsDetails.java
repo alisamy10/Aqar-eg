@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,7 +56,7 @@ public class EventsAndNewsDetails extends AppCompatActivity {
     private TextView event_description, titile, event_devolper;
 
     private Button share_btn, phone_btn;
-    private LinearLayout parentOfEventAndNewDetails ;
+    private RelativeLayout parentOfEventAndNewDetails ;
 
     List<String> urlimage = new ArrayList<>();
 

@@ -84,7 +84,7 @@ public class EventsAndNews extends AppCompatActivity {
                         list = array.getProjects();
                         setRecyclerData(list);
 
-                        Toast.makeText(EventsAndNews.this, list.get(0).getDescription()+"", Toast.LENGTH_SHORT).show();
+
 
 
                         mAdapter.setOnItemClickListener(new EventsAndNewsAdapter.OnItemClickListener() {
