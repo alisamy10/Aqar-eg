@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
 
-        android:padding="20sp"
+       android:paddingBottom="20sp"
         android:textColor="#000"
         android:id="@+id/textOfCategory"
         android:textSize="20sp"

@@ -70,13 +70,13 @@
                         <RatingBar
                             android:id="@+id/ratingBar"
                             style="?android:attr/ratingBarStyleSmall"
-                            android:theme="@style/RatingBar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="13dp"
                             android:numStars="5"
                             android:rating="3"
-                            android:stepSize="1" />
+                            android:stepSize="1"
+                            android:theme="@style/RatingBar" />
                     </LinearLayout>
 
 
@@ -105,9 +105,9 @@
                             android:background="@drawable/share" />
 
                         <LinearLayout
-                            android:layout_marginRight="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
 
 
                             android:layout_marginBottom="8dp"
@@ -133,9 +133,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="0dp"
                 android:layout_marginTop="20dp"
-                android:orientation="vertical"
-                android:layout_margin="0dp" >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -151,31 +151,32 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:paddingBottom="5dp"
                             android:id="@+id/description"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="7dp"
-                            android:layout_marginBottom="0dp"
+
                             android:text="@string/some_description" />
 
                         <Button
                             android:id="@+id/see_more_btn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="70dp"
+                            android:layout_height="20dp"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentBottom="true"
-                            android:layout_gravity="right"
-                            android:layout_marginLeft="0dp"
-                            android:layout_marginEnd="15dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="24dp"
                             android:layout_marginBottom="0dp"
                             android:background="@null"
-                            android:gravity="bottom|end"
+                            android:gravity="center|bottom"
                             android:text="See more"
                             android:textAllCaps="false"
                             android:textColor="@android:color/holo_red_dark"
@@ -183,18 +184,18 @@
 
 
                     </RelativeLayout>
-<TextView
-    android:layout_marginTop="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="0.5dp"
-    android:background="#c7c7c7"
-    />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginTop="7dp"
+                        android:background="#c7c7c7" />
+
                     <Button
                         android:id="@+id/go_location"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-
-                       android:background="@null"
+                        android:background="@null"
                         android:drawableLeft="@drawable/location"
                         android:drawableRight="@drawable/arrowright"
                         android:gravity="left|center"
@@ -206,21 +207,19 @@
                         android:textSize="18dp" />
 
                 </LinearLayout>
+
                 <TextView
 
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:background="#c7c7c7"
-                    />
+                    android:background="#c7c7c7" />
             </LinearLayout>
 
 
-
-
             <LinearLayout
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -238,9 +237,9 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_marginTop="5dp">
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -290,7 +289,6 @@
                     </LinearLayout>
 
 
-
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -303,9 +301,9 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:layout_marginTop="10dp"
                             android:gravity="right"
-                            android:layout_marginTop="10dp">
+                            android:orientation="horizontal">
 
 
                             <TextView
@@ -327,6 +325,7 @@
                                 android:text="   "
                                 android:textColor="@android:color/holo_red_dark"
                                 android:textSize="16dp" />
+
                             <TextView
                                 android:id="@+id/price"
                                 android:layout_width="wrap_content"
@@ -352,8 +351,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="right">
+                            android:gravity="right"
+                            android:orientation="horizontal">
 
 
                             <TextView
@@ -375,6 +374,7 @@
                                 android:text="   -  "
                                 android:textColor="@android:color/holo_red_dark"
                                 android:textSize="16dp" />
+
                             <TextView
                                 android:id="@+id/maxBedroom"
                                 android:layout_width="wrap_content"
@@ -385,11 +385,12 @@
                                 android:textColor="@android:color/holo_red_dark"
                                 android:textSize="16dp" />
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="right">
+                            android:gravity="right"
+                            android:orientation="horizontal">
 
 
                             <TextView
@@ -411,6 +412,7 @@
                                 android:text="   -  "
                                 android:textColor="@android:color/holo_red_dark"
                                 android:textSize="16dp" />
+
                             <TextView
                                 android:id="@+id/maxBathroom"
                                 android:layout_width="wrap_content"
@@ -425,8 +427,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="right">
+                            android:gravity="right"
+                            android:orientation="horizontal">
 
 
                             <TextView
@@ -448,6 +450,7 @@
                                 android:text="   -  "
                                 android:textColor="@android:color/holo_red_dark"
                                 android:textSize="16dp" />
+
                             <TextView
                                 android:id="@+id/maxArea"
                                 android:layout_width="wrap_content"
@@ -465,18 +468,19 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <TextView
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="#c7c7c7"
-                />
+                android:layout_marginTop="10dp"
+                android:background="#c7c7c7" />
+
             <Button
                 android:id="@+id/structure"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-             android:background="@null"
+                android:background="@null"
                 android:drawableLeft="@drawable/plan"
                 android:drawableRight="@drawable/arrowright"
                 android:gravity="left|center"
@@ -486,19 +490,19 @@
                 android:textAllCaps="false"
                 android:textColor="#807C80"
                 android:textSize="18dp" />
+
             <TextView
 
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="#c7c7c7"
-                />
+                android:background="#c7c7c7" />
 
 
             <TextView
-                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:text="Amenities"
                 android:textColor="@android:color/black"
                 android:textSize="18dp" />
@@ -677,6 +681,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp">
+
                         <Button
                             android:layout_width="15dp"
                             android:layout_height="15dp"
