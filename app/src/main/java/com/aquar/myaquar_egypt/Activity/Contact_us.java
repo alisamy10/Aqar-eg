@@ -92,25 +92,32 @@ public class Contact_us extends AppCompatActivity {
 
     public void openTwitter(View view) {
 
+        try {
+
 
         Intent intent = null;
         try {
             // get the Twitter app if possible
             Contact_us.this.getPackageManager().getPackageInfo("com.twitter.android", 0);
             intent = new Intent(Intent.ACTION_VIEW, Uri.parse(twitterUrl));
-            Toast.makeText(this, "afnjldbfkadsf", Toast.LENGTH_SHORT).show();
+
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         } catch (Exception e) {
             // no Twitter app, revert to browser
-            Toast.makeText(this, "823459872345893", Toast.LENGTH_SHORT).show();
+
             intent = new Intent(Intent.ACTION_VIEW, Uri.parse(twitterUrl));
         }
         Contact_us.this.startActivity(intent);
-
-
+    }catch (Exception o ){}
+        Toast.makeText(this, twitterUrl+"", Toast.LENGTH_SHORT).show();
     }
 
     public void openfacebook(View view) {
+
+
+        try {
+
+
 
         try {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(faceUrl));
@@ -118,22 +125,37 @@ public class Contact_us extends AppCompatActivity {
         } catch(Exception e) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(faceUrl)));
         }
+
+
+        }catch (Exception n ){
+            Toast.makeText(this, faceUrl+"", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void openinsta(View view) {
+      try {
+
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(instaUrl));
         startActivity(intent);
+      }catch (Exception o ){
+
+          Toast.makeText(this, instaUrl+"", Toast.LENGTH_SHORT).show();
+      }
     }
 
     public void openyoutube(View view) {
+
+        try {
 
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(youtubeUrl));
         startActivity(intent);
-
+    }catch (Exception o ){
+            Toast.makeText(this,youtubeUrl+ "", Toast.LENGTH_SHORT).show();
+        }
     }
     @Override
     public void onBackPressed() {
