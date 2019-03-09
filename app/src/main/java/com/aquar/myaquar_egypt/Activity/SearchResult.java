@@ -64,7 +64,8 @@ public class SearchResult extends AppCompatActivity {
 
         cheakIfDataIsAll();
 
-        Toast.makeText(this, categoryId+"", Toast.LENGTH_SHORT).show();
+
+
 
         GetCategoryData(categoryId, Filter.itemMaxPrice ,Filter.itemMinPrice,Filter.itemMaxArea,
                Filter.itemMinArea,Filter.itemMaxBedroom,Filter.itemMinBedroom,Filter.itemMaxBathroom,
@@ -76,11 +77,6 @@ public class SearchResult extends AppCompatActivity {
 
 
     }
-
-
-
-
-
 
     private void GetCategoryData(String category, String maxPrice , String minPrice , String maxArea , String minArea , String maxBedrooms ,
                                  String minBedrooms , String maxBathrooms  , String minBathrooms , String locations
@@ -119,7 +115,7 @@ public class SearchResult extends AppCompatActivity {
                         setRecyclerData(list);
 
 
-                        Toast.makeText(SearchResult.this, list.get(0).getProduct_id()+"rfefwer", Toast.LENGTH_SHORT).show();
+
 
                         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
@@ -142,7 +138,7 @@ public class SearchResult extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-                        Toast.makeText(SearchResult.this, "connection field", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SearchResult.this, "No result", Toast.LENGTH_SHORT).show();
                        dialog1.dismiss();
 
                     }

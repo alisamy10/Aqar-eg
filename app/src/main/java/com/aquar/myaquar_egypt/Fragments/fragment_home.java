@@ -106,7 +106,6 @@ public class fragment_home extends Fragment {
 
                                 id = list.get(pos).getProduct_id();
 
-                                Toast.makeText(getContext(), id + "", Toast.LENGTH_SHORT).show();
 
                             }
 
