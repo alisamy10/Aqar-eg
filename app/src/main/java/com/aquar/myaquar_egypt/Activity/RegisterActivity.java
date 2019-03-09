@@ -52,6 +52,8 @@ public class RegisterActivity extends AppCompatActivity {
 //    userResPOJO resPOJO=new userResPOJO();
 private AlertDialog dialog1;
 
+    final String EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,18 +88,23 @@ private AlertDialog dialog1;
         if (TextUtils.isEmpty(name)) {
             edit_text_username.setError("Required");
         }
-        if (TextUtils.isEmpty(password)) {
+        else if (TextUtils.isEmpty(password)) {
             edit_text_password.setError("Required");
         }
-        if (TextUtils.isEmpty(phone)) {
+       else if (TextUtils.isEmpty(phone)) {
             edit_text_phone.setError("Required");
         }
-        if (TextUtils.isEmpty(email)) {
+       else if (TextUtils.isEmpty(email)) {
             edit_text_Email.setError("Required");
         }
-        if (TextUtils.isEmpty(jobTitle)) {
+       else if (!email.matches(EMAIL_PATTERN)) {
+            edit_text_Email.setError("example @ example.com ");
+        }
+       else if (TextUtils.isEmpty(jobTitle)) {
             edit_text_jopTitle.setError("Required");
-        } else {
+        }
+        else {
+
             dialog1.show();
             onRegisterData(name, password, phone, email, jobTitle);
 //            Toast.makeText(getApplicationContext(), "hh", Toast.LENGTH_SHORT).show();
