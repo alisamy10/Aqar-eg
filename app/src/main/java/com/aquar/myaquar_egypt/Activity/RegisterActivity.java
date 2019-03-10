@@ -88,11 +88,12 @@ private AlertDialog dialog1;
         if (TextUtils.isEmpty(name)) {
             edit_text_username.setError("Required");
         }
-        else if (TextUtils.isEmpty(password)) {
-            edit_text_password.setError("Required");
-        }
+
        else if (TextUtils.isEmpty(phone)) {
             edit_text_phone.setError("Required");
+        }
+        else if (TextUtils.isEmpty(jobTitle)) {
+            edit_text_jopTitle.setError("Required");
         }
        else if (TextUtils.isEmpty(email)) {
             edit_text_Email.setError("Required");
@@ -100,8 +101,14 @@ private AlertDialog dialog1;
        else if (!email.matches(EMAIL_PATTERN)) {
             edit_text_Email.setError("example @ example.com ");
         }
-       else if (TextUtils.isEmpty(jobTitle)) {
-            edit_text_jopTitle.setError("Required");
+
+        else if (TextUtils.isEmpty(password)) {
+            edit_text_password.setError("Required");
+        }
+        else if(password.length()< 8){
+            edit_text_password.setError("Password must be 8 characters");
+
+
         }
         else {
 
