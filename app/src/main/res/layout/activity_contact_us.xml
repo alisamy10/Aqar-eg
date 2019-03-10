@@ -148,6 +148,7 @@ android:layout_margin="15dp"
                 android:src="@drawable/insta"
                 android:layout_height="30dp" />
             <ImageView
+
                 android:onClick="openyoutube"
                 android:layout_width="50dp"
 
