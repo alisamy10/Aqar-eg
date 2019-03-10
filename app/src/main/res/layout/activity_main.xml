@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="center"
-            android:background="#FFFEFE"
+            android:background="#fff"
             android:gravity="center"
             android:paddingLeft="15dp">
 

@@ -98,7 +98,7 @@ public class EventsAndNews extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-
+                        dialog1.dismiss();
                         Toast.makeText(EventsAndNews.this, "connection field", Toast.LENGTH_SHORT).show();
                     }
                 });
