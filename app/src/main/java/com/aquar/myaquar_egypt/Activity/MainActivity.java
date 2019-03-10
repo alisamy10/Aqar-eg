@@ -180,10 +180,20 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //logout
                 else if (position == 4) {
+                    
+                    
+                    if(mySharedPreference.getUserOBJ()!=""){
+                        
+                  
 
                     mySharedPreference.setUserOBJ("");
                     startActivity(new Intent(MainActivity.this, Splash.class));
                     finish();
+
+                    }else {
+
+                        Toast.makeText(MainActivity.this, "You are not login", Toast.LENGTH_SHORT).show();
+                    }
 
                 }
 
