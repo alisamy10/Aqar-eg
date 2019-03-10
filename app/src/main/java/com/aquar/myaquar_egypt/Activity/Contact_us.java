@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +31,7 @@ import dmax.dialog.SpotsDialog;
 public class Contact_us extends AppCompatActivity {
     private TextView contct,location,mail,phone;
     private String instaUrl,faceUrl,youtubeUrl,twitterUrl;
-    private LinearLayout parent ;
+    private ScrollView parent ;
     private AlertDialog dialog1;
 
     @Override
