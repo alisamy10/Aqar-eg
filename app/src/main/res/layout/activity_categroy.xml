@@ -2,7 +2,7 @@
 <LinearLayout
     android:id="@+id/parentOfCategory"
     android:orientation="vertical"
-    android:visibility="gone"
+    android:visibility="visible"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -19,7 +19,7 @@
        android:paddingBottom="20sp"
         android:textColor="#000"
         android:id="@+id/textOfCategory"
-        android:textSize="20sp"
+        android:textSize="19sp"
         android:gravity="center"
         />
     <android.support.v7.widget.RecyclerView
