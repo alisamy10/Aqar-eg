@@ -2,7 +2,7 @@
 <LinearLayout
     android:id="@+id/parentOfCategory"
     android:orientation="vertical"
-    android:visibility="visible"
+    android:visibility="gone"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
