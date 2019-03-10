@@ -32,6 +32,7 @@ import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.myUtils;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    private long backPressedTime ;
+    private long backPressedTime;
     private static final String TAG = "Home_Activity_home";
     private Fragment fragment;
     private FragmentTransaction transaction;
@@ -85,9 +86,6 @@ public class MainActivity extends AppCompatActivity {
         buttonnavegation = findViewById(R.id.navegation_button_menue);
         expListView = findViewById(R.id.lvExp);
         listView = findViewById(R.id.list_item);
-
-
-
 
 
         firstFragmentRun();
@@ -144,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void listViewOfNavDrawer() {
 
 
@@ -180,17 +177,16 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //logout
                 else if (position == 4) {
-                    
-                    
-                    if(mySharedPreference.getUserOBJ()!=""){
-                        
-                  
 
-                    mySharedPreference.setUserOBJ("");
-                    startActivity(new Intent(MainActivity.this, Splash.class));
-                    finish();
 
-                    }else {
+                    if (mySharedPreference.getUserOBJ() != "") {
+
+
+                        mySharedPreference.setUserOBJ("");
+                        startActivity(new Intent(MainActivity.this, Splash.class));
+                        finish();
+
+                    } else {
 
                         Toast.makeText(MainActivity.this, "You are not login", Toast.LENGTH_SHORT).show();
                     }
@@ -289,12 +285,10 @@ public class MainActivity extends AppCompatActivity {
         transaction.commitNow();
 
 
-
-
-        TextView textView1=findViewById(R.id.home_text_id);
+        TextView textView1 = findViewById(R.id.home_text_id);
         textView1.setTextColor(Color.parseColor("#FF0000"));
 
-        ImageButton imageButton1=findViewById(R.id.home_icon_id);
+        ImageButton imageButton1 = findViewById(R.id.home_icon_id);
         imageButton1.setImageResource(R.drawable.home_red);
 
 
@@ -308,30 +302,24 @@ public class MainActivity extends AppCompatActivity {
         transaction.commitNow();
 
 
-
-        TextView textView1=findViewById(R.id.favert_text_id);
+        TextView textView1 = findViewById(R.id.favert_text_id);
         textView1.setTextColor(Color.parseColor("#FF0000"));
 
-        TextView textView2=findViewById(R.id.home_text_id);
+        TextView textView2 = findViewById(R.id.home_text_id);
         textView2.setTextColor(Color.parseColor("#cccccc"));
 
-        TextView textView3=findViewById(R.id.account_text_id);
+        TextView textView3 = findViewById(R.id.account_text_id);
         textView3.setTextColor(Color.parseColor("#cccccc"));
 
 
-
-
-        ImageButton imageButton=findViewById(R.id.favert_icon_id);
+        ImageButton imageButton = findViewById(R.id.favert_icon_id);
         imageButton.setImageResource(R.drawable.fav_red);
 
-        ImageButton imageButton1=findViewById(R.id.home_icon_id);
+        ImageButton imageButton1 = findViewById(R.id.home_icon_id);
         imageButton1.setImageResource(R.drawable.home_norm);
 
-        ImageButton imageButton2=findViewById(R.id.account_icon_id);
+        ImageButton imageButton2 = findViewById(R.id.account_icon_id);
         imageButton2.setImageResource(R.drawable.acc_norm);
-
-
-
 
 
     }
@@ -343,63 +331,63 @@ public class MainActivity extends AppCompatActivity {
         transaction.commitNow();
 
 
-        TextView textView1=findViewById(R.id.home_text_id);
+        TextView textView1 = findViewById(R.id.home_text_id);
         textView1.setTextColor(Color.parseColor("#FF0000"));
 
 
-
-
-        TextView textView2=findViewById(R.id.favert_text_id);
+        TextView textView2 = findViewById(R.id.favert_text_id);
         textView2.setTextColor(Color.parseColor("#cccccc"));
 
-        TextView textView3=findViewById(R.id.account_text_id);
+        TextView textView3 = findViewById(R.id.account_text_id);
         textView3.setTextColor(Color.parseColor("#cccccc"));
 
 
-
-        ImageButton imageButton=findViewById(R.id.favert_icon_id);
+        ImageButton imageButton = findViewById(R.id.favert_icon_id);
         imageButton.setImageResource(R.drawable.favrote);
 
-        ImageButton imageButton1=findViewById(R.id.home_icon_id);
+        ImageButton imageButton1 = findViewById(R.id.home_icon_id);
         imageButton1.setImageResource(R.drawable.home_red);
 
-        ImageButton imageButton2=findViewById(R.id.account_icon_id);
+        ImageButton imageButton2 = findViewById(R.id.account_icon_id);
         imageButton2.setImageResource(R.drawable.acc_norm);
-
 
 
     }
 
     public void profile(View view) {
-        fragment = new Profile_fragment();
-        transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_home, fragment, "profile");
-        transaction.commitNow();
+        Gson gson = new Gson();
+        UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
+        try {
+            if (!Objects.equals(userPOJO.getEmail(), null)) {
+                fragment = new Profile_fragment();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_home, fragment, "profile");
+                transaction.commitNow();
+            }
+
+        } catch (Exception e) {
+            startActivity(new Intent(this, Login.class));
+
+        }
 
 
-
-
-
-
-        TextView textView1=findViewById(R.id.favert_text_id);
+        TextView textView1 = findViewById(R.id.favert_text_id);
         textView1.setTextColor(Color.parseColor("#cccccc"));
 
-        TextView textView2=findViewById(R.id.home_text_id);
+        TextView textView2 = findViewById(R.id.home_text_id);
         textView2.setTextColor(Color.parseColor("#cccccc"));
 
-        TextView textView3=findViewById(R.id.account_text_id);
+        TextView textView3 = findViewById(R.id.account_text_id);
         textView3.setTextColor(Color.parseColor("#FF0000"));
 
 
-
-
-        ImageButton imageButton=findViewById(R.id.favert_icon_id);
+        ImageButton imageButton = findViewById(R.id.favert_icon_id);
         imageButton.setImageResource(R.drawable.favrote);
 
-        ImageButton imageButton1=findViewById(R.id.home_icon_id);
+        ImageButton imageButton1 = findViewById(R.id.home_icon_id);
         imageButton1.setImageResource(R.drawable.home_norm);
 
-        ImageButton imageButton2=findViewById(R.id.account_icon_id);
+        ImageButton imageButton2 = findViewById(R.id.account_icon_id);
         imageButton2.setImageResource(R.drawable.acc_red);
 
 
@@ -407,7 +395,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void getUserData() {
-        NavigationView navigationView =  findViewById(R.id.Navigation_drawer);
+        NavigationView navigationView = findViewById(R.id.Navigation_drawer);
         View headerView = navigationView.getHeaderView(0);
         nav_header_profile_name_TV = headerView.findViewById(R.id.nav_header_profile_name_TV);
         nav_header_profile_email_TV = headerView.findViewById(R.id.nav_header_profile_email_TV);
@@ -429,6 +417,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
     @Override
     public void onBackPressed() {
         if (dl.isDrawerOpen(GravityCompat.START)) {
