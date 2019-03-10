@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:id="@+id/parentCountactUs"
-    android:visibility="gone"
+    android:visibility="visible"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -198,7 +198,7 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:visibility="invisible"
+                android:src="@drawable/google_plus"
                 android:layout_height="wrap_content" />
             <ImageView
                 android:layout_width="0dp"
