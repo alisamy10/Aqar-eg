@@ -101,12 +101,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:onClick="favourite"
+
                 android:orientation="vertical"
 
                 >
 
                 <ImageButton
+                    android:onClick="favourite"
                     android:id="@+id/favert_icon_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -134,12 +135,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:onClick="home"
+
                 android:orientation="vertical"
 
                 >
 
                 <ImageButton
+                    android:onClick="home"
                     android:id="@+id/home_icon_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -164,12 +166,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:onClick="profile"
+
                 android:orientation="vertical"
 
                 >
 
                 <ImageButton
+                    android:onClick="profile"
                     android:id="@+id/account_icon_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
