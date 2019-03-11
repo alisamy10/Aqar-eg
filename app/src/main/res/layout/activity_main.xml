@@ -90,41 +90,41 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginStart="0dp"
-            android:orientation="horizontal"
+            android:background="@android:color/white"
             android:gravity="center"
-            android:background="#FFFFFF"
-            >
-<LinearLayout
+            android:orientation="horizontal">
 
-    android:id="@+id/favourite_btn"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:onClick="favourite"
+            <LinearLayout
 
-    >
+                android:id="@+id/favourite_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="favourite"
+                android:orientation="vertical"
 
-    <ImageButton
-        android:id="@+id/favert_icon_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/favrote"
+                >
 
-        />
+                <ImageButton
+                    android:id="@+id/favert_icon_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/favrote"
 
-    <TextView
-        android:id="@+id/favert_text_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Favorite"
-        android:textSize="14dp"
+                    />
 
-        />
+                <TextView
+                    android:id="@+id/favert_text_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Favorite"
+                    android:textSize="14dp"
+
+                    />
 
 
-</LinearLayout>
+            </LinearLayout>
 
 
             <LinearLayout
@@ -133,9 +133,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical"
                 android:gravity="center"
                 android:onClick="home"
+                android:orientation="vertical"
 
                 >
 
@@ -163,9 +163,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical"
                 android:gravity="center"
                 android:onClick="profile"
+                android:orientation="vertical"
 
                 >
 
@@ -201,34 +201,33 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff"
+            android:background="@android:color/white"
             android:orientation="vertical">
 
             <android.support.design.widget.NavigationView
+                android:id="@+id/Navigation_drawer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#fff"
                 android:layout_gravity="start"
-                android:id="@+id/Navigation_drawer"
+                android:background="@android:color/white"
                 app:headerLayout="@layout/nav_header" />
 
             <ExpandableListView
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
                 android:id="@+id/lvExp"
                 android:layout_width="match_parent"
-                android:background="#fff"
-                android:textStyle="normal"
-                android:indicatorLeft="@dimen/com_facebook_profilepictureview_preset_size_large"
-                android:groupIndicator="@drawable/group_ind"
                 android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white"
+                android:groupIndicator="@drawable/group_ind"
+                android:indicatorLeft="250dp"
                 tools:listheader="@layout/nav_header" />
 
             <ListView
-                android:background="#fff"
                 android:id="@+id/list_item"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
 
 
             </ListView>

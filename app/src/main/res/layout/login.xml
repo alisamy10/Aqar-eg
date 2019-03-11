@@ -139,7 +139,7 @@
 
 
             android:id="@+id/loginFB"
-            android:layout_width="150dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
            android:layout_gravity="left"
             android:background="@drawable/shape_social">
@@ -165,7 +165,7 @@
         <LinearLayout
 
             android:id="@+id/logingoggleplus"
-            android:layout_width="150dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
            android:layout_alignParentRight="true"
             android:gravity="right"
