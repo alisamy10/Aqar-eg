@@ -143,18 +143,13 @@ private AlertDialog dialog1;
 
                         Log.d("RegisterResponse", response.toString());
                         String userOBJSTR = gson.toJson(resPOJO.getUserInfo());
-//
-//                        if(userOBJSTR.equals("null")){
-//
-//                            Toast.makeText(RegisterActivity.this, "This e-mail is already taken ", Toast.LENGTH_SHORT).show();
-//
-//                        }else {
+
 
 
                                      mySharedPreference.setUserToken(resPOJO.getUserInfo().getToken());
                                    mySharedPreference.setUserOBJ(userOBJSTR);
                                     startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-//                        }
+
                     }
 
                     @Override
