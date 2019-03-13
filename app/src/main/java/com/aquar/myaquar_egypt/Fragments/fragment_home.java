@@ -18,6 +18,7 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Activity.Projectdetails;
 import com.aquar.myaquar_egypt.Adapter.example_adapter_for_home_fragment;
+import com.aquar.myaquar_egypt.InternalStorage.Session;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelArray;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelObjects;
 import com.aquar.myaquar_egypt.R;
@@ -29,26 +30,20 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import dmax.dialog.SpotsDialog;
 
 
 public class fragment_home extends Fragment {
-    int x = 0;
-    int y = 0;
-
 
     public static int id;
     private AlertDialog dialog1;
 
 
-    private int currnt = R.drawable.ic_favorite_normal_black_24dp;
 
     private RecyclerView mRecyclerView;
-    private ImageView love_behind;
     private example_adapter_for_home_fragment mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private static final float buttonWidth = 300;
 
 
     private ArrayList<ModelObjects> list = new ArrayList<>();
@@ -70,14 +65,34 @@ public class fragment_home extends Fragment {
         dialog1 = new SpotsDialog.Builder().setContext(getContext()).setTheme(R.style.Custom).build();
         dialog1.setMessage("Please wait.....");
 
-        GetHome_Data();
-
-
-        //////////////////
+        getData();
 
 
         return v;
 
+    }
+
+    private void getData() {
+        if (!Objects.equals(Session.getInstance().getHomeArray(),null)) {
+            dialog1.dismiss();
+            list = Session.getInstance().getHomeArray();
+            setRecyclerData(list);
+            mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
+
+                @Override
+                public void intent_to_detales(int pos, ImageView imageView) {
+                    go_detales(pos, imageView);
+                    id = list.get(pos).getProduct_id();
+                }
+
+                @Override
+                public void make_love(int pos, ImageView img) {
+
+                }
+            });
+        } else {
+            GetHome_Data();
+        }
     }
 
 
@@ -95,6 +110,7 @@ public class fragment_home extends Fragment {
 
                         ModelArray array = gson.fromJson(response.toString(), ModelArray.class);
                         list = array.getProjects();
+                        Session.getInstance().setHomeArray(list);
                         setRecyclerData(list);
 
 

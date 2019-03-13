@@ -85,7 +85,7 @@
 
             android:id="@+id/Home_BottomNavi"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
@@ -101,17 +101,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-
+                android:onClick="favourite"
                 android:orientation="vertical"
 
                 >
 
                 <ImageButton
-                    android:onClick="favourite"
                     android:id="@+id/favert_icon_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/favrote"
+                    android:background="@drawable/ic_favorite_unfiiled"
+                    android:onClick="favourite"
 
                     />
 
@@ -135,17 +135,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="home"
 
-                android:orientation="vertical"
-
-                >
+                android:orientation="vertical">
 
                 <ImageButton
-                    android:onClick="home"
                     android:id="@+id/home_icon_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/home_norm"
+                    android:background="@drawable/ic_home_unfilled"
 
                     />
 
@@ -172,11 +170,11 @@
                 >
 
                 <ImageButton
-                    android:onClick="profile"
                     android:id="@+id/account_icon_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/acc_norm"
+                    android:background="@drawable/ic_person_unfilled"
+                    android:onClick="profile"
 
                     />
 
@@ -219,11 +217,11 @@
                 android:id="@+id/lvExp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@android:color/white"
                 android:groupIndicator="@drawable/group_ind"
                 android:indicatorLeft="250dp"
+                android:paddingLeft="10dp"
                 tools:listheader="@layout/nav_header" />
 
             <ListView

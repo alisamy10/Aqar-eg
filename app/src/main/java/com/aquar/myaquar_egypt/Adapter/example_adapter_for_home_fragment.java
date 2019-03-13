@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelObjects;
-
 import com.aquar.myaquar_egypt.R;
 import com.bumptech.glide.Glide;
 
@@ -28,8 +27,8 @@ public class example_adapter_for_home_fragment extends RecyclerView.Adapter<exam
 
     public interface OnItemClickListener {
 
-void intent_to_detales(int pos,ImageView imageView);
-void make_love(int pos,ImageView img);
+void intent_to_detales(int pos, ImageView imageView);
+void make_love(int pos, ImageView img);
 
 
     }

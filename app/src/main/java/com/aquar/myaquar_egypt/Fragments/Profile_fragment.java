@@ -1,7 +1,6 @@
 package com.aquar.myaquar_egypt.Fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,11 +9,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
-import com.aquar.myaquar_egypt.Activity.Login;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
-
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.bumptech.glide.Glide;

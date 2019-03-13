@@ -2,9 +2,8 @@ package com.aquar.myaquar_egypt.Activity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+import android.support.v7.app.AppCompatActivity;
 
 import com.aquar.myaquar_egypt.R;
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;

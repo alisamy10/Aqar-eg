@@ -2,23 +2,18 @@ package com.aquar.myaquar_egypt.Activity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.userResPOJO;
-
 import com.aquar.myaquar_egypt.Model.socialLogin.socialLoginPOJO;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
@@ -26,7 +21,6 @@ import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 

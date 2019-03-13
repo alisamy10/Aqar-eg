@@ -3,8 +3,8 @@ package com.aquar.myaquar_egypt.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,14 +17,11 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-
-
 import com.aquar.myaquar_egypt.Fragments.fragment_home;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
 import com.aquar.myaquar_egypt.Model.ModelsOfProjectDetails.ArrayModelOfProjectsDetails;
 import com.aquar.myaquar_egypt.Model.ModelsOfProjectDetails.ModelObjectsOfProjectDetails;
-
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.aquar.myaquar_egypt.Utils.myUtils;
@@ -130,7 +127,7 @@ public class Projectdetails extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("https://www.youtube.com/watch?v=F2xYkytHNxY&list=RDF2xYkytHNxY&start_radio=1"));
+                intent.setData(Uri.parse("https://www.youtube.com/channel/UCc1Zc_zqnpjfxTnTtiqlC6A?view_as=subscriber"));
                 startActivity(intent);
 
             }
@@ -168,7 +165,7 @@ public class Projectdetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent contact = new Intent(Intent.ACTION_DIAL);
-                contact.setData(Uri.parse("tel:01095488883"));
+                contact.setData(Uri.parse("tel:01033113330"));
                 startActivity(contact);
 
             }

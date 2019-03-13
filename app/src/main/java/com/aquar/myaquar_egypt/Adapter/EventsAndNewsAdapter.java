@@ -2,16 +2,13 @@ package com.aquar.myaquar_egypt.Adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 
 import com.aquar.myaquar_egypt.Model.ModelOfNewsAndEvent.ModelOfEventAndNews;
 import com.aquar.myaquar_egypt.R;
@@ -31,7 +28,7 @@ public class EventsAndNewsAdapter  extends RecyclerView.Adapter<EventsAndNewsAda
 
     public interface OnItemClickListener {
 
-        void intent_to_detales(int pos,RelativeLayout relativeLayout);
+        void intent_to_detales(int pos, RelativeLayout relativeLayout);
 
 
     }

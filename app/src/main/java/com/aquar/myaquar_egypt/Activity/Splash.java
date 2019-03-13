@@ -1,14 +1,11 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+import android.support.v7.app.AppCompatActivity;
 
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
-
 import com.aquar.myaquar_egypt.R;
-import com.facebook.FacebookSdk;
 
 public class Splash extends AppCompatActivity {
 

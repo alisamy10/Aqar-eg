@@ -3,6 +3,7 @@ package com.aquar.myaquar_egypt.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -11,7 +12,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -32,7 +32,6 @@ import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.myUtils;
-import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -125,16 +124,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//
-//        if (t.onOptionsItemSelected(item))
-//            return true;
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     @OnClick(R.id.searchBtn)
     public void onSearchClick() {
@@ -313,13 +302,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         ImageButton imageButton = findViewById(R.id.favert_icon_id);
-        imageButton.setImageResource(R.drawable.fav_red);
+        imageButton.setImageResource(R.drawable.ic_favorite_filled);
 
         ImageButton imageButton1 = findViewById(R.id.home_icon_id);
-        imageButton1.setImageResource(R.drawable.home_norm);
+        imageButton1.setImageResource(R.drawable.ic_home_unfilled);
 
         ImageButton imageButton2 = findViewById(R.id.account_icon_id);
-        imageButton2.setImageResource(R.drawable.acc_norm);
+        imageButton2.setImageResource(R.drawable.ic_person_unfilled);
 
 
     }
@@ -343,13 +332,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         ImageButton imageButton = findViewById(R.id.favert_icon_id);
-        imageButton.setImageResource(R.drawable.favrote);
+        imageButton.setImageResource(R.drawable.ic_favorite_unfiiled);
 
         ImageButton imageButton1 = findViewById(R.id.home_icon_id);
         imageButton1.setImageResource(R.drawable.home_red);
 
         ImageButton imageButton2 = findViewById(R.id.account_icon_id);
-        imageButton2.setImageResource(R.drawable.acc_norm);
+        imageButton2.setImageResource(R.drawable.ic_person_unfilled);
 
 
     }
@@ -382,13 +371,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         ImageButton imageButton = findViewById(R.id.favert_icon_id);
-        imageButton.setImageResource(R.drawable.favrote);
+        imageButton.setImageResource(R.drawable.ic_favorite_unfiiled);
 
         ImageButton imageButton1 = findViewById(R.id.home_icon_id);
-        imageButton1.setImageResource(R.drawable.home_norm);
+        imageButton1.setImageResource(R.drawable.ic_home_unfilled);
 
         ImageButton imageButton2 = findViewById(R.id.account_icon_id);
-        imageButton2.setImageResource(R.drawable.acc_red);
+        imageButton2.setImageResource(R.drawable.ic_person_filled);
 
 
     }

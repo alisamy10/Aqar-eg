@@ -1,10 +1,6 @@
 package com.aquar.myaquar_egypt.Adapter;
 
-import java.util.HashMap;
-import java.util.List;
-
 import android.content.Context;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +8,9 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import com.aquar.myaquar_egypt.R;
-import com.onegravity.contactpicker.group.GroupViewHolder;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class ExpandListAdapter extends BaseExpandableListAdapter {
 
