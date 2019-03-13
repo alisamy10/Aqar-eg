@@ -106,11 +106,13 @@
 
                 >
 
-                <ImageButton
+                <ImageView
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
                     android:id="@+id/favert_icon_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_favorite_unfiiled"
+                    android:src="@drawable/ic_favorite_unfiiled"
                     android:onClick="favourite"
 
                     />
@@ -139,11 +141,13 @@
 
                 android:orientation="vertical">
 
-                <ImageButton
+                <ImageView
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
                     android:id="@+id/home_icon_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_home_unfilled"
+                    android:src="@drawable/ic_home_unfilled"
 
                     />
 
@@ -169,11 +173,15 @@
 
                 >
 
-                <ImageButton
+
+                <ImageView
+
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
                     android:id="@+id/account_icon_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_person_unfilled"
+                    android:src="@drawable/ic_person_unfilled"
                     android:onClick="profile"
 
                     />

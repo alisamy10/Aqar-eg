@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -277,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
         TextView textView1 = findViewById(R.id.home_text_id);
         textView1.setTextColor(Color.parseColor("#FF0000"));
 
-        ImageButton imageButton1 = findViewById(R.id.home_icon_id);
+        ImageView imageButton1 = findViewById(R.id.home_icon_id);
         imageButton1.setImageResource(R.drawable.home_red);
 
 
@@ -301,13 +302,13 @@ public class MainActivity extends AppCompatActivity {
         textView3.setTextColor(Color.parseColor("#cccccc"));
 
 
-        ImageButton imageButton = findViewById(R.id.favert_icon_id);
+        ImageView imageButton = findViewById(R.id.favert_icon_id);
         imageButton.setImageResource(R.drawable.ic_favorite_filled);
 
-        ImageButton imageButton1 = findViewById(R.id.home_icon_id);
+        ImageView imageButton1 = findViewById(R.id.home_icon_id);
         imageButton1.setImageResource(R.drawable.ic_home_unfilled);
 
-        ImageButton imageButton2 = findViewById(R.id.account_icon_id);
+        ImageView imageButton2 = findViewById(R.id.account_icon_id);
         imageButton2.setImageResource(R.drawable.ic_person_unfilled);
 
 
@@ -331,13 +332,13 @@ public class MainActivity extends AppCompatActivity {
         textView3.setTextColor(Color.parseColor("#cccccc"));
 
 
-        ImageButton imageButton = findViewById(R.id.favert_icon_id);
+        ImageView imageButton = findViewById(R.id.favert_icon_id);
         imageButton.setImageResource(R.drawable.ic_favorite_unfiiled);
 
-        ImageButton imageButton1 = findViewById(R.id.home_icon_id);
+        ImageView imageButton1 = findViewById(R.id.home_icon_id);
         imageButton1.setImageResource(R.drawable.home_red);
 
-        ImageButton imageButton2 = findViewById(R.id.account_icon_id);
+        ImageView imageButton2 = findViewById(R.id.account_icon_id);
         imageButton2.setImageResource(R.drawable.ic_person_unfilled);
 
 
@@ -370,13 +371,13 @@ public class MainActivity extends AppCompatActivity {
         textView3.setTextColor(Color.parseColor("#FF0000"));
 
 
-        ImageButton imageButton = findViewById(R.id.favert_icon_id);
+        ImageView imageButton = findViewById(R.id.favert_icon_id);
         imageButton.setImageResource(R.drawable.ic_favorite_unfiiled);
 
-        ImageButton imageButton1 = findViewById(R.id.home_icon_id);
+        ImageView imageButton1 = findViewById(R.id.home_icon_id);
         imageButton1.setImageResource(R.drawable.ic_home_unfilled);
 
-        ImageButton imageButton2 = findViewById(R.id.account_icon_id);
+        ImageView imageButton2 = findViewById(R.id.account_icon_id);
         imageButton2.setImageResource(R.drawable.ic_person_filled);
 
 
