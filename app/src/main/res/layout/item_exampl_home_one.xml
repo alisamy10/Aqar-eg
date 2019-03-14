@@ -2,35 +2,36 @@
 
 
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    app:cardBackgroundColor="#FFFF"
     android:layout_marginBottom="7dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:cardBackgroundColor="#FFFF">
 
     <ImageView
         android:id="@+id/image_pro"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
         android:scaleType="fitXY"
         android:src="@drawable/photo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="52dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <android.support.constraint.ConstraintLayout
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-android:paddingBottom="5dp"
+        android:layout_alignParentStart="true"
         android:background="#4000"
         android:orientation="horizontal"
+        android:paddingBottom="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/image_pro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -43,32 +44,32 @@ android:paddingBottom="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
 
+                android:id="@+id/text_one_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:text="MidTown"
-                android:textStyle="bold"
-                android:id="@+id/text_one_id"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
+                android:textStyle="bold"
 
                 />
 
             <TextView
+                android:id="@+id/text_two_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New cairo"
-                android:id="@+id/text_two_id"
 
 
                 android:textColor="#FFFF"
@@ -94,16 +95,15 @@ android:paddingBottom="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="5dp"
 
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Start From : "
                     android:layout_marginLeft="5dp"
+                    android:text="Start From : "
                     android:textColor="#FFFF"
 
                     android:textSize="16sp"
@@ -111,23 +111,21 @@ android:paddingBottom="5dp"
                     />
 
 
-
                 <TextView
                     android:id="@+id/number_end_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text=" 4 "
-
-                    android:textColor="#FFFF"
-                    />
+                    android:textColor="#FFFF" />
 
                 <TextView
+                    android:id="@+id/concurncy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="M"
-                    android:textStyle="bold"
+                    android:text=" EGP"
                     android:textColor="#FFFF"
-                    />
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
@@ -135,14 +133,14 @@ android:paddingBottom="5dp"
             <RatingBar
                 android:id="@+id/ratingBar_home"
                 style="?android:attr/ratingBarStyleSmall"
-                android:theme="@style/RatingBar_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
                 android:layout_marginRight="25dp"
                 android:numStars="5"
                 android:rating="3"
-                android:stepSize="1" />
+                android:stepSize="1"
+                android:theme="@style/RatingBar_home" />
         </LinearLayout>
 
 

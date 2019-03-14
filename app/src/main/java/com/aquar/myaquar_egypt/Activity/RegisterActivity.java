@@ -43,8 +43,8 @@ public class RegisterActivity extends AppCompatActivity {
     EditText edit_text_Email;
     @BindView(R.id.edit_text_password)
     EditText edit_text_password;
-//    userResPOJO resPOJO=new userResPOJO();
-private AlertDialog dialog1;
+    //    userResPOJO resPOJO=new userResPOJO();
+    private AlertDialog dialog1;
 
     final String EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
@@ -67,7 +67,6 @@ private AlertDialog dialog1;
     public void onRegister() {
 
 
-
         String name = edit_text_username.getText().toString().trim();
         String phone = edit_text_phone.getText().toString().trim();
         String email = edit_text_Email.getText().toString().trim();
@@ -81,30 +80,23 @@ private AlertDialog dialog1;
     private void ValidationRegisterData(String name, String phone, String email, String password, String jobTitle) {
         if (TextUtils.isEmpty(name)) {
             edit_text_username.setError("Required");
-        }
-
-       else if (TextUtils.isEmpty(phone)) {
+        } else if (TextUtils.isEmpty(phone)) {
             edit_text_phone.setError("Required");
         }
-        else if (TextUtils.isEmpty(jobTitle)) {
-            edit_text_jopTitle.setError("Required");
-        }
-       else if (TextUtils.isEmpty(email)) {
+//        else if (TextUtils.isEmpty(jobTitle)) {
+//            edit_text_jopTitle.setError("Required");
+//        }
+        else if (TextUtils.isEmpty(email)) {
             edit_text_Email.setError("Required");
-        }
-       else if (!email.matches(EMAIL_PATTERN)) {
+        } else if (!email.matches(EMAIL_PATTERN)) {
             edit_text_Email.setError("example @ example.com ");
-        }
-
-        else if (TextUtils.isEmpty(password)) {
+        } else if (TextUtils.isEmpty(password)) {
             edit_text_password.setError("Required");
-        }
-        else if(password.length()< 8){
+        } else if (password.length() < 8) {
             edit_text_password.setError("Password must be 8 characters");
 
 
-        }
-        else {
+        } else {
 
             dialog1.show();
             onRegisterData(name, password, phone, email, jobTitle);
@@ -131,7 +123,7 @@ private AlertDialog dialog1;
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                     dialog1.dismiss();
+                        dialog1.dismiss();
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         userResPOJO resPOJO = gson.fromJson(response.toString(), userResPOJO.class);
 
@@ -139,16 +131,15 @@ private AlertDialog dialog1;
                         String userOBJSTR = gson.toJson(resPOJO.getUserInfo());
 
 
-
-                                     mySharedPreference.setUserToken(resPOJO.getUserInfo().getToken());
-                                   mySharedPreference.setUserOBJ(userOBJSTR);
-                                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                        mySharedPreference.setUserToken(resPOJO.getUserInfo().getToken());
+                        mySharedPreference.setUserOBJ(userOBJSTR);
+                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
 
                     }
 
                     @Override
                     public void onError(ANError anError) {
-                        myUtils.handleError(RegisterActivity.this,anError.getErrorBody(),anError.getErrorCode());
+                        myUtils.handleError(RegisterActivity.this, anError.getErrorBody(), anError.getErrorCode());
                         Log.d("RegisterError", anError.getErrorBody() + "");
                         Log.d("RegisterError", anError.getErrorCode() + "");
                         dialog1.dismiss();

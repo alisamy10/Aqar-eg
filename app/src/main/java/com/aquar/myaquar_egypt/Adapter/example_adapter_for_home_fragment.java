@@ -42,7 +42,7 @@ void make_love(int pos, ImageView img);
     /////
     public static class ExampleViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textView_1, textView_2,textView_start,textView_end;
+        private TextView textView_1, textView_2,textView_start,textView_end,concurncy;
 
         private ImageView
                 imageView_one_one;
@@ -55,7 +55,8 @@ void make_love(int pos, ImageView img);
             imageView_one_one=itemView.findViewById(R.id.image_pro);
             textView_1=itemView.findViewById(R.id.text_one_id);
           textView_2  =itemView.findViewById(R.id.text_two_id);
-            textView_end=itemView.findViewById(R.id.number_end_id);
+            textView_end=itemView.findViewById( R.id.number_end_id);
+            concurncy=itemView.findViewById(R.id.concurncy);
 
             /*
             textView_1_2_type = itemView.findViewById(R.id.type_of_project_one_two);
@@ -123,8 +124,8 @@ void make_love(int pos, ImageView img);
 
         exampleViewHolder.textView_1.setText( currentitem.getProject_name());
         exampleViewHolder.textView_2.setText(currentitem.getLocation());
-        exampleViewHolder.textView_end.setText( currentitem.getProduct_id()+"");
-
+        exampleViewHolder.textView_end.setText(currentitem.getPrice()+" ");
+        exampleViewHolder.concurncy.setText(currentitem.getPrice_label());
         ///
 
 

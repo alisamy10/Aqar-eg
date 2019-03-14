@@ -25,6 +25,7 @@ import com.aquar.myaquar_egypt.Model.ModelsOfProjectDetails.ModelObjectsOfProjec
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.aquar.myaquar_egypt.Utils.myUtils;
+import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -52,7 +53,7 @@ public class Projectdetails extends AppCompatActivity {
     private AlertDialog dialog1;
 
     private String description_string;
-    private LinearLayout parentOfProjectDetails ;
+    private LinearLayout parentOfProjectDetails;
 
     List<String> urlimage = new ArrayList<>();
 
@@ -147,7 +148,7 @@ public class Projectdetails extends AppCompatActivity {
                 Intent share = new Intent();
                 share.setAction(Intent.ACTION_SEND);
                 share.putExtra(Intent.EXTRA_TEXT,
-                        "https://play.google.com/store/apps/details?id=com.youssef.maggy.aqartest");
+                        "https://play.google.com/store/apps/details?id=com.aswany.android.myaquar_eg");
                 share.setType("textDes/plain");
                 startActivity(share);
             }
@@ -203,18 +204,43 @@ public class Projectdetails extends AppCompatActivity {
 
 
     private void sendEmail() {
-
-        String[] TO = {"someone@gmail.com"};
-        String[] CC = {"xyz@gmail.com"};
+        Gson gson = new Gson();
+        UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
+        String[] TO = {"info@myaquar-eg.com"};
         String recepientEmail = ""; // either set to destination email or leave empty
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-        emailIntent.setData(Uri.parse("mailto:" + recepientEmail));
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+        String Subject;
 
-        startActivity(emailIntent);
+        try {
+            if (!Objects.equals(userPOJO.getEmail(), null)) {
+                String Lines = "--------------------------------";
+                Subject = "Enquiry regarding: " + list.get(0).getProject() + " , Project ID: "
+                        + list.get(0).getId() + " , " + list.get(0).getMin_price() + " EGP";
+                String Content = "Name              : " + userPOJO.getUsername()
+                        + "\n" + "Mobile Phone : " + userPOJO.getPhone()
+                        + "\n" + "Job Title         : " + userPOJO.getJobTitle();
+                String Body = "\n" + "\n" + "\n" + "\n" + "\n" + Lines + "\n" + "\n" + Content + "\n" + "\n" + Lines;
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(Uri.parse("mailto:" + recepientEmail));
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+
+                Log.d("developer: ", list.get(0).getDeveloper() + "");
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, Subject);
+                emailIntent.putExtra(Intent.EXTRA_TEXT, Body);
+
+                startActivity(emailIntent);
+            }
+
+        } catch (Exception e) {
+            Subject = "Enquiry regarding: " + list.get(0).getProject() + " , Project ID: "
+                    + list.get(0).getId() + " , " + list.get(0).getMin_price() + " EGP";
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+            emailIntent.setData(Uri.parse("mailto:" + recepientEmail));
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, Subject);
+            emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+
+            startActivity(emailIntent);
+        }
 
 
     }
@@ -250,13 +276,12 @@ public class Projectdetails extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                      parentOfProjectDetails.setVisibility(View.VISIBLE);
+                        parentOfProjectDetails.setVisibility(View.VISIBLE);
                         dialog1.dismiss();
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         ArrayModelOfProjectsDetails array = gson.fromJson(response.toString(), ArrayModelOfProjectsDetails.class);
 
                         list = array.getProject();
-
 
 
                         //loop for image of slider
@@ -273,7 +298,7 @@ public class Projectdetails extends AppCompatActivity {
                                 list.get(0).getMin_price()
                                 , list.get(0).getType(), list.get(0).getMin_rooms(), list.get(0).getMax_rooms(),
                                 list.get(0).getMin_bathsrooms()
-                                , list.get(0).getMax_bathsrooms(), list.get(0).getMin_area(), list.get(0).getMax_area()
+                                , list.get(0).getMax_bathsrooms(), list.get(0).getMin_area(), list.get(0).getMax_area(), list.get(0).getPrice_label()
 
                         );
                         liked_projects(Boolean.valueOf(list.get(0).getFavorite()));
@@ -333,14 +358,14 @@ public class Projectdetails extends AppCompatActivity {
 
     private void setTdevoleporandproject(String dec, String developer, String project, int price,
                                          String type, String minrooms, String maxrooms
-            , String minBathrooms, String maxBathrooms, String minArea, String maxArea) {
+            , String minBathrooms, String maxBathrooms, String minArea, String maxArea, String price_label) {
 
         description.setText(dec.substring(0, 90));
-
+//        Log.d("Data: ",price+" : "+type+" : "+minArea+"-"+maxArea);
         devolepor.setText(developer);
         project_name.setText(project);
 
-        textprice.setText(price +" "+"EGP");
+        textprice.setText(price + " " + price_label);
 
         texttype.setText(type);
 
@@ -350,8 +375,8 @@ public class Projectdetails extends AppCompatActivity {
         textMinBathroom.setText(minBathrooms + "");
         textMaxBathrooms.setText(maxBathrooms + "");
 
-        textMinArea.setText(minArea +" "+ "mq2");
-        textMaxArea.setText(maxArea +" "+"mq2");
+        textMinArea.setText(minArea + " " + "mq2");
+        textMaxArea.setText(maxArea + " " + "mq2");
 
     }
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -107,7 +108,7 @@ public class SearchResult extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                       parentOfSearchResult.setVisibility(View.VISIBLE);
                      dialog1.dismiss();
-
+                        Log.d("SearchData",response.toString());
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         ModelArray array = gson.fromJson(response.toString(), ModelArray.class);
                         list = array.getProjects();

@@ -46,6 +46,15 @@ public class ModelObjectsOfProjectDetails {
     private String viewer_360;
     private String description;
     private List<SliderImagesBean> slider_images;
+    private String price_label;
+
+    public String getPrice_label() {
+        return price_label;
+    }
+
+    public void setPrice_label(String price_label) {
+        this.price_label = price_label;
+    }
 
     public int getId() {
         return id;

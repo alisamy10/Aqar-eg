@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -15,8 +16,10 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.EventandNewsDetailsModel.Model_array_of_Eventandnews;
 import com.aquar.myaquar_egypt.Model.EventandNewsDetailsModel.Model_eventandnews_details;
+import com.aquar.myaquar_egypt.Model.Login.UserInfo;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.aquar.myaquar_egypt.Utils.myUtils;
@@ -32,6 +35,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import dmax.dialog.SpotsDialog;
 
@@ -44,11 +48,11 @@ public class EventsAndNewsDetails extends AppCompatActivity {
     private TextView event_description, titile, event_devolper;
 
     private Button share_btn, phone_btn;
-    private RelativeLayout parentOfEventAndNewDetails ;
+    private RelativeLayout parentOfEventAndNewDetails;
 
     List<String> urlimage = new ArrayList<>();
 
-    private  ArrayList<Model_eventandnews_details> list = new ArrayList<>();
+    private ArrayList<Model_eventandnews_details> list = new ArrayList<>();
 
 
     @Override
@@ -64,8 +68,8 @@ public class EventsAndNewsDetails extends AppCompatActivity {
         dialog1.setMessage("Please wait.....");
         dialog1.show();
 
-      //  Toast.makeText(this, ""+EventsAndNews.id_event, Toast.LENGTH_SHORT).show();
-       GetCategoryData( EventsAndNews.id_event);
+        //  Toast.makeText(this, ""+EventsAndNews.id_event, Toast.LENGTH_SHORT).show();
+        GetCategoryData(EventsAndNews.id_event);
 
 
         Attend_btn = findViewById(R.id.Attend);
@@ -76,26 +80,26 @@ public class EventsAndNewsDetails extends AppCompatActivity {
                 sendEmail();
             }
         });
-        share_btn=findViewById(R.id.share_event);
+        share_btn = findViewById(R.id.share_event);
         share_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent share = new Intent();
                 share.setAction(Intent.ACTION_SEND);
                 share.putExtra(Intent.EXTRA_TEXT,
-                        "https://play.google.com/store/apps/details?id=com.youssef.maggy.aqartest");
+                        "https://play.google.com/store/apps/details?id=com.aswany.android.myaquar_eg");
                 share.setType("textDes/plain");
                 startActivity(share);
 
             }
         });
-        phone_btn=findViewById(R.id.call_event);
+        phone_btn = findViewById(R.id.call_event);
         phone_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent contact = new Intent(Intent.ACTION_DIAL);
-                contact.setData(Uri.parse("tel:01095488883"));
+                contact.setData(Uri.parse("tel:01033113330"));
                 startActivity(contact);
 
             }
@@ -105,9 +109,9 @@ public class EventsAndNewsDetails extends AppCompatActivity {
         Event_slider = findViewById(R.id.event_Slider);
 
 
-        event_description=findViewById(R.id.description_event);
-        event_devolper=findViewById(R.id.event_devolepor);
-        titile=findViewById(R.id.Event_name);
+        event_description = findViewById(R.id.description_event);
+        event_devolper = findViewById(R.id.event_devolepor);
+        titile = findViewById(R.id.Event_name);
 
     }
 
@@ -135,8 +139,7 @@ public class EventsAndNewsDetails extends AppCompatActivity {
 
                         DataOfSlider(urlimage);
 
-                        seteventdata(list.get(0).getDescription(),list.get(0).getProject(),list.get(0).getTitle());
-
+                        seteventdata(list.get(0).getDescription(), list.get(0).getProject(), list.get(0).getTitle());
 
 
                     }
@@ -148,6 +151,7 @@ public class EventsAndNewsDetails extends AppCompatActivity {
                     }
                 });
     }
+
     private void DataOfSlider(List imageUrl) {
         HashMap<String, String> file_maps = new HashMap<String, String>();
 
@@ -174,8 +178,7 @@ public class EventsAndNewsDetails extends AppCompatActivity {
         Event_slider.setDuration(4000);
     }
 
-    private void seteventdata(String dec, String event_dev, String name)
-    {
+    private void seteventdata(String dec, String event_dev, String name) {
 
         event_description.setText(dec);
         event_devolper.setText(event_dev);
@@ -187,17 +190,44 @@ public class EventsAndNewsDetails extends AppCompatActivity {
 
     private void sendEmail() {
 
-        String[] TO = {"someone@gmail.com"};
-        String[] CC = {"xyz@gmail.com"};
+        Gson gson = new Gson();
+        UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
+        String[] TO = {"info@myaquar-eg.com"};
         String recepientEmail = ""; // either set to destination email or leave empty
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-        emailIntent.setData(Uri.parse("mailto:" + recepientEmail));
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+        String Subject;
 
-        startActivity(emailIntent);
+        try {
+            if (!Objects.equals(userPOJO.getEmail(), null)) {
+                String Lines = "--------------------------------";
+                Subject = "Attending this event: "
+                        + list.get(0).getTitle();
+                String Content = "Name              : " + userPOJO.getUsername()
+                        + "\n" + "Mobile Phone : " + userPOJO.getPhone()
+                        + "\n" + "Job Title         : " + userPOJO.getJobTitle();
+                String Body = "\n" + "\n" + "\n" + "\n" + "\n" + Lines + "\n" + "\n" + Content + "\n" + "\n" + Lines;
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(Uri.parse("mailto:" + recepientEmail));
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+
+//                Log.d("developer: ", list.get(0).getDeveloper() + "");
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, Subject);
+                emailIntent.putExtra(Intent.EXTRA_TEXT, Body);
+
+                startActivity(emailIntent);
+            }
+
+        } catch (Exception e) {
+            Subject = "Attending this event: "
+                    + list.get(0).getTitle();
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+            emailIntent.setData(Uri.parse("mailto:" + recepientEmail));
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, Subject);
+            emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+
+            startActivity(emailIntent);
+        }
+
 
     }
 

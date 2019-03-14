@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyAquar-egypt</string>
+    <string name="app_name">MyAquar Egypt</string>
 
     <string name="facebookID">1081011595442624</string>
     <string name="fb_login_protocol_scheme">fb1081011595442624</string>
@@ -18,6 +18,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fragment_favouriteEmpty_TV">Please Sign In First</string>
+    <!--String Lines="&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;";-->
+    <!--String Content = "Full Name : " + userPOJO.getUsername()-->
+    <!--+ "\n" + "Mobile Phone : " + userPOJO.getPhone() + "\n" + "Job Title: " + userPOJO.getJobTitle();-->
+    <!--String Body=Lines+"\n"+"\n"+Content+"\n"+"\n"+Lines;-->
+    <string name="Lines">--------------------------------</string>
+    <!--<string name="Body"></string>-->
 
 
 </resources>

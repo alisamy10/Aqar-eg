@@ -18,6 +18,24 @@ public class ModelObjects {
     private String project_img;
     private String description;
     private String location;
+    private String price;
+    private String price_label;
+
+    public String getPrice_label() {
+        return price_label;
+    }
+
+    public void setPrice_label(String price_label) {
+        this.price_label = price_label;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
     public int getProduct_id() {
         return product_id;

@@ -55,7 +55,7 @@ import butterknife.OnClick;
 import dmax.dialog.SpotsDialog;
 
 public class Login extends AppCompatActivity {
-//    gif_final
+    //    gif_final
     @BindView(R.id.enter_email)
     EditText enter_email;
     @BindView(R.id.enter_pass)
@@ -137,7 +137,12 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onError(ANError anError) {
                         dialog1.dismiss();
-                        myUtils.handleError(Login.this, anError.getErrorBody(), anError.getErrorCode());
+                        Log.d("testest", anError.getErrorCode()+"");
+
+                        if (anError.getErrorCode() !=0) {
+                            myUtils.handleError(Login.this, anError.getErrorBody(), anError.getErrorCode());
+                        } else
+                            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
 
                     }
                 });
