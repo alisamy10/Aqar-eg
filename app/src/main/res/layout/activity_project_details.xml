@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    android:visibility="gone"
+    android:visibility="visible"
     tools:context="com.aquar.myaquar_egypt.Activity.Projectdetails">
 
     <ScrollView
@@ -42,12 +42,12 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.4"
+                        android:layout_weight="0.8"
                         android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/project_name"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="13dp"
                             android:layout_marginTop="5dp"
@@ -64,7 +64,7 @@
                             android:layout_marginLeft="13dp"
                             android:text="El shrouk"
                             android:textColor="@android:color/black"
-                            android:textSize="16dp" />
+                            android:textSize="14dp" />
 
                         <RatingBar
                             android:id="@+id/ratingBar"
