@@ -49,29 +49,19 @@
         <Button
             android:layout_alignParentBottom="true"
             android:id="@+id/like_btn_of_favourite_list"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:layout_alignParentRight="true"
-            android:layout_width="40dp"
+            android:layout_width="wrap_content"
             android:background="@null"
             android:textColor="#C91919"
-            android:layout_height="40dp"
-            android:textSize="18sp"
-            android:gravity="bottom"
-            android:textStyle="bold"
-          android:text="X"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remove"
+            android:layout_height="30dp"
             android:textSize="15sp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="11dp"
-            android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/like_btn_of_favourite_list"
-            />
+            android:gravity="right|bottom"
+            android:textStyle="bold"
+          android:text="Remove"
 
+            android:textAllCaps="false"
+            />
 
 
 </RelativeLayout>
