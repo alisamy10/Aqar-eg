@@ -76,6 +76,10 @@ public class fragment_home extends Fragment {
         if (!Objects.equals(Session.getInstance().getHomeArray(),null)) {
             dialog1.dismiss();
             list = Session.getInstance().getHomeArray();
+
+
+
+
             setRecyclerData(list);
             mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 

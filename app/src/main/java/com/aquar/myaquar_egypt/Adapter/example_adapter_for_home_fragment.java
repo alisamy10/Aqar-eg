@@ -121,8 +121,13 @@ void make_love(int pos, ImageView img);
 ////
 
 
+        if (currentitem.getProject_name().length()>15)
 
-        exampleViewHolder.textView_1.setText( currentitem.getProject_name());
+        exampleViewHolder.textView_1.setText( currentitem.getProject_name().substring(0,15)+"...");
+        else
+           exampleViewHolder.textView_1.setText( currentitem.getProject_name());
+
+
         exampleViewHolder.textView_2.setText(currentitem.getLocation());
         exampleViewHolder.textView_end.setText(currentitem.getPrice()+" ");
         exampleViewHolder.concurncy.setText(currentitem.getPrice_label());

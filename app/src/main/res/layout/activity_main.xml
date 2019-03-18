@@ -155,7 +155,7 @@
                     android:id="@+id/home_text_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="home"
+                    android:text="Home"
                     android:textSize="14dp"
 
                     />
@@ -190,7 +190,7 @@
                     android:id="@+id/account_text_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="account"
+                    android:text="Account"
                     android:textSize="14dp"
 
                     />
