@@ -1,13 +1,17 @@
 package com.aquar.myaquar_egypt.Fragments;
 
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
@@ -15,9 +19,7 @@ import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
-
 import java.util.Objects;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -49,6 +51,7 @@ public class Profile_fragment extends Fragment {
     @BindView(R.id.mobile)
     TextView mobile;
 
+
     @BindView(R.id.jobTitle_linear)
     LinearLayout jobTitle_linear;
     @BindView(R.id.username_linear)
@@ -57,6 +60,9 @@ public class Profile_fragment extends Fragment {
     LinearLayout email_linear;
     @BindView(R.id.mobile_linear)
     LinearLayout mobile_linear;
+
+
+
 
 
     public Profile_fragment() {
@@ -75,6 +81,15 @@ public class Profile_fragment extends Fragment {
         ButterKnife.bind(this, view);
 
         dataCheck();
+
+        TextView edit=(TextView) view.findViewById(R.id.edit_btn);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               showDialog();
+
+            }
+        });
 
 
         return view;
@@ -111,13 +126,61 @@ public class Profile_fragment extends Fragment {
         job_titleBar.setVisibility(View.GONE);
     }
 
-    @OnClick(R.id.edit_profile_photo)
-    public void setChooseImage() {
+//    @OnClick(R.id.edit_profile_photo)
+//    public void setChooseImage() {
 //        Intent intent = new Intent();
 //        intent.setAction(Intent.ACTION_GET_CONTENT);
 //        intent.setType("image/*");
 //        startActivityForResult(intent, 2);
+//
+//    }
 
+
+    protected void showDialog()
+    {
+
+
+
+        final Dialog dialog = new Dialog(getContext());
+        dialog.setCancelable(true);
+
+        View view  = getActivity().getLayoutInflater().inflate(R.layout.activity_custom_dialog, null);
+        dialog.setContentView(view);
+
+        EditText usernameEdit=(EditText) view.findViewById(R.id.edit_info_username);
+        EditText phoneEdit=(EditText) view.findViewById(R.id.edit_info_phone);
+        EditText emailEdit=(EditText) view.findViewById(R.id.edit_info_Email);
+        EditText jopEdit=(EditText) view.findViewById(R.id.edit_info_jopTitle);
+
+        usernameEdit.setText(username.getText());
+        phoneEdit.setText(mobile.getText());
+        emailEdit.setText(email.getText());
+        jopEdit.setText(job_title.getText());
+
+
+        Button submit = (Button) view.findViewById(R.id.submit_BT);
+        Button cancel = (Button) view.findViewById(R.id.cancel_bt);
+
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "done..!", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Canceled", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
+
+            }
+        });
+
+
+
+        dialog.show();
     }
 
 
