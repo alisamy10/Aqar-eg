@@ -18,6 +18,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Fragments.fragment_home;
+import com.aquar.myaquar_egypt.InternalStorage.Session;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
 import com.aquar.myaquar_egypt.Model.ModelsOfProjectDetails.ArrayModelOfProjectsDetails;
@@ -331,7 +332,7 @@ public class Projectdetails extends AppCompatActivity {
 
     private void DataOfSlider(List imageUrl) {
         HashMap<String, String> file_maps = new HashMap<String, String>();
-
+        Session.getInstance().setUrlimage(urlimage);
         for (int i = 0; i < urlimage.size(); i++) {
             file_maps.put("Phase" + i + 1, imageUrl.get(i).toString());
 
