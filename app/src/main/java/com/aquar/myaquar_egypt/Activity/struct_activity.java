@@ -25,7 +25,7 @@ public class struct_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_struct);
-        List<String> protoTypeImages = Session.getInstance().getUrlimage();
+        List<String> protoTypeImages = Session.getInstance().getStructureImages();
 
         viewPager = findViewById(R.id.viewPagerStructure);
         adapter = new customerImageViewPagerAdapter(this, protoTypeImages);

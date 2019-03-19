@@ -1,9 +1,12 @@
 package com.aquar.myaquar_egypt.Fragments;
 
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +16,30 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.aquar.myaquar_egypt.Activity.Login;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
+import com.aquar.myaquar_egypt.Model.Login.userResPOJO;
 import com.aquar.myaquar_egypt.R;
+import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import org.json.JSONObject;
+
 import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import dmax.dialog.SpotsDialog;
 
 
 /**
@@ -61,8 +77,10 @@ public class Profile_fragment extends Fragment {
     @BindView(R.id.mobile_linear)
     LinearLayout mobile_linear;
 
-
-
+    private UserInfo userPOJO;
+    private Dialog dialog;
+    //dialog
+    private AlertDialog alertDialog;
 
 
     public Profile_fragment() {
@@ -81,12 +99,13 @@ public class Profile_fragment extends Fragment {
         ButterKnife.bind(this, view);
 
         dataCheck();
-
-        TextView edit=(TextView) view.findViewById(R.id.edit_btn);
+        alertDialog = new SpotsDialog.Builder().setContext(getActivity()).setTheme(R.style.Custom).build();
+        alertDialog.setMessage("Update information .....");
+        TextView edit = view.findViewById(R.id.edit_btn);
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               showDialog();
+                showDialog();
 
             }
         });
@@ -98,7 +117,7 @@ public class Profile_fragment extends Fragment {
 
     private void dataCheck() {
         Gson gson = new Gson();
-        UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
+        userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
         try {
             if (!Objects.equals(userPOJO.getEmail(), null)) {
 
@@ -136,21 +155,20 @@ public class Profile_fragment extends Fragment {
 //    }
 
 
-    protected void showDialog()
-    {
+    protected void showDialog() {
 
 
-
-        final Dialog dialog = new Dialog(getContext());
+        dialog = new Dialog(getContext());
         dialog.setCancelable(true);
 
-        View view  = getActivity().getLayoutInflater().inflate(R.layout.activity_custom_dialog, null);
+        View view = getActivity().getLayoutInflater().inflate(R.layout.activity_custom_dialog, null);
         dialog.setContentView(view);
 
-        EditText usernameEdit=(EditText) view.findViewById(R.id.edit_info_username);
-        EditText phoneEdit=(EditText) view.findViewById(R.id.edit_info_phone);
-        EditText emailEdit=(EditText) view.findViewById(R.id.edit_info_Email);
-        EditText jopEdit=(EditText) view.findViewById(R.id.edit_info_jopTitle);
+        final EditText usernameEdit = view.findViewById(R.id.edit_info_username);
+        final EditText phoneEdit = view.findViewById(R.id.edit_info_phone);
+        final EditText passwordEdit = view.findViewById(R.id.edit_info_password);
+        final EditText emailEdit = view.findViewById(R.id.edit_info_Email);
+        final EditText jopEdit = view.findViewById(R.id.edit_info_jopTitle);
 
         usernameEdit.setText(username.getText());
         phoneEdit.setText(mobile.getText());
@@ -165,22 +183,96 @@ public class Profile_fragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "done..!", Toast.LENGTH_SHORT).show();
-                dialog.cancel();
+//                Toast.makeText(getContext(), "done..!", Toast.LENGTH_SHORT).show();
+                getEditData(usernameEdit, phoneEdit, emailEdit, jopEdit, passwordEdit);
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Canceled", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "Canceled", Toast.LENGTH_SHORT).show();
                 dialog.cancel();
 
             }
         });
 
 
-
         dialog.show();
+    }
+
+    private void getEditData(EditText usernameEditET, EditText phoneEditET, EditText emailEditET, EditText jopEditET, EditText passwordEditET) {
+        String userName, userPhone, userEmail, userJob, userPassword;
+        userEmail = emailEditET.getText().toString();
+        userName = usernameEditET.getText().toString();
+        userPhone = phoneEditET.getText().toString();
+        userJob = jopEditET.getText().toString();
+        userPassword = passwordEditET.getText().toString();
+
+        if (TextUtils.isEmpty(userName))
+            usernameEditET.setError("Required");
+        else if (TextUtils.isEmpty(userPhone))
+            phoneEditET.setError("Required");
+        else if (TextUtils.isEmpty(userEmail))
+            emailEditET.setError("Required");
+//        else if (TextUtils.isEmpty(userPassword))
+//            passwordEditET.setError("Required");
+        else if (TextUtils.isEmpty(userJob))
+            jopEditET.setError("Required");
+        else
+            updateData(userName, userPhone, userEmail, userPassword, userJob);
+
+
+    }
+
+    private void updateData(String userName, String userPhone, String userEmail, String userPassword, String userJob) {
+        alertDialog.show();
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("id", userPOJO.getUserId());
+            jsonObject.put("user_name", userName);
+            jsonObject.put("email", userEmail);
+            jsonObject.put("phone", userPhone);
+            jsonObject.put("password", userPassword);
+            jsonObject.put("job_title", userJob);
+        } catch (Exception e) {
+            alertDialog.dismiss();
+            e.printStackTrace();
+        }
+        Log.d("Update_Data", jsonObject.toString());
+
+        AndroidNetworking.post(ConstantsUrl.UpdateUser)
+                .addJSONObjectBody(jsonObject)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        dialog.cancel();
+                        alertDialog.dismiss();
+                        Log.d("Response", response.toString());
+                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                        userResPOJO resPOJO = gson.fromJson(response.toString(), userResPOJO.class);
+                        String userOBJSTR = gson.toJson(resPOJO.getUserInfo());
+                        mySharedPreference.setUserOBJ(userOBJSTR);
+                        refreshFragment();
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        alertDialog.dismiss();
+                        myUtils.handleError(getActivity(), anError.getErrorBody(), anError.getErrorCode());
+                    }
+                });
+    }
+
+    private void refreshFragment() {
+        Profile_fragment fragment = (Profile_fragment)
+                getFragmentManager().findFragmentById(R.id.frame_home);
+
+        getFragmentManager().beginTransaction()
+                .detach(fragment)
+                .attach(fragment)
+                .commit();
     }
 
 

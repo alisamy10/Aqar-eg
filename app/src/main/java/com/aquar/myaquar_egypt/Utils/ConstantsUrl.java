@@ -25,6 +25,7 @@ public class ConstantsUrl {
     public static final String search = BasicURL + "search" ;
     public static final String EventandNews=BasicURL+"eventsnewsdetails";
     public static final String SearchResult = BasicURL + "search_result";
+    public static final String UpdateUser = BasicURL + "update_user";
 
 
 

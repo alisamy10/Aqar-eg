@@ -25,6 +25,7 @@ public class ModelObjectsOfProjectDetails {
      * viewer_360 : http://aquar.me/myaquar_eg/uploads/products/360_2.jpg
      * description : prime location with an attractive payment plan, 10% Downpayment - 10% after 3 Months - 10% on Delivery &  Equal installments over 6 Years
      * slider_images : [{"image_id":2,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_5.jpg"},{"image_id":3,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_7.jpg"},{"image_id":4,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_9.jpg"},{"image_id":5,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_11.jpg"},{"image_id":6,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_31.jpg"},{"image_id":7,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/azad_pqroject.jpg"}]
+     * dimension_images : [{"image_id":2,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_5.jpg"},{"image_id":3,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_7.jpg"},{"image_id":4,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_9.jpg"},{"image_id":5,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_11.jpg"},{"image_id":6,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/Azad_Mob_31.jpg"},{"image_id":7,"image_url":"http://aquar.me/myaquar_eg/uploads/projects/azad_pqroject.jpg"}]
      */
 
     private int id;
@@ -46,6 +47,7 @@ public class ModelObjectsOfProjectDetails {
     private String viewer_360;
     private String description;
     private List<SliderImagesBean> slider_images;
+    private List<String> structure_images;
     private String price_label;
 
     public String getPrice_label() {
@@ -206,6 +208,14 @@ public class ModelObjectsOfProjectDetails {
 
     public void setSlider_images(List<SliderImagesBean> slider_images) {
         this.slider_images = slider_images;
+    }
+
+    public List<String> getStructure_images() {
+        return structure_images;
+    }
+
+    public void setStructure_images(List<String> structure_images) {
+        this.structure_images = structure_images;
     }
 
     public static class SliderImagesBean {

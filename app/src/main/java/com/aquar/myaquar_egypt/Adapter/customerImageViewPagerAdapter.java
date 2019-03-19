@@ -1,16 +1,19 @@
 package com.aquar.myaquar_egypt.Adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+
 
 import com.aquar.myaquar_egypt.R;
 import com.bumptech.glide.Glide;
+
 import com.ortiz.touchview.TouchImageView;
 
 import java.util.ArrayList;
@@ -45,15 +48,13 @@ public class customerImageViewPagerAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        TouchImageView touchImageView;
-        View view = layoutInflater.inflate(R.layout.item_zoom_image, container, false);
-        touchImageView = view.findViewById(R.id.touchImageStructure);
 
-//        Glide.with(myContext).load(images.get(position)).into(touchImageView);
-        touchImageView.setImageDrawable(myContext.getResources().getDrawable(R.drawable.str));
+        View view = layoutInflater.inflate(R.layout.item_zoom_image, container, false);
+        TouchImageView touchImageView = view.findViewById(R.id.touchImageStructure);
+        Glide.with(myContext).load(images.get(position)).into(touchImageView);
 
         container.addView(view);
-        return container;
+        return view;
     }
 
     @Override

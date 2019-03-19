@@ -28,6 +28,9 @@ public class Session {
     //images
     private List<String> urlimage = new ArrayList<>();
 
+    //Structure Images
+    private List<String> StructureImages = new ArrayList<>();
+
 
     public List<String> getUrlimage() {
         return urlimage;
@@ -43,5 +46,13 @@ public class Session {
 
     public void setHomeArray(ArrayList<ModelObjects> homeArray) {
         this.HomeArray = homeArray;
+    }
+
+    public List<String> getStructureImages() {
+        return StructureImages;
+    }
+
+    public void setStructureImages(List<String> structureImages) {
+        StructureImages = structureImages;
     }
 }

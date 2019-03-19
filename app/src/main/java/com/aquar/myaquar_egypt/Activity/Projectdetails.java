@@ -292,6 +292,8 @@ public class Projectdetails extends AppCompatActivity {
                         }
 
                         DataOfSlider(urlimage);
+                        //Structure Images
+                        Session.getInstance().setStructureImages(list.get(0).getStructure_images());
 
                         description_string = list.get(0).getDescription();
                         // for set all texts of details
