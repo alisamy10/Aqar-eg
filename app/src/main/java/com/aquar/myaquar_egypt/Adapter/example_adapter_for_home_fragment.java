@@ -123,7 +123,7 @@ void make_love(int pos, ImageView img);
 
         if (currentitem.getProject_name().length()>10)
 
-          exampleViewHolder.textView_1.setText( currentitem.getProject_name().substring(0,10)+"...");
+          exampleViewHolder.textView_1.setText( currentitem.getProject_name().substring(0,12)+"...");
         else
            exampleViewHolder.textView_1.setText( currentitem.getProject_name());
 

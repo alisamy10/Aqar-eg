@@ -126,7 +126,9 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
                         userResPOJO resPOJO = gson.fromJson(response.toString(), userResPOJO.class);
+
                         String userOBJSTR = gson.toJson(resPOJO.getUserInfo());
                         Log.d("testest", response.toString());
                         mySharedPreference.setUserOBJ(userOBJSTR);
@@ -140,8 +142,11 @@ public class Login extends AppCompatActivity {
                         Log.d("testest", anError.getErrorCode()+"");
 
                         if (anError.getErrorCode() !=0) {
+
                             myUtils.handleError(Login.this, anError.getErrorBody(), anError.getErrorCode());
+
                         } else
+
                             Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
 
                     }
@@ -156,8 +161,8 @@ public class Login extends AppCompatActivity {
 
     @OnClick(R.id.loginFB)
     public void onFacebookBT() {
-        LoginManager.getInstance().logInWithReadPermissions(Login.this, Arrays.asList(
-                "public_profile", "email"));
+
+        LoginManager.getInstance().logInWithReadPermissions(Login.this, Arrays.asList("public_profile", "email"));
 
     }
 

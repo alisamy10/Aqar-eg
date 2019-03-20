@@ -3,6 +3,7 @@ package com.aquar.myaquar_egypt.Fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -20,6 +21,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.aquar.myaquar_egypt.Activity.EditProfile;
 import com.aquar.myaquar_egypt.Activity.Login;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
@@ -105,8 +107,8 @@ public class Profile_fragment extends Fragment {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog();
 
+                startActivity(new Intent(getActivity(), EditProfile.class));
             }
         });
 
@@ -155,125 +157,13 @@ public class Profile_fragment extends Fragment {
 //    }
 
 
-    protected void showDialog() {
-
-
-        dialog = new Dialog(getContext());
-        dialog.setCancelable(true);
-
-        View view = getActivity().getLayoutInflater().inflate(R.layout.activity_custom_dialog, null);
-        dialog.setContentView(view);
-
-        final EditText usernameEdit = view.findViewById(R.id.edit_info_username);
-        final EditText phoneEdit = view.findViewById(R.id.edit_info_phone);
-        final EditText passwordEdit = view.findViewById(R.id.edit_info_password);
-        final EditText emailEdit = view.findViewById(R.id.edit_info_Email);
-        final EditText jopEdit = view.findViewById(R.id.edit_info_jopTitle);
-
-        usernameEdit.setText(username.getText());
-        phoneEdit.setText(mobile.getText());
-        emailEdit.setText(email.getText());
-        jopEdit.setText(job_title.getText());
-
-
-        Button submit = (Button) view.findViewById(R.id.submit_BT);
-        Button cancel = (Button) view.findViewById(R.id.cancel_bt);
-
-
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Toast.makeText(getContext(), "done..!", Toast.LENGTH_SHORT).show();
-                getEditData(usernameEdit, phoneEdit, emailEdit, jopEdit, passwordEdit);
-            }
-        });
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Toast.makeText(getContext(), "Canceled", Toast.LENGTH_SHORT).show();
-                dialog.cancel();
-
-            }
-        });
-
-
-        dialog.show();
+    @Override
+    public void onResume() {
+        super.onResume();
+        dataCheck();
     }
 
-    private void getEditData(EditText usernameEditET, EditText phoneEditET, EditText emailEditET, EditText jopEditET, EditText passwordEditET) {
-        String userName, userPhone, userEmail, userJob, userPassword;
-        userEmail = emailEditET.getText().toString();
-        userName = usernameEditET.getText().toString();
-        userPhone = phoneEditET.getText().toString();
-        userJob = jopEditET.getText().toString();
-        userPassword = passwordEditET.getText().toString();
 
-        if (TextUtils.isEmpty(userName))
-            usernameEditET.setError("Required");
-        else if (TextUtils.isEmpty(userPhone))
-            phoneEditET.setError("Required");
-        else if (TextUtils.isEmpty(userEmail))
-            emailEditET.setError("Required");
-//        else if (TextUtils.isEmpty(userPassword))
-//            passwordEditET.setError("Required");
-        else if (TextUtils.isEmpty(userJob))
-            jopEditET.setError("Required");
-        else
-            updateData(userName, userPhone, userEmail, userPassword, userJob);
-
-
-    }
-
-    private void updateData(String userName, String userPhone, String userEmail, String userPassword, String userJob) {
-        alertDialog.show();
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("id", userPOJO.getUserId());
-            jsonObject.put("user_name", userName);
-            jsonObject.put("email", userEmail);
-            jsonObject.put("phone", userPhone);
-            jsonObject.put("password", userPassword);
-            jsonObject.put("job_title", userJob);
-        } catch (Exception e) {
-            alertDialog.dismiss();
-            e.printStackTrace();
-        }
-        Log.d("Update_Data", jsonObject.toString());
-
-        AndroidNetworking.post(ConstantsUrl.UpdateUser)
-                .addJSONObjectBody(jsonObject)
-                .setPriority(Priority.MEDIUM)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        dialog.cancel();
-                        alertDialog.dismiss();
-                        Log.d("Response", response.toString());
-                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                        userResPOJO resPOJO = gson.fromJson(response.toString(), userResPOJO.class);
-                        String userOBJSTR = gson.toJson(resPOJO.getUserInfo());
-                        mySharedPreference.setUserOBJ(userOBJSTR);
-                        refreshFragment();
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-                        alertDialog.dismiss();
-                        myUtils.handleError(getActivity(), anError.getErrorBody(), anError.getErrorCode());
-                    }
-                });
-    }
-
-    private void refreshFragment() {
-        Profile_fragment fragment = (Profile_fragment)
-                getFragmentManager().findFragmentById(R.id.frame_home);
-
-        getFragmentManager().beginTransaction()
-                .detach(fragment)
-                .attach(fragment)
-                .commit();
-    }
 
 
 }

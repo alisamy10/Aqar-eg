@@ -60,7 +60,7 @@
                 android:layout_gravity="left"
                 android:text="MidTown"
                 android:textColor="#FFFF"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
 
                 />
@@ -73,7 +73,7 @@
 
 
                 android:textColor="#FFFF"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
 
@@ -103,10 +103,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="Start From : "
+                    android:text="Starting : "
                     android:textColor="#FFFF"
 
-                    android:textSize="16sp"
+                    android:textSize="14sp"
 
                     />
 
@@ -117,9 +117,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text=" 4 "
+                    android:textSize="14sp"
                     android:textColor="#FFFF" />
 
                 <TextView
+                    android:textSize="14sp"
                     android:id="@+id/concurncy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

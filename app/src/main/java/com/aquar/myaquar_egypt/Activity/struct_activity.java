@@ -20,20 +20,26 @@ public class struct_activity extends AppCompatActivity {
     TouchImageView touchImageView;
     ViewPager viewPager;
     customerImageViewPagerAdapter adapter;
+    List<String> protoTypeImages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_struct);
-        List<String> protoTypeImages = Session.getInstance().getStructureImages();
+
 
         viewPager = findViewById(R.id.viewPagerStructure);
-        adapter = new customerImageViewPagerAdapter(this, protoTypeImages);
-        viewPager.setAdapter(adapter);
+        try {
+            if (protoTypeImages.size()>0) {
+                protoTypeImages = Session.getInstance().getStructureImages();
+                adapter = new customerImageViewPagerAdapter(this, protoTypeImages);
+                viewPager.setAdapter(adapter);
+                for (int x = 0; x < protoTypeImages.size(); x++) {
+                    Log.d("Sliders", protoTypeImages.get(x));
+                }
+            }
+        }catch (Exception e){e.printStackTrace();}
 
-        for (int x = 0; x < protoTypeImages.size(); x++) {
-            Log.d("Sliders", protoTypeImages.get(x));
-        }
 //        touchImageView.setMaxZoom(3);
 //        touchImageView.setMinZoom(1);
 

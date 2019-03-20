@@ -6,9 +6,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,10 +22,12 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.aquar.myaquar_egypt.Adapter.AdapterOfListOfPaymentMethod;
 import com.aquar.myaquar_egypt.Fragments.fragment_home;
 import com.aquar.myaquar_egypt.InternalStorage.Session;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
+import com.aquar.myaquar_egypt.Model.ModelOfListOfPaymentMethod;
 import com.aquar.myaquar_egypt.Model.ModelsOfProjectDetails.ArrayModelOfProjectsDetails;
 import com.aquar.myaquar_egypt.Model.ModelsOfProjectDetails.ModelObjectsOfProjectDetails;
 import com.aquar.myaquar_egypt.R;
@@ -56,12 +63,20 @@ public class Projectdetails extends AppCompatActivity {
     private String description_string;
     private LinearLayout parentOfProjectDetails;
 
+    AdapterOfListOfPaymentMethod adapter ;
+
+    ArrayList<ModelOfListOfPaymentMethod>listpay = new ArrayList<>();
+
     List<String> urlimage = new ArrayList<>();
 
     ArrayList<ModelObjectsOfProjectDetails> list = new ArrayList<>();
+    ListView listPayment ;
 
 
     fragment_home getId = new fragment_home();
+
+    String x [] = {"40%" , "20%"};
+    String z[] = {"7 years" , "8 years"};
 
 
     @Override
@@ -69,6 +84,23 @@ public class Projectdetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_details);
         myUtils.setLocale(this);
+
+
+        listPayment = findViewById(R.id.list_of_payment_method);
+
+
+        listpay.add( new ModelOfListOfPaymentMethod( x [1] , z[1] ));
+        listpay.add( new ModelOfListOfPaymentMethod( x [1] , z[1] ));
+        listpay.add( new ModelOfListOfPaymentMethod( x [1] , z[1] ));
+        listpay.add( new ModelOfListOfPaymentMethod( x [1] , z[1] ));
+
+
+
+        adapter = new AdapterOfListOfPaymentMethod (this,R.layout.item_list_of_payment_method , listpay);
+        listPayment.setAdapter(adapter);
+
+        setListViewHeightBasedOnChildren(listPayment);
+
 
         parentOfProjectDetails = findViewById(R.id.parentOfProjectDetails);
 
@@ -285,6 +317,11 @@ public class Projectdetails extends AppCompatActivity {
                         list = array.getProject();
 
 
+
+
+
+
+
                         //loop for image of slider
                         for (int i = 0; i < list.get(0).getSlider_images().size(); i++) {
                             String x = list.get(0).getSlider_images().get(i).getImage_url();
@@ -441,6 +478,38 @@ public class Projectdetails extends AppCompatActivity {
         finish();
 
     }
+
+   // محدش يمسح الفانكشن ديه اللي هيمسحها هعوره
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) return;
+
+
+        View.MeasureSpec m = new View.MeasureSpec();
+
+        int desiredWidth = m.makeMeasureSpec(listView.getWidth(),
+                View.MeasureSpec.UNSPECIFIED);
+        int totalHeight = 0;
+        View view = null;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            view = listAdapter.getView(i, view, listView);
+            if (i == 0) view.setLayoutParams(new
+                    ViewGroup.LayoutParams(desiredWidth,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount()-1));
+
+        listView.setLayoutParams(params);
+        listView.requestLayout();
+
+    }
+
 
 }
 

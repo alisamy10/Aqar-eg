@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -198,6 +201,8 @@ public class EventsAndNewsDetails extends AppCompatActivity {
 
         try {
             if (!Objects.equals(userPOJO.getEmail(), null)) {
+
+
                 String Lines = "--------------------------------";
                 Subject = "Attending this event: "
                         + list.get(0).getTitle();
