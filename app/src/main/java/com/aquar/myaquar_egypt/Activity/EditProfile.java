@@ -148,7 +148,7 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
     }
     @Override
     public void onBackPressed() {
-        Toast.makeText(this, "askdadVBASDKJHDGJSAKL", Toast.LENGTH_SHORT).show();
+
         finish();
 
     }

@@ -482,7 +482,7 @@ public class Projectdetails extends AppCompatActivity {
    // محدش يمسح الفانكشن ديه اللي هيمسحها هعوره
     public static void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
-        if (listAdapter == null) return;
+        if (listAdapter == null) return ;
 
 
         View.MeasureSpec m = new View.MeasureSpec();
