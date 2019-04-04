@@ -2,6 +2,7 @@ package com.aquar.myaquar_egypt.Activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ExpandableListActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,7 +17,9 @@ import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -52,13 +55,14 @@ public class ProjectTypesActivity extends AppCompatActivity {
     //    public static int id;
 //    private AlertDialog dialog1;
     private Dialog dialog1;
-
+     private ScrollView parent ;
     private ImageView units_detailsImg;
     private TextView units_detailsDes_TV,
             units_detailsDes_label_TV, units_line1_label_TV,
             units_line2_label_TV, units_label_TV;
     private Button units_location_BTN;
     private ExpandableListView types_ExpandableList;
+    private ImageView arrow ;
 
     private ArrayList<unitsModelObj> unitsModel = new ArrayList<>();
     private ArrayList<unitsModelTypes> Types = new ArrayList<>();
@@ -67,11 +71,28 @@ public class ProjectTypesActivity extends AppCompatActivity {
     private HashMap<String, List<String>> listDataChild;
     private String ProjectID;
 
+    private Button go_youtube ;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.project_types_activity);
+
+       parent = findViewById(R.id.parent_of_projects_type);
+        go_youtube = (Button) findViewById(R.id.go_youtube);
+        arrow = findViewById(R.id.arrow_of_exband_list);
+
+        go_youtube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://www.youtube.com/channel/UCc1Zc_zqnpjfxTnTtiqlC6A?view_as=subscriber"));
+                startActivity(intent);
+
+            }
+        });
 
         initializations();
 
@@ -82,6 +103,24 @@ public class ProjectTypesActivity extends AppCompatActivity {
         units_detailsDes_TV = findViewById(R.id.units_detailsDes_TV);
         units_location_BTN = findViewById(R.id.units_location_BTN);
         types_ExpandableList = findViewById(R.id.types_ExpandableList);
+
+
+
+       types_ExpandableList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+           @Override
+           public void onGroupExpand(int groupPosition) {
+              arrow.setImageResource(R.drawable.ic_arrow_drop_up_black_24dp);
+           }
+       });
+       
+       types_ExpandableList.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+           @Override
+           public void onGroupCollapse(int groupPosition) {
+
+               arrow.setImageResource(R.drawable.group_ind);
+
+           }
+       });
 
         units_detailsDes_label_TV = findViewById(R.id.units_detailsDes_label_TV);
         units_line1_label_TV = findViewById(R.id.units_line1_label_TV);
@@ -126,6 +165,8 @@ public class ProjectTypesActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         dialog1.dismiss();
+                        parent.setVisibility(View.VISIBLE);
+
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         Log.d("TestData", "onResponse: " + response.toString());
                         unitsModelRes unitsModelRes = gson.fromJson(response.toString(), unitsModelRes.class);
@@ -138,13 +179,17 @@ public class ProjectTypesActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError anError) {
                         dialog1.dismiss();
+                        parent.setVisibility(View.VISIBLE);
                         Log.d("TestData", "onResponse: " + anError.toString());
                         myUtils.handleError(ProjectTypesActivity.this, anError.getErrorBody(), anError.getErrorCode());
                         Glide.with(ProjectTypesActivity.this).load(R.drawable.no_record_found).into(units_detailsImg);
                         units_detailsDes_TV.setText("This project has no information yet");
-                        units_detailsDes_TV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                        units_detailsDes_TV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
                         units_detailsDes_TV.setTextColor(getResources().getColor(R.color.Red));
                         widgetsVisibility(View.GONE);
+                        arrow.setVisibility(View.GONE);
+                        go_youtube.setVisibility(View.GONE);
+
                     }
                 });
 

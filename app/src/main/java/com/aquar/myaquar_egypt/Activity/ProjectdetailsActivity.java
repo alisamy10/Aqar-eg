@@ -161,18 +161,7 @@ public class ProjectdetailsActivity extends AppCompatActivity {
         });
 
 
-        go_youtube = (Button) findViewById(R.id.go_youtube);
 
-        go_youtube.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("https://www.youtube.com/channel/UCc1Zc_zqnpjfxTnTtiqlC6A?view_as=subscriber"));
-                startActivity(intent);
-
-            }
-        });
         struct_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -476,12 +465,6 @@ public class ProjectdetailsActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-//        startActivity(new Intent(ProjectdetailsActivity.this, ProjectTypesActivity.class));
-//        finish();
-        super.onBackPressed();
-    }
 
     // محدش يمسح الفانكشن ديه اللي هيمسحها هعوره
     public static void setListViewHeightBasedOnChildren(ListView listView) {
@@ -513,6 +496,14 @@ public class ProjectdetailsActivity extends AppCompatActivity {
         listView.requestLayout();
 
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ProjectdetailsActivity.this, ProjectTypesActivity.class));
+        finish();
+
+    }
+
 
 
 }

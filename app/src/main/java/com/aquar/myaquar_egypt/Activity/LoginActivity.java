@@ -258,6 +258,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     }
                                 });
+
                         Bundle parameters = new Bundle();
                         parameters.putString("fields", "id,name,link");
                         request.setParameters(parameters);
@@ -301,6 +302,7 @@ public class LoginActivity extends AppCompatActivity {
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
+
                 Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
         } catch (PackageManager.NameNotFoundException e) {

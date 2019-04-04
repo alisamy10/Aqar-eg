@@ -119,6 +119,9 @@ public class RegisterActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.getStackTrace();
         }
+
+
+
         AndroidNetworking.post(ConstantsUrl.Registration)
                 .addJSONObjectBody(object)
                 .setPriority(Priority.MEDIUM)
@@ -127,10 +130,12 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         dialog1.dismiss();
+
+
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         userResPOJO resPOJO = gson.fromJson(response.toString(), userResPOJO.class);
 
-                        Log.d("RegisterResponse", response.toString());
+
                         String userOBJSTR = gson.toJson(resPOJO.getUserInfo());
 
 
