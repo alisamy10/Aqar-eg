@@ -1,6 +1,7 @@
 package com.aquar.myaquar_egypt.Adapter;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -19,8 +20,9 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.aquar.myaquar_egypt.Activity.Projectdetails;
-import com.aquar.myaquar_egypt.Fragments.fragment_home;
+import com.aquar.myaquar_egypt.Activity.ProjectdetailsActivity;
+import com.aquar.myaquar_egypt.Fragments.homeFragment;
+import com.aquar.myaquar_egypt.InternalStorage.Session;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Favouirtes.favouriteObjPOJO;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
@@ -43,7 +45,8 @@ import dmax.dialog.SpotsDialog;
 public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myView> {
     private Context myContext;
     private ArrayList<favouriteObjPOJO> favouriteObjPOJOS = new ArrayList<>();
-    private AlertDialog dialog;
+//    private AlertDialog dialog;
+    private Dialog dialog;
 
     public favouriteAdapter(Context myContext, ArrayList<favouriteObjPOJO> favouriteObjPOJOS) {
         this.myContext = myContext;
@@ -62,8 +65,10 @@ public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myVi
     public void onBindViewHolder(@NonNull final favouriteAdapter.myView myView, int i) {
 
         final favouriteObjPOJO pojo = favouriteObjPOJOS.get(i);
-        dialog = new SpotsDialog.Builder().setContext(myContext).setTheme(R.style.Custom).build();
-        dialog.setMessage("Please wait.....");
+//        dialog = new SpotsDialog.Builder().setContext(myContext).setTheme(R.style.Custom).build();
+//        dialog.setMessage("Please wait.....");
+        dialog = myUtils.LoadingDialog(myContext);
+
         Glide.with(myContext).load(pojo.getProjectImg()).into(myView.image_of_favourite_list);
         myView.text_of_favourite.setText(pojo.getProductTitle());
 //        myView.ratingBar.setNumStars(pojo.);
@@ -79,9 +84,10 @@ public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myVi
         myView.fragment_favourite_LL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myContext.startActivity(new Intent(myContext, Projectdetails.class));
-                fragment_home fragment_home=new fragment_home();
-                fragment_home.id= (int) pojo.getProductId();
+                Session.getInstance().setTypesOfUnitID(String.valueOf(pojo.getProductId()));
+                myContext.startActivity(new Intent(myContext, ProjectdetailsActivity.class));
+                homeFragment fragment_home = new homeFragment();
+//                fragment_home.id= (int) pojo.getProductId();
 
             }
         });
@@ -133,7 +139,7 @@ public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myVi
                     .getAsJSONObject(new JSONObjectRequestListener() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            myUtils.handleError(myContext, response.toString(),response.length());
+                            myUtils.handleError(myContext, response.toString(), response.length());
                             myView.this.like_btn_of_favourite_list.setVisibility(View.GONE);
                             favouriteObjPOJOS.remove(pojo);
                             notifyDataSetChanged();
@@ -147,8 +153,8 @@ public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myVi
                             dialog.dismiss();
 
 
-                            Log.d("Favourite", anError.getResponse() + "");
-                            Log.d("Favourite", anError.getErrorBody() + "");
+                            Log.d("favouriteFragment", anError.getResponse() + "");
+                            Log.d("favouriteFragment", anError.getErrorBody() + "");
                         }
                     });
         }

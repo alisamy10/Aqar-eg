@@ -1,6 +1,7 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -44,7 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
     @BindView(R.id.edit_text_password)
     EditText edit_text_password;
     //    userResPOJO resPOJO=new userResPOJO();
-    private AlertDialog dialog1;
+//    private AlertDialog dialog1;
+    private Dialog dialog1;
 
     final String EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
@@ -56,8 +58,9 @@ public class RegisterActivity extends AppCompatActivity {
         myUtils.setLocale(this);
 
 
-        dialog1 = new SpotsDialog.Builder().setContext(RegisterActivity.this).setTheme(R.style.Custom).build();
-        dialog1.setMessage("Please wait.....");
+//        dialog1 = new SpotsDialog.Builder().setContext(RegisterActivity.this).setTheme(R.style.Custom).build();
+//        dialog1.setMessage("Please wait.....");
+        dialog1 = myUtils.LoadingDialog(this);
         AndroidNetworking.initialize(this);
         getSocialData();
 

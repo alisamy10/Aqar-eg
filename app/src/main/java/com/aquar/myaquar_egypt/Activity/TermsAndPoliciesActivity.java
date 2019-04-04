@@ -1,6 +1,7 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,9 +25,10 @@ import org.json.JSONObject;
 
 import dmax.dialog.SpotsDialog;
 
-public class TermsAndPolicies extends AppCompatActivity {
+public class TermsAndPoliciesActivity extends AppCompatActivity {
      private  TextView textview ;
-    private AlertDialog dialog1;
+//    private AlertDialog dialog1;
+    private Dialog dialog1;
 
     private ScrollView parentOfTermesAndPolicies ;
     @Override
@@ -40,8 +42,10 @@ public class TermsAndPolicies extends AppCompatActivity {
         parentOfTermesAndPolicies = findViewById(R.id.parentOfTermesAndPolicies);
 
 
-        dialog1 = new SpotsDialog.Builder().setContext(TermsAndPolicies.this).setTheme(R.style.Custom).build();
-        dialog1.setMessage("Please wait.....");
+//        dialog1 = new SpotsDialog.Builder().setContext(TermsAndPoliciesActivity.this).setTheme(R.style.Custom).build();
+//        dialog1.setMessage("Please wait.....");
+//        dialog1.show();
+        dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
         Get_Data();
@@ -74,7 +78,7 @@ public class TermsAndPolicies extends AppCompatActivity {
                         @Override
                         public void onError(ANError anError) {
                                 dialog1.dismiss();
-                            Toast.makeText(TermsAndPolicies.this, "connection field", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TermsAndPoliciesActivity.this, "connection field", Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -84,7 +88,7 @@ public class TermsAndPolicies extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(TermsAndPolicies.this, MainActivity.class));
+        startActivity(new Intent(TermsAndPoliciesActivity.this, MainActivity.class));
         finish();
 
     }

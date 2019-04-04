@@ -1,6 +1,7 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -54,7 +55,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dmax.dialog.SpotsDialog;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     //    gif_final
     @BindView(R.id.enter_email)
     EditText enter_email;
@@ -69,7 +70,8 @@ public class Login extends AppCompatActivity {
     private int RC_SIGN_IN = 123;
 
     //dialog
-    AlertDialog dialog1;
+//    AlertDialog dialog1;
+    Dialog dialog1;
 
 
     @Override
@@ -84,8 +86,9 @@ public class Login extends AppCompatActivity {
         googleToken();
         ButterKnife.bind(this);
 
-        dialog1 = new SpotsDialog.Builder().setContext(Login.this).setTheme(R.style.Custom).build();
-        dialog1.setMessage("Please wait.....");
+//        dialog1 = new SpotsDialog.Builder().setContext(LoginActivity.this).setTheme(R.style.Custom).build();
+//        dialog1.setMessage("Please wait.....");
+        dialog1 = myUtils.LoadingDialog(this);
 
 
     }
@@ -132,7 +135,7 @@ public class Login extends AppCompatActivity {
                         String userOBJSTR = gson.toJson(resPOJO.getUserInfo());
                         Log.d("testest", response.toString());
                         mySharedPreference.setUserOBJ(userOBJSTR);
-                        startActivity(new Intent(Login.this, MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         dialog1.dismiss();
                     }
 
@@ -143,7 +146,7 @@ public class Login extends AppCompatActivity {
 
                         if (anError.getErrorCode() !=0) {
 
-                            myUtils.handleError(Login.this, anError.getErrorBody(), anError.getErrorCode());
+                            myUtils.handleError(LoginActivity.this, anError.getErrorBody(), anError.getErrorCode());
 
                         } else
 
@@ -155,14 +158,14 @@ public class Login extends AppCompatActivity {
 
     public void regist(View v) {
 
-        startActivity(new Intent(Login.this, RegisterActivity.class));
+        startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
 
     }
 
     @OnClick(R.id.loginFB)
     public void onFacebookBT() {
 
-        LoginManager.getInstance().logInWithReadPermissions(Login.this, Arrays.asList("public_profile", "email"));
+        LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("public_profile", "email"));
 
     }
 
@@ -174,7 +177,7 @@ public class Login extends AppCompatActivity {
 
     @OnClick(R.id.skip)
     public void skip() {
-        startActivity(new Intent(Login.this, MainActivity.class));
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
         finish();
 //        mySharedPreference.setUserOBJ("");
     }
@@ -215,7 +218,7 @@ public class Login extends AppCompatActivity {
     private void sendDataToRegister(String name, String mail) {
         socialLoginPOJO object = new socialLoginPOJO(name, mail);
 
-        Intent toregister = new Intent(Login.this, RegisterActivity.class);
+        Intent toregister = new Intent(LoginActivity.this, RegisterActivity.class);
         Bundle mBundle = new Bundle();
         mBundle.putSerializable(ConstantsUrl.userDataBundleKey, object);
         toregister.putExtras(mBundle);
@@ -272,7 +275,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onError(FacebookException error) {
                         Log.d("FacebookData", error.toString());
-                        Toast.makeText(Login.this, "Failed to do Sign In", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Failed to do Sign In", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

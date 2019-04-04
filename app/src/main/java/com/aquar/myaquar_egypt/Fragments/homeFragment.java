@@ -1,11 +1,13 @@
 package com.aquar.myaquar_egypt.Fragments;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +18,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.aquar.myaquar_egypt.Activity.Projectdetails;
+import com.aquar.myaquar_egypt.Activity.ProjectTypesActivity;
 import com.aquar.myaquar_egypt.Adapter.example_adapter_for_home_fragment;
 import com.aquar.myaquar_egypt.InternalStorage.Session;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelArray;
@@ -35,11 +37,12 @@ import java.util.Objects;
 import dmax.dialog.SpotsDialog;
 
 
-public class fragment_home extends Fragment {
+public class homeFragment extends Fragment {
 
-    public static int id;
-    private AlertDialog dialog1;
+    public static Integer id;
+//    private AlertDialog dialog1;
 
+    private Dialog dialog1;
 
 
     private RecyclerView mRecyclerView;
@@ -49,7 +52,7 @@ public class fragment_home extends Fragment {
     private ArrayList<ModelObjects> list = new ArrayList<>();
 
     /* private ButtonsState buttonShowedState = ButtonsState.GONE;*/
-    public fragment_home() {
+    public homeFragment() {
         // Required empty public constructor
     }
 
@@ -62,8 +65,11 @@ public class fragment_home extends Fragment {
         mRecyclerView = v.findViewById(R.id.recyclerView_fragment_home);
         myUtils.setLocale(getActivity());
 
-        dialog1 = new SpotsDialog.Builder().setContext(getContext()).setTheme(R.style.Custom).build();
-        dialog1.setMessage("Please wait.....");
+//        dialog1 = new SpotsDialog.Builder().setContext(getContext()).setTheme(R.style.Custom).build();
+//        dialog1.setMessage("Please wait.....");
+
+//        dialog1 = new Dialog(this, R.style.Custom).addContentView();
+         dialog1 = myUtils.LoadingDialog(getActivity());
 
         getData();
 
@@ -73,11 +79,9 @@ public class fragment_home extends Fragment {
     }
 
     private void getData() {
-        if (!Objects.equals(Session.getInstance().getHomeArray(),null)) {
+        if (!Objects.equals(Session.getInstance().getHomeArray(), null)) {
             dialog1.dismiss();
             list = Session.getInstance().getHomeArray();
-
-
 
 
             setRecyclerData(list);
@@ -85,8 +89,12 @@ public class fragment_home extends Fragment {
 
                 @Override
                 public void intent_to_detales(int pos, ImageView imageView) {
+                    id = list.get(pos).getProductId();
+                    Session.getInstance().setProjectID(String.valueOf(list.get(pos).getProductId()));
+//                    Session.getInstance().setProjectID(String.valueOf(id));
                     go_detales(pos, imageView);
-                    id = list.get(pos).getProduct_id();
+
+                    Log.d("Id5araC", String.valueOf(list.get(pos).getProductId()));
                 }
 
                 @Override
@@ -103,7 +111,7 @@ public class fragment_home extends Fragment {
     private void GetHome_Data() {
         dialog1.show();
 
-        AndroidNetworking.get(ConstantsUrl.Home)
+        AndroidNetworking.get(ConstantsUrl.NewHome)
                 .setPriority(Priority.LOW)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -122,9 +130,10 @@ public class fragment_home extends Fragment {
 
                             @Override
                             public void intent_to_detales(int pos, ImageView imageView) {
+                                id = list.get(pos).getProductId();
+                                Session.getInstance().setProjectID(String.valueOf(list.get(pos).getProductId()));
                                 go_detales(pos, imageView);
-
-                                id = list.get(pos).getProduct_id();
+                                Log.d("IDProject", String.valueOf(list.get(pos).getProductId()));
 
 
                             }
@@ -139,6 +148,7 @@ public class fragment_home extends Fragment {
                     @Override
                     public void onError(ANError anError) {
                         dialog1.dismiss();
+                        myUtils.handleError(getActivity(), anError.getErrorBody(), anError.getErrorCode());
                         Toast.makeText(getContext(), "connection failed", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -155,7 +165,7 @@ public class fragment_home extends Fragment {
 
 
     public void go_detales(int pos, ImageView img) {
-        Intent intent = new Intent(getActivity(), Projectdetails.class);
+        Intent intent = new Intent(getActivity(), ProjectTypesActivity.class);
         startActivity(intent);
     }
 

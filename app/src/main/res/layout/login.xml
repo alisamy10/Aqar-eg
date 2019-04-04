@@ -9,7 +9,7 @@
     android:background="@drawable/background"
 
     android:orientation="vertical"
-    tools:context="com.aquar.myaquar_egypt.Activity.Login">
+    tools:context="com.aquar.myaquar_egypt.Activity.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

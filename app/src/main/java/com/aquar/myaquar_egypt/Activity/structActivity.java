@@ -15,7 +15,7 @@ import com.ortiz.touchview.TouchImageView;
 import java.util.List;
 
 
-public class struct_activity extends AppCompatActivity {
+public class structActivity extends AppCompatActivity {
 
     TouchImageView touchImageView;
     ViewPager viewPager;

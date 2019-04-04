@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="gone"
-    tools:context="com.aquar.myaquar_egypt.Activity.TermsAndPolicies">
+    tools:context="com.aquar.myaquar_egypt.Activity.TermsAndPoliciesActivity">
 
 <LinearLayout
     android:orientation="vertical"

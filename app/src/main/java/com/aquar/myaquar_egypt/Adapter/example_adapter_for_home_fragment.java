@@ -23,12 +23,11 @@ public class example_adapter_for_home_fragment extends RecyclerView.Adapter<exam
     private OnItemClickListener mListener;
 
 
-
-
     public interface OnItemClickListener {
 
-void intent_to_detales(int pos, ImageView imageView);
-void make_love(int pos, ImageView img);
+        void intent_to_detales(int pos, ImageView imageView);
+
+        void make_love(int pos, ImageView img);
 
 
     }
@@ -39,10 +38,11 @@ void make_love(int pos, ImageView img);
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
+
     /////
     public static class ExampleViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textView_1, textView_2,textView_start,textView_end,concurncy;
+        private TextView textView_1, textView_2, textView_start, textView_end, concurncy;
 
         private ImageView
                 imageView_one_one;
@@ -52,11 +52,11 @@ void make_love(int pos, ImageView img);
             super(itemView);
 
             /////
-            imageView_one_one=itemView.findViewById(R.id.image_pro);
-            textView_1=itemView.findViewById(R.id.text_one_id);
-          textView_2  =itemView.findViewById(R.id.text_two_id);
-            textView_end=itemView.findViewById( R.id.number_end_id);
-            concurncy=itemView.findViewById(R.id.concurncy);
+            imageView_one_one = itemView.findViewById(R.id.image_pro);
+            textView_1 = itemView.findViewById(R.id.text_one_id);
+//            textView_2 = itemView.findViewById(R.id.text_two_id);
+            textView_end = itemView.findViewById(R.id.number_end_id);
+            concurncy = itemView.findViewById(R.id.concurncy);
 
             /*
             textView_1_2_type = itemView.findViewById(R.id.type_of_project_one_two);
@@ -92,44 +92,45 @@ void make_love(int pos, ImageView img);
                         if (position != RecyclerView.NO_POSITION) {
                             listener.intent_to_detales(position, imageView_one_one);
                         }
-                    } }
+                    }
+                }
             });
         }
     }
 
     public example_adapter_for_home_fragment(Context applicationContext, ArrayList<ModelObjects> exampleList) {
         mExampleList = exampleList;
-        context=applicationContext;
+        context = applicationContext;
     }
 
 
     @NonNull
     @Override
     public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_exampl_home_one,viewGroup,false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_exampl_home_one, viewGroup, false);
 
-        return new ExampleViewHolder(v,mListener);
+        return new ExampleViewHolder(v, mListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ExampleViewHolder exampleViewHolder,final int i) {
+    public void onBindViewHolder(@NonNull ExampleViewHolder exampleViewHolder, final int i) {
         ModelObjects currentitem = mExampleList.get(i);
 ////
 //        exampleViewHolder.imageView_one_one.setImageResource(Integer.parseInt(currentitem.getProject_img()));
 
-        Glide.with(context).load(currentitem.getProject_img()).into(exampleViewHolder.imageView_one_one);
+        Glide.with(context).load(currentitem.getProjectImg()).into(exampleViewHolder.imageView_one_one);
 ////
 
 
-        if (currentitem.getProject_name().length()>10)
+//        if (currentitem.getProjectName().length() > 10)
 
-          exampleViewHolder.textView_1.setText( currentitem.getProject_name().substring(0,12)+"...");
-        else
-           exampleViewHolder.textView_1.setText( currentitem.getProject_name());
+//            exampleViewHolder.textView_1.setText(currentitem.getProjectName().substring(0, 12) + "...");
+//        else
+        exampleViewHolder.textView_1.setText(currentitem.getProjectName());
 
 
-        exampleViewHolder.textView_2.setText(currentitem.getLocation());
-        exampleViewHolder.textView_end.setText(currentitem.getPrice()+" ");
+//        exampleViewHolder.textView_2.setText(currentitem.getLocation());
+        exampleViewHolder.textView_end.setText(currentitem.getPrice() + " ");
         exampleViewHolder.concurncy.setText(currentitem.getPrice_label());
         ///
 
@@ -138,7 +139,6 @@ void make_love(int pos, ImageView img);
 
     @Override
     public int getItemCount() {
-
         return mExampleList.size();
     }
 

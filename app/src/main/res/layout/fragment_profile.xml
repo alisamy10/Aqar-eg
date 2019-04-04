@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:visibility="visible"
-    tools:context="com.aquar.myaquar_egypt.Fragments.Profile_fragment">
+    tools:context="com.aquar.myaquar_egypt.Fragments.profileFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

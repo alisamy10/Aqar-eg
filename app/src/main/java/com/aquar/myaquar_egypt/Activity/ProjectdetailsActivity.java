@@ -1,15 +1,14 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -23,7 +22,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Adapter.AdapterOfListOfPaymentMethod;
-import com.aquar.myaquar_egypt.Fragments.fragment_home;
+import com.aquar.myaquar_egypt.Fragments.homeFragment;
 import com.aquar.myaquar_egypt.InternalStorage.Session;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
@@ -33,7 +32,6 @@ import com.aquar.myaquar_egypt.Model.ModelsOfProjectDetails.ModelObjectsOfProjec
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.aquar.myaquar_egypt.Utils.myUtils;
-import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -51,32 +49,33 @@ import java.util.Objects;
 
 import dmax.dialog.SpotsDialog;
 
-public class Projectdetails extends AppCompatActivity {
+public class ProjectdetailsActivity extends AppCompatActivity {
     private SliderLayout Product_Slider;
     private Button see_more_btn, like_btn, struct_btn, location_btn, call_btn, share_btn, go_youtube, send_email_btn;
     private TextView description, devolepor, project_name, textprice, texttype, textMinBedrooms, textmaxBedrooms, textMinBathroom,
             textMaxBathrooms, textMinArea, textMaxArea;
     private ScrollView sc;
 
-    private AlertDialog dialog1;
+    //    private AlertDialog dialog1;
+    private Dialog dialog1;
 
     private String description_string;
     private LinearLayout parentOfProjectDetails;
 
-    AdapterOfListOfPaymentMethod adapter ;
+    AdapterOfListOfPaymentMethod adapter;
 
-    ArrayList<ModelOfListOfPaymentMethod>listpay = new ArrayList<>();
+    ArrayList<ModelOfListOfPaymentMethod> listpay = new ArrayList<>();
 
     List<String> urlimage = new ArrayList<>();
 
     ArrayList<ModelObjectsOfProjectDetails> list = new ArrayList<>();
-    ListView listPayment ;
+    ListView listPayment;
 
 
-    fragment_home getId = new fragment_home();
+    homeFragment getId = new homeFragment();
 
-    String x [] = {"40%" , "20%"};
-    String z[] = {"7 years" , "8 years"};
+    String x[] = {"40%", "20%"};
+    String z[] = {"7 years", "8 years"};
 
 
     @Override
@@ -89,14 +88,13 @@ public class Projectdetails extends AppCompatActivity {
         listPayment = findViewById(R.id.list_of_payment_method);
 
 
-        listpay.add( new ModelOfListOfPaymentMethod( x [1] , z[1] ));
-        listpay.add( new ModelOfListOfPaymentMethod( x [1] , z[1] ));
-        listpay.add( new ModelOfListOfPaymentMethod( x [1] , z[1] ));
-        listpay.add( new ModelOfListOfPaymentMethod( x [1] , z[1] ));
+        listpay.add(new ModelOfListOfPaymentMethod(x[1], z[1]));
+        listpay.add(new ModelOfListOfPaymentMethod(x[1], z[1]));
+        listpay.add(new ModelOfListOfPaymentMethod(x[1], z[1]));
+        listpay.add(new ModelOfListOfPaymentMethod(x[1], z[1]));
 
 
-
-        adapter = new AdapterOfListOfPaymentMethod (this,R.layout.item_list_of_payment_method , listpay);
+        adapter = new AdapterOfListOfPaymentMethod(this, R.layout.item_list_of_payment_method, listpay);
         listPayment.setAdapter(adapter);
 
         setListViewHeightBasedOnChildren(listPayment);
@@ -105,17 +103,20 @@ public class Projectdetails extends AppCompatActivity {
         parentOfProjectDetails = findViewById(R.id.parentOfProjectDetails);
 
 
-        dialog1 = new SpotsDialog.Builder().setContext(Projectdetails.this).setTheme(R.style.Custom).build();
-        dialog1.setMessage("Please wait.....");
+//        dialog1 = new SpotsDialog.Builder().setContext(ProjectdetailsActivity.this).setTheme(R.style.Custom).build();
+//        dialog1.setMessage("Please wait.....");
+//        dialog1.show();
+
+        dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
 
-        see_more_btn = (Button) findViewById(R.id.see_more_btn);
-        description = (TextView) findViewById(R.id.description);
-        like_btn = (Button) findViewById(R.id.like);
+        see_more_btn = findViewById(R.id.see_more_btn);
+        description = findViewById(R.id.description);
+        like_btn = findViewById(R.id.like);
         share_btn = findViewById(R.id.share);
-        location_btn = findViewById(R.id.go_location);
-        struct_btn = (Button) findViewById(R.id.structure);
+//        location_btn = findViewById(R.id.go_location);
+        struct_btn = findViewById(R.id.structure);
         call_btn = findViewById(R.id.call);
         textprice = findViewById(R.id.price);
         send_email_btn = findViewById(R.id.send_email);
@@ -137,11 +138,17 @@ public class Projectdetails extends AppCompatActivity {
         textMaxArea = findViewById(R.id.maxArea);
 
         // here get id of item from home for get its detalis
-        fragment_home getid = new fragment_home();
+//        homeFragment getid = new homeFragment();
+//
+//        int x = getid.id;
 
-        int x = getid.id;
-
-        reciveDate(x);
+//
+        if (Session.getInstance().getTypesOfUnitID() != null) {
+            reciveDate(Integer.parseInt(Session.getInstance().getTypesOfUnitID()));
+        }
+//       else if (x != 0) {
+//            reciveDate(x);
+//        }
         //------------------------------------------------------------
 
 
@@ -169,7 +176,7 @@ public class Projectdetails extends AppCompatActivity {
         struct_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Projectdetails.this, struct_activity.class);
+                Intent i = new Intent(ProjectdetailsActivity.this, structActivity.class);
                 startActivity(i);
             }
         });
@@ -187,14 +194,14 @@ public class Projectdetails extends AppCompatActivity {
             }
         });
 
-        location_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String geoUri = "http://maps.google.com/maps?q=loc:" + 30.145305 + "," + 31.630784 + " (" + "Shourok" + ")";
-                Intent map = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
-                startActivity(map);
-            }
-        });
+//        location_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String geoUri = "http://maps.google.com/maps?q=loc:" + 30.145305 + "," + 31.630784 + " (" + "Shourok" + ")";
+//                Intent map = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+//                startActivity(map);
+//            }
+//        });
         call_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -317,11 +324,6 @@ public class Projectdetails extends AppCompatActivity {
                         list = array.getProject();
 
 
-
-
-
-
-
                         //loop for image of slider
                         for (int i = 0; i < list.get(0).getSlider_images().size(); i++) {
                             String x = list.get(0).getSlider_images().get(i).getImage_url();
@@ -361,7 +363,8 @@ public class Projectdetails extends AppCompatActivity {
                     public void onError(ANError anError) {
 
                         dialog1.dismiss();
-                        Toast.makeText(Projectdetails.this, "connection field", Toast.LENGTH_SHORT).show();
+                        myUtils.handleError(ProjectdetailsActivity.this, anError.getErrorBody(), anError.getErrorCode());
+                        Toast.makeText(ProjectdetailsActivity.this, "connection field", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -446,10 +449,10 @@ public class Projectdetails extends AppCompatActivity {
                         public void onResponse(JSONObject response) {
 
                             if (response.toString().contains("add")) {
-                                Toast.makeText(Projectdetails.this, "Add to favourite", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ProjectdetailsActivity.this, "Add to favourite", Toast.LENGTH_SHORT).show();
                                 liked_projects(true);
                             } else if (response.toString().contains("deleted")) {
-                                Toast.makeText(Projectdetails.this, "deleted from favourite", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ProjectdetailsActivity.this, "deleted from favourite", Toast.LENGTH_SHORT).show();
                                 liked_projects(false);
 
                             }
@@ -458,6 +461,7 @@ public class Projectdetails extends AppCompatActivity {
 
                         @Override
                         public void onError(ANError anError) {
+                            myUtils.handleError(ProjectdetailsActivity.this, anError.getErrorBody(), anError.getErrorCode());
                             dialog1.dismiss();
 
                         }
@@ -474,21 +478,21 @@ public class Projectdetails extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(Projectdetails.this, MainActivity.class));
-        finish();
-
+//        startActivity(new Intent(ProjectdetailsActivity.this, ProjectTypesActivity.class));
+//        finish();
+        super.onBackPressed();
     }
 
-   // محدش يمسح الفانكشن ديه اللي هيمسحها هعوره
+    // محدش يمسح الفانكشن ديه اللي هيمسحها هعوره
     public static void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
-        if (listAdapter == null) return ;
-
+        if (listAdapter == null) return;
 
         View.MeasureSpec m = new View.MeasureSpec();
 
+
         int desiredWidth = m.makeMeasureSpec(listView.getWidth(),
-                View.MeasureSpec.UNSPECIFIED);
+                View.MeasureSpec.EXACTLY);
         int totalHeight = 0;
         View view = null;
         for (int i = 0; i < listAdapter.getCount(); i++) {
@@ -503,7 +507,7 @@ public class Projectdetails extends AppCompatActivity {
 
         ViewGroup.LayoutParams params = listView.getLayoutParams();
 
-        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount()-1));
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
 
         listView.setLayoutParams(params);
         listView.requestLayout();

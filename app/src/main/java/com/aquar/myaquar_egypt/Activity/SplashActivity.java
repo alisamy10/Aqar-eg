@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.R;
 
-public class Splash extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class Splash extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-//                    startActivity(new Intent(Splash.this, Login.class));
+//                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                     checkLoggedInUser();
                 }
             }
@@ -47,11 +47,11 @@ public class Splash extends AppCompatActivity {
 
         if (mySharedPreference.getUserOBJ().equals("")) {
             //user obj not available
-            startActivity(new Intent(Splash.this, Login.class));
+            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
             finish();
         } else {
             //user obj available
-            startActivity(new Intent(Splash.this, MainActivity.class));
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
             finish();
         }
 

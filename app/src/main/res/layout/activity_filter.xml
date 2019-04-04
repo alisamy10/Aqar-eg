@@ -1,29 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentOfFilter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     android:visibility="gone"
-    tools:context="com.aquar.myaquar_egypt.Activity.Filter">
+    tools:context="com.aquar.myaquar_egypt.Activity.FilterActivity">
 
+    <LinearLayout
+        android:id="@+id/filter_search_LL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="top"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/filter_name_ET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="What your are looking for?"
+            android:inputType="text" />
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/filter_search_LL"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp"
-
-        >
+        android:layout_marginTop="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -118,6 +134,34 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearTypes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Types"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <Spinner
+
+                    android:id="@+id/TypesSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </Spinner>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimaryDark" />
+            </LinearLayout>
+
+            <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -128,9 +172,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Location"
-                    android:textSize="14sp"
                     android:textColor="@android:color/black"
-                    />
+                    android:textSize="14sp" />
 
                 <Spinner
 
@@ -165,16 +208,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Min.area"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/black"/>
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Max.area"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/black"/>
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -241,16 +284,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Min.bedrooms"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/black"/>
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Max.bedrooms"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/black"/>
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -317,16 +360,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Min.bathrooms"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/black"/>
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Max.bathrooms"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/black"/>
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -391,16 +434,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Min.Price"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/black"/>
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Max.Price"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/black"/>
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout

@@ -6,40 +6,24 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.aquar.myaquar_egypt.Activity.EditProfile;
-import com.aquar.myaquar_egypt.Activity.Login;
+import com.aquar.myaquar_egypt.Activity.EditProfileActivity;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
-import com.aquar.myaquar_egypt.Model.Login.userResPOJO;
 import com.aquar.myaquar_egypt.R;
-import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.aquar.myaquar_egypt.Utils.myUtils;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import org.json.JSONObject;
 
 import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import dmax.dialog.SpotsDialog;
 
@@ -47,7 +31,7 @@ import dmax.dialog.SpotsDialog;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Profile_fragment extends Fragment {
+public class profileFragment extends Fragment {
 
     private Fragment fragment;
 
@@ -85,7 +69,7 @@ public class Profile_fragment extends Fragment {
     private AlertDialog alertDialog;
 
 
-    public Profile_fragment() {
+    public profileFragment() {
         // Required empty public constructor
     }
 
@@ -101,14 +85,16 @@ public class Profile_fragment extends Fragment {
         ButterKnife.bind(this, view);
 
         dataCheck();
-        alertDialog = new SpotsDialog.Builder().setContext(getActivity()).setTheme(R.style.Custom).build();
-        alertDialog.setMessage("Update information .....");
+//        alertDialog = new SpotsDialog.Builder().setContext(getActivity()).setTheme(R.style.Custom).build();
+//        alertDialog.setMessage("Update information .....");
+        dialog = myUtils.LoadingDialog(getActivity());
+
         TextView edit = view.findViewById(R.id.edit_btn);
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(getActivity(), EditProfile.class));
+                startActivity(new Intent(getActivity(), EditProfileActivity.class));
             }
         });
 
@@ -120,6 +106,7 @@ public class Profile_fragment extends Fragment {
     private void dataCheck() {
         Gson gson = new Gson();
         userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
+
         try {
             if (!Objects.equals(userPOJO.getEmail(), null)) {
 
@@ -147,14 +134,6 @@ public class Profile_fragment extends Fragment {
         job_titleBar.setVisibility(View.GONE);
     }
 
-//    @OnClick(R.id.edit_profile_photo)
-//    public void setChooseImage() {
-//        Intent intent = new Intent();
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-//        intent.setType("image/*");
-//        startActivityForResult(intent, 2);
-//
-//    }
 
 
     @Override

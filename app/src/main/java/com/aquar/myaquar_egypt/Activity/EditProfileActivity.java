@@ -2,7 +2,6 @@ package com.aquar.myaquar_egypt.Activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -31,10 +29,11 @@ import java.util.Objects;
 
 import dmax.dialog.SpotsDialog;
 
-public class EditProfile extends AppCompatActivity implements View.OnClickListener {
+public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
     EditText usernameEdit, phoneEdit, passwordEdit, emailEdit, jopEdit;
     Button submit;
-    private AlertDialog alertDialog;
+//    private AlertDialog alertDialog;
+    private Dialog alertDialog;
     private UserInfo userPOJO;
 
     @Override
@@ -42,8 +41,10 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        alertDialog = new SpotsDialog.Builder().setContext(this).setTheme(R.style.Custom).build();
-        alertDialog.setMessage("Update information .....");
+//        alertDialog = new SpotsDialog.Builder().setContext(this).setTheme(R.style.Custom).build();
+//        alertDialog.setMessage("Update information .....");
+        alertDialog = myUtils.LoadingDialog(this);
+
         usernameEdit = findViewById(R.id.edit_info_username);
         phoneEdit = findViewById(R.id.edit_info_phone);
         passwordEdit = findViewById(R.id.edit_info_password);
@@ -130,7 +131,7 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
                     @Override
                     public void onError(ANError anError) {
                         alertDialog.dismiss();
-                        myUtils.handleError(EditProfile.this, anError.getErrorBody(), anError.getErrorCode());
+                        myUtils.handleError(EditProfileActivity.this, anError.getErrorBody(), anError.getErrorCode());
                     }
                 });
     }

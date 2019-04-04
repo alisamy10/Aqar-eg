@@ -19,16 +19,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aquar.myaquar_egypt.Adapter.ExpandListAdapter;
-import com.aquar.myaquar_egypt.Fragments.Favourite;
-import com.aquar.myaquar_egypt.Fragments.Profile_fragment;
-import com.aquar.myaquar_egypt.Fragments.fragment_home;
+import com.aquar.myaquar_egypt.Fragments.favouriteFragment;
+import com.aquar.myaquar_egypt.Fragments.profileFragment;
+import com.aquar.myaquar_egypt.Fragments.homeFragment;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
 import com.aquar.myaquar_egypt.R;
@@ -105,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         dl.addDrawerListener(t);
         t.syncState();
 
-
     }
 
     private void prepareListData() {
@@ -128,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.searchBtn)
     public void onSearchClick() {
-        startActivity(new Intent(MainActivity.this, Filter.class));
+        startActivity(new Intent(MainActivity.this, FilterActivity.class));
     }
 
 
@@ -143,25 +141,25 @@ public class MainActivity extends AppCompatActivity {
 
                 //news and events
                 if (position == 0) {
-                    Intent go = new Intent(MainActivity.this, EventsAndNews.class);
+                    Intent go = new Intent(MainActivity.this, EventsAndNewsActivity.class);
                     startActivity(go);
                     finish();
                 }
                 //about us
                 else if (position == 1) {
-                    startActivity(new Intent(MainActivity.this, AboutUs.class));
+                    startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
                     finish();
 
                 }
                 //contact us
                 else if (position == 2) {
-                    startActivity(new Intent(MainActivity.this, Contact_us.class));
+                    startActivity(new Intent(MainActivity.this, ContactUsActivity.class));
 
                     finish();
                 }
                 //terms and policies
                 else if (position == 3) {
-                    startActivity(new Intent(MainActivity.this, TermsAndPolicies.class));
+                    startActivity(new Intent(MainActivity.this, TermsAndPoliciesActivity.class));
                     finish();
 
                 }
@@ -173,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                         mySharedPreference.setUserOBJ("");
-                        startActivity(new Intent(MainActivity.this, Splash.class));
+                        startActivity(new Intent(MainActivity.this, SplashActivity.class));
                         finish();
 
                     } else {
@@ -224,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
                                         int groupPosition, int childPosition, long id) {
                 //Residential
                 if (childPosition == 0) {
-                    startActivity(new Intent(MainActivity.this, Category.class));
+                    startActivity(new Intent(MainActivity.this, CategoryActivity.class));
                     finish();
                     idForCategoryOfNav = String.valueOf(myUtils.Residential);
                     headerOfCategory = "Residential";
@@ -232,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //Holiday Home
                 else if (childPosition == 1) {
-                    startActivity(new Intent(MainActivity.this, Category.class));
+                    startActivity(new Intent(MainActivity.this, CategoryActivity.class));
                     finish();
                     idForCategoryOfNav = String.valueOf(myUtils.HolidayHome);
                     headerOfCategory = "Holiday Home";
@@ -240,21 +238,21 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //commercial
                 else if (childPosition == 2) {
-                    startActivity(new Intent(MainActivity.this, Category.class));
+                    startActivity(new Intent(MainActivity.this, CategoryActivity.class));
                     finish();
                     idForCategoryOfNav = String.valueOf(myUtils.Commercial);
                     headerOfCategory = "Commercial";
                 }
                 //medical
                 else if (childPosition == 3) {
-                    startActivity(new Intent(MainActivity.this, Category.class));
+                    startActivity(new Intent(MainActivity.this, CategoryActivity.class));
                     finish();
                     idForCategoryOfNav = String.valueOf(myUtils.Medical);
                     headerOfCategory = "Medical";
                 }
                 //LunchSoon
                 else if (childPosition == 4) {
-                    startActivity(new Intent(MainActivity.this, Category.class));
+                    startActivity(new Intent(MainActivity.this, CategoryActivity.class));
                     finish();
                     idForCategoryOfNav = String.valueOf(myUtils.LunchSoon);
                     headerOfCategory = "Lunch Soon";
@@ -269,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void firstFragmentRun() {
-        fragment = new fragment_home();
+        fragment = new homeFragment();
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
         transaction.commitNow();
@@ -286,9 +284,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void favourite(View view) {
-        fragment = new Favourite();
+        fragment = new favouriteFragment();
         transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_home, fragment, "Favourite");
+        transaction.replace(R.id.frame_home, fragment, "favouriteFragment");
         transaction.commitNow();
 
 
@@ -315,7 +313,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void home(View view) {
-        fragment = new fragment_home();
+        fragment = new homeFragment();
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
         transaction.commitNow();
@@ -349,14 +347,14 @@ public class MainActivity extends AppCompatActivity {
         UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
         try {
             if (!Objects.equals(userPOJO.getEmail(), null)) {
-                fragment = new Profile_fragment();
+                fragment = new profileFragment();
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_home, fragment, "profile");
                 transaction.commitNow();
             }
 
         } catch (Exception e) {
-            startActivity(new Intent(this, Login.class));
+            startActivity(new Intent(this, LoginActivity.class));
 
         }
 

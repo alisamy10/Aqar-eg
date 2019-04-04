@@ -14,6 +14,8 @@ public class ConstantsUrl {
 
     private static final String BasicURL = "http://aquar.me/myaquar_eg/api/";
     public static final String Home = BasicURL + "allprojects";
+    public static final String NewHome = BasicURL + "test";
+    public static final String NewInits = BasicURL + "test2";
     public static final String Registration = BasicURL + "registration";
     public static final String Login = BasicURL + "login";
     public static final String Event = BasicURL + "events_news";

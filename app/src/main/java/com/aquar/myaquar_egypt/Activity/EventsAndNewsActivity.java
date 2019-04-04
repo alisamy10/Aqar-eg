@@ -2,6 +2,7 @@ package com.aquar.myaquar_egypt.Activity;
 
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -32,17 +33,17 @@ import java.util.ArrayList;
 
 import dmax.dialog.SpotsDialog;
 
-public class EventsAndNews extends AppCompatActivity {
+public class EventsAndNewsActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ImageView love_behind;
     private EventsAndNewsAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ArrayList<ModelOfEventAndNews>  list  = new ArrayList<>();
- //   public static int id;
+    private ArrayList<ModelOfEventAndNews> list = new ArrayList<>();
+    //   public static int id;
     public static int id_event;
-    private AlertDialog dialog1;
-    private LinearLayout parentOfEventAndNews ;
-
+    //    private AlertDialog dialog1;
+    private Dialog dialog1;
+    private LinearLayout parentOfEventAndNews;
 
 
     @Override
@@ -51,19 +52,20 @@ public class EventsAndNews extends AppCompatActivity {
         setContentView(R.layout.activity_events_and_news);
         myUtils.setLocale(this);
 
-       parentOfEventAndNews = findViewById(R.id.parentOfEventAndNews);
-       mRecyclerView = findViewById(R.id.listOfEventsAndNews);
+        parentOfEventAndNews = findViewById(R.id.parentOfEventAndNews);
+        mRecyclerView = findViewById(R.id.listOfEventsAndNews);
 
-        dialog1 = new SpotsDialog.Builder().setContext(EventsAndNews.this).setTheme(R.style.Custom).build();
-        dialog1.setMessage("Please wait.....");
+//        dialog1 = new SpotsDialog.Builder().setContext(EventsAndNewsActivity.this).setTheme(R.style.Custom).build();
+//        dialog1.setMessage("Please wait.....");
+//        dialog1.show();
+
+        dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
         GetHome_Data();
 
 
     }
-
-
 
 
     private void GetHome_Data() {
@@ -85,13 +87,11 @@ public class EventsAndNews extends AppCompatActivity {
                         setRecyclerData(list);
 
 
-
-
                         mAdapter.setOnItemClickListener(new EventsAndNewsAdapter.OnItemClickListener() {
                             @Override
                             public void intent_to_detales(int pos, RelativeLayout relativeLayout) {
-                                go_detales( pos, relativeLayout);
-                              id_event= list.get(pos).getProduct_id();
+                                go_detales(pos, relativeLayout);
+                                id_event = list.get(pos).getProduct_id();
                             }
                         });
                     }
@@ -99,7 +99,7 @@ public class EventsAndNews extends AppCompatActivity {
                     @Override
                     public void onError(ANError anError) {
                         dialog1.dismiss();
-                        Toast.makeText(EventsAndNews.this, "connection field", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EventsAndNewsActivity.this, "connection field", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -107,19 +107,17 @@ public class EventsAndNews extends AppCompatActivity {
     private void setRecyclerData(ArrayList<ModelOfEventAndNews> list) {
 
 
-        mAdapter = new EventsAndNewsAdapter (EventsAndNews.this, list);
-        LinearLayoutManager manager=new LinearLayoutManager(this);
+        mAdapter = new EventsAndNewsAdapter(EventsAndNewsActivity.this, list);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
     }
 
 
-
-
     public void go_detales(int pos, RelativeLayout relativeLayout) {
-      //  Toast.makeText(this, "go to event and news"+pos, Toast.LENGTH_SHORT).show();
-         startActivity(new Intent(this , EventsAndNewsDetails.class));
-         finish();
+        //  Toast.makeText(this, "go to event and news"+pos, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, EventsAndNewsDetailsActivity.class));
+        finish();
 
 
     }
@@ -127,12 +125,10 @@ public class EventsAndNews extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(EventsAndNews.this, MainActivity.class));
+        startActivity(new Intent(EventsAndNewsActivity.this, MainActivity.class));
         finish();
 
     }
-
-
 
 
 }

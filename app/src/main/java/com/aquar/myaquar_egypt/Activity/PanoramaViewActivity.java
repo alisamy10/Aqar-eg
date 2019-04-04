@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.aquar.myaquar_egypt.R;
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
 
-public class PanoramaView extends AppCompatActivity {
+public class PanoramaViewActivity extends AppCompatActivity {
 
     private VrPanoramaView vrPanoramaView;
     @Override

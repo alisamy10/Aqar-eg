@@ -1,82 +1,138 @@
 package com.aquar.myaquar_egypt.Model.Search;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class SearchModelObject {
 
 
-    private List<String> max_price;
-    private List<String> min_price;
-    private List<String> max_area;
-    private List<String> min_area;
-    private List<String> max_badrooms;
-    private List<String> min_badrooms;
-    private List<String> max_bathrooms;
-    private List<String> min_bathrooms;
-    private List<String> locations;
+    @SerializedName("max_price")
+    @Expose
+    private List<String> maxPrice = null;
+    @SerializedName("min_price")
+    @Expose
+    private List<String> minPrice = null;
+    @SerializedName("max_area")
+    @Expose
+    private List<String> maxArea = null;
+    @SerializedName("min_area")
+    @Expose
+    private List<String> minArea = null;
+    @SerializedName("max_badrooms")
+    @Expose
+    private List<String> maxBadrooms = null;
+    @SerializedName("min_badrooms")
+    @Expose
+    private List<String> minBadrooms = null;
+    @SerializedName("max_bathrooms")
+    @Expose
+    private List<String> maxBathrooms = null;
+    @SerializedName("min_bathrooms")
+    @Expose
+    private List<String> minBathrooms = null;
+    @SerializedName("locations")
+    @Expose
+    private List<String> locations = null;
+    @SerializedName("types")
+    @Expose
+    private List<Types> types = null;
 
-    public List<String> getMax_price() {
-        return max_price;
+    /**
+     * No args constructor for use in serialization
+     */
+    public SearchModelObject() {
     }
 
-    public void setMax_price(List<String> max_price) {
-        this.max_price = max_price;
+    /**
+     * @param maxBathrooms
+     * @param locations
+     * @param minBathrooms
+     * @param maxArea
+     * @param minArea
+     * @param maxBadrooms
+     * @param minBadrooms
+     * @param maxPrice
+     * @param types
+     * @param minPrice
+     */
+    public SearchModelObject(List<String> maxPrice, List<String> minPrice, List<String> maxArea, List<String> minArea, List<String> maxBadrooms, List<String> minBadrooms, List<String> maxBathrooms, List<String> minBathrooms, List<String> locations, List<Types> types) {
+        super();
+        this.maxPrice = maxPrice;
+        this.minPrice = minPrice;
+        this.maxArea = maxArea;
+        this.minArea = minArea;
+        this.maxBadrooms = maxBadrooms;
+        this.minBadrooms = minBadrooms;
+        this.maxBathrooms = maxBathrooms;
+        this.minBathrooms = minBathrooms;
+        this.locations = locations;
+        this.types = types;
     }
 
-    public List<String> getMin_price() {
-        return min_price;
+    public List<String> getMaxPrice() {
+        return maxPrice;
     }
 
-    public void setMin_price(List<String> min_price) {
-        this.min_price = min_price;
+    public void setMaxPrice(List<String> maxPrice) {
+        this.maxPrice = maxPrice;
     }
 
-    public List<String> getMax_area() {
-        return max_area;
+    public List<String> getMinPrice() {
+        return minPrice;
     }
 
-    public void setMax_area(List<String> max_area) {
-        this.max_area = max_area;
+    public void setMinPrice(List<String> minPrice) {
+        this.minPrice = minPrice;
     }
 
-    public List<String> getMin_area() {
-        return min_area;
+    public List<String> getMaxArea() {
+        return maxArea;
     }
 
-    public void setMin_area(List<String> min_area) {
-        this.min_area = min_area;
+    public void setMaxArea(List<String> maxArea) {
+        this.maxArea = maxArea;
     }
 
-    public List<String> getMax_badrooms() {
-        return max_badrooms;
+    public List<String> getMinArea() {
+        return minArea;
     }
 
-    public void setMax_badrooms(List<String> max_badrooms) {
-        this.max_badrooms = max_badrooms;
+    public void setMinArea(List<String> minArea) {
+        this.minArea = minArea;
     }
 
-    public List<String> getMin_badrooms() {
-        return min_badrooms;
+    public List<String> getMaxBadrooms() {
+        return maxBadrooms;
     }
 
-    public void setMin_badrooms(List<String> min_badrooms) {
-        this.min_badrooms = min_badrooms;
+    public void setMaxBadrooms(List<String> maxBadrooms) {
+        this.maxBadrooms = maxBadrooms;
     }
 
-    public List<String> getMax_bathrooms() {
-        return max_bathrooms;
+    public List<String> getMinBadrooms() {
+        return minBadrooms;
     }
 
-    public void setMax_bathrooms(List<String> max_bathrooms) {
-        this.max_bathrooms = max_bathrooms;
+    public void setMinBadrooms(List<String> minBadrooms) {
+        this.minBadrooms = minBadrooms;
     }
 
-    public List<String> getMin_bathrooms() {
-        return min_bathrooms;
+    public List<String> getMaxBathrooms() {
+        return maxBathrooms;
     }
 
-    public void setMin_bathrooms(List<String> min_bathrooms) {
-        this.min_bathrooms = min_bathrooms;
+    public void setMaxBathrooms(List<String> maxBathrooms) {
+        this.maxBathrooms = maxBathrooms;
+    }
+
+    public List<String> getMinBathrooms() {
+        return minBathrooms;
+    }
+
+    public void setMinBathrooms(List<String> minBathrooms) {
+        this.minBathrooms = minBathrooms;
     }
 
     public List<String> getLocations() {
@@ -86,4 +142,14 @@ public class SearchModelObject {
     public void setLocations(List<String> locations) {
         this.locations = locations;
     }
+
+    public List<Types> getTypes() {
+        return types;
+    }
+
+    public void setTypes(List<Types> types) {
+        this.types = types;
+    }
+
+
 }

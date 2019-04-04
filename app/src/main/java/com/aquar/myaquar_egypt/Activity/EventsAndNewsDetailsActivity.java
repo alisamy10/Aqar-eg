@@ -1,16 +1,13 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,11 +40,12 @@ import java.util.Objects;
 import dmax.dialog.SpotsDialog;
 
 
-public class EventsAndNewsDetails extends AppCompatActivity {
+public class EventsAndNewsDetailsActivity extends AppCompatActivity {
 
     private Button Attend_btn;
     private SliderLayout Event_slider;
-    private AlertDialog dialog1;
+//    private AlertDialog dialog1;
+    private Dialog dialog1;
     private TextView event_description, titile, event_devolper;
 
     private Button share_btn, phone_btn;
@@ -67,12 +65,15 @@ public class EventsAndNewsDetails extends AppCompatActivity {
         parentOfEventAndNewDetails = findViewById(R.id.parentOfEventAndNewsDetails);
 
 
-        dialog1 = new SpotsDialog.Builder().setContext(EventsAndNewsDetails.this).setTheme(R.style.Custom).build();
-        dialog1.setMessage("Please wait.....");
+//        dialog1 = new SpotsDialog.Builder().setContext(EventsAndNewsDetailsActivity.this).setTheme(R.style.Custom).build();
+//        dialog1.setMessage("Please wait.....");
+//        dialog1.show();
+
+        dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
-        //  Toast.makeText(this, ""+EventsAndNews.id_event, Toast.LENGTH_SHORT).show();
-        GetCategoryData(EventsAndNews.id_event);
+        //  Toast.makeText(this, ""+EventsAndNewsActivity.id_event, Toast.LENGTH_SHORT).show();
+        GetCategoryData(EventsAndNewsActivity.id_event);
 
 
         Attend_btn = findViewById(R.id.Attend);
@@ -149,7 +150,7 @@ public class EventsAndNewsDetails extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-                        Toast.makeText(EventsAndNewsDetails.this, "Connection Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EventsAndNewsDetailsActivity.this, "Connection Error", Toast.LENGTH_SHORT).show();
                         dialog1.dismiss();
                     }
                 });
@@ -239,7 +240,7 @@ public class EventsAndNewsDetails extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        startActivity(new Intent(EventsAndNewsDetails.this, EventsAndNews.class));
+        startActivity(new Intent(EventsAndNewsDetailsActivity.this, EventsAndNewsActivity.class));
         finish();
 
     }

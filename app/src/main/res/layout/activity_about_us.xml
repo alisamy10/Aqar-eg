@@ -6,7 +6,7 @@
     android:id="@+id/parentOfAboutUs"
     android:visibility="gone"
     android:layout_height="match_parent"
-    tools:context="com.aquar.myaquar_egypt.Activity.AboutUs">
+    tools:context="com.aquar.myaquar_egypt.Activity.AboutUsActivity">
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"

@@ -2,6 +2,7 @@ package com.aquar.myaquar_egypt.Fragments;
 
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,15 +38,16 @@ import dmax.dialog.SpotsDialog;
  * A simple {@link Fragment} subclass.
  */
 
-public class Favourite extends Fragment {
+public class favouriteFragment extends Fragment {
 
     RecyclerView fragment_favouriteRV;
     TextView fragment_favouriteEmpty_TV;
     ArrayList<favouriteObjPOJO> favouriteObjPOJOS = new ArrayList<>();
-    private AlertDialog dialog;
+//    private AlertDialog dialog;
+    private Dialog dialog;
 
 
-    public Favourite() {
+    public favouriteFragment() {
         // Required empty public constructor
     }
 
@@ -59,23 +61,12 @@ public class Favourite extends Fragment {
 
         fragment_favouriteEmpty_TV = v.findViewById(R.id.fragment_favouriteEmpty_TV);
         fragment_favouriteRV = v.findViewById(R.id.fragment_favouriteRV);
-        dialog = new SpotsDialog.Builder().setContext(getContext()).setTheme(R.style.Custom).build();
-        dialog.setMessage("Please wait.....");
-//        getFavouriteData();
+//        dialog = new SpotsDialog.Builder().setContext(getContext()).setTheme(R.style.Custom).build();
+//        dialog.setMessage("Please wait.....");
+        dialog = myUtils.LoadingDialog(getActivity());
+
         getData();
 
-
-//        listView = v.findViewById(R.id.favouriteList);
-//
-//        ArrayList<ModelOfFavourits> list = new ArrayList<ModelOfFavourits>();
-//
-//        for (int x = 0; x < names.length; x++) {
-//            list.add(new ModelOfFavourits(image2[x], names[x]));
-//        }
-//
-//        favouritList = new FavouritList(getContext(), R.layout.item_of_favourite_list, list);
-//
-//        listView.setAdapter(favouritList);
 
         return v;
 
@@ -88,23 +79,6 @@ public class Favourite extends Fragment {
         fragment_favouriteRV.setAdapter(adapter);
     }
 
-//    public void getFavouriteData() {
-//        try {
-//            setUpFavouriteRecycler(favouriteObjPOJOS);
-//            ((MainActivity) getActivity()).APIBindOnFavouriteFinished(new onFavouriteFinished() {
-//                @Override
-//                public void getAllFavourite(favouriteResPOJO favouriteResPOJO) {
-//                    favouriteObjPOJOS = new ArrayList<>();
-//                    favouriteObjPOJOS = favouriteResPOJO.getFavorites();
-//                    setUpFavouriteRecycler(favouriteObjPOJOS);
-//                }
-//            });
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            fragment_favouriteEmpty_TV.setVisibility(View.VISIBLE);
-////            Toast.makeText(getContext(), "Please SignIn First", Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
     public void getData() {
         try {

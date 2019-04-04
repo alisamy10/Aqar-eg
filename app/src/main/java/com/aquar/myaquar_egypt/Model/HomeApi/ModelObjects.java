@@ -1,32 +1,81 @@
 package com.aquar.myaquar_egypt.Model.HomeApi;
 
+import android.support.annotation.Nullable;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class ModelObjects {
 
+    @SerializedName("product_id")
+    @Expose
+    private Integer productId;
+    @SerializedName("project_name")
+    @Expose
+    private String projectName;
+    @SerializedName("project_img")
+    @Expose
+    private String projectImg;
+    @SerializedName("price")
+    @Expose
+    @Nullable
+    private String price;
+    @SerializedName("project_concurency")
+    @Expose
+    private String Price_label;
 
     /**
-     * product_id : 1
-     * project_name : Azad
-     * product_title : department Of Azad
-     * project_img : http://aquar.me/myaquar_eg/uploads/products/azad_553.jpg
-     * description : prime location with an attractive payment plan, 10% Downpayment - 10% after 3 Months - 10% on Delivery &  Equal installments over 6 Years
-     * location : New Cairo
+     * No args constructor for use in serialization
      */
+    public ModelObjects() {
+    }
 
-    private int product_id;
-    private String project_name;
-    private String product_title;
-    private String project_img;
-    private String description;
-    private String location;
-    private String price;
-    private String price_label;
+    /**
+     * @param price
+     * @param projectImg
+     * @param projectName
+     * @param productId
+     * @param Price_label
+     */
+    public ModelObjects(Integer productId, String projectName, String projectImg, String price, String Price_label) {
+        super();
+        this.productId = productId;
+        this.projectName = projectName;
+        this.projectImg = projectImg;
+        this.price = price;
+        this.Price_label = Price_label;
+    }
 
     public String getPrice_label() {
-        return price_label;
+        return Price_label;
     }
 
     public void setPrice_label(String price_label) {
-        this.price_label = price_label;
+        Price_label = price_label;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getProjectImg() {
+        return projectImg;
+    }
+
+    public void setProjectImg(String projectImg) {
+        this.projectImg = projectImg;
     }
 
     public String getPrice() {
@@ -35,53 +84,5 @@ public class ModelObjects {
 
     public void setPrice(String price) {
         this.price = price;
-    }
-
-    public int getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
-    }
-
-    public String getProject_name() {
-        return project_name;
-    }
-
-    public void setProject_name(String project_name) {
-        this.project_name = project_name;
-    }
-
-    public String getProduct_title() {
-        return product_title;
-    }
-
-    public void setProduct_title(String product_title) {
-        this.product_title = product_title;
-    }
-
-    public String getProject_img() {
-        return project_img;
-    }
-
-    public void setProject_img(String project_img) {
-        this.project_img = project_img;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 }

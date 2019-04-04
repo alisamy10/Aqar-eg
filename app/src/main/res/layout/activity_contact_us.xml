@@ -12,7 +12,7 @@
     android:layout_margin="15dp"
     android:visibility="gone"
     android:orientation="vertical"
-    tools:context="com.aquar.myaquar_egypt.Activity.Contact_us"
+    tools:context="com.aquar.myaquar_egypt.Activity.ContactUsActivity"
     >
 
 <LinearLayout

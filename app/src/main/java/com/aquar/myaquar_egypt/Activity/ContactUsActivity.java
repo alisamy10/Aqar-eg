@@ -1,6 +1,7 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,11 +26,12 @@ import org.json.JSONObject;
 
 import dmax.dialog.SpotsDialog;
 
-public class Contact_us extends AppCompatActivity {
+public class ContactUsActivity extends AppCompatActivity {
     private TextView contct,location,mail,phone;
     private String instaUrl,faceUrl,youtubeUrl,twitterUrl;
     private ScrollView parent ;
-    private AlertDialog dialog1;
+//    private AlertDialog dialog1;
+    private Dialog dialog1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +46,12 @@ public class Contact_us extends AppCompatActivity {
         Get_Data();
 
         parent = findViewById(R.id.parentCountactUs);
-        dialog1 = new SpotsDialog.Builder().setContext(Contact_us.this).setTheme(R.style.Custom).build();
-        dialog1.setMessage("Please wait.....");
+//        dialog1 = new SpotsDialog.Builder().setContext(ContactUsActivity.this).setTheme(R.style.Custom).build();
+//        dialog1.setMessage("Please wait.....");
+//        dialog1.show();
+        dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
+
 
 
     }
@@ -82,7 +87,7 @@ public class Contact_us extends AppCompatActivity {
                     public void onError(ANError anError) {
                         dialog1.dismiss();
 
-                        Toast.makeText(Contact_us.this, "connection field", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ContactUsActivity.this, "connection field", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -96,7 +101,7 @@ public class Contact_us extends AppCompatActivity {
         Intent intent = null;
         try {
             // get the Twitter app if possible
-            Contact_us.this.getPackageManager().getPackageInfo("com.twitter.android", 0);
+            ContactUsActivity.this.getPackageManager().getPackageInfo("com.twitter.android", 0);
             intent = new Intent(Intent.ACTION_VIEW, Uri.parse(twitterUrl));
 
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -105,7 +110,7 @@ public class Contact_us extends AppCompatActivity {
 
             intent = new Intent(Intent.ACTION_VIEW, Uri.parse(twitterUrl));
         }
-        Contact_us.this.startActivity(intent);
+        ContactUsActivity.this.startActivity(intent);
     }catch (Exception o ){}
         Toast.makeText(this, twitterUrl+"", Toast.LENGTH_SHORT).show();
     }
@@ -157,7 +162,7 @@ public class Contact_us extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(Contact_us.this, MainActivity.class));
+        startActivity(new Intent(ContactUsActivity.this, MainActivity.class));
         finish();
 
     }

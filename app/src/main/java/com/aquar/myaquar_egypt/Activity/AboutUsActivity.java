@@ -1,6 +1,7 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,12 +25,13 @@ import org.json.JSONObject;
 
 import dmax.dialog.SpotsDialog;
 
-public class AboutUs extends AppCompatActivity {
+public class AboutUsActivity extends AppCompatActivity {
     TextView aboutUs;
     ScrollView parentOfAboutUs;
     private long backPressedTime;
 
-    private AlertDialog dialog1;
+    //    private AlertDialog dialog1;
+    private Dialog dialog1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +43,10 @@ public class AboutUs extends AppCompatActivity {
         parentOfAboutUs = findViewById(R.id.parentOfAboutUs);
 
 
-        dialog1 = new SpotsDialog.Builder().setContext(AboutUs.this).setTheme(R.style.Custom).build();
-        dialog1.setMessage("Please wait.....");
+//        dialog1 = new SpotsDialog.Builder().setContext(AboutUsActivity.this).setTheme(R.style.Custom).build();
+//        dialog1.setMessage("Please wait.....");
+//        dialog1.show();
+        dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
 
@@ -70,7 +74,7 @@ public class AboutUs extends AppCompatActivity {
                     @Override
                     public void onError(ANError anError) {
                         dialog1.dismiss();
-                        Toast.makeText(AboutUs.this, "connection field", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AboutUsActivity.this, "connection field", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -79,7 +83,7 @@ public class AboutUs extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(AboutUs.this, MainActivity.class));
+        startActivity(new Intent(AboutUsActivity.this, MainActivity.class));
         finish();
 
     }

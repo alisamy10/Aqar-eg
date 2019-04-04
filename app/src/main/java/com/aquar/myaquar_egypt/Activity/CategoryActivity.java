@@ -1,6 +1,7 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +17,8 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Adapter.example_adapter_for_home_fragment;
-import com.aquar.myaquar_egypt.Fragments.fragment_home;
+import com.aquar.myaquar_egypt.Fragments.homeFragment;
+import com.aquar.myaquar_egypt.InternalStorage.Session;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelArray;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelObjects;
 import com.aquar.myaquar_egypt.R;
@@ -32,17 +34,18 @@ import java.util.ArrayList;
 
 import dmax.dialog.SpotsDialog;
 
-public class Category extends AppCompatActivity {
+public class CategoryActivity extends AppCompatActivity {
 
-    fragment_home  getid = new fragment_home();
+    homeFragment getid = new homeFragment();
     private RecyclerView mRecyclerView;
-    private TextView textOfHeader ;
+    private TextView textOfHeader;
     private ImageView love_behind;
     private example_adapter_for_home_fragment mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ArrayList<ModelObjects>  list  = new ArrayList<>();
-    private AlertDialog dialog1;
-    private LinearLayout parentOfCategory ;
+    private ArrayList<ModelObjects> list = new ArrayList<>();
+//    private AlertDialog dialog1;
+    private Dialog dialog1;
+    private LinearLayout parentOfCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +59,16 @@ public class Category extends AppCompatActivity {
         parentOfCategory = findViewById(R.id.parentOfCategory);
 
 
-        dialog1 = new SpotsDialog.Builder().setContext(Category.this).setTheme(R.style.Custom).build();
-        dialog1.setMessage("Please wait.....");
+//        dialog1 = new SpotsDialog.Builder().setContext(CategoryActivity.this).setTheme(R.style.Custom).build();
+//        dialog1.setMessage("Please wait.....");
+//        dialog1.show();
+
+        dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
-
-
 
         //send id of category from nav to here
         MainActivity data = new MainActivity();
+//        GetCategoryData(data.idForCategoryOfNav);
         GetCategoryData(data.idForCategoryOfNav);
 
 
@@ -71,7 +76,6 @@ public class Category extends AppCompatActivity {
 
 
     }
-
 
 
     private void GetCategoryData(String value) {
@@ -100,12 +104,14 @@ public class Category extends AppCompatActivity {
                         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
                             @Override
-                            public void intent_to_detales(int pos, ImageView imageView ) {
+                            public void intent_to_detales(int pos, ImageView imageView) {
+                                Session.getInstance().setTypesOfUnitID(String.valueOf(list.get(pos).getProductId()));
                                 go_detales(pos, imageView);
 
-                                getid.id = list.get(pos).getProduct_id();
+//                                getid.id = list.get(pos).getProductId();
 
                             }
+
                             @Override
                             public void make_love(int pos, ImageView img) {
 
@@ -116,27 +122,30 @@ public class Category extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-                            dialog1.dismiss();
+                        dialog1.dismiss();
+                        myUtils.handleError(CategoryActivity.this, anError.getErrorBody(), anError.getErrorCode());
 
                     }
                 });
     }
+
     private void setRecyclerData(ArrayList<ModelObjects> list) {
 
-    mAdapter = new example_adapter_for_home_fragment(Category.this, list);
-    LinearLayoutManager manager=new LinearLayoutManager(this);
+        mAdapter = new example_adapter_for_home_fragment(CategoryActivity.this, list);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
 
     }
+
     public void go_detales(int pos, ImageView img) {
-        Intent intent = new Intent(Category.this, Projectdetails.class);
+        Intent intent = new Intent(CategoryActivity.this, ProjectdetailsActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(Category.this, MainActivity.class));
+        startActivity(new Intent(CategoryActivity.this, MainActivity.class));
         finish();
 
     }

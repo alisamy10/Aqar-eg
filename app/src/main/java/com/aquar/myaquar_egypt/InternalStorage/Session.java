@@ -22,6 +22,7 @@ public class Session {
 
     private Session() {
     }
+
     //home array
     private ArrayList<ModelObjects> HomeArray;
 
@@ -30,8 +31,13 @@ public class Session {
 
     //Structure Images
     private List<String> StructureImages = new ArrayList<>();
+    //TypesID
+    private String TypesOfUnitID;
+    //ProjectID
+    private String ProjectID;
 
 
+    //Getter & Setters
     public List<String> getUrlimage() {
         return urlimage;
     }
@@ -54,5 +60,21 @@ public class Session {
 
     public void setStructureImages(List<String> structureImages) {
         StructureImages = structureImages;
+    }
+
+    public String getProjectID() {
+        return ProjectID;
+    }
+
+    public void setProjectID(String projectID) {
+        ProjectID = projectID;
+    }
+
+    public String getTypesOfUnitID() {
+        return TypesOfUnitID;
+    }
+
+    public void setTypesOfUnitID(String typesOfUnitID) {
+        TypesOfUnitID = typesOfUnitID;
     }
 }
