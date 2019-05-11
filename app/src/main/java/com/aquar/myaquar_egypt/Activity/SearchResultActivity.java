@@ -124,7 +124,9 @@ public class SearchResultActivity extends AppCompatActivity {
 
                             @Override
                             public void intent_to_detales(int pos, ImageView imageView) {
-                                Session.getInstance().setTypesOfUnitID(String.valueOf(list.get(pos).getProductId()));
+
+
+                                Session.getInstance().setProjectID(list.get(pos).getProductId());
                                 go_detales(pos, imageView);
 
 //                                getid.id = list.get(pos).getProductId();
@@ -159,8 +161,9 @@ public class SearchResultActivity extends AppCompatActivity {
     }
 
     public void go_detales(int pos, ImageView img) {
-        Intent intent = new Intent(SearchResultActivity.this, ProjectdetailsActivity.class);
+        Intent intent = new Intent(SearchResultActivity.this, ProjectTypesActivity.class);
         startActivity(intent);
+
     }
 
 

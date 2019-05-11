@@ -34,7 +34,7 @@ public class Session {
     //TypesID
     private String TypesOfUnitID;
     //ProjectID
-    private String ProjectID;
+    private int ProjectID;
 
 
     //Getter & Setters
@@ -62,11 +62,11 @@ public class Session {
         StructureImages = structureImages;
     }
 
-    public String getProjectID() {
+    public int getProjectID() {
         return ProjectID;
     }
 
-    public void setProjectID(String projectID) {
+    public void setProjectID(int projectID) {
         ProjectID = projectID;
     }
 

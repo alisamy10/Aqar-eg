@@ -39,7 +39,7 @@ import dmax.dialog.SpotsDialog;
 
 public class homeFragment extends Fragment {
 
-    public static Integer id;
+    public static int id;
 //    private AlertDialog dialog1;
 
     private Dialog dialog1;
@@ -90,7 +90,7 @@ public class homeFragment extends Fragment {
                 @Override
                 public void intent_to_detales(int pos, ImageView imageView) {
                     id = list.get(pos).getProductId();
-                    Session.getInstance().setProjectID(String.valueOf(list.get(pos).getProductId()));
+                    Session.getInstance().setProjectID(list.get(pos).getProductId());
 //                    Session.getInstance().setProjectID(String.valueOf(id));
                     go_detales(pos, imageView);
 
@@ -131,9 +131,9 @@ public class homeFragment extends Fragment {
                             @Override
                             public void intent_to_detales(int pos, ImageView imageView) {
                                 id = list.get(pos).getProductId();
-                                Session.getInstance().setProjectID(String.valueOf(list.get(pos).getProductId()));
+                                Session.getInstance().setProjectID(list.get(pos).getProductId());
                                 go_detales(pos, imageView);
-                                Log.d("IDProject", String.valueOf(list.get(pos).getProductId()));
+
 
 
                             }

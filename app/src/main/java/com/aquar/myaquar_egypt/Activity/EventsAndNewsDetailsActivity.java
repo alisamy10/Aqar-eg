@@ -69,6 +69,7 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
 //        dialog1.setMessage("Please wait.....");
 //        dialog1.show();
 
+
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
@@ -103,7 +104,7 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent contact = new Intent(Intent.ACTION_DIAL);
-                contact.setData(Uri.parse("tel:01033113330"));
+                contact.setData(Uri.parse("tel:01033110330"));
                 startActivity(contact);
 
             }

@@ -29,8 +29,11 @@ public class myUtils {
     public static final int LunchSoon = 5;
 
     public static void handleError(Context context, String errorRes, int errorStatusCode) {
+
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
         ErrorModel error = gson.fromJson(errorRes, ErrorModel.class);
+
         Log.d("ErrorRes", errorStatusCode + ":" + error.getMsg() + " : " + error.getCode());
         Toast.makeText(context, error.getMsg(), Toast.LENGTH_SHORT).show();
 

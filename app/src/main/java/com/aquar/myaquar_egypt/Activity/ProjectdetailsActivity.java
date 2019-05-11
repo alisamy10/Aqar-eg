@@ -90,8 +90,7 @@ public class ProjectdetailsActivity extends AppCompatActivity {
 
         listpay.add(new ModelOfListOfPaymentMethod(x[1], z[1]));
         listpay.add(new ModelOfListOfPaymentMethod(x[1], z[1]));
-        listpay.add(new ModelOfListOfPaymentMethod(x[1], z[1]));
-        listpay.add(new ModelOfListOfPaymentMethod(x[1], z[1]));
+
 
 
         adapter = new AdapterOfListOfPaymentMethod(this, R.layout.item_list_of_payment_method, listpay);
@@ -195,7 +194,7 @@ public class ProjectdetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent contact = new Intent(Intent.ACTION_DIAL);
-                contact.setData(Uri.parse("tel:01033113330"));
+                contact.setData(Uri.parse("tel:01033110330"));
                 startActivity(contact);
 
             }
@@ -390,7 +389,7 @@ public class ProjectdetailsActivity extends AppCompatActivity {
 
     private void setTdevoleporandproject(String dec, String developer, String project, int price,
                                          String type, String minrooms, String maxrooms
-            , String minBathrooms, String maxBathrooms, String minArea, String maxArea, String price_label) {
+                                       , String minBathrooms, String maxBathrooms, String minArea, String maxArea, String price_label) {
 
         description.setText(dec.substring(0, 90));
 //        Log.d("Data: ",price+" : "+type+" : "+minArea+"-"+maxArea);

@@ -49,7 +49,6 @@ public class AboutUsActivity extends AppCompatActivity {
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
-
         Get_Data();
     }
 

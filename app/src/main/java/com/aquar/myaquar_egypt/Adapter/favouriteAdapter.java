@@ -84,7 +84,9 @@ public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myVi
         myView.fragment_favourite_LL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Session.getInstance().setTypesOfUnitID(String.valueOf(pojo.getProductId()));
+
                 myContext.startActivity(new Intent(myContext, ProjectdetailsActivity.class));
                 homeFragment fragment_home = new homeFragment();
 //                fragment_home.id= (int) pojo.getProductId();

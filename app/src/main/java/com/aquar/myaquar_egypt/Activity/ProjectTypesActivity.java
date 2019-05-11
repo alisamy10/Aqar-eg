@@ -26,7 +26,9 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Adapter.ExpandListAdapter;
+import com.aquar.myaquar_egypt.Fragments.homeFragment;
 import com.aquar.myaquar_egypt.InternalStorage.Session;
+import com.aquar.myaquar_egypt.Model.AboutUs.AboutUsModelObject;
 import com.aquar.myaquar_egypt.Model.UnitsModel.unitsModelObj;
 import com.aquar.myaquar_egypt.Model.UnitsModel.unitsModelRes;
 import com.aquar.myaquar_egypt.Model.UnitsModel.unitsModelTypes;
@@ -69,9 +71,11 @@ public class ProjectTypesActivity extends AppCompatActivity {
     private List<String> listDataHeader;
     private List<String> listChildDataID;
     private HashMap<String, List<String>> listDataChild;
-    private String ProjectID;
+    private int ProjectID;
 
     private Button go_youtube ;
+
+
 
 
     @Override
@@ -144,16 +148,22 @@ public class ProjectTypesActivity extends AppCompatActivity {
 
         if (!Objects.equals(Session.getInstance().getProjectID(), null)) {
             ProjectID = Session.getInstance().getProjectID();
-            initiateData();
+            initiateData(ProjectID);
 
         }
+
+
+
+
+
+
     }
 
-    private void initiateData() {
+    private void initiateData(int id) {
         JSONObject object = new JSONObject();
         try {
-            object.put("id", ProjectID);
-            Log.d("IdProject", ProjectID + " T");
+            object.put("id", id);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

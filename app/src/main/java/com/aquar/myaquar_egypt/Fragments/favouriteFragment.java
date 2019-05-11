@@ -85,6 +85,7 @@ public class favouriteFragment extends Fragment {
             dialog.show();
             Gson gson = new Gson();
             UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
+
             Log.d("Response", "user: " + String.valueOf(userPOJO.getUserId() + ""));
             AndroidNetworking.get(ConstantsUrl.allFavorites)
                     .addQueryParameter("user_id", String.valueOf(userPOJO.getUserId()))

@@ -77,7 +77,7 @@
             android:drawableStart="@drawable/youtube_icon"
             android:gravity="start|center"
             android:padding="5dp"
-            android:text="  YouTupe"
+            android:text="  YouTube"
             android:textAlignment="gravity"
             android:textAllCaps="false"
             android:textColor="#000"
