@@ -59,6 +59,7 @@ public class ProjectdetailsActivity extends AppCompatActivity {
     //    private AlertDialog dialog1;
     private Dialog dialog1;
 
+
     private String description_string;
     private LinearLayout parentOfProjectDetails;
 

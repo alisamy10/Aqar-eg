@@ -132,6 +132,8 @@ public class SearchResultActivity extends AppCompatActivity {
 //                                getid.id = list.get(pos).getProductId();
 
 
+
+
                             }
 
                             @Override

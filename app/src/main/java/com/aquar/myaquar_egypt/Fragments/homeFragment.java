@@ -126,6 +126,7 @@ public class homeFragment extends Fragment {
                         setRecyclerData(list);
 
 
+
                         mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
 
                             @Override

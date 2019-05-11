@@ -60,6 +60,7 @@ public class ProjectTypesActivity extends AppCompatActivity {
      private ScrollView parent ;
     private ImageView units_detailsImg;
     private TextView units_detailsDes_TV,
+
             units_detailsDes_label_TV, units_line1_label_TV,
             units_line2_label_TV, units_label_TV;
     private Button units_location_BTN;
