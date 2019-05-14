@@ -1,6 +1,5 @@
 package com.aquar.myaquar_egypt.Activity;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,8 +21,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.json.JSONObject;
-
-import dmax.dialog.SpotsDialog;
 
 public class TermsAndPoliciesActivity extends AppCompatActivity {
      private  TextView textview ;
@@ -55,7 +52,7 @@ public class TermsAndPoliciesActivity extends AppCompatActivity {
 
         private void Get_Data() {
 
-            AndroidNetworking.get(ConstantsUrl.tremsAndPolicies)
+            AndroidNetworking.get(ConstantsUrl.termsAndPolicies)
                     .setPriority(Priority.HIGH)
                     .build()
                     .getAsJSONObject(new JSONObjectRequestListener() {

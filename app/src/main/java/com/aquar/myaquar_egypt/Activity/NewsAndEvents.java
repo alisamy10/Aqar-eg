@@ -1,7 +1,6 @@
 package com.aquar.myaquar_egypt.Activity;
 
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,9 +30,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import dmax.dialog.SpotsDialog;
-
-public class EventsAndNewsActivity extends AppCompatActivity {
+public class NewsAndEvents extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ImageView love_behind;
     private EventsAndNewsAdapter mAdapter;
@@ -55,7 +52,7 @@ public class EventsAndNewsActivity extends AppCompatActivity {
         parentOfEventAndNews = findViewById(R.id.parentOfEventAndNews);
         mRecyclerView = findViewById(R.id.listOfEventsAndNews);
 
-//        dialog1 = new SpotsDialog.Builder().setContext(EventsAndNewsActivity.this).setTheme(R.style.Custom).build();
+//        dialog1 = new SpotsDialog.Builder().setContext(NewsAndEvents.this).setTheme(R.style.Custom).build();
 //        dialog1.setMessage("Please wait.....");
 //        dialog1.show();
 
@@ -99,7 +96,7 @@ public class EventsAndNewsActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError anError) {
                         dialog1.dismiss();
-                        Toast.makeText(EventsAndNewsActivity.this, "connection field", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NewsAndEvents.this, "connection field", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -107,7 +104,7 @@ public class EventsAndNewsActivity extends AppCompatActivity {
     private void setRecyclerData(ArrayList<ModelOfEventAndNews> list) {
 
 
-        mAdapter = new EventsAndNewsAdapter(EventsAndNewsActivity.this, list);
+        mAdapter = new EventsAndNewsAdapter(NewsAndEvents.this, list);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
@@ -125,7 +122,7 @@ public class EventsAndNewsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(EventsAndNewsActivity.this, MainActivity.class));
+        startActivity(new Intent(NewsAndEvents.this, MainActivity.class));
         finish();
 
     }

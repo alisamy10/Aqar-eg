@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -36,10 +37,9 @@ public class profileFragment extends Fragment {
     private Fragment fragment;
 
 
-    @BindView(R.id.edit_profile_photo)
-    CircleImageView chooseImage;
+
     @BindView(R.id.profile_photo)
-    CircleImageView profile_photo;
+    ImageView profile_photo;
     @BindView(R.id.user_name)
     TextView user_name;
     @BindView(R.id.jobTitle)

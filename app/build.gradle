@@ -6,8 +6,8 @@ android {
         applicationId "com.aswany.android.myaquar_eg"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 7
-        versionName "1.0.4"
+        versionCode 8
+        versionName "1.0.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
@@ -27,7 +27,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-///recyclaer
+    ///recyclaer
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
 
     //Design Support

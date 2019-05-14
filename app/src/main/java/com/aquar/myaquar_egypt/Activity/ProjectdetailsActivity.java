@@ -1,6 +1,5 @@
 package com.aquar.myaquar_egypt.Activity;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -47,8 +46,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-import dmax.dialog.SpotsDialog;
-
 public class ProjectdetailsActivity extends AppCompatActivity {
     private SliderLayout Product_Slider;
     private Button see_more_btn, like_btn, struct_btn, location_btn, call_btn, share_btn, go_youtube, send_email_btn;
@@ -70,6 +67,8 @@ public class ProjectdetailsActivity extends AppCompatActivity {
     List<String> urlimage = new ArrayList<>();
 
     ArrayList<ModelObjectsOfProjectDetails> list = new ArrayList<>();
+    ModelObjectsOfProjectDetails objectsOfProjectDetails;
+    //    ModelObjectsOfProjectDetails objectsOfProjectDetails ;
     ListView listPayment;
 
 
@@ -90,8 +89,7 @@ public class ProjectdetailsActivity extends AppCompatActivity {
 
 
         listpay.add(new ModelOfListOfPaymentMethod(x[1], z[1]));
-        listpay.add(new ModelOfListOfPaymentMethod(x[1], z[1]));
-
+//        listpay.add(new ModelOfListOfPaymentMethod(x[1], z[1]));
 
 
         adapter = new AdapterOfListOfPaymentMethod(this, R.layout.item_list_of_payment_method, listpay);
@@ -161,7 +159,6 @@ public class ProjectdetailsActivity extends AppCompatActivity {
         });
 
 
-
         struct_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -176,9 +173,12 @@ public class ProjectdetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent share = new Intent();
                 share.setAction(Intent.ACTION_SEND);
+//                share.putExtra(Intent.EXTRA_TEXT,
+//                        "https://play.google.com/store/apps/details?id=com.aswany.android.myaquar_eg");
                 share.putExtra(Intent.EXTRA_TEXT,
-                        "https://play.google.com/store/apps/details?id=com.aswany.android.myaquar_eg");
-                share.setType("textDes/plain");
+                        ConstantsUrl.ShareLink + objectsOfProjectDetails.getId());
+//                share.setType("textDes/plain");
+                share.setType("text/html");
                 startActivity(share);
             }
         });
@@ -242,8 +242,8 @@ public class ProjectdetailsActivity extends AppCompatActivity {
         try {
             if (!Objects.equals(userPOJO.getEmail(), null)) {
                 String Lines = "--------------------------------";
-                Subject = "Enquiry regarding: " + list.get(0).getProject() + " , Project ID: "
-                        + list.get(0).getId() + " , " + list.get(0).getMin_price() + " EGP";
+                Subject = "Enquiry regarding: " + objectsOfProjectDetails.getProject() + " , Project ID: "
+                        + objectsOfProjectDetails.getId() + " , " + objectsOfProjectDetails.getMin_price() + " EGP";
                 String Content = "Name              : " + userPOJO.getUsername()
                         + "\n" + "Mobile Phone : " + userPOJO.getPhone()
                         + "\n" + "Job Title         : " + userPOJO.getJobTitle();
@@ -252,7 +252,7 @@ public class ProjectdetailsActivity extends AppCompatActivity {
                 emailIntent.setData(Uri.parse("mailto:" + recepientEmail));
                 emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
 
-                Log.d("developer: ", list.get(0).getDeveloper() + "");
+                Log.d("developer: ", objectsOfProjectDetails.getDeveloper() + "");
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, Subject);
                 emailIntent.putExtra(Intent.EXTRA_TEXT, Body);
 
@@ -260,8 +260,8 @@ public class ProjectdetailsActivity extends AppCompatActivity {
             }
 
         } catch (Exception e) {
-            Subject = "Enquiry regarding: " + list.get(0).getProject() + " , Project ID: "
-                    + list.get(0).getId() + " , " + list.get(0).getMin_price() + " EGP";
+            Subject = "Enquiry regarding: " + objectsOfProjectDetails.getProject() + " , Project ID: "
+                    + objectsOfProjectDetails.getId() + " , " + objectsOfProjectDetails.getMin_price() + " EGP";
             Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
             emailIntent.setData(Uri.parse("mailto:" + recepientEmail));
             emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
@@ -278,7 +278,7 @@ public class ProjectdetailsActivity extends AppCompatActivity {
     private void reciveDate(int idValue) {
         Gson gson = new Gson();
         UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
-        JSONObject object = new JSONObject();
+        final JSONObject object = new JSONObject();
         if (!Objects.equals(userPOJO, null)) {
             String UserId = String.valueOf(userPOJO.getUserId());
             Log.d("blog", UserId + "");
@@ -309,37 +309,38 @@ public class ProjectdetailsActivity extends AppCompatActivity {
                         dialog1.dismiss();
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         ArrayModelOfProjectsDetails array = gson.fromJson(response.toString(), ArrayModelOfProjectsDetails.class);
-
+//                        objectsOfProjectDetails = gson.fromJson(response.toString(), ModelObjectsOfProjectDetails.class);
                         list = array.getProject();
+                        objectsOfProjectDetails = list.get(0);
 
 
                         //loop for image of slider
-                        for (int i = 0; i < list.get(0).getSlider_images().size(); i++) {
-                            String x = list.get(0).getSlider_images().get(i).getImage_url();
+                        for (int i = 0; i < objectsOfProjectDetails.getSlider_images().size(); i++) {
+                            String x = objectsOfProjectDetails.getSlider_images().get(i).getImage_url();
                             urlimage.add(x);
                         }
 
                         DataOfSlider(urlimage);
                         //Structure Images
-                        Session.getInstance().setStructureImages(list.get(0).getStructure_images());
+                        Session.getInstance().setStructureImages(objectsOfProjectDetails.getStructure_images());
 
-                        description_string = list.get(0).getDescription();
+                        description_string = objectsOfProjectDetails.getDescription();
                         // for set all texts of details
-                        setTdevoleporandproject(list.get(0).getDescription(), list.get(0).getDeveloper(), list.get(0).getProject(),
-                                list.get(0).getMin_price()
-                                , list.get(0).getType(), list.get(0).getMin_rooms(), list.get(0).getMax_rooms(),
-                                list.get(0).getMin_bathsrooms()
-                                , list.get(0).getMax_bathsrooms(), list.get(0).getMin_area(), list.get(0).getMax_area(), list.get(0).getPrice_label()
+                        setTdevoleporandproject(objectsOfProjectDetails.getDescription(), objectsOfProjectDetails.getDeveloper(), objectsOfProjectDetails.getProject(),
+                                objectsOfProjectDetails.getMin_price()
+                                , objectsOfProjectDetails.getType(), objectsOfProjectDetails.getMin_rooms(), objectsOfProjectDetails.getMax_rooms(),
+                                objectsOfProjectDetails.getMin_bathsrooms()
+                                , objectsOfProjectDetails.getMax_bathsrooms(), objectsOfProjectDetails.getMin_area(), objectsOfProjectDetails.getMax_area(), objectsOfProjectDetails.getPrice_label()
 
                         );
-                        liked_projects(Boolean.valueOf(list.get(0).getFavorite()));
+                        liked_projects(Boolean.valueOf(objectsOfProjectDetails.getFavorite()));
                         // for like button
 
                         like_btn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                setFavourite(Boolean.valueOf(list.get(0).getFavorite()), list.get(0).getId());
-                                Boolean Indicator = Boolean.valueOf(list.get(0).getFavorite());
+                                setFavourite(Boolean.valueOf(objectsOfProjectDetails.getFavorite()), objectsOfProjectDetails.getId());
+                                Boolean Indicator = Boolean.valueOf(objectsOfProjectDetails.getFavorite());
                                 Log.d("Liked", !Indicator + "");
                                 liked_projects(Indicator);
 
@@ -390,7 +391,7 @@ public class ProjectdetailsActivity extends AppCompatActivity {
 
     private void setTdevoleporandproject(String dec, String developer, String project, int price,
                                          String type, String minrooms, String maxrooms
-                                       , String minBathrooms, String maxBathrooms, String minArea, String maxArea, String price_label) {
+            , String minBathrooms, String maxBathrooms, String minArea, String maxArea, String price_label) {
 
         description.setText(dec.substring(0, 90));
 //        Log.d("Data: ",price+" : "+type+" : "+minArea+"-"+maxArea);
@@ -503,7 +504,6 @@ public class ProjectdetailsActivity extends AppCompatActivity {
         finish();
 
     }
-
 
 
 }

@@ -44,7 +44,7 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
 
     private Button Attend_btn;
     private SliderLayout Event_slider;
-//    private AlertDialog dialog1;
+    //    private AlertDialog dialog1;
     private Dialog dialog1;
     private TextView event_description, titile, event_devolper;
 
@@ -74,7 +74,7 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
         dialog1.show();
 
         //  Toast.makeText(this, ""+EventsAndNewsActivity.id_event, Toast.LENGTH_SHORT).show();
-        GetCategoryData(EventsAndNewsActivity.id_event);
+        GetCategoryData(NewsAndEvents.id_event);
 
 
         Attend_btn = findViewById(R.id.Attend);
@@ -123,7 +123,7 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
     private void GetCategoryData(int value) {
 
 
-        AndroidNetworking.get(ConstantsUrl.EventandNews)
+        AndroidNetworking.get(ConstantsUrl.EventAndNews)
                 .addQueryParameter("id", String.valueOf(value))
                 .setPriority(Priority.LOW)
                 .build()
@@ -241,7 +241,7 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        startActivity(new Intent(EventsAndNewsDetailsActivity.this, EventsAndNewsActivity.class));
+        startActivity(new Intent(EventsAndNewsDetailsActivity.this, NewsAndEvents.class));
         finish();
 
     }

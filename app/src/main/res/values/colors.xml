@@ -5,4 +5,6 @@
     <color name="colorAccent">#AD0000</color>
     <color name="Red">#AD0000</color>
     <color name="White">#2E3032</color>
+    <color name="HomeBottomColorClicked">#FF0000</color>
+    <color name="HomeBottomColorUnClicked">#666666</color>
 </resources>

@@ -63,13 +63,7 @@ public class MainActivity extends AppCompatActivity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
-    String[] values = new String[]{
-            "News and Events",
-            "About us",
-            "Contact us",
-            "Terms and policies",
-            "Log out "
-    };
+    String[] values;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -107,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void prepareListData() {
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
+        listDataHeader = new ArrayList<>();
+        listDataChild = new HashMap<>();
 
         listDataHeader.add("Categories");
 
@@ -132,6 +126,29 @@ public class MainActivity extends AppCompatActivity {
 
     private void listViewOfNavDrawer() {
 
+        if (mySharedPreference.getUserOBJ() != "") {
+            values = new String[]{
+                    "News and Events",
+                    "Our Services",
+                    "Our Magazine",
+                    "Search",
+                    "About Us",
+                    "Contact Us",
+                    "Terms and Policies",
+                    "Log out "
+            };
+        } else {
+            values = new String[]{
+                    "News and Events",
+                    "Our Services",
+                    "Our Magazine",
+                    "Search",
+                    "About Us",
+                    "Contact Us",
+                    "Terms and Policies",
+                    "Log in "
+            };
+        }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
         listView.setAdapter(adapter);
@@ -141,30 +158,45 @@ public class MainActivity extends AppCompatActivity {
 
                 //news and events
                 if (position == 0) {
-                    Intent go = new Intent(MainActivity.this, EventsAndNewsActivity.class);
+                    Intent go = new Intent(MainActivity.this, NewsAndEvents.class);
                     startActivity(go);
                     finish();
                 }
-                //about us
+                //our services
                 else if (position == 1) {
+                    startActivity(new Intent(MainActivity.this, OurServicesActivity.class));
+                    finish();
+
+                }
+                //OurMagazine
+                else if (position == 2) {
+                    startActivity(new Intent(MainActivity.this, OurMagazine.class));
+                    finish();
+
+                }//Search
+                else if (position == 3) {
+                    startActivity(new Intent(MainActivity.this, FilterActivity.class));
+                    finish();
+
+                    //about us
+                } else if (position == 4) {
                     startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
                     finish();
 
                 }
                 //contact us
-                else if (position == 2) {
+                else if (position == 5) {
                     startActivity(new Intent(MainActivity.this, ContactUsActivity.class));
-
                     finish();
                 }
                 //terms and policies
-                else if (position == 3) {
+                else if (position == 6) {
                     startActivity(new Intent(MainActivity.this, TermsAndPoliciesActivity.class));
                     finish();
 
                 }
                 //logout
-                else if (position == 4) {
+                else if (position == 7) {
 
 
                     if (mySharedPreference.getUserOBJ() != "") {
@@ -176,7 +208,8 @@ public class MainActivity extends AppCompatActivity {
 
                     } else {
 
-                        Toast.makeText(MainActivity.this, "You are not login", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        finish();
                     }
 
                 }
@@ -274,7 +307,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextView textView1 = findViewById(R.id.home_text_id);
-        textView1.setTextColor(Color.parseColor("#FF0000"));
+//        textView1.setTextColor(Color.parseColor("#FF0000"));
+        textView1.setTextColor(this.getResources().getColor(R.color.HomeBottomColorClicked));
+
 
         ImageView imageButton1 = findViewById(R.id.home_icon_id);
         imageButton1.setImageResource(R.drawable.home_red);
@@ -291,13 +326,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextView textView1 = findViewById(R.id.favert_text_id);
-        textView1.setTextColor(Color.parseColor("#FF0000"));
+//        textView1.setTextColor(Color.parseColor("#FF0000"));
+        textView1.setTextColor(this.getResources().getColor(R.color.HomeBottomColorClicked));
 
         TextView textView2 = findViewById(R.id.home_text_id);
-        textView2.setTextColor(Color.parseColor("#cccccc"));
+//        textView2.setTextColor(Color.parseColor("#cccccc"));
+        textView2.setTextColor(this.getResources().getColor(R.color.HomeBottomColorUnClicked));
 
         TextView textView3 = findViewById(R.id.account_text_id);
-        textView3.setTextColor(Color.parseColor("#cccccc"));
+//        textView3.setTextColor(Color.parseColor("#cccccc"));
+        textView3.setTextColor(this.getResources().getColor(R.color.HomeBottomColorUnClicked));
 
 
         ImageView imageButton = findViewById(R.id.favert_icon_id);
@@ -320,14 +358,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextView textView1 = findViewById(R.id.home_text_id);
-        textView1.setTextColor(Color.parseColor("#FF0000"));
+//        textView1.setTextColor(Color.parseColor("#FF0000"));
+        textView1.setTextColor(this.getResources().getColor(R.color.HomeBottomColorClicked));
 
 
         TextView textView2 = findViewById(R.id.favert_text_id);
-        textView2.setTextColor(Color.parseColor("#cccccc"));
+//        textView2.setTextColor(Color.parseColor("#cccccc"));
+        textView2.setTextColor(this.getResources().getColor(R.color.HomeBottomColorUnClicked));
 
         TextView textView3 = findViewById(R.id.account_text_id);
-        textView3.setTextColor(Color.parseColor("#cccccc"));
+//        textView3.setTextColor(Color.parseColor("#cccccc"));
+        textView3.setTextColor(this.getResources().getColor(R.color.HomeBottomColorUnClicked));
 
 
         ImageView imageButton = findViewById(R.id.favert_icon_id);
@@ -360,13 +401,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextView textView1 = findViewById(R.id.favert_text_id);
-        textView1.setTextColor(Color.parseColor("#cccccc"));
+//        textView1.setTextColor(Color.parseColor("#cccccc"));
+        textView1.setTextColor(this.getResources().getColor(R.color.HomeBottomColorUnClicked));
 
         TextView textView2 = findViewById(R.id.home_text_id);
-        textView2.setTextColor(Color.parseColor("#cccccc"));
+//        textView2.setTextColor(Color.parseColor("#cccccc"));
+        textView2.setTextColor(this.getResources().getColor(R.color.HomeBottomColorUnClicked));
 
         TextView textView3 = findViewById(R.id.account_text_id);
-        textView3.setTextColor(Color.parseColor("#FF0000"));
+//        textView3.setTextColor(Color.parseColor("#FF0000"));
+        textView3.setTextColor(this.getResources().getColor(R.color.HomeBottomColorClicked));
 
 
         ImageView imageButton = findViewById(R.id.favert_icon_id);
@@ -391,7 +435,7 @@ public class MainActivity extends AppCompatActivity {
         UserInfo userPOJO = gson.fromJson(mySharedPreference.getUserOBJ(), UserInfo.class);
         try {
             if (!Objects.equals(userPOJO.getEmail(), null)) {
-//                Glide.with(this).load(userPOJO.getToken()).into(profile_photo);
+//                Glide.with(this).load(userPOJO.getImage()).into(profile_photo);
                 nav_header_profile_name_TV.setText(userPOJO.getUsername());
                 nav_header_profile_email_TV.setText(userPOJO.getEmail());
             }
@@ -422,5 +466,4 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
 }

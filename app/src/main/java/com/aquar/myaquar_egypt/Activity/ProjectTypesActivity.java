@@ -57,15 +57,15 @@ public class ProjectTypesActivity extends AppCompatActivity {
     //    public static int id;
 //    private AlertDialog dialog1;
     private Dialog dialog1;
-     private ScrollView parent ;
+    private ScrollView parent;
     private ImageView units_detailsImg;
     private TextView units_detailsDes_TV,
 
-            units_detailsDes_label_TV, units_line1_label_TV,
+    units_detailsDes_label_TV, units_line1_label_TV,
             units_line2_label_TV, units_label_TV;
     private Button units_location_BTN;
     private ExpandableListView types_ExpandableList;
-    private ImageView arrow ;
+    private ImageView arrow;
 
     private ArrayList<unitsModelObj> unitsModel = new ArrayList<>();
     private ArrayList<unitsModelTypes> Types = new ArrayList<>();
@@ -74,9 +74,7 @@ public class ProjectTypesActivity extends AppCompatActivity {
     private HashMap<String, List<String>> listDataChild;
     private int ProjectID;
 
-    private Button go_youtube ;
-
-
+    private Button go_youtube;
 
 
     @Override
@@ -84,7 +82,7 @@ public class ProjectTypesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.project_types_activity);
 
-       parent = findViewById(R.id.parent_of_projects_type);
+        parent = findViewById(R.id.parent_of_projects_type);
         go_youtube = (Button) findViewById(R.id.go_youtube);
         arrow = findViewById(R.id.arrow_of_exband_list);
 
@@ -110,22 +108,21 @@ public class ProjectTypesActivity extends AppCompatActivity {
         types_ExpandableList = findViewById(R.id.types_ExpandableList);
 
 
+        types_ExpandableList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                arrow.setImageResource(R.drawable.ic_arrow_drop_up_black_24dp);
+            }
+        });
 
-       types_ExpandableList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-           @Override
-           public void onGroupExpand(int groupPosition) {
-              arrow.setImageResource(R.drawable.ic_arrow_drop_up_black_24dp);
-           }
-       });
-       
-       types_ExpandableList.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-           @Override
-           public void onGroupCollapse(int groupPosition) {
+        types_ExpandableList.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+            @Override
+            public void onGroupCollapse(int groupPosition) {
 
-               arrow.setImageResource(R.drawable.group_ind);
+                arrow.setImageResource(R.drawable.group_ind);
 
-           }
-       });
+            }
+        });
 
         units_detailsDes_label_TV = findViewById(R.id.units_detailsDes_label_TV);
         units_line1_label_TV = findViewById(R.id.units_line1_label_TV);
@@ -152,10 +149,6 @@ public class ProjectTypesActivity extends AppCompatActivity {
             initiateData(ProjectID);
 
         }
-
-
-
-
 
 
     }

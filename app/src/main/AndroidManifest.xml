@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.aquar.myaquar_egypt">
     <!-- permissions -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-
 
     <application
         android:allowBackup="true"
@@ -13,13 +13,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".Activity.OurMagazine"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity.OurServicesActivity"
+            android:screenOrientation="portrait" />
         <!-- metaData -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebookID" />
-
-        <!-- activities -->
+            android:value="@string/facebookID" /> <!-- activities -->
         <activity
             android:name=".Activity.ContactUsActivity"
             android:screenOrientation="portrait" />
@@ -33,7 +38,7 @@
             android:name=".Activity.EventsAndNewsDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.EventsAndNewsActivity"
+            android:name=".Activity.NewsAndEvents"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.MainActivity"
@@ -73,14 +78,12 @@
             android:name=".Activity.CategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".Activity.SearchResultActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.EditProfileActivity"
             android:screenOrientation="portrait" />
-
     </application>
 
 </manifest>
