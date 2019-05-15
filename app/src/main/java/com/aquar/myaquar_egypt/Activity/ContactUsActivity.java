@@ -161,12 +161,7 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(ContactUsActivity.this, MainActivity.class));
-        finish();
 
-    }
 
     @Override
     public void onClick(View v) {

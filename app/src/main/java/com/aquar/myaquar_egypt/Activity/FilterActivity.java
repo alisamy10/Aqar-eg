@@ -419,15 +419,8 @@ public class FilterActivity extends AppCompatActivity {
         Log.d("TAGDEMO", itemType);
         Log.d("TAGDEMO", itemSearchKey);
         startActivity(new Intent(this, SearchResultActivity.class));
-        finish();
 
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(FilterActivity.this, MainActivity.class));
-        finish();
 
     }
 

@@ -238,13 +238,6 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-
-        startActivity(new Intent(EventsAndNewsDetailsActivity.this, NewsAndEvents.class));
-        finish();
-
-    }
 
 
 }

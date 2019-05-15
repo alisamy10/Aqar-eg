@@ -83,11 +83,6 @@ public class TermsAndPoliciesActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(TermsAndPoliciesActivity.this, MainActivity.class));
-        finish();
 
-    }
 
 }

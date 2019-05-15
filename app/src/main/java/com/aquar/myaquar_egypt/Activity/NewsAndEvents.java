@@ -114,18 +114,13 @@ public class NewsAndEvents extends AppCompatActivity {
     public void go_detales(int pos, RelativeLayout relativeLayout) {
         //  Toast.makeText(this, "go to event and news"+pos, Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, EventsAndNewsDetailsActivity.class));
-        finish();
 
 
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(NewsAndEvents.this, MainActivity.class));
-        finish();
 
     }
+
+
+
 
 
 }

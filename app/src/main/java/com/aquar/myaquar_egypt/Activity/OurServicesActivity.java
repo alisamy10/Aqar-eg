@@ -81,9 +81,5 @@ public class OurServicesActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(OurServicesActivity.this, MainActivity.class));
-        finish();
-    }
+
 }

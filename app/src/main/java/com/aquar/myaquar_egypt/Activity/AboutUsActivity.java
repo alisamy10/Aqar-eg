@@ -80,12 +80,7 @@ public class AboutUsActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(AboutUsActivity.this, MainActivity.class));
-        finish();
 
-    }
 
 
 }

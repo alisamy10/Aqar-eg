@@ -26,11 +26,7 @@ public class OurMagazine extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(OurMagazine.this, MainActivity.class));
-        finish();
-    }
+
 
 
 

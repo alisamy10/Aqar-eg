@@ -160,39 +160,39 @@ public class MainActivity extends AppCompatActivity {
                 if (position == 0) {
                     Intent go = new Intent(MainActivity.this, NewsAndEvents.class);
                     startActivity(go);
-                    finish();
+
                 }
                 //our services
                 else if (position == 1) {
                     startActivity(new Intent(MainActivity.this, OurServicesActivity.class));
-                    finish();
+
 
                 }
                 //OurMagazine
                 else if (position == 2) {
                     startActivity(new Intent(MainActivity.this, OurMagazine.class));
-                    finish();
+
 
                 }//Search
                 else if (position == 3) {
                     startActivity(new Intent(MainActivity.this, FilterActivity.class));
-                    finish();
+
 
                     //about us
                 } else if (position == 4) {
                     startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
-                    finish();
+
 
                 }
                 //contact us
                 else if (position == 5) {
                     startActivity(new Intent(MainActivity.this, ContactUsActivity.class));
-                    finish();
+
                 }
                 //terms and policies
                 else if (position == 6) {
                     startActivity(new Intent(MainActivity.this, TermsAndPoliciesActivity.class));
-                    finish();
+
 
                 }
                 //logout
@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
                 //Residential
                 if (childPosition == 0) {
                     startActivity(new Intent(MainActivity.this, CategoryActivity.class));
-                    finish();
+
                     idForCategoryOfNav = String.valueOf(myUtils.Residential);
                     headerOfCategory = "Residential";
 
@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
                 //Holiday Home
                 else if (childPosition == 1) {
                     startActivity(new Intent(MainActivity.this, CategoryActivity.class));
-                    finish();
+
                     idForCategoryOfNav = String.valueOf(myUtils.HolidayHome);
                     headerOfCategory = "Holiday Home";
 
@@ -272,21 +272,21 @@ public class MainActivity extends AppCompatActivity {
                 //commercial
                 else if (childPosition == 2) {
                     startActivity(new Intent(MainActivity.this, CategoryActivity.class));
-                    finish();
+
                     idForCategoryOfNav = String.valueOf(myUtils.Commercial);
                     headerOfCategory = "Commercial";
                 }
                 //medical
                 else if (childPosition == 3) {
                     startActivity(new Intent(MainActivity.this, CategoryActivity.class));
-                    finish();
+
                     idForCategoryOfNav = String.valueOf(myUtils.Medical);
                     headerOfCategory = "Medical";
                 }
                 //LunchSoon
                 else if (childPosition == 4) {
                     startActivity(new Intent(MainActivity.this, CategoryActivity.class));
-                    finish();
+
                     idForCategoryOfNav = String.valueOf(myUtils.LunchSoon);
                     headerOfCategory = "Lunch Soon";
 

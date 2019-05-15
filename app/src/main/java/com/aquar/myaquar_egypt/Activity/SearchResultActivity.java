@@ -225,12 +225,12 @@ public class SearchResultActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        FilterActivity.radioBtn = 0;
-        startActivity(new Intent(SearchResultActivity.this, FilterActivity.class));
-        finish();
-
-    }
+//    @Override
+//    public void onBackPressed() {
+//        FilterActivity.radioBtn = 0;
+//
+//
+//
+//    }
 
 }

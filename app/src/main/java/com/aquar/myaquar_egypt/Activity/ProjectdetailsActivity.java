@@ -101,9 +101,6 @@ public class ProjectdetailsActivity extends AppCompatActivity {
         parentOfProjectDetails = findViewById(R.id.parentOfProjectDetails);
 
 
-//        dialog1 = new SpotsDialog.Builder().setContext(ProjectdetailsActivity.this).setTheme(R.style.Custom).build();
-//        dialog1.setMessage("Please wait.....");
-//        dialog1.show();
 
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
@@ -135,18 +132,13 @@ public class ProjectdetailsActivity extends AppCompatActivity {
         textMinArea = findViewById(R.id.area);
         textMaxArea = findViewById(R.id.maxArea);
 
-        // here get id of item from home for get its detalis
-//        homeFragment getid = new homeFragment();
-//
-//        int x = getid.id;
 
-//
+
+
         if (Session.getInstance().getTypesOfUnitID() != null) {
             reciveDate(Integer.parseInt(Session.getInstance().getTypesOfUnitID()));
         }
-//       else if (x != 0) {
-//            reciveDate(x);
-//        }
+
         //------------------------------------------------------------
 
 
@@ -320,19 +312,14 @@ public class ProjectdetailsActivity extends AppCompatActivity {
                             urlimage.add(x);
                         }
 
-                        DataOfSlider(urlimage);
+                        DataOfSlider(objectsOfProjectDetails.getSlider_images());
                         //Structure Images
                         Session.getInstance().setStructureImages(objectsOfProjectDetails.getStructure_images());
 
                         description_string = objectsOfProjectDetails.getDescription();
                         // for set all texts of details
-                        setTdevoleporandproject(objectsOfProjectDetails.getDescription(), objectsOfProjectDetails.getDeveloper(), objectsOfProjectDetails.getProject(),
-                                objectsOfProjectDetails.getMin_price()
-                                , objectsOfProjectDetails.getType(), objectsOfProjectDetails.getMin_rooms(), objectsOfProjectDetails.getMax_rooms(),
-                                objectsOfProjectDetails.getMin_bathsrooms()
-                                , objectsOfProjectDetails.getMax_bathsrooms(), objectsOfProjectDetails.getMin_area(), objectsOfProjectDetails.getMax_area(), objectsOfProjectDetails.getPrice_label()
+                        setTdevoleporandproject(objectsOfProjectDetails);
 
-                        );
                         liked_projects(Boolean.valueOf(objectsOfProjectDetails.getFavorite()));
                         // for like button
 
@@ -362,26 +349,26 @@ public class ProjectdetailsActivity extends AppCompatActivity {
 
     }
 
-    private void DataOfSlider(List imageUrl) {
-        HashMap<String, String> file_maps = new HashMap<String, String>();
-        Session.getInstance().setUrlimage(urlimage);
-        for (int i = 0; i < urlimage.size(); i++) {
-            file_maps.put("Phase" + i + 1, imageUrl.get(i).toString());
+    private void DataOfSlider(List <ModelObjectsOfProjectDetails.SliderImagesBean>imageUrl) {
 
-        }
-        for (String name : file_maps.keySet()) {
+
+        for (int i = 0  ; i < imageUrl.size() ; i++) {
+
+
+            urlimage.add(imageUrl.get(i).getImage_url());
+
+
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
-            textSliderView
-                    .description(name)
-                    .image(file_maps.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.Fit);
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle()
-                    .putString("extra", name);
-
-            Product_Slider.addSlider(textSliderView);
+              textSliderView
+                      .image(imageUrl.get(i).getImage_url())
+                      .setScaleType(BaseSliderView.ScaleType.Fit);
+                       textSliderView.bundle(new Bundle());
+                       textSliderView.getBundle();
+                       Product_Slider.addSlider(textSliderView);
         }
+        Session.getInstance().setUrlimage(urlimage);
+
         Product_Slider.setPresetTransformer(SliderLayout.Transformer.Accordion);
         Product_Slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         Product_Slider.setCustomAnimation(new DescriptionAnimation());
@@ -389,27 +376,25 @@ public class ProjectdetailsActivity extends AppCompatActivity {
     }
 
 
-    private void setTdevoleporandproject(String dec, String developer, String project, int price,
-                                         String type, String minrooms, String maxrooms
-            , String minBathrooms, String maxBathrooms, String minArea, String maxArea, String price_label) {
+    private void setTdevoleporandproject( ModelObjectsOfProjectDetails object) {
 
-        description.setText(dec.substring(0, 90));
+        description.setText(object.getDescription().substring(0, 90));
 //        Log.d("Data: ",price+" : "+type+" : "+minArea+"-"+maxArea);
-        devolepor.setText(developer);
-        project_name.setText(project);
+        devolepor.setText(object.getDeveloper());
+        project_name.setText(object.getProject());
 
-        textprice.setText(price + " " + price_label);
+        textprice.setText(object.getMin_price() + " " );
 
-        texttype.setText(type);
+        texttype.setText(object.getType());
 
-        textMinBedrooms.setText(minrooms + "");
-        textmaxBedrooms.setText(maxrooms + "");
+        textMinBedrooms.setText(object.getMin_rooms() + "");
+        textmaxBedrooms.setText(object.getMax_rooms() + "");
 
-        textMinBathroom.setText(minBathrooms + "");
-        textMaxBathrooms.setText(maxBathrooms + "");
+        textMinBathroom.setText(object.getMin_bathsrooms() + "");
+        textMaxBathrooms.setText(object.getMax_bathsrooms() + "");
 
-        textMinArea.setText(minArea + " " + "mq2");
-        textMaxArea.setText(maxArea + " " + "mq2");
+        textMinArea.setText(object.getMin_area() + " " + "mq2");
+        textMaxArea.setText(object.getMax_area() + " " + "mq2");
 
     }
 
@@ -467,7 +452,7 @@ public class ProjectdetailsActivity extends AppCompatActivity {
     }
 
 
-    // محدش يمسح الفانكشن ديه اللي هيمسحها هعوره
+
     public static void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null) return;
@@ -498,12 +483,6 @@ public class ProjectdetailsActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(ProjectdetailsActivity.this, ProjectTypesActivity.class));
-        finish();
-
-    }
 
 
 }

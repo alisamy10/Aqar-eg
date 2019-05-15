@@ -267,7 +267,7 @@ public class ProjectTypesActivity extends AppCompatActivity {
                 String TypeID = listChildDataID.get(childPosition);
                 Session.getInstance().setTypesOfUnitID(TypeID);
                 startActivity(new Intent(ProjectTypesActivity.this, ProjectdetailsActivity.class));
-                finish();
+
                 return false;
             }
         });

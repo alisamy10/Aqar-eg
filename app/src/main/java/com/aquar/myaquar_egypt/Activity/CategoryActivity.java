@@ -143,11 +143,6 @@ public class CategoryActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(CategoryActivity.this, MainActivity.class));
-        finish();
 
-    }
 
 }
