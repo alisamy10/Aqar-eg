@@ -41,10 +41,25 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-//        alertDialog = new SpotsDialog.Builder().setContext(this).setTheme(R.style.Custom).build();
-//        alertDialog.setMessage("Update information .....");
+        Dialog();
+         definitions();
+         onClick();
+
+
+
+        dataCheck();
+
+
+    }
+
+    private void Dialog(){
+
+
         alertDialog = myUtils.LoadingDialog(this);
 
+
+    }
+    private void definitions(){
         usernameEdit = findViewById(R.id.edit_info_username);
         phoneEdit = findViewById(R.id.edit_info_phone);
         passwordEdit = findViewById(R.id.edit_info_password);
@@ -52,11 +67,12 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         jopEdit = findViewById(R.id.edit_info_jopTitle);
         submit = findViewById(R.id.submit_BT);
 
+
+}
+
+    private void onClick(){
+
         submit.setOnClickListener(this);
-
-        dataCheck();
-
-
     }
 
     private void dataCheck() {
@@ -73,7 +89,9 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
 
     private void getEditData(EditText usernameEditET, EditText phoneEditET, EditText emailEditET, EditText jopEditET, EditText passwordEditET) {
+
         String userName, userPhone, userEmail, userJob, userPassword;
+
         userEmail = emailEditET.getText().toString();
         userName = usernameEditET.getText().toString();
         userPhone = phoneEditET.getText().toString();

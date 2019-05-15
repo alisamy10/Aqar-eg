@@ -45,24 +45,47 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
         myUtils.setLocale(this);
+        definitions();
+        onClick();
 
-        contct = findViewById(R.id.contactus);
-        location = findViewById(R.id.location);
-        mail = findViewById(R.id.mail);
-        phone = findViewById(R.id.phone);
-        findViewById(R.id.location_LL).setOnClickListener(this);
-        findViewById(R.id.email_LL).setOnClickListener(this);
-        findViewById(R.id.call_LL).setOnClickListener(this);
         Get_Data();
 
-        parent = findViewById(R.id.parentCountactUs);
+
+
+        showDialog();
+
+
+
+
+    }
+
+    private void showDialog(){
 
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
+
+
+
+    }
+    private void onClick(){
+
+
+        findViewById(R.id.location_LL).setOnClickListener(this);
+        findViewById(R.id.email_LL).setOnClickListener(this);
+        findViewById(R.id.call_LL).setOnClickListener(this);
+
+
 //        location_LL.setOnClickListener(this);
 //        email_LL.setOnClickListener(this);
 //        call_LL.setOnClickListener(this);
 
+    }
+    private void definitions(){
+        contct = findViewById(R.id.contactus);
+        location = findViewById(R.id.location);
+        mail = findViewById(R.id.mail);
+        phone = findViewById(R.id.phone);
+        parent = findViewById(R.id.parentCountactUs);
 
     }
 

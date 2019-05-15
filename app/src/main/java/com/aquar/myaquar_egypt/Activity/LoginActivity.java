@@ -136,6 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d("testest", response.toString());
                         mySharedPreference.setUserOBJ(userOBJSTR);
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
                         dialog1.dismiss();
                     }
 

@@ -61,31 +61,49 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_and_news_details);
         myUtils.setLocale(this);
+        definitions();
 
-        parentOfEventAndNewDetails = findViewById(R.id.parentOfEventAndNewsDetails);
+       showDialog();
 
 
-//        dialog1 = new SpotsDialog.Builder().setContext(EventsAndNewsDetailsActivity.this).setTheme(R.style.Custom).build();
-//        dialog1.setMessage("Please wait.....");
-//        dialog1.show();
+        GetCategoryData(NewsAndEvents.id_event);
 
+        onClick();
+
+
+
+
+    }
+    private void showDialog(){
 
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
-        //  Toast.makeText(this, ""+EventsAndNewsActivity.id_event, Toast.LENGTH_SHORT).show();
-        GetCategoryData(NewsAndEvents.id_event);
 
 
+    }
+
+    private void definitions(){
+        Event_slider = findViewById(R.id.event_Slider);
+        event_description = findViewById(R.id.description_event);
+        event_devolper = findViewById(R.id.event_devolepor);
+        titile = findViewById(R.id.Event_name);
+        phone_btn = findViewById(R.id.call_event);
+        parentOfEventAndNewDetails = findViewById(R.id.parentOfEventAndNewsDetails);
+        share_btn = findViewById(R.id.share_event);
         Attend_btn = findViewById(R.id.Attend);
 
+
+    }
+
+    private void onClick (){
         Attend_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendEmail();
             }
         });
-        share_btn = findViewById(R.id.share_event);
+
         share_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +116,7 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
 
             }
         });
-        phone_btn = findViewById(R.id.call_event);
+
         phone_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,12 +129,6 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
         });
 
 
-        Event_slider = findViewById(R.id.event_Slider);
-
-
-        event_description = findViewById(R.id.description_event);
-        event_devolper = findViewById(R.id.event_devolepor);
-        titile = findViewById(R.id.Event_name);
 
     }
 

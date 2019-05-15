@@ -64,15 +64,25 @@ public class FilterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_filter);
         myUtils.setLocale(this);
 
-        parentOfFilter = findViewById(R.id.parentOfFilter);
-        linearTypes = findViewById(R.id.linearTypes);
+       definitions();
+       showDialog();
+        radioButton();
+        Get_Data();
+        onClickOfSpinners();
 
-//        dialog1 = new SpotsDialog.Builder().setContext(FilterActivity.this).setTheme(R.style.Custom).build();
-//        dialog1.setMessage("Please wait.....");
-//        dialog1.show();
+
+    }
+
+    private void showDialog(){
 
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
+
+
+
+    }
+
+    private void definitions (){
 
         rg1 = findViewById(R.id.radiogroup1);
         rg3 = findViewById(R.id.radiogroup3);
@@ -82,9 +92,7 @@ public class FilterActivity extends AppCompatActivity {
         rb3 = findViewById(R.id.three);
         rb4 = findViewById(R.id.four);
         rb5 = findViewById(R.id.five);
-
         maxarea = findViewById(R.id.maxAreaSpinner);
-
         minarea = findViewById(R.id.minAreaSpinner);
         minbed = findViewById(R.id.minBedroomsSpinner);
         maxbed = findViewById(R.id.maxBedroomSpinner);
@@ -95,12 +103,8 @@ public class FilterActivity extends AppCompatActivity {
         maxprice = findViewById(R.id.maxPriceSpinner);
         TypesSpinner = findViewById(R.id.TypesSpinner);
         filter_name_ET = findViewById(R.id.filter_name_ET);
-
-
-        radioButton();
-        Get_Data();
-        onClickOfSpinners();
-
+        parentOfFilter = findViewById(R.id.parentOfFilter);
+        linearTypes = findViewById(R.id.linearTypes);
 
     }
 

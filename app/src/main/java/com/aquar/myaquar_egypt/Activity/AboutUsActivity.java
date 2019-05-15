@@ -38,18 +38,27 @@ public class AboutUsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
         myUtils.setLocale(this);
+
+          definitions ();
+          showDialog();
+
+        Get_Data();
+    }
+
+    private void showDialog(){
+
+        dialog1 = myUtils.LoadingDialog(this);
+        dialog1.show();
+
+
+
+    }
+    private void definitions(){
         aboutUs = findViewById(R.id.about_us_text);
 
         parentOfAboutUs = findViewById(R.id.parentOfAboutUs);
 
 
-//        dialog1 = new SpotsDialog.Builder().setContext(AboutUsActivity.this).setTheme(R.style.Custom).build();
-//        dialog1.setMessage("Please wait.....");
-//        dialog1.show();
-        dialog1 = myUtils.LoadingDialog(this);
-        dialog1.show();
-
-        Get_Data();
     }
 
     private void Get_Data() {

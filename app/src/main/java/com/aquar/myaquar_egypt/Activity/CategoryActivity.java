@@ -53,26 +53,34 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categroy);
         myUtils.setLocale(this);
 
-        mRecyclerView = findViewById(R.id.recyclerView_categry);
-        textOfHeader = findViewById(R.id.textOfCategory);
+       definitions();
 
-        parentOfCategory = findViewById(R.id.parentOfCategory);
-
-
-//        dialog1 = new SpotsDialog.Builder().setContext(CategoryActivity.this).setTheme(R.style.Custom).build();
-//        dialog1.setMessage("Please wait.....");
-//        dialog1.show();
-
-        dialog1 = myUtils.LoadingDialog(this);
-        dialog1.show();
+       showDialog();
 
         //send id of category from nav to here
         MainActivity data = new MainActivity();
-//        GetCategoryData(data.idForCategoryOfNav);
         GetCategoryData(data.idForCategoryOfNav);
 
 
         textOfHeader.setText(data.headerOfCategory);
+
+
+    }
+    private void showDialog(){
+
+        dialog1 = myUtils.LoadingDialog(this);
+        dialog1.show();
+
+
+
+    }
+
+    private void definitions(){
+
+        mRecyclerView = findViewById(R.id.recyclerView_categry);
+        textOfHeader = findViewById(R.id.textOfCategory);
+
+        parentOfCategory = findViewById(R.id.parentOfCategory);
 
 
     }
