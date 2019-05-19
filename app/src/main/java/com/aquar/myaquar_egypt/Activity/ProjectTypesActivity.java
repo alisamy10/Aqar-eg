@@ -1,8 +1,6 @@
 package com.aquar.myaquar_egypt.Activity;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.ExpandableListActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,16 +17,13 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Adapter.ExpandListAdapter;
-import com.aquar.myaquar_egypt.Fragments.homeFragment;
 import com.aquar.myaquar_egypt.InternalStorage.Session;
-import com.aquar.myaquar_egypt.Model.AboutUs.AboutUsModelObject;
 import com.aquar.myaquar_egypt.Model.UnitsModel.unitsModelObj;
 import com.aquar.myaquar_egypt.Model.UnitsModel.unitsModelRes;
 import com.aquar.myaquar_egypt.Model.UnitsModel.unitsModelTypes;
@@ -46,8 +41,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-
-import dmax.dialog.SpotsDialog;
 
 /**
  * Created by aswany on 3/25/19.

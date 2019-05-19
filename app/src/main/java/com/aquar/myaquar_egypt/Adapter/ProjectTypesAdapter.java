@@ -19,13 +19,13 @@ import java.util.ArrayList;
  * Created by aswany on 4/1/19.
  */
 
-public class projectTypesAdapter extends ArrayAdapter {
+public class ProjectTypesAdapter extends ArrayAdapter {
 
 
     ArrayList<unitsModelTypes> projectTypesAdapters;
     Context mContext;
 
-    public projectTypesAdapter(Context context, int resource, ArrayList projectTypesAdapters) {
+    public ProjectTypesAdapter(Context context, int resource, ArrayList projectTypesAdapters) {
         super(context, resource, projectTypesAdapters);
 
         this.projectTypesAdapters = projectTypesAdapters;

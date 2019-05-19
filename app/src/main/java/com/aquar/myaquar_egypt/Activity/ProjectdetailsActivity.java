@@ -21,7 +21,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Adapter.AdapterOfListOfPaymentMethod;
-import com.aquar.myaquar_egypt.Fragments.homeFragment;
+import com.aquar.myaquar_egypt.Fragments.HomeFragment;
 import com.aquar.myaquar_egypt.InternalStorage.Session;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
@@ -42,7 +42,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -72,7 +71,7 @@ public class ProjectdetailsActivity extends AppCompatActivity {
     ListView listPayment;
 
 
-    homeFragment getId = new homeFragment();
+    HomeFragment getId = new HomeFragment();
 
     String x[] = {"40%", "20%"};
     String z[] = {"7 years", "8 years"};

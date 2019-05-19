@@ -1,6 +1,5 @@
 package com.aquar.myaquar_egypt.Activity;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,8 +15,8 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.aquar.myaquar_egypt.Adapter.example_adapter_for_home_fragment;
-import com.aquar.myaquar_egypt.Fragments.homeFragment;
+import com.aquar.myaquar_egypt.Adapter.AdapterForHomeFragment;
+import com.aquar.myaquar_egypt.Fragments.HomeFragment;
 import com.aquar.myaquar_egypt.InternalStorage.Session;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelArray;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelObjects;
@@ -32,15 +31,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import dmax.dialog.SpotsDialog;
-
 public class CategoryActivity extends AppCompatActivity {
 
-    homeFragment getid = new homeFragment();
+    HomeFragment getid = new HomeFragment();
     private RecyclerView mRecyclerView;
     private TextView textOfHeader;
     private ImageView love_behind;
-    private example_adapter_for_home_fragment mAdapter;
+    private AdapterForHomeFragment mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<ModelObjects> list = new ArrayList<>();
 //    private AlertDialog dialog1;
@@ -109,7 +106,7 @@ public class CategoryActivity extends AppCompatActivity {
                         list = array.getProjects();
                         setRecyclerData(list);
 
-                        mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
+                        mAdapter.setOnItemClickListener(new AdapterForHomeFragment.OnItemClickListener() {
 
                             @Override
                             public void intent_to_detales(int pos, ImageView imageView) {
@@ -139,7 +136,7 @@ public class CategoryActivity extends AppCompatActivity {
 
     private void setRecyclerData(ArrayList<ModelObjects> list) {
 
-        mAdapter = new example_adapter_for_home_fragment(CategoryActivity.this, list);
+        mAdapter = new AdapterForHomeFragment(CategoryActivity.this, list);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);

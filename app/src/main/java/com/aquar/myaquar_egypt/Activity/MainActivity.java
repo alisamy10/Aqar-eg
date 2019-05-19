@@ -1,7 +1,6 @@
 package com.aquar.myaquar_egypt.Activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -25,9 +24,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aquar.myaquar_egypt.Adapter.ExpandListAdapter;
-import com.aquar.myaquar_egypt.Fragments.favouriteFragment;
+import com.aquar.myaquar_egypt.Fragments.FavouriteFragment;
 import com.aquar.myaquar_egypt.Fragments.profileFragment;
-import com.aquar.myaquar_egypt.Fragments.homeFragment;
+import com.aquar.myaquar_egypt.Fragments.HomeFragment;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Login.UserInfo;
 import com.aquar.myaquar_egypt.R;
@@ -300,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void firstFragmentRun() {
-        fragment = new homeFragment();
+        fragment = new HomeFragment();
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
         transaction.commitNow();
@@ -319,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void favourite(View view) {
-        fragment = new favouriteFragment();
+        fragment = new FavouriteFragment();
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_home, fragment, "favouriteFragment");
         transaction.commitNow();
@@ -351,7 +350,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void home(View view) {
-        fragment = new homeFragment();
+        fragment = new HomeFragment();
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_home, fragment, "Med_Data_Fragment");
         transaction.commitNow();

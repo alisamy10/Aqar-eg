@@ -1,6 +1,5 @@
 package com.aquar.myaquar_egypt.Adapter;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -21,7 +20,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Activity.ProjectdetailsActivity;
-import com.aquar.myaquar_egypt.Fragments.homeFragment;
+import com.aquar.myaquar_egypt.Fragments.HomeFragment;
 import com.aquar.myaquar_egypt.InternalStorage.Session;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Favouirtes.favouriteObjPOJO;
@@ -36,33 +35,31 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import dmax.dialog.SpotsDialog;
-
 /**
  * Created by aswany on 3/2/19.
  */
 
-public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myView> {
+public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.myView> {
     private Context myContext;
     private ArrayList<favouriteObjPOJO> favouriteObjPOJOS = new ArrayList<>();
 //    private AlertDialog dialog;
     private Dialog dialog;
 
-    public favouriteAdapter(Context myContext, ArrayList<favouriteObjPOJO> favouriteObjPOJOS) {
+    public FavouriteAdapter(Context myContext, ArrayList<favouriteObjPOJO> favouriteObjPOJOS) {
         this.myContext = myContext;
         this.favouriteObjPOJOS = favouriteObjPOJOS;
     }
 
     @NonNull
     @Override
-    public favouriteAdapter.myView onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public FavouriteAdapter.myView onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater = (LayoutInflater) myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.item_of_favourite_list, viewGroup, false);
         return new myView(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final favouriteAdapter.myView myView, int i) {
+    public void onBindViewHolder(@NonNull final FavouriteAdapter.myView myView, int i) {
 
         final favouriteObjPOJO pojo = favouriteObjPOJOS.get(i);
 //        dialog = new SpotsDialog.Builder().setContext(myContext).setTheme(R.style.Custom).build();
@@ -88,7 +85,7 @@ public class favouriteAdapter extends RecyclerView.Adapter<favouriteAdapter.myVi
                 Session.getInstance().setTypesOfUnitID(String.valueOf(pojo.getProductId()));
 
                 myContext.startActivity(new Intent(myContext, ProjectdetailsActivity.class));
-                homeFragment fragment_home = new homeFragment();
+                HomeFragment fragment_home = new HomeFragment();
 //                fragment_home.id= (int) pojo.getProductId();
 
             }

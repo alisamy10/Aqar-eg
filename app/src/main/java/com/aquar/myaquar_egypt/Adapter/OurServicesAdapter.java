@@ -15,12 +15,12 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class ourServicesAdapter extends RecyclerView.Adapter<ourServicesAdapter.MyView> {
+public class OurServicesAdapter extends RecyclerView.Adapter<OurServicesAdapter.MyView> {
 
     private Context myContext;
     private ArrayList<ourServicesObj> ourServicesObjs = new ArrayList<>();
 
-    public ourServicesAdapter(Context myContext, ArrayList<ourServicesObj> ourServicesObjs) {
+    public OurServicesAdapter(Context myContext, ArrayList<ourServicesObj> ourServicesObjs) {
         this.myContext = myContext;
         this.ourServicesObjs = ourServicesObjs;
     }

@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class example_adapter_for_home_fragment extends RecyclerView.Adapter<example_adapter_for_home_fragment.ExampleViewHolder> {
+public class AdapterForHomeFragment extends RecyclerView.Adapter<AdapterForHomeFragment.ExampleViewHolder> {
     /////
     private ArrayList<ModelObjects> mExampleList;
     private Context context;
@@ -32,7 +32,7 @@ public class example_adapter_for_home_fragment extends RecyclerView.Adapter<exam
 
     }
 
-    public example_adapter_for_home_fragment() {
+    public AdapterForHomeFragment() {
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -98,7 +98,7 @@ public class example_adapter_for_home_fragment extends RecyclerView.Adapter<exam
         }
     }
 
-    public example_adapter_for_home_fragment(Context applicationContext, ArrayList<ModelObjects> exampleList) {
+    public AdapterForHomeFragment(Context applicationContext, ArrayList<ModelObjects> exampleList) {
         mExampleList = exampleList;
         context = applicationContext;
     }

@@ -1,7 +1,6 @@
 package com.aquar.myaquar_egypt.Fragments;
 
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,7 +16,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.aquar.myaquar_egypt.Adapter.favouriteAdapter;
+import com.aquar.myaquar_egypt.Adapter.FavouriteAdapter;
 import com.aquar.myaquar_egypt.InternalStorage.mySharedPreference;
 import com.aquar.myaquar_egypt.Model.Favouirtes.favouriteObjPOJO;
 import com.aquar.myaquar_egypt.Model.Favouirtes.favouriteResPOJO;
@@ -32,13 +31,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import dmax.dialog.SpotsDialog;
-
 /**
  * A simple {@link Fragment} subclass.
  */
 
-public class favouriteFragment extends Fragment {
+public class FavouriteFragment extends Fragment {
 
     RecyclerView fragment_favouriteRV;
     TextView fragment_favouriteEmpty_TV;
@@ -47,7 +44,7 @@ public class favouriteFragment extends Fragment {
     private Dialog dialog;
 
 
-    public favouriteFragment() {
+    public FavouriteFragment() {
         // Required empty public constructor
     }
 
@@ -75,7 +72,7 @@ public class favouriteFragment extends Fragment {
     public void setUpFavouriteRecycler(ArrayList<favouriteObjPOJO> AllFavourites) {
 
         fragment_favouriteRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        favouriteAdapter adapter = new favouriteAdapter(getContext(), AllFavourites);
+        FavouriteAdapter adapter = new FavouriteAdapter(getContext(), AllFavourites);
         fragment_favouriteRV.setAdapter(adapter);
     }
 

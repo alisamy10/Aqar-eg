@@ -1,6 +1,5 @@
 package com.aquar.myaquar_egypt.Fragments;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +18,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.aquar.myaquar_egypt.Activity.ProjectTypesActivity;
-import com.aquar.myaquar_egypt.Adapter.example_adapter_for_home_fragment;
+import com.aquar.myaquar_egypt.Adapter.AdapterForHomeFragment;
 import com.aquar.myaquar_egypt.InternalStorage.Session;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelArray;
 import com.aquar.myaquar_egypt.Model.HomeApi.ModelObjects;
@@ -34,10 +33,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import dmax.dialog.SpotsDialog;
 
-
-public class homeFragment extends Fragment {
+public class HomeFragment extends Fragment {
 
     public static int id;
 //    private AlertDialog dialog1;
@@ -46,13 +43,13 @@ public class homeFragment extends Fragment {
 
 
     private RecyclerView mRecyclerView;
-    private example_adapter_for_home_fragment mAdapter;
+    private AdapterForHomeFragment mAdapter;
 
 
     private ArrayList<ModelObjects> list = new ArrayList<>();
 
     /* private ButtonsState buttonShowedState = ButtonsState.GONE;*/
-    public homeFragment() {
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -85,7 +82,7 @@ public class homeFragment extends Fragment {
 
 
             setRecyclerData(list);
-            mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
+            mAdapter.setOnItemClickListener(new AdapterForHomeFragment.OnItemClickListener() {
 
                 @Override
                 public void intent_to_detales(int pos, ImageView imageView) {
@@ -127,7 +124,7 @@ public class homeFragment extends Fragment {
 
 
 
-                        mAdapter.setOnItemClickListener(new example_adapter_for_home_fragment.OnItemClickListener() {
+                        mAdapter.setOnItemClickListener(new AdapterForHomeFragment.OnItemClickListener() {
 
                             @Override
                             public void intent_to_detales(int pos, ImageView imageView) {
@@ -158,7 +155,7 @@ public class homeFragment extends Fragment {
     private void setRecyclerData(ArrayList<ModelObjects> list) {
 
 
-        mAdapter = new example_adapter_for_home_fragment(getActivity(), list);
+        mAdapter = new AdapterForHomeFragment(getActivity(), list);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
