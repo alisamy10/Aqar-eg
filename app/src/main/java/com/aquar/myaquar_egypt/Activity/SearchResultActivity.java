@@ -50,29 +50,32 @@ public class SearchResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_result);
         myUtils.setLocale(this);
 
+       definitions();
+       showDialog();
+       cheakIfDataIsAll();
 
-        parentOfSearchResult = findViewById(R.id.parentOfSearchResult);
 
-//        dialog1 = new SpotsDialog.Builder().setContext(SearchResultActivity.this).setTheme(R.style.Custom).build();
-//        dialog1.setMessage("Please wait.....");
-//        dialog1.show();
+       GetCategoryData(categoryId, FilterActivity.itemMaxPrice, FilterActivity.itemMinPrice, FilterActivity.itemMaxArea,
+                FilterActivity.itemMinArea, FilterActivity.itemMaxBedroom, FilterActivity.itemMinBedroom, FilterActivity.itemMaxBathroom,
+                FilterActivity.itemMinBathroom, FilterActivity.locationOfSpinner, FilterActivity.itemType, FilterActivity.itemSearchKey
+        );
+
+
+    }
+    private void showDialog(){
 
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
-        mRecyclerView = findViewById(R.id.recyclerView_search_result);
+    }
 
-        //for cast category id from int to string and check if it = 0 give it ""
+
+    private void definitions(){
+
+        parentOfSearchResult = findViewById(R.id.parentOfSearchResult);
+        mRecyclerView = findViewById(R.id.recyclerView_search_result);
         categoryId = String.valueOf(FilterActivity.radioBtn);
 
-
-        cheakIfDataIsAll();
-
-
-        GetCategoryData(categoryId, FilterActivity.itemMaxPrice, FilterActivity.itemMinPrice, FilterActivity.itemMaxArea,
-                FilterActivity.itemMinArea, FilterActivity.itemMaxBedroom, FilterActivity.itemMinBedroom, FilterActivity.itemMaxBathroom,
-                FilterActivity.itemMinBathroom, FilterActivity.locationOfSpinner, FilterActivity.itemType, FilterActivity.itemSearchKey
-        );
 
 
     }
@@ -80,6 +83,7 @@ public class SearchResultActivity extends AppCompatActivity {
     private void GetCategoryData(String category, String maxPrice, String minPrice, String maxArea, String minArea, String maxBedrooms,
                                  String minBedrooms, String maxBathrooms, String minBathrooms, String locations,
                                  String itemType, String itemSearchKey) {
+
         JSONObject object = new JSONObject();
         try {
             object.put("category_id", category);
@@ -222,12 +226,5 @@ public class SearchResultActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        FilterActivity.radioBtn = 0;
-//
-//
-//
-//    }
 
 }

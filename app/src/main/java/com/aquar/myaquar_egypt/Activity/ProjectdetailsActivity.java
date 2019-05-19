@@ -454,7 +454,8 @@ public class ProjectdetailsActivity extends AppCompatActivity {
 
     public static void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
-        if (listAdapter == null) return;
+        if (listAdapter == null)
+            return;
 
         View.MeasureSpec m = new View.MeasureSpec();
 
@@ -467,7 +468,7 @@ public class ProjectdetailsActivity extends AppCompatActivity {
             view = listAdapter.getView(i, view, listView);
             if (i == 0) view.setLayoutParams(new
                     ViewGroup.LayoutParams(desiredWidth,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
+                    ViewGroup.LayoutParams.WRAP_CONTENT ));
 
             view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
             totalHeight += view.getMeasuredHeight();

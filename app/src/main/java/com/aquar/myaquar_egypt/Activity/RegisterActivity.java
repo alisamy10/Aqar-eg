@@ -57,14 +57,19 @@ public class RegisterActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         myUtils.setLocale(this);
 
-
-//        dialog1 = new SpotsDialog.Builder().setContext(RegisterActivity.this).setTheme(R.style.Custom).build();
-//        dialog1.setMessage("Please wait.....");
-        dialog1 = myUtils.LoadingDialog(this);
+         showDialog();
         AndroidNetworking.initialize(this);
         getSocialData();
 
     }
+
+    private void showDialog(){
+
+        dialog1 = myUtils.LoadingDialog(this);
+
+
+    }
+
 
     @OnClick(R.id.registration_BT)
     public void onRegister() {

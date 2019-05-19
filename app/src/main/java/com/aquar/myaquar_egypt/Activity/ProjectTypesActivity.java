@@ -75,22 +75,12 @@ public class ProjectTypesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.project_types_activity);
 
-        parent = findViewById(R.id.parent_of_projects_type);
-        go_youtube = (Button) findViewById(R.id.go_youtube);
-        arrow = findViewById(R.id.arrow_of_exband_list);
-
-        go_youtube.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("https://www.youtube.com/channel/UCc1Zc_zqnpjfxTnTtiqlC6A?view_as=subscriber"));
-                startActivity(intent);
-
-            }
-        });
-
         initializations();
+        myUtils.setLocale(this);
+        showDialog();
+        onClick();
+        widgetsVisibility(View.GONE);
+        getData();
 
     }
 
@@ -99,7 +89,32 @@ public class ProjectTypesActivity extends AppCompatActivity {
         units_detailsDes_TV = findViewById(R.id.units_detailsDes_TV);
         units_location_BTN = findViewById(R.id.units_location_BTN);
         types_ExpandableList = findViewById(R.id.types_ExpandableList);
+        parent = findViewById(R.id.parent_of_projects_type);
+        go_youtube = (Button) findViewById(R.id.go_youtube);
+        arrow = findViewById(R.id.arrow_of_exband_list);
 
+        units_detailsDes_label_TV = findViewById(R.id.units_detailsDes_label_TV);
+        units_line1_label_TV = findViewById(R.id.units_line1_label_TV);
+        units_line2_label_TV = findViewById(R.id.units_line2_label_TV);
+        units_label_TV = findViewById(R.id.units_label_TV);
+
+
+
+
+
+
+
+    }
+
+    private void showDialog(){
+
+        dialog1 = myUtils.LoadingDialog(this);
+        dialog1.show();
+
+    }
+
+
+    private void onClick(){
 
         types_ExpandableList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
@@ -116,21 +131,18 @@ public class ProjectTypesActivity extends AppCompatActivity {
 
             }
         });
+        go_youtube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        units_detailsDes_label_TV = findViewById(R.id.units_detailsDes_label_TV);
-        units_line1_label_TV = findViewById(R.id.units_line1_label_TV);
-        units_line2_label_TV = findViewById(R.id.units_line2_label_TV);
-        units_label_TV = findViewById(R.id.units_label_TV);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://www.youtube.com/channel/UCc1Zc_zqnpjfxTnTtiqlC6A?view_as=subscriber"));
+                startActivity(intent);
 
-        myUtils.setLocale(this);
-        widgetsVisibility(View.GONE);
-//        dialog1 = new SpotsDialog.Builder().setContext(this).setTheme(R.style.Custom).build();
-//        dialog1.setMessage("Please wait.....");
-//        dialog1.show();
-        dialog1 = myUtils.LoadingDialog(this);
-        dialog1.show();
+            }
+        });
 
-        getData();
+
 
     }
 
@@ -167,8 +179,11 @@ public class ProjectTypesActivity extends AppCompatActivity {
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         Log.d("TestData", "onResponse: " + response.toString());
                         unitsModelRes unitsModelRes = gson.fromJson(response.toString(), unitsModelRes.class);
+
+
                         unitsModel = unitsModelRes.getProject();
                         Types = unitsModel.get(0).getTypes();
+
                         setData();
                         widgetsVisibility(View.VISIBLE);
                     }
@@ -268,6 +283,7 @@ public class ProjectTypesActivity extends AppCompatActivity {
     }
 
     private void setExpandableListViewHeight(ExpandableListView parent, int groupPosition) {
+
         ExpandableListAdapter listAdapter = parent.getExpandableListAdapter();
         int totalHeight = 0;
         int desiredWidth = View.MeasureSpec.makeMeasureSpec(parent.getWidth(),

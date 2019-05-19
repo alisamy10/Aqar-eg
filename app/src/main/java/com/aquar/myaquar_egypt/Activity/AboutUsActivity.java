@@ -26,11 +26,10 @@ import org.json.JSONObject;
 import dmax.dialog.SpotsDialog;
 
 public class AboutUsActivity extends AppCompatActivity {
+
+
     TextView aboutUs;
     ScrollView parentOfAboutUs;
-    private long backPressedTime;
-
-    //    private AlertDialog dialog1;
     private Dialog dialog1;
 
     @Override
@@ -39,10 +38,10 @@ public class AboutUsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about_us);
         myUtils.setLocale(this);
 
-          definitions ();
+          definitions();
           showDialog();
+          Get_Data();
 
-        Get_Data();
     }
 
     private void showDialog(){
@@ -50,12 +49,12 @@ public class AboutUsActivity extends AppCompatActivity {
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
-
-
     }
-    private void definitions(){
-        aboutUs = findViewById(R.id.about_us_text);
 
+
+    private void definitions(){
+
+        aboutUs = findViewById(R.id.about_us_text);
         parentOfAboutUs = findViewById(R.id.parentOfAboutUs);
 
 

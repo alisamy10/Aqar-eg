@@ -32,25 +32,35 @@ public class TermsAndPoliciesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terms_and_policies);
-        textview = findViewById(R.id.text_of_terms);
+
         myUtils.setLocale(this);
+        definitions();
 
-
-        parentOfTermesAndPolicies = findViewById(R.id.parentOfTermesAndPolicies);
-
-
-//        dialog1 = new SpotsDialog.Builder().setContext(TermsAndPoliciesActivity.this).setTheme(R.style.Custom).build();
-//        dialog1.setMessage("Please wait.....");
-//        dialog1.show();
-        dialog1 = myUtils.LoadingDialog(this);
-        dialog1.show();
-
+        showDialog();
         Get_Data();
     }
 
 
+    private void definitions(){
 
-        private void Get_Data() {
+        textview = findViewById(R.id.text_of_terms);
+        parentOfTermesAndPolicies = findViewById(R.id.parentOfTermesAndPolicies);
+
+
+
+    }
+
+    private void showDialog(){
+
+        dialog1 = myUtils.LoadingDialog(this);
+        dialog1.show();
+
+    }
+
+
+
+
+    private void Get_Data() {
 
             AndroidNetworking.get(ConstantsUrl.termsAndPolicies)
                     .setPriority(Priority.HIGH)
