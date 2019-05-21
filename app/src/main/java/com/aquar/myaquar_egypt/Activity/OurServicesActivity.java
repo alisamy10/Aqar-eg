@@ -49,12 +49,17 @@ public class OurServicesActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        dialog.dismiss();
+//                        dialog.dismiss();
                         Log.d("OurServicesActivity", response.toString());
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         ourServicesRes ourServicesRes = gson.fromJson(response.toString(), ourServicesRes.class);
-                        ourServicesObjs = ourServicesRes.getOurServices();
-                        setData(ourServicesObjs);
+                        if (dialog.isShowing()) {
+                            dialog.dismiss();
+                            ourServicesObjs = ourServicesRes.getOurServices();
+                            setData(ourServicesObjs);
+                        }
+
+
 
                     }
 

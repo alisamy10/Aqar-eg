@@ -63,7 +63,7 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
         myUtils.setLocale(this);
         definitions();
 
-       showDialog();
+        showDialog();
 
 
         GetCategoryData(NewsAndEvents.id_event);
@@ -71,19 +71,17 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
         onClick();
 
 
-
-
     }
-    private void showDialog(){
+
+    private void showDialog() {
 
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
 
-
     }
 
-    private void definitions(){
+    private void definitions() {
         Event_slider = findViewById(R.id.event_Slider);
         event_description = findViewById(R.id.description_event);
         event_devolper = findViewById(R.id.event_devolepor);
@@ -96,7 +94,7 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
 
     }
 
-    private void onClick (){
+    private void onClick() {
         Attend_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,7 +127,6 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
         });
 
 
-
     }
 
     private void GetCategoryData(int value) {
@@ -143,20 +140,24 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
 
-                        dialog1.dismiss();
+//                        dialog1.dismiss();
                         parentOfEventAndNewDetails.setVisibility(View.VISIBLE);
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         Model_array_of_Eventandnews array = gson.fromJson(response.toString(), Model_array_of_Eventandnews.class);
-                        list = array.getProject();
 
-                        for (int i = 0; i < list.get(0).getSlider_images().size(); i++) {
-                            String x = list.get(0).getSlider_images().get(i).getImage_url();
-                            urlimage.add(x);
+                        if (dialog1.isShowing()) {
+                            dialog1.dismiss();
+                            list = array.getProject();
+
+                            for (int i = 0; i < list.get(0).getSlider_images().size(); i++) {
+                                String x = list.get(0).getSlider_images().get(i).getImage_url();
+                                urlimage.add(x);
+                            }
+
+                            DataOfSlider(urlimage);
+
+                            seteventdata(list.get(0).getDescription(), list.get(0).getProject(), list.get(0).getTitle());
                         }
-
-                        DataOfSlider(urlimage);
-
-                        seteventdata(list.get(0).getDescription(), list.get(0).getProject(), list.get(0).getTitle());
 
 
                     }
@@ -249,7 +250,6 @@ public class EventsAndNewsDetailsActivity extends AppCompatActivity {
 
 
     }
-
 
 
 }

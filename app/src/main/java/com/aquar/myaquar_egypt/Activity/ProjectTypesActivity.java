@@ -98,15 +98,9 @@ public class ProjectTypesActivity extends AppCompatActivity {
         units_line2_label_TV = findViewById(R.id.units_line2_label_TV);
         units_label_TV = findViewById(R.id.units_label_TV);
 
-
-
-
-
-
-
     }
 
-    private void showDialog(){
+    private void showDialog() {
 
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
@@ -114,7 +108,7 @@ public class ProjectTypesActivity extends AppCompatActivity {
     }
 
 
-    private void onClick(){
+    private void onClick() {
 
         types_ExpandableList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
@@ -141,7 +135,6 @@ public class ProjectTypesActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }
@@ -173,8 +166,7 @@ public class ProjectTypesActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        dialog1.dismiss();
-                        parent.setVisibility(View.VISIBLE);
+//                        dialog1.dismiss();
 
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         Log.d("TestData", "onResponse: " + response.toString());
@@ -183,9 +175,13 @@ public class ProjectTypesActivity extends AppCompatActivity {
 
                         unitsModel = unitsModelRes.getProject();
                         Types = unitsModel.get(0).getTypes();
+                        if (dialog1.isShowing()) {
+                            dialog1.dismiss();
+                            setData();
+                            parent.setVisibility(View.VISIBLE);
+                            widgetsVisibility(View.VISIBLE);
+                        }
 
-                        setData();
-                        widgetsVisibility(View.VISIBLE);
                     }
 
                     @Override

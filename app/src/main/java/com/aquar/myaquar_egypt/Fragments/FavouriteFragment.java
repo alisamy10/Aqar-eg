@@ -40,7 +40,7 @@ public class FavouriteFragment extends Fragment {
     RecyclerView fragment_favouriteRV;
     TextView fragment_favouriteEmpty_TV;
     ArrayList<favouriteObjPOJO> favouriteObjPOJOS = new ArrayList<>();
-//    private AlertDialog dialog;
+    //    private AlertDialog dialog;
     private Dialog dialog;
 
 
@@ -61,7 +61,7 @@ public class FavouriteFragment extends Fragment {
 //        dialog = new SpotsDialog.Builder().setContext(getContext()).setTheme(R.style.Custom).build();
 //        dialog.setMessage("Please wait.....");
         dialog = myUtils.LoadingDialog(getActivity());
-
+        dialog.setCancelable(false);
         getData();
 
 

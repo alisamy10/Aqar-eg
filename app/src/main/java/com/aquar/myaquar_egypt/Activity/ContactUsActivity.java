@@ -51,23 +51,20 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
         Get_Data();
 
 
-
         showDialog();
-
-
 
 
     }
 
-    private void showDialog(){
+    private void showDialog() {
 
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
 
-
     }
-    private void onClick(){
+
+    private void onClick() {
 
 
         findViewById(R.id.location_LL).setOnClickListener(this);
@@ -80,7 +77,8 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
 //        call_LL.setOnClickListener(this);
 
     }
-    private void definitions(){
+
+    private void definitions() {
         contct = findViewById(R.id.contactus);
         location = findViewById(R.id.location);
         mail = findViewById(R.id.mail);
@@ -98,22 +96,25 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        dialog1.dismiss();
+//                        dialog1.dismiss();
                         parent.setVisibility(View.VISIBLE);
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
                         ContactUsModelObject array = gson.fromJson(response.toString(), ContactUsModelObject.class);
 
-                        contct.setText(array.getText());
-                        location.setText(array.getAddress());
-                        mail.setText(array.getMail());
-                        phone.setText(array.getPhone());
+                        if (dialog1.isShowing()) {
+                            dialog1.dismiss();
+                            contct.setText(array.getText());
+                            location.setText(array.getAddress());
+                            mail.setText(array.getMail());
+                            phone.setText(array.getPhone());
 
+                            instaUrl = array.getInstagram();
+                            faceUrl = array.getFacebook();
+                            youtubeUrl = array.getYoutube();
+                            twitterUrl = array.getTwitter();
+                        }
 
-                        instaUrl = array.getInstagram();
-                        faceUrl = array.getFacebook();
-                        youtubeUrl = array.getYoutube();
-                        twitterUrl = array.getTwitter();
 
                     }
 
@@ -183,7 +184,6 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
 //            Toast.makeText(this,youtubeUrl+ "", Toast.LENGTH_SHORT).show();
         }
     }
-
 
 
     @Override

@@ -6,8 +6,8 @@ android {
         applicationId "com.aswany.android.myaquar_eg"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 8
-        versionName "1.0.5"
+        versionCode 9
+        versionName "1.0.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
@@ -61,7 +61,9 @@ dependencies {
 
     //google
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation 'com.google.firebase:firebase-messaging:18.0.0'
 
+    implementation 'android.arch.work:work-runtime:1.0.1'
     //facebook
     implementation 'com.facebook.android:facebook-login:[4,5)'
 

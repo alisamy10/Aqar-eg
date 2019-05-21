@@ -28,6 +28,8 @@
     <!--+ "\n" + "Mobile Phone : " + userPOJO.getPhone() + "\n" + "Job Title: " + userPOJO.getJobTitle();-->
     <!--String Body=Lines+"\n"+"\n"+Content+"\n"+"\n"+Lines;-->
     <string name="Lines">--------------------------------</string>
+    <string name="fcm_message">message</string>
+    <string name="default_notification_channel_id">MyAquar</string>
     <!--<string name="Body"></string>-->
 
 

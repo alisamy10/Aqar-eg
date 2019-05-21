@@ -113,13 +113,15 @@ public class SearchResultActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         parentOfSearchResult.setVisibility(View.VISIBLE);
-                        dialog1.dismiss();
+//                        dialog1.dismiss();
                         Log.d("SearchData", response.toString());
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         ModelArray array = gson.fromJson(response.toString(), ModelArray.class);
-                        list = array.getProjects();
-                        setRecyclerData(list);
-
+                        if (dialog1.isShowing()) {
+                            dialog1.dismiss();
+                            list = array.getProjects();
+                            setRecyclerData(list);
+                        }
 
                         mAdapter.setOnItemClickListener(new AdapterForHomeFragment.OnItemClickListener() {
 

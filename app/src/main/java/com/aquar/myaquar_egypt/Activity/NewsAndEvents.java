@@ -75,14 +75,16 @@ public class NewsAndEvents extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         parentOfEventAndNews.setVisibility(View.VISIBLE);
-                        dialog1.dismiss();
+//                        dialog1.dismiss();
 
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
                         ModelArrayOfEventAndNews array = gson.fromJson(response.toString(), ModelArrayOfEventAndNews.class);
-                        list = array.getProjects();
-                        setRecyclerData(list);
-
+                        if (dialog1.isShowing()) {
+                            dialog1.dismiss();
+                            list = array.getProjects();
+                            setRecyclerData(list);
+                        }
 
                         mAdapter.setOnItemClickListener(new EventsAndNewsAdapter.OnItemClickListener() {
                             @Override

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -19,6 +20,10 @@ import com.aquar.myaquar_egypt.Model.socialLogin.socialLoginPOJO;
 import com.aquar.myaquar_egypt.R;
 import com.aquar.myaquar_egypt.Utils.ConstantsUrl;
 import com.aquar.myaquar_egypt.Utils.myUtils;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -49,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Dialog dialog1;
 
     final String EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
+    String Token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,10 +112,30 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
 
             dialog1.show();
+            getToken();
             onRegisterData(name, password, phone, email, jobTitle);
 //            Toast.makeText(getApplicationContext(), "hh", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void getToken() {
+            FirebaseInstanceId.getInstance().getInstanceId()
+                    .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                            if (!task.isSuccessful()) {
+                                Log.w("Token", "getInstanceId failed", task.getException());
+                                return;
+                            }
+
+                            // Get new Instance ID token
+                            Token = task.getResult().getToken();
+
+                            Log.d("Token", Token);
+//                        Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
 
     private void onRegisterData(String name, String password, String phone, String email, String jobTitle) {
         JSONObject object = new JSONObject();
@@ -120,6 +145,7 @@ public class RegisterActivity extends AppCompatActivity {
             object.put("email", email);
             object.put("password", password);
             object.put("job_title", jobTitle);
+//            object.put("Token", Token);
 
         } catch (JSONException e) {
             e.getStackTrace();

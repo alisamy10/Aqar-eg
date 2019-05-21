@@ -70,11 +70,15 @@ public class AboutUsActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
 
                         parentOfAboutUs.setVisibility(View.VISIBLE);
-                        dialog1.dismiss();
+//                        dialog1.dismiss();
 
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         AboutUsModelObject array = gson.fromJson(response.toString(), AboutUsModelObject.class);
-                        aboutUs.setText(array.getText());
+
+                        if (dialog1.isShowing()) {
+                            dialog1.dismiss();
+                            aboutUs.setText(array.getText());
+                        }
 
                     }
 

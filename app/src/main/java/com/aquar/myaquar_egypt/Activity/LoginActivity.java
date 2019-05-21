@@ -7,6 +7,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -32,14 +33,20 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.login.Login;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -135,6 +142,7 @@ public class LoginActivity extends AppCompatActivity {
                         String userOBJSTR = gson.toJson(resPOJO.getUserInfo());
                         Log.d("testest", response.toString());
                         mySharedPreference.setUserOBJ(userOBJSTR);
+                        getToken();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                         dialog1.dismiss();
@@ -143,9 +151,9 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError anError) {
                         dialog1.dismiss();
-                        Log.d("testest", anError.getErrorCode()+"");
+                        Log.d("testest", anError.getErrorCode() + "");
 
-                        if (anError.getErrorCode() !=0) {
+                        if (anError.getErrorCode() != 0) {
 
                             myUtils.handleError(LoginActivity.this, anError.getErrorBody(), anError.getErrorCode());
 
@@ -232,51 +240,51 @@ public class LoginActivity extends AppCompatActivity {
 
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+
+
+                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
-                    public void onSuccess(LoginResult loginResult) {
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        // Application code
+                        Log.d("facebookData", object.toString());
+                        try {
+                            String name = object.getString("name");
+
+                            Log.d("facebookData", name);
+
+                            sendDataToRegister(name, "");
 
 
-                        GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-                                    @Override
-                                    public void onCompleted(JSONObject object, GraphResponse response) {
-                                        // Application code
-                                        Log.d("facebookData", object.toString());
-                                        try {
-                                            String name = object.getString("name");
-
-                                            Log.d("facebookData", name);
-
-                                            sendDataToRegister(name, "");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
 
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
-
-
-                                    }
-                                });
-
-                        Bundle parameters = new Bundle();
-                        parameters.putString("fields", "id,name,link");
-                        request.setParameters(parameters);
-                        request.executeAsync();
-
-                        LoginManager.getInstance().logOut();
-
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        Log.d("FacebookData", "facebook cancelled");
-                    }
-
-                    @Override
-                    public void onError(FacebookException error) {
-                        Log.d("FacebookData", error.toString());
-                        Toast.makeText(LoginActivity.this, "Failed to do Sign In", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,name,link");
+                request.setParameters(parameters);
+                request.executeAsync();
+
+                LoginManager.getInstance().logOut();
+
+            }
+
+            @Override
+            public void onCancel() {
+                Log.d("FacebookData", "facebook cancelled");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Log.d("FacebookData", error.toString());
+                Toast.makeText(LoginActivity.this, "Failed to do Sign In", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void googleToken() {
@@ -286,6 +294,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+//        Log.d ("Token",gso.getServerClientId());
     }
 
     @Override
@@ -308,5 +317,26 @@ public class LoginActivity extends AppCompatActivity {
         } catch (NoSuchAlgorithmException e) {
             Log.e("KeyHash:", e.toString());
         }
+    }
+
+    private void getToken() {
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("Token", "getInstanceId failed", task.getException());
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        String token = task.getResult().getToken();
+
+                        Log.d("Token", token);
+//                        Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
+                    }
+                });
+        GoogleApiAvailability.getInstance().makeGooglePlayServicesAvailable(this);
+        FirebaseMessaging.getInstance().setAutoInitEnabled(true);
     }
 }

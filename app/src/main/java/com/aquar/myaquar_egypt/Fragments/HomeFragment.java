@@ -65,7 +65,7 @@ public class HomeFragment extends Fragment {
         myUtils.setLocale(getActivity());
 
          dialog1 = myUtils.LoadingDialog(getActivity());
-
+        dialog1.setCancelable(false);
         getData();
 
 

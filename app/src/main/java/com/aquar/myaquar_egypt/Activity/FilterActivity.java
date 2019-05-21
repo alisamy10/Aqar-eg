@@ -64,8 +64,8 @@ public class FilterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_filter);
         myUtils.setLocale(this);
 
-       definitions();
-       showDialog();
+        definitions();
+        showDialog();
         radioButton();
         Get_Data();
         onClickOfSpinners();
@@ -73,16 +73,15 @@ public class FilterActivity extends AppCompatActivity {
 
     }
 
-    private void showDialog(){
+    private void showDialog() {
 
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
 
-
     }
 
-    private void definitions (){
+    private void definitions() {
 
         rg1 = findViewById(R.id.radiogroup1);
         rg3 = findViewById(R.id.radiogroup3);
@@ -118,7 +117,7 @@ public class FilterActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        dialog1.dismiss();
+//                        dialog1.dismiss();
                         parentOfFilter.setVisibility(View.VISIBLE);
 
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -128,43 +127,47 @@ public class FilterActivity extends AppCompatActivity {
 
                         Log.d("Response:Filter ", array.toString());
 
+                        if (dialog1.isShowing()) {
+                            dialog1.dismiss();
 
-                        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMaxArea());
-                        maxarea.setAdapter(adapter);
+                            adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMaxArea());
+                            maxarea.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMinArea());
-                        minarea.setAdapter(adapter);
+                            adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMinArea());
+                            minarea.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMinPrice());
-                        minprice.setAdapter(adapter);
+                            adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMinPrice());
+                            minprice.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMaxPrice());
-                        maxprice.setAdapter(adapter);
-
-
-                        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMinBadrooms());
-                        minbed.setAdapter(adapter);
+                            adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMaxPrice());
+                            maxprice.setAdapter(adapter);
 
 
-                        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMaxBadrooms());
-                        maxbed.setAdapter(adapter);
+                            adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMinBadrooms());
+                            minbed.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMinBathrooms());
-                        minbath.setAdapter(adapter);
 
-                        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMaxBathrooms());
-                        maxbath.setAdapter(adapter);
+                            adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMaxBadrooms());
+                            maxbed.setAdapter(adapter);
 
-                        adapterString = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getLocations());
-                        location.setAdapter(adapterString);
-                        Types = new ArrayList<>();
-                        TypesID = new ArrayList<>();
-                        for (Types types : array.getTypes()) {
-                            Types.add(types.getType());
-                            TypesID.add(types.getTypeId());
+                            adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMinBathrooms());
+                            minbath.setAdapter(adapter);
+
+                            adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getMaxBathrooms());
+                            maxbath.setAdapter(adapter);
+
+                            adapterString = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, array.getLocations());
+                            location.setAdapter(adapterString);
+                            Types = new ArrayList<>();
+                            TypesID = new ArrayList<>();
+                            for (Types types : array.getTypes()) {
+                                Types.add(types.getType());
+                                TypesID.add(types.getTypeId());
+                            }
+                            TypesAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, Types);
+                            TypesSpinner.setAdapter(TypesAdapter);
+
                         }
-                        TypesAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_simple_text, Types);
-                        TypesSpinner.setAdapter(TypesAdapter);
 
 
                     }
@@ -423,7 +426,6 @@ public class FilterActivity extends AppCompatActivity {
         Log.d("TAGDEMO", itemType);
         Log.d("TAGDEMO", itemSearchKey);
         startActivity(new Intent(this, SearchResultActivity.class));
-
 
 
     }

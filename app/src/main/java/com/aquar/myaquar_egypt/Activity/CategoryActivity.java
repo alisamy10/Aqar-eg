@@ -40,7 +40,7 @@ public class CategoryActivity extends AppCompatActivity {
     private AdapterForHomeFragment mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<ModelObjects> list = new ArrayList<>();
-//    private AlertDialog dialog1;
+    //    private AlertDialog dialog1;
     private Dialog dialog1;
     private LinearLayout parentOfCategory;
 
@@ -50,9 +50,9 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categroy);
         myUtils.setLocale(this);
 
-       definitions();
+        definitions();
 
-       showDialog();
+        showDialog();
 
         //send id of category from nav to here
         MainActivity data = new MainActivity();
@@ -63,16 +63,16 @@ public class CategoryActivity extends AppCompatActivity {
 
 
     }
-    private void showDialog(){
+
+    private void showDialog() {
 
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
 
 
-
     }
 
-    private void definitions(){
+    private void definitions() {
 
         mRecyclerView = findViewById(R.id.recyclerView_categry);
         textOfHeader = findViewById(R.id.textOfCategory);
@@ -100,11 +100,16 @@ public class CategoryActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         parentOfCategory.setVisibility(View.VISIBLE);
-                        dialog1.dismiss();
+//                        dialog1.dismiss();
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         ModelArray array = gson.fromJson(response.toString(), ModelArray.class);
-                        list = array.getProjects();
-                        setRecyclerData(list);
+
+                        if (dialog1.isShowing()) {
+                            dialog1.dismiss();
+                            list = array.getProjects();
+                            setRecyclerData(list);
+                        }
+
 
                         mAdapter.setOnItemClickListener(new AdapterForHomeFragment.OnItemClickListener() {
 
@@ -147,7 +152,6 @@ public class CategoryActivity extends AppCompatActivity {
         Intent intent = new Intent(CategoryActivity.this, ProjectdetailsActivity.class);
         startActivity(intent);
     }
-
 
 
 }

@@ -297,12 +297,17 @@ public class ProjectdetailsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         parentOfProjectDetails.setVisibility(View.VISIBLE);
-                        dialog1.dismiss();
+//                        dialog1.dismiss();
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                         ArrayModelOfProjectsDetails array = gson.fromJson(response.toString(), ArrayModelOfProjectsDetails.class);
 //                        objectsOfProjectDetails = gson.fromJson(response.toString(), ModelObjectsOfProjectDetails.class);
-                        list = array.getProject();
-                        objectsOfProjectDetails = list.get(0);
+
+                        if (dialog1.isShowing()) {
+                            dialog1.dismiss();
+                            list = array.getProject();
+                            objectsOfProjectDetails = list.get(0);
+                        }
+
 
 
                         //loop for image of slider

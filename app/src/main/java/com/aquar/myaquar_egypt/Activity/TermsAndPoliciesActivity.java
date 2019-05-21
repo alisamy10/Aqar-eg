@@ -23,11 +23,12 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONObject;
 
 public class TermsAndPoliciesActivity extends AppCompatActivity {
-     private  TextView textview ;
-//    private AlertDialog dialog1;
+    private TextView textview;
+    //    private AlertDialog dialog1;
     private Dialog dialog1;
 
-    private ScrollView parentOfTermesAndPolicies ;
+    private ScrollView parentOfTermesAndPolicies;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,16 +42,15 @@ public class TermsAndPoliciesActivity extends AppCompatActivity {
     }
 
 
-    private void definitions(){
+    private void definitions() {
 
         textview = findViewById(R.id.text_of_terms);
         parentOfTermesAndPolicies = findViewById(R.id.parentOfTermesAndPolicies);
 
 
-
     }
 
-    private void showDialog(){
+    private void showDialog() {
 
         dialog1 = myUtils.LoadingDialog(this);
         dialog1.show();
@@ -58,41 +58,37 @@ public class TermsAndPoliciesActivity extends AppCompatActivity {
     }
 
 
-
-
     private void Get_Data() {
 
-            AndroidNetworking.get(ConstantsUrl.termsAndPolicies)
-                    .setPriority(Priority.HIGH)
-                    .build()
-                    .getAsJSONObject(new JSONObjectRequestListener() {
-                        @Override
-                        public void onResponse(JSONObject response) {
+        AndroidNetworking.get(ConstantsUrl.termsAndPolicies)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+//                            dialog1.dismiss();
+                        parentOfTermesAndPolicies.setVisibility(View.VISIBLE);
+                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+                        AboutUsModelObject array = gson.fromJson(response.toString(), AboutUsModelObject.class);
+                        if (dialog1.isShowing()) {
                             dialog1.dismiss();
-                            parentOfTermesAndPolicies.setVisibility(View.VISIBLE);
-                            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-                            AboutUsModelObject array = gson.fromJson(response.toString(), AboutUsModelObject.class);
-
-
                             textview.setText(array.getText());
 
-
-
                         }
 
-                        @Override
-                        public void onError(ANError anError) {
-                                dialog1.dismiss();
-                            Toast.makeText(TermsAndPoliciesActivity.this, "connection field", Toast.LENGTH_SHORT).show();
+                    }
 
-                        }
-                    });
+                    @Override
+                    public void onError(ANError anError) {
+                        dialog1.dismiss();
+                        Toast.makeText(TermsAndPoliciesActivity.this, "connection field", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
 
 
     }
-
 
 
 }

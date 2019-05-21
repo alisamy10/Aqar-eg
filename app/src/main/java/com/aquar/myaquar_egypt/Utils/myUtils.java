@@ -46,6 +46,7 @@ public class myUtils {
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
 
     }
+
     public static void setLocale(Context context) {
 
         Locale locale = new Locale("en");
@@ -57,10 +58,11 @@ public class myUtils {
 
 
     }
+
     public static Dialog LoadingDialog(final Context myContext) {
         final Dialog dialog = new Dialog(myContext);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
         dialog.setContentView(R.layout.dialog_loading);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
